@@ -273,7 +273,7 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
   <div class="mascot-big"></div>
   <div class="hero-sub">
     <h1>Tất cả bài ôn tập, một nơi lưu trữ</h1>
-    <p>Sắp xếp theo Level 1 → 6. Mỗi bài tự chấm điểm, làm lại không giới hạn. Kết quả được ghi nhận theo tên học viên; đạt đủ các bài của một level sẽ mở khoá level kế tiếp.</p>
+    <p>Sắp xếp theo Level 1 → 6. Mỗi bài tự chấm điểm, làm lại không giới hạn. Các bài được mở theo tiến độ của lớp bạn và tự mở thêm theo lịch. Kết quả được ghi nhận theo tên học viên.</p>
   </div>
 </div>
 
@@ -329,6 +329,8 @@ let student = null; try{ student = JSON.parse(lsGet(STUDENT_KEY)||'null'); }catc
 let serverData = {};          // { [lessonNum]: {opens, attempts, avg, passed, actsDone, actTotal} }
 let syncState = 'idle';       // idle | loading | ok | error
 let teacherMode = false;
+let allowed = 0;              // bài lớn nhất lớp được mở (từ máy chủ)
+let loginMsg = '';            // thông báo lỗi đăng nhập / bị khoá
 let openLevelId = null;
 
 function lessonKey(levelId, num){ return 'L'+levelId+'-B'+num; }
@@ -343,9 +345,17 @@ function levelStats(level){
   const doneCount = ready.filter(l=>isDone(level,l)).length;
   return {readyCount: ready.length, doneCount, totalCount: level.lessons.length, built: level.lessons.filter(l=>l.url).length};
 }
+function lessonOpen(l){
+  if(teacherMode) return true;
+  if(SERVER_MODE) return !!student && l.num <= allowed;
+  return true;
+}
 function isLevelUnlocked(idx){
   if(teacherMode) return true;
-  if(SERVER_MODE && !student) return false;
+  if(SERVER_MODE){
+    if(!student) return false;
+    return LEVELS[idx].lessons.some(l=>l.num <= allowed);
+  }
   if(idx === 0) return true;
   const st = levelStats(LEVELS[idx-1]);
   if(st.readyCount === 0) return true;
@@ -371,27 +381,37 @@ async function syncMe(force){
   syncState = 'loading'; renderLevels();
   try{
     const res = await api({action:'me', student:student.s, cls:student.c});
-    serverData = res.ok ? res.lessons : {};
-    syncState = res.ok ? 'ok' : 'error';
+    if(res.ok){
+      serverData = res.lessons; allowed = res.allowed; syncState = 'ok';
+    } else if(res.code){            // không còn trong danh sách / đã nghỉ
+      forceLogout(res.error); return;
+    } else { syncState = 'error'; }
   }catch(e){ syncState = 'error'; }
   renderLevels();
 }
 
 /* ---------------- đăng nhập học viên ---------------- */
-function doLogin(){
+async function doLogin(){
   const s = document.getElementById('inName').value.trim();
   const c = document.getElementById('inCls').value.trim();
   const err = document.getElementById('loginErr');
   if(s.length < 2 || !c){ err.textContent = 'Vui lòng nhập đủ họ tên và lớp.'; return; }
-  student = {s, c}; lsSet(STUDENT_KEY, JSON.stringify(student));
-  post({type:'login', lesson:0});
-  renderLogin(); syncMe(true);
+  err.textContent = 'Đang kiểm tra…';
+  try{
+    const res = await api({action:'login', student:s, cls:c});
+    if(!res.ok){ err.textContent = res.error || 'Không đăng nhập được.'; return; }
+    student = {s: res.student, c: res.cls}; allowed = res.allowed; loginMsg = '';
+    lsSet(STUDENT_KEY, JSON.stringify(student));
+    post({type:'login', lesson:0});
+    renderLogin(); syncMe(true);
+  }catch(e){ err.textContent = 'Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.'; }
 }
-function logout(){
-  student = null; serverData = {}; syncState='idle'; teacherMode=false;
+function resetSession(){
+  student = null; serverData = {}; syncState='idle'; teacherMode=false; allowed = 0;
   try{ localStorage.removeItem(STUDENT_KEY); }catch(e){}
-  renderLogin(); renderLevels();
 }
+function logout(){ loginMsg=''; resetSession(); renderLogin(); renderLevels(); }
+function forceLogout(msg){ resetSession(); loginMsg = msg || ''; renderLogin(); renderLevels(); }
 function renderLogin(){
   const box = document.getElementById('loginBox');
   if(!SERVER_MODE){
@@ -399,7 +419,7 @@ function renderLogin(){
     return;
   }
   if(student){
-    const st = {idle:'', loading:'⏳ đang đồng bộ…', ok:'✓ đã đồng bộ', error:'⚠ chưa kết nối được máy chủ'}[syncState];
+    const st = {idle:'', loading:'⏳ đang đồng bộ…', ok:'✓ lớp đã mở tới Bài '+allowed, error:'⚠ chưa kết nối được máy chủ'}[syncState];
     box.innerHTML = `<div class="login-card in">
       <div class="who"><span class="avatar">${esc(student.s.trim().charAt(0).toUpperCase())}</span>
         <div><b>${esc(student.s)}</b><span class="cls">${esc(student.c)}</span></div></div>
@@ -409,13 +429,13 @@ function renderLogin(){
   } else {
     box.innerHTML = `<div class="login-card out">
       <div class="lc-title">Chào bạn! Nhập tên để bắt đầu 👋</div>
-      <div class="lc-sub">Kết quả ôn tập của bạn sẽ được ghi nhận để thầy/cô theo dõi. Làm lại bao nhiêu lần cũng được.</div>
+      <div class="lc-sub">Nhập đúng họ tên và lớp như đã đăng ký với thầy/cô. Kết quả ôn tập được ghi nhận để thầy/cô theo dõi, làm lại bao nhiêu lần cũng được.</div>
       <div class="lc-row">
         <input id="inName" placeholder="Họ và tên" maxlength="60" autocomplete="name">
-        <input id="inCls" placeholder="Lớp / nhóm (VD: HSK2 tối T3-T5)" maxlength="40">
+        <input id="inCls" placeholder="Lớp (VD: M26.01)" maxlength="40">
         <button class="btn-primary" onclick="doLogin()">Vào học</button>
       </div>
-      <div class="lc-err" id="loginErr"></div>
+      <div class="lc-err" id="loginErr">${esc(loginMsg)}</div>
     </div>`;
     const go = e=>{ if(e.key==='Enter') doLogin(); };
     document.getElementById('inName').addEventListener('keydown',go);
@@ -498,8 +518,12 @@ function renderLevels(){
       if(SERVER_MODE && !student){
         b.innerHTML = `<span class="lb-icon">🔒</span><div>Nhập tên ở phía trên để bắt đầu.</div>`;
       } else {
-        const prev = LEVELS[idx-1], ps = levelStats(prev);
-        b.innerHTML = `<span class="lb-icon">🔒</span><div>Level ${level.id} đang khoá. Cần đạt <b>${ps.doneCount}/${ps.readyCount}</b> bài của <b>${prev.name}</b> (điểm trung bình mỗi bài ≥ ${PASS_PCT}% và đã làm đủ các phần) hoặc đạt bài mock test để mở khoá.</div>`;
+        if(SERVER_MODE){
+          b.innerHTML = `<span class="lb-icon">🔒</span><div>Lớp của bạn chưa học tới ${level.name}. Khi lớp học tới đây, các bài sẽ tự mở.</div>`;
+        } else {
+          const prev = LEVELS[idx-1], ps = levelStats(prev);
+          b.innerHTML = `<span class="lb-icon">🔒</span><div>Level ${level.id} đang khoá. Cần đạt <b>${ps.doneCount}/${ps.readyCount}</b> bài của <b>${prev.name}</b> (điểm trung bình mỗi bài ≥ ${PASS_PCT}% và đã làm đủ các phần) hoặc đạt bài mock test để mở khoá.</div>`;
+        }
       }
       body.appendChild(b);
     }
@@ -518,7 +542,7 @@ function renderLevels(){
         if(ready && SERVER_MODE){
           extra = tracked ? lessonStatsHTML(lesson) : `<div class="lstat none">Bài học — không chấm điểm</div>`;
         }
-        const canOpen = ready && (unlocked || teacherMode) && (!SERVER_MODE || !!student);
+        const canOpen = ready && (SERVER_MODE ? lessonOpen(lesson) : (unlocked || teacherMode));
         div.innerHTML = `
           <div class="lesson-top"><span class="lesson-num">Bài ${lesson.num}</span>
             ${(ready && !SERVER_MODE && tracked) ? `<label class="done-check" onclick="toggleDone(${level.id},${lesson.num},event)"><input type="checkbox" ${done?'checked':''} onclick="event.stopPropagation()" onchange="toggleDone(${level.id},${lesson.num},event)"> Hoàn thành</label>` : ''}
@@ -526,12 +550,12 @@ function renderLevels(){
           <div class="lesson-title">${ready ? esc(lesson.title) : 'Chưa soạn — sắp ra mắt'}</div>
           ${extra}
           ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}" target="_blank" rel="noopener">📖 Mở bài ôn tập</a>`
-                             : `<button class="lesson-open-btn" disabled>🔒 Chưa mở</button>`)
+                             : `<button class="lesson-open-btn" disabled>${SERVER_MODE && student ? '🔒 Lớp chưa học tới bài này' : '🔒 Chưa mở'}</button>`)
                   : `<button class="lesson-open-btn" disabled>⏳ Sắp có</button>`}`;
         grid.appendChild(div);
       });
       body.appendChild(grid);
-      if(idx < LEVELS.length-1){
+      if(!SERVER_MODE && idx < LEVELS.length-1){
         const m = document.createElement('div'); m.className='mock-row';
         m.innerHTML = `<span class="mr-text">🎯 Mock test lên ${LEVELS[idx+1].name}<span class="mr-sub">Giáo viên có thể thêm bài kiểm tra đầu vào thay cho (hoặc cùng với) yêu cầu đạt điểm các bài — gắn link sau.</span></span><span class="mock-badge">Sắp có</span>`;
         body.appendChild(m);
@@ -561,11 +585,15 @@ async function loadReport(){
   }catch(e){ err.textContent = 'Không kết nối được máy chủ.'; }
 }
 function fmtTime(t){ if(!t) return '—'; const d=new Date(t); return d.toLocaleDateString('vi-VN')+' '+d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'}); }
+let reportClass = '';
 function renderReport(){
   const pass = reportData.pass;
   const nums = []; LEVELS.forEach(lv=>lv.lessons.forEach(l=>{ if(isTracked(l)) nums.push(l.num); }));
-  const rows = reportData.students.slice().sort((a,b)=>new Date(b.lastSeen)-new Date(a.lastSeen));
-  const head = `<tr><th>Học viên</th><th>Lớp</th><th>Đăng nhập</th><th>Lần cuối</th>${nums.map(n=>`<th>Bài ${n}</th>`).join('')}</tr>`;
+  const all = reportData.students;
+  const classes = Array.from(new Set(all.map(r=>r.cls).filter(Boolean))).sort();
+  let rows = all.filter(r=>!reportClass || r.cls===reportClass);
+  rows = rows.slice().sort((a,b)=> (a.cls||'').localeCompare(b.cls||'') || (a.student||'').localeCompare(b.student||'','vi'));
+  const head = `<tr><th>Học viên</th><th>Lớp</th><th>Nhóm</th><th>Trạng thái</th><th>Lớp mở tới</th><th>Đăng nhập</th><th>Lần cuối</th>${nums.map(n=>`<th>Bài ${n}</th>`).join('')}</tr>`;
   const trs = rows.map(r=>{
     const by = {}; r.lessons.forEach(l=>by[l.lesson]=l);
     const cells = nums.map(n=>{
@@ -573,12 +601,16 @@ function renderReport(){
       if(!l.attempts) return `<td class="c-open">đã mở, chưa làm</td>`;
       return `<td class="${l.passed?'c-pass':'c-fail'}"><b>${l.avg}%</b> ${l.passed?'✓':''}<small>${l.attempts} lượt · ${l.actsDone}/${l.actTotal} phần</small></td>`;
     }).join('');
-    return `<tr><td><b>${esc(r.student)}</b></td><td>${esc(r.cls)}</td><td>${r.logins||0}</td><td>${fmtTime(r.lastSeen)}</td>${cells}</tr>`;
+    const st = r.status || 'Đang học';
+    const stCls = /nghỉ|nghi|ngoài/i.test(st) ? 'c-fail' : '';
+    const never = !r.logins && !r.lastSeen;
+    return `<tr><td><b>${esc(r.student)}</b>${never?' <small>(chưa vào lần nào)</small>':''}</td><td>${esc(r.cls)}</td><td>${esc(r.group||'—')}</td><td class="${stCls}">${esc(st)}</td><td>${r.allowed==null?'—':'Bài '+r.allowed}</td><td>${r.logins||0}</td><td>${fmtTime(r.lastSeen)}</td>${cells}</tr>`;
   }).join('');
+  const opt = `<option value="">Tất cả lớp</option>` + classes.map(c=>`<option value="${esc(c)}" ${c===reportClass?'selected':''}>${esc(c)}</option>`).join('');
   document.getElementById('reportBody').innerHTML = `
-    <div class="rp-top"><span>${rows.length} học viên · đạt khi điểm TB ≥ ${pass}% và đủ các phần</span>
+    <div class="rp-top"><span><select onchange="reportClass=this.value;renderReport()">${opt}</select> ${rows.length} học viên · đạt khi điểm TB ≥ ${pass}% và đủ các phần</span>
       <span><button class="btn-ghost" onclick="copyReport()">📋 Sao chép bảng</button> <button class="btn-ghost" onclick="reportData=null;openReport()">↻ Tải lại</button></span></div>
-    <div class="rp-scroll"><table class="rp-table">${head}${trs || `<tr><td colspan="${4+nums.length}" class="c-none">Chưa có học viên nào.</td></tr>`}</table></div>`;
+    <div class="rp-scroll"><table class="rp-table">${head}${trs || `<tr><td colspan="${7+nums.length}" class="c-none">Chưa có học viên nào. Hãy điền thẻ HocVien trong Google Sheet.</td></tr>`}</table></div>`;
 }
 function copyReport(){
   const t = document.querySelector('.rp-table'); if(!t) return;

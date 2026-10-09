@@ -769,18 +769,39 @@ renderTranslate();
     var a=document.createElement('a'); a.textContent='đổi'; a.onclick=function(){ askName(true); }; chip.appendChild(a);
   }
 
+  function closeOv(){ var o=document.getElementById('mcOverlay'); if(o) o.remove(); }
+  function gate(title,msg,btns){
+    closeOv();
+    var ov=document.createElement('div'); ov.id='mcOverlay';
+    ov.innerHTML='<div class="mc-card"><h2></h2><p></p><div id="mcBtns"></div></div>';
+    ov.querySelector('h2').textContent=title; ov.querySelector('p').textContent=msg;
+    btns.forEach(function(b){ var x=document.createElement('button'); x.textContent=b.t; x.onclick=b.f; ov.querySelector('#mcBtns').appendChild(x); });
+    document.body.appendChild(ov);
+  }
+  // Kiểm tra với máy chủ: tên + lớp có trong danh sách, còn học, và lớp đã được mở bài này chưa
+  function verify(){
+    gate('Đang kiểm tra…','Vui lòng đợi một chút.',[]);
+    var u=CFG.SCRIPT_URL+'?'+new URLSearchParams({action:'check',student:who.s,cls:who.c,lesson:String(CFG.LESSON)}).toString();
+    function retry(){ gate('Chưa kết nối được','Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.',[{t:'Thử lại',f:verify},{t:'Đổi tên / lớp',f:function(){ closeOv(); askName(true); }}]); }
+    fetch(u).then(function(r){ return r.json(); }).then(function(res){
+      if(res && res.ok){ who={s:res.student,c:res.cls}; ls(0,KEY,JSON.stringify(who)); closeOv(); start(); }
+      else if(res && res.code){ gate('Chưa vào được bài này',res.error,[{t:'Đổi tên / lớp',f:function(){ closeOv(); askName(true); }}]); }
+      else retry();
+    }).catch(retry);
+  }
+
   function askName(change){
     var ov=document.createElement('div'); ov.id='mcOverlay';
-    ov.innerHTML='<div class="mc-card"><h2>Chào bạn! 👋</h2><p>Nhập tên để thầy/cô ghi nhận kết quả ôn tập của bạn. Làm lại bao nhiêu lần cũng được.</p>'+
+    ov.innerHTML='<div class="mc-card"><h2>Chào bạn! 👋</h2><p>Nhập đúng họ tên và lớp như đã đăng ký với thầy/cô. Làm lại bao nhiêu lần cũng được.</p>'+
       '<label>HỌ VÀ TÊN</label><input id="mcName" autocomplete="name" maxlength="60">'+
-      '<label>LỚP / NHÓM</label><input id="mcCls" maxlength="40" placeholder="Ví dụ: HSK2 – tối T3-T5">'+
+      '<label>LỚP / NHÓM</label><input id="mcCls" maxlength="40" placeholder="Ví dụ: M26.01">'+
       '<div class="mc-err" id="mcErr"></div><button id="mcGo">Bắt đầu ôn tập</button></div>';
     document.body.appendChild(ov);
     if(who){ ov.querySelector('#mcName').value=who.s; ov.querySelector('#mcCls').value=who.c; }
     ov.querySelector('#mcGo').onclick=function(){
       var s=ov.querySelector('#mcName').value.trim(), c=ov.querySelector('#mcCls').value.trim();
       if(s.length<2||!c){ ov.querySelector('#mcErr').textContent='Vui lòng nhập đủ họ tên và lớp.'; return; }
-      who={s:s,c:c}; ls(0,KEY,JSON.stringify(who)); ov.remove(); start();
+      who={s:s,c:c}; ls(0,KEY,JSON.stringify(who)); ov.remove(); verify();
     };
   }
 
@@ -827,7 +848,7 @@ renderTranslate();
     document.addEventListener('visibilitychange',function(){ if(document.hidden){ flush(); } });
   }
 
-  function init(){ if(who) start(); else askName(false); }
+  function init(){ if(who) verify(); else askName(false); }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
