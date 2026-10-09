@@ -715,6 +715,26 @@ resetAllSentenceBuilder();
 resetFill();
 renderTranslate();
 </script>
+<!-- MC-TTS:BEGIN (giọng đọc chuẩn từ máy chủ; hỏng thì dùng giọng của máy) -->
+<script id="mc-tts">
+(function(){
+  var orig = window.speak;
+  var cache = {}, cur = null, dead = false;
+  function clean(s){ return String(s||'').replace(/[（(].*?[）)]/g,'').replace(/[.,，。！？!?]/g,'').trim(); }
+  window.speak = function(text){
+    var t = clean(text);
+    if(dead || !t || location.protocol==='file:'){ if(orig) return orig(text); return; }
+    try{ if(cur){ cur.pause(); cur=null; } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
+    var a = cache[t] || (cache[t] = new Audio('/api/tts?t='+encodeURIComponent(t)));
+    var fell = false;
+    function fallback(){ if(fell) return; fell = true; delete cache[t]; if(orig) orig(text); }
+    a.onerror = function(){ dead = dead || false; fallback(); };
+    a.currentTime = 0; cur = a;
+    var p = a.play(); if(p && p.catch) p.catch(fallback);
+  };
+})();
+</script>
+<!-- MC-TTS:END -->
 <!-- MC-TRACKER:BEGIN (theo dõi học viên — gửi kết quả về Google Sheet của giáo viên) -->
 <style id="mc-tracker-css">
 #mcOverlay{position:fixed;inset:0;z-index:99999;background:rgba(21,19,15,.78);display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Be Vietnam Pro',sans-serif;}
