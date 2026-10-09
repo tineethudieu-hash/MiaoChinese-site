@@ -180,7 +180,7 @@ footer{max-width:1180px; margin:60px auto 0; padding:20px 22px; border-top:1px s
     <div class="hero-eyebrow"><span class="plate">第 17 课</span>ÔN TẬP BÀI 17</div>
     <h1><span class="py">Tā zài zuò shénme ne?</span>他在做什么呢？</h1>
     <div class="vi-title">Bạn ấy đang làm gì đấy? — Ôn tập Bài 17</div>
-    <p class="desc">Ôn luyện <b>từ vựng</b>, <b>chữ Hán</b> và <b>đặt câu</b> của Bài 17 (cấu trúc 在/正在…呢 và câu có hai tân ngữ) — tự chấm ngay khi chọn đáp án, làm lại bao nhiêu lần tuỳ ý. Bấm 🔊 để nghe phát âm.</p>
+    <p class="desc">Ôn luyện <b>từ vựng</b>, <b>chữ Hán</b>, <b>đặt câu</b> và <b>luyện nói</b> (tự chấm phát âm) của Bài 17 (cấu trúc 在/正在…呢 và câu có hai tân ngữ) — tự chấm ngay khi chọn đáp án, làm lại bao nhiêu lần tuỳ ý. Bấm 🔊 để nghe phát âm.</p>
   </div>
 </div>
 
@@ -266,6 +266,41 @@ footer{max-width:1180px; margin:60px auto 0; padding:20px 22px; border-top:1px s
     </div>
     <div id="translateBox"></div>
 
+  </div>
+
+  <!-- ============ PANEL: LUYỆN NÓI (MC-SPEAK) ============ -->
+  <div class="panel" id="panel-speak">
+    <div class="section-head">
+      <div class="kicker">口语 · Luyện nói</div>
+      <h2>Luyện phát âm và đặt câu bằng giọng nói</h2>
+      <p>Bấm <b>🎙️ Bấm để nói</b>, cho phép dùng micro rồi đọc to. Máy sẽ nhận diện giọng bạn và chấm tự động; kết quả được gửi cho thầy/cô. Nghe mẫu 🔊 trước khi nói, làm lại bao nhiêu lần cũng được. <i>Nên ngồi chỗ yên tĩnh, nói rõ từng chữ.</i></p>
+      <div id="speakSupport" style="color:var(--wrong-dark);font-weight:700;font-size:.85rem;margin-top:6px;"></div>
+    </div>
+
+    <div class="section-head" style="margin-top:8px;"><div class="kicker">发音 · Phần 1</div><h2>Đọc từ vựng</h2><p>Đọc đúng chữ Hán trên màn hình. Chú ý thanh điệu ghi ở pinyin.</p></div>
+    <div class="score-bar">
+      <div><span class="label">Đọc đúng: </span><span class="val" id="speakWordScore">0 / 10</span></div>
+      <button onclick="resetSpeakWord()">🔄 Làm lại</button>
+    </div>
+    <div class="quiz-grid" id="speakWordBox"></div>
+
+    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
+
+    <div class="section-head"><div class="kicker">朗读 · Phần 2</div><h2>Đọc to cả câu</h2><p>Đọc liền mạch cả câu, ngắt nghỉ tự nhiên. Chữ đỏ gạch chân là chữ máy chưa nghe thấy đúng.</p></div>
+    <div class="score-bar">
+      <div><span class="label">Đọc đúng: </span><span class="val" id="speakSentScore">0 / 6</span></div>
+      <button onclick="resetSpeakSent()">🔄 Làm lại</button>
+    </div>
+    <div class="quiz-grid" id="speakSentBox"></div>
+
+    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><path d="M20 6c-8 0-8 8 0 8s8 8 0 8-8-8 0-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="line"></span></div>
+
+    <div class="section-head"><div class="kicker">造句 · Phần 3</div><h2>Nghe tiếng Việt, tự nói câu tiếng Trung</h2><p>Tự đặt câu tiếng Trung đúng nghĩa với câu tiếng Việt. Hệ thống kiểm tra các từ khoá và cấu trúc cần có, không bắt buộc giống hệt câu mẫu.</p></div>
+    <div class="score-bar">
+      <div><span class="label">Đặt câu đúng: </span><span class="val" id="speakFreeScore">0 / 6</span></div>
+      <button onclick="resetSpeakFree()">🔄 Làm lại</button>
+    </div>
+    <div class="quiz-grid" id="speakFreeBox"></div>
   </div>
 
 </div><!-- /.wrap -->
@@ -694,7 +729,8 @@ const TAB_DEFS = [
   {id:'match', label:'配对 Ghép từ vựng'},
   {id:'picture', label:'看图 Nhìn hình đoán chữ'},
   {id:'pinyin', label:'拼音 Chọn pinyin'},
-  {id:'sentence', label:'造句 Đặt câu'}
+  {id:'sentence', label:'造句 Đặt câu'},
+  {id:'speak', label:'口语 Luyện nói'}
 ];
 function renderTabs(){
   document.getElementById('tabBar').innerHTML = TAB_DEFS.map(t=>`
@@ -719,6 +755,145 @@ resetPinyin();
 resetAllSentenceBuilder();
 resetFill();
 renderTranslate();
+</script>
+<script id="mc-speak">
+/* ===== MC-SPEAK: luyện nói tự chấm (Web Speech API) ===== */
+(function(){
+  var CFG = {"word": [{"cn": "阅读", "py": "yuèdú", "vi": "đọc, đọc hiểu"}, {"cn": "听力", "py": "tīnglì", "vi": "kỹ năng nghe"}, {"cn": "口语", "py": "kǒuyǔ", "vi": "kỹ năng nói"}, {"cn": "图书馆", "py": "túshūguǎn", "vi": "thư viện"}, {"cn": "文化课", "py": "wénhuàkè", "vi": "môn văn hoá"}, {"cn": "打电话", "py": "dǎ diànhuà", "vi": "gọi điện thoại"}, {"cn": "服务员", "py": "fúwùyuán", "vi": "nhân viên phục vụ"}, {"cn": "预习", "py": "yùxí", "vi": "chuẩn bị bài trước"}, {"cn": "回答", "py": "huídá", "vi": "trả lời"}, {"cn": "书店", "py": "shūdiàn", "vi": "hiệu sách"}], "sent": [{"cn": "他在做什么呢？", "py": "Tā zài zuò shénme ne?", "vi": "Bạn ấy đang làm gì đấy?"}, {"cn": "林老师教我们阅读和听力。", "py": "Lín lǎoshī jiāo wǒmen yuèdú hé tīnglì.", "vi": "Cô Lâm dạy chúng tôi đọc và nghe."}, {"cn": "我爸爸给我一本词典。", "py": "Wǒ bàba gěi wǒ yì běn cídiǎn.", "vi": "Bố cho tôi một quyển từ điển."}, {"cn": "老师常常问我们问题。", "py": "Lǎoshī chángcháng wèn wǒmen wèntí.", "vi": "Thầy thường hỏi chúng tôi câu hỏi."}, {"cn": "我常常回答我老师的问题。", "py": "Wǒ chángcháng huídá wǒ lǎoshī de wèntí.", "vi": "Tôi thường trả lời câu hỏi của thầy."}, {"cn": "他正想去书店买汉英词典呢。", "py": "Tā zhèng xiǎng qù shūdiàn mǎi Hàn-Yīng cídiǎn ne.", "vi": "Anh ấy đang định đến hiệu sách mua từ điển Hán–Anh."}], "free": [{"vi": "Tôi mỗi ngày đi bộ đến trường.", "cn": "我每天走路去学校。", "py": "Wǒ měitiān zǒulù qù xuéxiào.", "keys": [["每天"], ["走路"], ["学校"]]}, {"vi": "Anh ấy đang gọi điện thoại cho mẹ anh ấy.", "cn": "他在给他妈妈打电话。", "py": "Tā zài gěi tā māma dǎ diànhuà.", "keys": [["在"], ["给"], ["妈妈"], ["打电话"]]}, {"vi": "Cô giáo dạy chúng tôi tiếng Trung.", "cn": "老师教我们汉语。", "py": "Lǎoshī jiāo wǒmen Hànyǔ.", "hint": "câu có hai tân ngữ với 教", "keys": [["老师"], ["教"], ["我们"], ["汉语", "中文"]]}, {"vi": "Tôi hỏi thầy giáo một câu hỏi.", "cn": "我问老师一个问题。", "py": "Wǒ wèn lǎoshī yí ge wèntí.", "hint": "câu có hai tân ngữ với 问", "keys": [["问"], ["老师"], ["问题"]]}, {"vi": "Chúng tôi thích đi tàu hoả đến Bắc Kinh.", "cn": "我们喜欢坐火车去北京。", "py": "Wǒmen xǐhuan zuò huǒchē qù Běijīng.", "keys": [["我们"], ["喜欢"], ["火车"], ["北京"]]}, {"vi": "Anh ấy đang đọc sách ở thư viện.", "cn": "他在图书馆看书呢。", "py": "Tā zài túshūguǎn kàn shū ne.", "hint": "dùng 在 hoặc 正在…", "keys": [["在"], ["图书馆"], ["书"]]}]};
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var PASS = 0.8;
+  var state = {word:[], sent:[], free:[]};
+  var busy = null;
+
+  function norm(s){
+    return String(s||'').replace(/[\s，。！？、,.!?：:；;“”"'《》（）()…—\-]/g,'').replace(/[她它]/g,'他').replace(/儿/g,'');
+  }
+  function lev(a,b){
+    var m=a.length,n=b.length,d=[],i,j;
+    for(i=0;i<=m;i++){d[i]=[i];}
+    for(j=1;j<=n;j++){d[0][j]=j;}
+    for(i=1;i<=m;i++)for(j=1;j<=n;j++){
+      d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+    }
+    return d[m][n];
+  }
+  function sim(a,b){ a=norm(a); b=norm(b); var L=Math.max(a.length,b.length); return L?1-lev(a,b)/L:0; }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function box(kind){ return document.getElementById('speak'+kind+'Box'); }
+
+  // đánh dấu từng chữ của câu mẫu: khớp (xanh) / chưa khớp (đỏ)
+  function diffHTML(target, heard){
+    var t=norm(target), h=norm(heard), out='';
+    var used={};
+    for(var i=0;i<t.length;i++){
+      var ok = h.indexOf(t[i])>-1;
+      out+='<span style="color:'+(ok?'var(--correct-dark)':'var(--wrong)')+';font-weight:800;'+(ok?'':'text-decoration:underline wavy;')+'">'+esc(t[i])+'</span>';
+    }
+    return out;
+  }
+
+  function listen(kind, i){
+    if(!SR){ return msg(kind,i,'no','Trình duyệt này chưa hỗ trợ chấm phát âm. Hãy mở bằng Chrome hoặc Edge (máy tính / Android) hoặc Safari mới nhất.'); }
+    if(busy) return;
+    var rec = new SR();
+    rec.lang='zh-CN'; rec.interimResults=false; rec.maxAlternatives=5; rec.continuous=false;
+    busy={kind:kind,i:i,rec:rec};
+    setBtn(kind,i,true);
+    msg(kind,i,'',"🎙️ Đang nghe… hãy nói ngay.");
+    var got=false;
+    rec.onresult=function(ev){
+      got=true;
+      var alts=[]; var r=ev.results[0];
+      for(var k=0;k<r.length;k++) alts.push(r[k].transcript);
+      grade(kind,i,alts);
+    };
+    rec.onerror=function(ev){
+      var e=ev.error;
+      var t = e==='not-allowed'||e==='service-not-allowed' ? 'Chưa được phép dùng micro. Bấm vào biểu tượng ổ khoá cạnh địa chỉ web → cho phép Micro, rồi thử lại.'
+            : e==='no-speech' ? 'Không nghe thấy giọng nói. Thử lại và nói gần micro hơn nhé.'
+            : e==='network' ? 'Mạng yếu nên chưa chấm được. Thử lại nhé.'
+            : 'Chưa nghe rõ ('+e+'). Thử lại nhé.';
+      msg(kind,i,'no',t);
+    };
+    rec.onend=function(){ setBtn(kind,i,false); busy=null; if(!got){ var fb=document.getElementById('spk-fb-'+kind+'-'+i); if(fb && /Đang nghe/.test(fb.textContent)) msg(kind,i,'no','Không nghe thấy giọng nói. Thử lại nhé.'); } };
+    try{ rec.start(); }catch(e){ setBtn(kind,i,false); busy=null; msg(kind,i,'no','Không bật được micro. Thử lại nhé.'); }
+  }
+  function setBtn(kind,i,on){
+    var b=document.getElementById('spk-btn-'+kind+'-'+i); if(!b) return;
+    b.disabled=on; b.textContent = on ? '⏺ Đang thu…' : '🎙️ Bấm để nói';
+  }
+  function msg(kind,i,cls,html){
+    var fb=document.getElementById('spk-fb-'+kind+'-'+i); if(!fb) return;
+    fb.className='sb-feedback '+cls; fb.innerHTML=html;
+  }
+
+  function grade(kind,i,alts){
+    var it=CFG[kind][i], st=state[kind][i], best=0, bestAlt=alts[0]||'', pass=false, detail='';
+    if(kind==='free'){
+      // chấm theo từ khoá bắt buộc (nhận bất kỳ cách nói nào đúng ngữ pháp miễn đủ từ khoá)
+      var bestCov=-1, missing=[];
+      alts.forEach(function(a){
+        var n=norm(a), hit=0, miss=[];
+        it.keys.forEach(function(g){ var ok=g.some(function(w){return n.indexOf(norm(w))>-1;}); if(ok) hit++; else miss.push(g[0]); });
+        var cov=hit/it.keys.length; if(cov>bestCov){ bestCov=cov; bestAlt=a; missing=miss; }
+      });
+      best=bestCov; pass = best>=0.75;
+      detail = (missing.length ? '<br>Còn thiếu: <b class="hanzi">'+missing.map(esc).join('、')+'</b>' : '')+'<br>Câu mẫu: <span class="cn hanzi">'+esc(it.cn)+'</span> <span style="color:var(--gold-dark);font-family:\'JetBrains Mono\',monospace;font-size:.8rem;">'+esc(it.py)+'</span>';
+    } else {
+      alts.forEach(function(a){ var s=sim(a,it.cn); if(s>best){best=s;bestAlt=a;} });
+      pass = best>=PASS;
+      detail = '<br>'+diffHTML(it.cn,bestAlt)+' <span style="color:var(--gold-dark);font-family:\'JetBrains Mono\',monospace;font-size:.8rem;">'+esc(it.py)+'</span>';
+    }
+    st.tries++; if(best>st.best) st.best=best;
+    var wasPass=st.pass; if(pass) st.pass=true;
+    var el=document.getElementById('spk-'+kind+'-'+i);
+    if(el){ el.setAttribute('data-answered','1'); if(st.pass) el.classList.add('correct'); }
+    var pct=Math.round(best*100);
+    msg(kind,i, pass?'ok':'no',
+      (pass?'✅ Tốt lắm! ':'🔁 Chưa đạt, nghe mẫu rồi thử lại nhé. ')+'('+pct+'%)'
+      +'<br>Máy nghe được: <span class="cn hanzi">'+esc(bestAlt||'(không rõ)')+'</span>'+detail);
+    updateScore(kind);
+  }
+  function updateScore(kind){
+    var n=state[kind].filter(function(s){return s.pass;}).length;
+    var id={word:'speakWordScore',sent:'speakSentScore',free:'speakFreeScore'}[kind];
+    document.getElementById(id).textContent=n+' / '+state[kind].length;
+  }
+
+  function render(kind){
+    var b=box(kind[0].toUpperCase()+kind.slice(1)); if(!b) return;
+    b.innerHTML = CFG[kind].map(function(it,i){
+      var head = kind==='free'
+        ? '<div class="qtext"><span class="vihint" style="font-size:.9rem;">🇻🇳 '+esc(it.vi)+'</span></div><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:8px;">Gợi ý: '+esc(it.hint||'Nói thành 1 câu tiếng Trung hoàn chỉnh.')+'</div>'
+        : '<div class="qtext"><span class="hz hanzi" style="font-size:'+(kind==='word'?'1.6':'1.25')+'rem;">'+esc(it.cn)+'</span></div><div style="color:var(--gold-dark);font-family:\'JetBrains Mono\',monospace;font-size:.85rem;margin-bottom:4px;">'+esc(it.py)+'</div><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:8px;">'+esc(it.vi||'')+'</div>';
+      var listenBtn = kind==='free' ? '' : '<button class="speak-btn" style="padding:7px 12px;font-size:.78rem;" onclick="mcSpeakModel(\''+kind+'\','+i+')">🔊 Nghe mẫu</button> ';
+      return '<div class="quiz-q" id="spk-'+kind+'-'+i+'">'+head+
+        '<div class="sb-actions">'+listenBtn+'<button class="btn-check" id="spk-btn-'+kind+'-'+i+'" onclick="mcSpeakListen(\''+kind+'\','+i+')">🎙️ Bấm để nói</button>'+
+        (kind==='free'?'<button onclick="mcSpeakReveal('+i+')">👁️ Xem câu mẫu</button>':'')+'</div>'+
+        '<div class="sb-feedback" id="spk-fb-'+kind+'-'+i+'"></div></div>';
+    }).join('');
+  }
+  function reset(kind){
+    state[kind]=CFG[kind].map(function(){return {pass:false,best:0,tries:0};});
+    render(kind); updateScore(kind);
+  }
+
+  window.mcSpeakListen=listen;
+  window.mcSpeakModel=function(kind,i){ if(typeof speak==='function') speak(CFG[kind][i].cn); };
+  window.mcSpeakReveal=function(i){
+    var it=CFG.free[i];
+    msg('free',i,'','Câu mẫu: <span class="cn hanzi">'+esc(it.cn)+'</span> <span style="color:var(--gold-dark);font-family:\'JetBrains Mono\',monospace;font-size:.8rem;">'+esc(it.py)+'</span>');
+  };
+  window.resetSpeakWord=function(){ reset('word'); };
+  window.resetSpeakSent=function(){ reset('sent'); };
+  window.resetSpeakFree=function(){ reset('free'); };
+  window.mcSpeakCheckMic=function(){
+    var el=document.getElementById('speakSupport'); if(!el) return;
+    el.innerHTML = SR ? '' : '⚠️ Trình duyệt này chưa hỗ trợ chấm phát âm. Hãy mở trang bằng <b>Chrome / Edge</b> (máy tính hoặc Android) hoặc <b>Safari</b> mới nhất.';
+  };
+  resetSpeakWord(); resetSpeakSent(); resetSpeakFree(); mcSpeakCheckMic();
+})();
+
 </script>
 <!-- MC-TRACKER:BEGIN (theo dõi học viên — gửi kết quả về Google Sheet của giáo viên) -->
 <style id="mc-tracker-css">
