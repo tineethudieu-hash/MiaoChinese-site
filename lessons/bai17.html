@@ -303,6 +303,21 @@ footer{max-width:1180px; margin:60px auto 0; padding:20px 22px; border-top:1px s
     <div class="quiz-grid" id="speakFreeBox"></div>
   </div>
 
+  <!-- ============ PANEL: NGHE (MC-LISTEN) ============ -->
+  <div class="panel" id="panel-listen">
+    <div class="section-head">
+      <div class="kicker">听力 · Nghe</div>
+      <h2>Nghe bài khoá, từ mới và phát âm</h2>
+      <p>Bấm vào từng phần bên dưới để nghe đúng đoạn cần luyện. Nghe nhiều lần, đọc theo to thành tiếng rồi sang tab <b>Luyện nói</b> để được chấm.</p>
+    </div>
+    <div class="game-card" style="padding:14px;">
+      <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000;">
+        <iframe id="listenFrame" title="Nghe Bài 17" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div id="listenChapters" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;"></div>
+    </div>
+  </div>
+
 </div><!-- /.wrap -->
 
 <footer>MiaoChinese — 他在做什么呢 · Bài 17</footer>
@@ -726,6 +741,7 @@ function renderTranslate(){
    TABS / CHUYỂN PANEL
    ============================================================ */
 const TAB_DEFS = [
+  {id:'listen', label:'听力 Nghe'},
   {id:'match', label:'配对 Ghép từ vựng'},
   {id:'picture', label:'看图 Nhìn hình đoán chữ'},
   {id:'pinyin', label:'拼音 Chọn pinyin'},
@@ -755,6 +771,19 @@ resetPinyin();
 resetAllSentenceBuilder();
 resetFill();
 renderTranslate();
+</script>
+<script id="mc-listen">
+(function(){
+  var VIDEO="vArOe5cMqdA", CH=[{"t": "Cả video (bài khoá, từ mới, phát âm)", "s": 0}];
+  var f=document.getElementById('listenFrame'), box=document.getElementById('listenChapters');
+  function go(s,play){ f.src='https://www.youtube-nocookie.com/embed/'+VIDEO+'?rel=0&modestbranding=1&start='+(s||0)+(play?'&autoplay=1':''); }
+  function fmt(s){ return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
+  box.innerHTML=CH.map(function(c,i){ return '<button class="speak-btn" style="padding:8px 14px;font-size:.82rem;" data-i="'+i+'">▶ '+c.t+(CH.length>1?' <span style="opacity:.6">('+fmt(c.s)+')</span>':'')+'</button>'; }).join('');
+  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) go(CH[+b.getAttribute('data-i')].s,true); });
+  // chỉ nạp video khi mở tab (nhẹ cho trang)
+  var loaded=false, tab=document.getElementById('tabbtn-listen');
+  if(tab) tab.addEventListener('click',function(){ if(!loaded){ loaded=true; go(CH[0].s,false); } });
+})();
 </script>
 <script id="mc-speak">
 /* ===== MC-SPEAK: luyện nói tự chấm (Web Speech API) ===== */
