@@ -715,21 +715,27 @@ resetAllSentenceBuilder();
 resetFill();
 renderTranslate();
 </script>
-<!-- MC-TTS:BEGIN (giọng đọc chuẩn từ máy chủ; hỏng thì dùng giọng của máy) -->
+<!-- MC-TTS:BEGIN (giọng đọc chuẩn từ máy chủ; chưa sẵn sàng thì dùng ngay giọng của máy) -->
 <script id="mc-tts">
 (function(){
   var orig = window.speak;
-  var cache = {}, cur = null, dead = false;
+  var cache = {}, cur = null, ok = null;   // ok: null = đang kiểm tra, true = máy chủ đọc được, false = không
   function clean(s){ return String(s||'').replace(/[（(].*?[）)]/g,'').replace(/[.,，。！？!?]/g,'').trim(); }
+  // kiểm tra 1 lần khi mở trang (kết quả được lưu đệm nên không tốn thêm)
+  if(location.protocol!=='file:'){
+    try{ fetch('/api/tts?t='+encodeURIComponent('阅读')).then(function(r){ ok = r.ok; }).catch(function(){ ok=false; }); }catch(e){ ok=false; }
+  } else ok=false;
   window.speak = function(text){
     var t = clean(text);
-    if(dead || !t || location.protocol==='file:'){ if(orig) return orig(text); return; }
+    // Không chờ mạng: nếu chưa chắc máy chủ đọc được thì đọc ngay bằng giọng của máy (trình duyệt chỉ cho phát tiếng ngay trong lúc bấm)
+    if(ok!==true || !t){ if(orig) return orig(text); return; }
     try{ if(cur){ cur.pause(); cur=null; } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
     var a = cache[t] || (cache[t] = new Audio('/api/tts?t='+encodeURIComponent(t)));
     var fell = false;
     function fallback(){ if(fell) return; fell = true; delete cache[t]; if(orig) orig(text); }
-    a.onerror = function(){ dead = dead || false; fallback(); };
-    a.currentTime = 0; cur = a;
+    a.onerror = fallback;
+    try{ a.currentTime = 0; }catch(e){}
+    cur = a;
     var p = a.play(); if(p && p.catch) p.catch(fallback);
   };
 })();
