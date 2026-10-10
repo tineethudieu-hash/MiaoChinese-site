@@ -303,21 +303,6 @@ footer{max-width:1180px; margin:60px auto 0; padding:20px 22px; border-top:1px s
     <div class="quiz-grid" id="speakFreeBox"></div>
   </div>
 
-  <!-- ============ PANEL: NGHE (MC-LISTEN) ============ -->
-  <div class="panel" id="panel-listen">
-    <div class="section-head">
-      <div class="kicker">听力 · Nghe</div>
-      <h2>Nghe bài khoá, từ mới và phát âm</h2>
-      <p>Bấm vào từng phần bên dưới để nghe đúng đoạn cần luyện. Nghe nhiều lần, đọc theo to thành tiếng rồi sang tab <b>Luyện nói</b> để được chấm.</p>
-    </div>
-    <div class="game-card" style="padding:14px;">
-      <div style="position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000;">
-        <iframe id="listenFrame" title="Nghe Bài 17" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div id="listenChapters" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;"></div>
-    </div>
-  </div>
-
 </div><!-- /.wrap -->
 
 <footer>MiaoChinese — 他在做什么呢 · Bài 17</footer>
@@ -741,7 +726,6 @@ function renderTranslate(){
    TABS / CHUYỂN PANEL
    ============================================================ */
 const TAB_DEFS = [
-  {id:'listen', label:'听力 Nghe'},
   {id:'match', label:'配对 Ghép từ vựng'},
   {id:'picture', label:'看图 Nhìn hình đoán chữ'},
   {id:'pinyin', label:'拼音 Chọn pinyin'},
@@ -772,19 +756,71 @@ resetAllSentenceBuilder();
 resetFill();
 renderTranslate();
 </script>
-<script id="mc-listen">
+<script id="mc-audio">
+/* ===== MC-AUDIO: phát âm từng chữ/câu ở mọi phần + liên kết tra Hanzii ===== */
 (function(){
-  var VIDEO="vArOe5cMqdA", CH=[{"t": "Cả video (bài khoá, từ mới, phát âm)", "s": 0}];
-  var f=document.getElementById('listenFrame'), box=document.getElementById('listenChapters');
-  function go(s,play){ f.src='https://www.youtube-nocookie.com/embed/'+VIDEO+'?rel=0&modestbranding=1&start='+(s||0)+(play?'&autoplay=1':''); }
-  function fmt(s){ return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2); }
-  box.innerHTML=CH.map(function(c,i){ return '<button class="speak-btn" style="padding:8px 14px;font-size:.82rem;" data-i="'+i+'">▶ '+c.t+(CH.length>1?' <span style="opacity:.6">('+fmt(c.s)+')</span>':'')+'</button>'; }).join('');
-  box.addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) go(CH[+b.getAttribute('data-i')].s,true); });
-  // chỉ nạp video khi mở tab (nhẹ cho trang)
-  var loaded=false, tab=document.getElementById('tabbtn-listen');
-  if(tab) tab.addEventListener('click',function(){ if(!loaded){ loaded=true; go(CH[0].s,false); } });
+  function say(t){ if(typeof speak==='function') speak(t); }
+  function hanzii(w){ return 'https://hanzii.net/search/word/'+encodeURIComponent(w)+'?hl=vi'; }
+  function mkBtn(text, label){
+    var b=document.createElement('button'); b.type='button'; b.className='speak-btn mc-aud';
+    b.style.cssText='margin-left:8px;padding:5px 10px;font-size:.78rem;'; b.textContent=label||'🔊';
+    b.onclick=function(e){ e.stopPropagation(); say(text); }; return b;
+  }
+  function mkLink(w){
+    var a=document.createElement('a'); a.className='speak-btn mc-aud'; a.href=hanzii(w); a.target='_blank'; a.rel='noopener';
+    a.style.cssText='margin-left:6px;padding:5px 10px;font-size:.78rem;text-decoration:none;display:inline-block;'; a.textContent='📖 Hanzii'; a.title='Tra từ điển Hanzii'; return a;
+  }
+  function addOnce(host, key, nodes){
+    if(host.getAttribute('data-aud-'+key)) return; host.setAttribute('data-aud-'+key,'1');
+    nodes.forEach(function(n){ host.appendChild(n); });
+  }
+
+  // 1. Ghép thẻ: lật thẻ chữ Hán là nghe ngay
+  var _flip=window.flipCard;
+  if(_flip) window.flipCard=function(idx){
+    var c=(typeof memState!=='undefined'?memState.cards:[]).find(function(x){return x.idx===idx;});
+    var fresh = c && !c.matchedFlag && !memState.flipped.includes(idx) && memState.flipped.length<2;
+    _flip(idx);
+    if(fresh && c.face==='hz') say(c.label);
+  };
+
+  // 2. Chọn pinyin: nút nghe ngay trên mỗi câu hỏi
+  function decoratePinyin(){
+    document.querySelectorAll('#pinyinBox .quiz-q').forEach(function(card){
+      var hz=card.querySelector('.hz'); if(!hz) return;
+      var w=hz.textContent.trim(), q=card.querySelector('.qtext');
+      addOnce(q,'a',[mkBtn(w),mkLink(w)]);
+    });
+  }
+  // 3. Nhìn hình / điền từ / ghép câu: sau khi trả lời mới nghe (để không lộ đáp án)
+  document.addEventListener('click',function(ev){
+    var opt=ev.target.closest && ev.target.closest('.quiz-opt'); if(!opt) return;
+    var card=opt.closest('.quiz-q'); if(!card) return;
+    setTimeout(function(){
+      if(card.dataset.answered!=='1' || card.getAttribute('data-aud-done')) return;
+      card.setAttribute('data-aud-done','1');
+      var box=card.parentElement&&card.parentElement.id, right=card.querySelector('.quiz-opt.correct'), q=card.querySelector('.qtext');
+      var ans=right?right.textContent.trim():'';
+      if(box==='pictureBox'){ say(ans); addOnce(q,'b',[mkBtn(ans),mkLink(ans)]); }
+      else if(box==='fillBox'){ var hz=card.querySelector('.hz'); if(hz){ var s=hz.textContent.replace('＿＿',ans); say(s); addOnce(q,'b',[mkBtn(s,'🔊 Nghe cả câu')]); } }
+      else if(box==='pinyinBox'){ var hz2=card.querySelector('.hz'); if(hz2) say(hz2.textContent.trim()); }
+    },0);
+  },false);
+
+  // 4. Sắp xếp câu: nghe câu khi đúng hoặc khi xem đáp án
+  var _chk=window.sbCheck, _rev=window.sbReveal;
+  if(_chk) window.sbCheck=function(i){ _chk(i); var it=sbState[i]; if(it&&it.done){ say(it.answer); var a=document.querySelector('#sb-'+i+' .sb-actions'); if(a) addOnce(a,'c',[mkBtn(it.answer,'🔊 Nghe câu')]); } };
+  if(_rev) window.sbReveal=function(i){ _rev(i); var it=sbState[i]; if(it) say(it.answer); };
+  var _rsb=window.renderSentenceBuilder;
+  if(_rsb) window.renderSentenceBuilder=function(){ _rsb(); sbState.forEach(function(it){ if(it.done){ var a=document.querySelector('#sb-'+it.idx+' .sb-actions'); if(a) addOnce(a,'c',[mkBtn(it.answer,'🔊 Nghe câu')]); } }); };
+
+  // gắn lại khi các phần được làm mới
+  ['resetPinyin'].forEach(function(n){ var o=window[n]; if(o) window[n]=function(){ o(); decoratePinyin(); }; });
+  decoratePinyin();
 })();
 </script>
+
+
 <script id="mc-speak">
 /* ===== MC-SPEAK: luyện nói tự chấm (Web Speech API) ===== */
 (function(){
@@ -896,6 +932,7 @@ renderTranslate();
         ? '<div class="qtext"><span class="vihint" style="font-size:.9rem;">🇻🇳 '+esc(it.vi)+'</span></div><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:8px;">Gợi ý: '+esc(it.hint||'Nói thành 1 câu tiếng Trung hoàn chỉnh.')+'</div>'
         : '<div class="qtext"><span class="hz hanzi" style="font-size:'+(kind==='word'?'1.6':'1.25')+'rem;">'+esc(it.cn)+'</span></div><div style="color:var(--gold-dark);font-family:\'JetBrains Mono\',monospace;font-size:.85rem;margin-bottom:4px;">'+esc(it.py)+'</div><div style="font-size:.8rem;color:var(--ink-soft);margin-bottom:8px;">'+esc(it.vi||'')+'</div>';
       var listenBtn = kind==='free' ? '' : '<button class="speak-btn" style="padding:7px 12px;font-size:.78rem;" onclick="mcSpeakModel(\''+kind+'\','+i+')">🔊 Nghe mẫu</button> ';
+      if(kind==='word') listenBtn += '<a class="speak-btn" style="padding:7px 12px;font-size:.78rem;text-decoration:none;" target="_blank" rel="noopener" href="https://hanzii.net/search/word/'+encodeURIComponent(it.cn)+'?hl=vi">📖 Hanzii</a> ';
       return '<div class="quiz-q" id="spk-'+kind+'-'+i+'">'+head+
         '<div class="sb-actions">'+listenBtn+'<button class="btn-check" id="spk-btn-'+kind+'-'+i+'" onclick="mcSpeakListen(\''+kind+'\','+i+')">🎙️ Bấm để nói</button>'+
         (kind==='free'?'<button onclick="mcSpeakReveal('+i+')">👁️ Xem câu mẫu</button>':'')+'</div>'+
