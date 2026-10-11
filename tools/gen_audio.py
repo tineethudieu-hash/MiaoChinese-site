@@ -14,14 +14,14 @@ async def one(sem, text, fn):
         for attempt in range(4):
             try:
                 tmp = tempfile.mktemp(suffix='.mp3')
-                await edge_tts.Communicate(prep(text), VOICE, rate=RATE).save(tmp)
+                await asyncio.wait_for(edge_tts.Communicate(prep(text), VOICE, rate=RATE).save(tmp), 30)
                 out = 'audio/' + fn
                 subprocess.run(['ffmpeg','-loglevel','error','-y','-i',tmp,'-af',
                   'loudnorm=I=-23:TP=-2:LRA=11,adelay=250|250,apad=pad_dur=0.45',
                   '-ar','24000','-ac','1','-codec:a','libmp3lame','-b:a','48k',out], check=True)
-                os.remove(tmp); return True
+                os.remove(tmp); print('done', fn, flush=True); return True
             except Exception as e:
-                print('retry', fn, text, e, file=sys.stderr); await asyncio.sleep(2 + attempt * 3)
+                print('retry', fn, repr(e), flush=True); await asyncio.sleep(2 + attempt * 3)
         return False
 async def main():
     sem = asyncio.Semaphore(4)
