@@ -9,12 +9,15 @@ FIX = json.load(open('tools/doc_dung.json', encoding='utf8')) if os.path.exists(
 def prep(t):
     for k, v in FIX.items(): t = t.replace(k, v)
     return t.replace('/', '，')
+def rate_for(t):
+    # câu (>=6 chữ, không phải danh sách '/') đọc chậm thêm 20%: 0.85*0.8=0.68 -> -32%
+    return os.environ.get('RATE_SENT','-32%') if len(t)>=6 and '/' not in t else RATE
 async def one(sem, text, fn):
     async with sem:
         for attempt in range(4):
             try:
                 tmp = tempfile.mktemp(suffix='.mp3')
-                await asyncio.wait_for(edge_tts.Communicate(prep(text), VOICE, rate=RATE).save(tmp), 30)
+                await asyncio.wait_for(edge_tts.Communicate(prep(text), VOICE, rate=rate_for(text)).save(tmp), 30)
                 out = 'audio/' + fn
                 subprocess.run(['ffmpeg','-loglevel','error','-y','-i',tmp,'-af',
                   'loudnorm=I=-23:TP=-2:LRA=11,adelay=250|250,apad=pad_dur=0.45',
