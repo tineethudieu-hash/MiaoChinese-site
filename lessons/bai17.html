@@ -961,22 +961,20 @@ renderTranslate();
 })();
 
 </script>
-<!-- MC-TTS:BEGIN (giọng đọc chuẩn từ máy chủ; chưa sẵn sàng thì dùng ngay giọng của máy) -->
+<!-- MC-TTS:BEGIN (giọng đọc mẫu: file âm thanh có sẵn; chưa có thì dùng giọng của máy) -->
 <script id="mc-tts">
 (function(){
-  var orig = window.speak;
-  var cache = {}, cur = null, ok = null;   // ok: null = đang kiểm tra, true = máy chủ đọc được, false = không
+  var orig = window.speak, MAN = null, cur = null, cache = {};
   function clean(s){ return String(s||'').replace(/[（(].*?[）)]/g,'').replace(/[.,，。！？!?]/g,'').trim(); }
-  // kiểm tra 1 lần khi mở trang (kết quả được lưu đệm nên không tốn thêm)
   if(location.protocol!=='file:'){
-    try{ fetch('/api/tts?t='+encodeURIComponent('阅读')).then(function(r){ ok = r.ok; }).catch(function(){ ok=false; }); }catch(e){ ok=false; }
-  } else ok=false;
+    try{ fetch('/audio/manifest.json').then(function(r){ return r.json(); }).then(function(m){ MAN=m; }).catch(function(){ MAN={}; }); }catch(e){ MAN={}; }
+  }
   window.speak = function(text){
-    var t = clean(text);
-    // Không chờ mạng: nếu chưa chắc máy chủ đọc được thì đọc ngay bằng giọng của máy (trình duyệt chỉ cho phát tiếng ngay trong lúc bấm)
-    if(ok!==true || !t){ if(orig) return orig(text); return; }
-    try{ if(cur){ cur.pause(); cur=null; } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
-    var a = cache[t] || (cache[t] = new Audio('/api/tts?t='+encodeURIComponent(t)));
+    var t = clean(text), f = MAN && MAN[t];
+    // chưa có file thì đọc ngay bằng giọng của máy (phải làm ngay lúc bấm để Safari cho phát tiếng)
+    if(!f){ if(orig) return orig(text); return; }
+    try{ if(cur){ cur.pause(); } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
+    var a = cache[t] || (cache[t] = new Audio('/audio/'+f));
     var fell = false;
     function fallback(){ if(fell) return; fell = true; delete cache[t]; if(orig) orig(text); }
     a.onerror = fallback;

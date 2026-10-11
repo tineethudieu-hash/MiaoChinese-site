@@ -1,0 +1,10 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Kiểm tra giọng đọc</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;margin:0;background:#FBF3E1;color:#15130F}main{max-width:760px;margin:0 auto;padding:16px}h1{font-size:1.2rem}input{width:100%;padding:10px;font-size:1rem;border:1.5px solid #CB9A2E;border-radius:10px;box-sizing:border-box}
+.it{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E6E1D3;border-radius:12px;padding:10px 12px;margin:8px 0}.it.f{border-color:#CB9A2E;background:#fffaf0}.t{flex:1;font-size:1.15rem}button{border:0;background:#15130F;color:#F6E6BC;border-radius:8px;padding:8px 14px;font-size:1rem}.n{font-size:.8rem;color:#6B6559}</style></head><body><main>
+<h1>Kiểm tra giọng đọc (dành cho giáo viên)</h1><p class="n">Bấm ▶ để nghe. Mục viền vàng là các câu nên nghe kỹ trước (máy kiểm tra tự động nghi đọc chưa chuẩn). Gửi cho Claude những mục nghe sai.</p>
+<input id="q" placeholder="Tìm chữ Hán..."><div id="list"></div></main>
+<script>
+Promise.all([fetch('manifest.json').then(r=>r.json()),fetch('_flag.json').then(r=>r.json())]).then(function(x){var m=x[0],F=new Set(x[1]),keys=Object.keys(m).sort(function(a,b){return (F.has(b)-F.has(a))||a.length-b.length});
+var box=document.getElementById('list'),a=null;function draw(q){box.innerHTML='';keys.filter(function(k){return !q||k.indexOf(q)>-1}).forEach(function(k){var d=document.createElement('div');d.className='it'+(F.has(k)?' f':'');var s=document.createElement('span');s.className='t';s.textContent=k;var b=document.createElement('button');b.textContent='▶';b.onclick=function(){if(a)a.pause();a=new Audio(m[k]);a.play();};d.appendChild(s);d.appendChild(b);box.appendChild(d);});}
+draw('');document.getElementById('q').oninput=function(e){draw(e.target.value.trim());};});
+</script></body></html>
