@@ -1,0 +1,9 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Nghe thử giọng</title>
+<style>body{font:16px system-ui;max-width:640px;margin:20px auto;padding:0 16px}h3{margin:20px 0 6px}button{font-size:16px;padding:8px 14px;margin:4px;border-radius:8px;border:1px solid #888;background:#fff}</style>
+<h2>Nghe thử các giọng</h2><div id=r></div>
+<script>
+var V=[['xiaoxiao','Xiaoxiao (nữ, đang dùng)'],['xiaoyi','Xiaoyi (nữ, trẻ)'],['yunxi','Yunxi (nam, trẻ)'],['yunjian','Yunjian (nam, trầm)']];
+var T=['今天下雨我打的去上班','林老师教我们阅读和听力','我去邮局寄包裹顺便去书店买一本书','银行'];
+var h='';V.forEach(function(v){h+='<h3>'+v[1]+'</h3>';T.forEach(function(t,i){h+='<button onclick="new Audio(\'demo/'+v[0]+(i+1)+'.mp3\').play()">▶ '+t+'</button>';});});
+document.getElementById('r').innerHTML=h;
+</script>

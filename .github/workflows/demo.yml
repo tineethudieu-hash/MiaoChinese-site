@@ -1,0 +1,16 @@
+name: Demo giọng
+on: workflow_dispatch
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: sudo apt-get install -y ffmpeg && pip install edge-tts
+      - run: python tools/demo.py
+      - run: |
+          git config user.name audio-bot; git config user.email bot@users.noreply.github.com
+          git add audio/demo; git commit -m "Demo giọng" ; git push
