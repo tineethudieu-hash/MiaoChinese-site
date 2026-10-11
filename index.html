@@ -255,6 +255,14 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
   .hero h1{font-size:1.5rem;}
   .level-progress-mini{display:none;}
 }
+
+.back-bar{margin:0 0 4px;}
+.back-btn{border:1px solid var(--line); background:#fff; color:var(--ink); padding:10px 18px; border-radius:12px; font-weight:700; font-size:.95rem; cursor:pointer; box-shadow:var(--shadow);}
+.back-btn:hover{background:var(--paper-soft); border-color:var(--gold);}
+.level-card.solo .level-head{cursor:default;}
+.level-card.solo .level-head:hover{background:transparent;}
+.level-card.solo .chevron{display:none;}
+.level-card:not(.solo):not(.open) .level-head{cursor:pointer;}
 </style>
 </head>
 <body>
@@ -332,6 +340,8 @@ let teacherMode = false;
 let allowed = 0;              // bài lớn nhất lớp được mở (từ máy chủ)
 let loginMsg = '';            // thông báo lỗi đăng nhập / bị khoá
 let openLevelId = null;
+function hashLevel(){ const m=/level=(\d+)/.exec(location.hash||''); return m?Number(m[1]):null; }
+openLevelId = hashLevel();
 
 function lessonKey(levelId, num){ return 'L'+levelId+'-B'+num; }
 function isTracked(l){ return !!l.url && l.track !== false; }   // bài có chấm điểm tự động
@@ -449,7 +459,11 @@ function lessonHref(lesson, tracked){
   if(SERVER_MODE && tracked && student) u += (u.indexOf('?')>-1?'&':'?') + 's=' + encodeURIComponent(student.s) + '&c=' + encodeURIComponent(student.c);
   return u;
 }
-function toggleLevel(id){ openLevelId = (openLevelId===id) ? null : id; renderLevels(); }
+function openLevel(id){ openLevelId=id; try{ history.pushState(null,'','#level='+id); }catch(e){ location.hash='level='+id; } renderLevels(); window.scrollTo(0,0); }
+function closeLevel(){ openLevelId=null; try{ history.pushState(null,'',location.pathname+location.search); }catch(e){ location.hash=''; } renderLevels(); window.scrollTo(0,0); }
+function toggleLevel(id){ openLevel(id); }
+addEventListener('popstate', ()=>{ openLevelId=hashLevel(); renderLevels(); });
+addEventListener('hashchange', ()=>{ openLevelId=hashLevel(); renderLevels(); });
 function toggleDone(levelId, num, ev){
   ev.stopPropagation();
   const k = lessonKey(levelId,num); progress[k] = !progress[k];
@@ -488,19 +502,22 @@ function renderLevels(){
   const hint = document.getElementById('searchHint');
   root.innerHTML = '';
   let any = false;
+  const solo = (!q && openLevelId!==null && LEVELS.some(l=>l.id===openLevelId)) ? openLevelId : null;
+  if(solo!==null){ const bk=document.createElement('div'); bk.className='back-bar'; bk.innerHTML='<button class="back-btn" onclick="closeLevel()">← Quay lại danh sách Level</button>'; root.appendChild(bk); }
   LEVELS.forEach((level, idx)=>{
+    if(solo!==null && level.id!==solo) return;
     const unlocked = isLevelUnlocked(idx);
     const stats = levelStats(level);
     const filtered = level.lessons.filter(l=>matchesSearch(level,l,q));
     const nameMatch = !q || (level.name+' '+level.subtitle).toLowerCase().indexOf(q.trim().toLowerCase())!==-1;
     if(q && filtered.length===0 && !nameMatch) return;
     any = true;
-    const isOpen = (openLevelId===level.id) || (!!q && filtered.length>0);
+    const isOpen = (solo!==null && level.id===solo) || (!!q && filtered.length>0);
     const card = document.createElement('div');
-    card.className = 'level-card '+(unlocked?'':'locked')+(isOpen?' open':'');
+    card.className = 'level-card '+(unlocked?'':'locked')+(isOpen?' open':'')+(solo!==null?' solo':'');
     const pct = stats.readyCount ? Math.round(stats.doneCount/stats.readyCount*100) : 0;
     card.innerHTML = `
-      <div class="level-head" onclick="toggleLevel(${level.id})">
+      <div class="level-head" ${solo!==null?'':`onclick="openLevel(${level.id})"`}>
         <div class="level-badge">${level.id}</div>
         <div class="level-titles">
           <div class="lname">${unlocked?'':'<span class="lock-icon">🔒</span>'}${level.name} — ${level.subtitle}</div>
@@ -549,7 +566,7 @@ function renderLevels(){
           </div>
           <div class="lesson-title">${ready ? esc(lesson.title) : 'Chưa soạn — sắp ra mắt'}</div>
           ${extra}
-          ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}" target="_blank" rel="noopener">📖 Mở bài ôn tập</a>`
+          ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}">📖 Mở bài ôn tập</a>`
                              : `<button class="lesson-open-btn" disabled>${SERVER_MODE && student ? '🔒 Lớp chưa học tới bài này' : '🔒 Chưa mở'}</button>`)
                   : `<button class="lesson-open-btn" disabled>⏳ Sắp có</button>`}`;
         grid.appendChild(div);
