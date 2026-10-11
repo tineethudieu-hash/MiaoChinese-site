@@ -1,0 +1,21 @@
+<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Kiểm tra micro</title>
+<style>body{font:16px system-ui;max-width:700px;margin:20px auto;padding:0 16px}button{font-size:18px;padding:12px 18px;margin:6px 6px 6px 0;border-radius:10px;border:1px solid #888;background:#fff}pre{background:#f4f4f4;padding:10px;border-radius:8px;white-space:pre-wrap;min-height:120px}</style>
+<h2>Kiểm tra micro (bấm từng nút, nói 阅读, rồi chụp màn hình gửi mình)</h2>
+<div id=env></div>
+<button onclick="t({})">1. Cách thường</button>
+<button onclick="t({lang:'zh-CN'})">2. zh-CN</button>
+<button onclick="t({lang:'zh-CN',cont:true})">3. zh-CN liên tục</button>
+<button onclick="gum()">4. Chỉ xin quyền micro</button>
+<pre id=log></pre>
+<script>
+var L=document.getElementById('log');function w(s){L.textContent+=new Date().toLocaleTimeString()+' '+s+'\n';}
+var SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+document.getElementById('env').textContent='SpeechRecognition: '+(SR?'có':'KHÔNG')+' | '+navigator.userAgent;
+if(navigator.permissions&&navigator.permissions.query)navigator.permissions.query({name:'microphone'}).then(function(p){w('quyền micro: '+p.state);}).catch(function(e){w('permissions: '+e);});
+function t(o){if(!SR){w('Không hỗ trợ');return;}var r=new SR();if(o.lang)r.lang=o.lang;if(o.cont)r.continuous=true;r.interimResults=true;
+['start','audiostart','soundstart','speechstart','speechend','soundend','audioend','end','nomatch'].forEach(function(n){r['on'+n]=function(){w(n);};});
+r.onerror=function(e){w('LỖI: '+e.error+' '+(e.message||''));};
+r.onresult=function(e){var s='';for(var i=0;i<e.results.length;i++)s+=e.results[i][0].transcript+(e.results[i].isFinal?'[xong] ':' ');w('KẾT QUẢ: '+s);};
+try{r.start();w('gọi start()');}catch(x){w('start lỗi: '+x);}}
+function gum(){navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){w('getUserMedia OK');s.getTracks().forEach(function(k){k.stop();});}).catch(function(e){w('getUserMedia LỖI: '+e.name+' '+e.message);});}
+</script>

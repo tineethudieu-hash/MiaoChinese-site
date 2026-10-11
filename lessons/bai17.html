@@ -877,7 +877,7 @@ renderTranslate();
     var retry=false;
     rec.onerror=function(ev){
       var e=ev.error;
-      if((e==='aborted'||e==='audio-capture')&&!got&&tries<2){ retry=true; return; }
+      if((e==='aborted'||e==='audio-capture')&&!got&&tries<3){ retry=true; return; }
       var t = e==='not-allowed'||e==='service-not-allowed' ? 'Chưa được phép dùng micro. Bấm vào biểu tượng ổ khoá cạnh địa chỉ web → cho phép Micro, rồi thử lại.'
             : e==='no-speech' ? 'Không nghe thấy giọng nói. Thử lại và nói gần micro hơn nhé.'
             : e==='network' ? 'Mạng yếu nên chưa chấm được. Thử lại nhé.'
@@ -885,7 +885,7 @@ renderTranslate();
             : 'Chưa nghe rõ ('+e+'). Thử lại nhé.';
       msg(kind,i,'no',t);
     };
-    rec.onend=function(){ setBtn(kind,i,false); busy=null; if(retry&&!got){ msg(kind,i,'','🎙️ Đang bật micro lại… hãy nói ngay.'); setTimeout(function(){ listen(kind,i,tries+1); },450); return; } if(!got){ var fb=document.getElementById('spk-fb-'+kind+'-'+i); if(fb && /Đang nghe/.test(fb.textContent)) msg(kind,i,'no','Không nghe thấy giọng nói. Thử lại nhé.'); } };
+    rec.onend=function(){ setBtn(kind,i,false); busy=null; if(retry&&!got){ msg(kind,i,'','🎙️ Đang bật micro lại… hãy nói ngay.'); setTimeout(function(){ listen(kind,i,tries+1); },1200); return; } if(!got){ var fb=document.getElementById('spk-fb-'+kind+'-'+i); if(fb && /Đang nghe/.test(fb.textContent)) msg(kind,i,'no','Không nghe thấy giọng nói. Thử lại nhé.'); } };
     try{ rec.start(); }catch(e){ setBtn(kind,i,false); busy=null; msg(kind,i,'no','Không bật được micro. Thử lại nhé.'); }
   }
   function setBtn(kind,i,on){
