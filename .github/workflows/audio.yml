@@ -15,4 +15,4 @@ jobs:
       - run: timeout 600 python tools/gen_audio.py > tools/last_log.txt 2>&1 || true
       - run: |
           git config user.name "audio-bot"; git config user.email "bot@users.noreply.github.com"
-          git add audio tools/last_log.txt; git commit -m "Audio giọng Edge Neural" || echo none; git push
+          git add audio tools/last_log.txt; git commit -m "Audio giọng Yunxi" || echo none; git pull --rebase; git push
