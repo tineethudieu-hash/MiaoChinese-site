@@ -6,7 +6,9 @@ RATE = os.environ.get('RATE', '-15%')
 M = json.load(open('audio/manifest.json', encoding='utf8'))
 # Bảng sửa đọc: chữ hiển thị -> chữ đồng âm để đọc đúng
 FIX = json.load(open('tools/doc_dung.json', encoding='utf8')) if os.path.exists('tools/doc_dung.json') else {}
+PUNCT = json.load(open('tools/punct.json', encoding='utf8')) if os.path.exists('tools/punct.json') else {}
 def prep(t):
+    t = PUNCT.get(t, t)
     for k, v in FIX.items(): t = t.replace(k, v)
     return t.replace('/', '，')
 def rate_for(t):
