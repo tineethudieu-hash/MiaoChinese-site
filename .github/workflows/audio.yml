@@ -1,0 +1,17 @@
+name: Tạo audio giọng Edge
+on:
+  workflow_dispatch:
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install edge-tts
+      - run: python tools/gen_audio.py
+      - run: |
+          git config user.name "audio-bot"; git config user.email "bot@users.noreply.github.com"
+          git add audio; git commit -m "Audio giọng Edge Neural" || echo none; git push
