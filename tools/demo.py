@@ -1,4 +1,5 @@
-import asyncio, subprocess, edge_tts
+import asyncio, subprocess, edge_tts, os
+os.makedirs("audio/demo", exist_ok=True)
 V={'xiaoxiao':'zh-CN-XiaoxiaoNeural','xiaoyi':'zh-CN-XiaoyiNeural','yunxi':'zh-CN-YunxiNeural','yunjian':'zh-CN-YunjianNeural'}
 T={'1':'今天下雨我打的去上班','2':'林老师教我们阅读和听力','3':'我去邮局寄包裹顺便去书店买一本书','4':'银行'}
 async def main():
