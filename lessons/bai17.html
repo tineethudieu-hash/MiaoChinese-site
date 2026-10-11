@@ -1171,6 +1171,7 @@ renderTranslate();
       var t = e==='not-allowed'||e==='service-not-allowed' ? 'Chưa được phép dùng micro. Bấm vào biểu tượng ổ khoá cạnh địa chỉ web → cho phép Micro, rồi thử lại.'
             : e==='no-speech' ? 'Không nghe thấy giọng nói. Thử lại và nói gần micro hơn nhé.'
             : e==='network' ? 'Mạng yếu nên chưa chấm được. Thử lại nhé.'
+            : e==='aborted' && /CriOS|FxiOS|EdgiOS/.test(navigator.userAgent) ? 'Chrome/Edge trên iPad không thu âm chấm điểm được. Hãy mở trang này bằng <b>Safari</b> rồi bấm lại.'
             : e==='aborted' ? 'Micro bị ngắt giữa chừng. Bấm 🎙️ lần nữa (nếu vẫn lỗi: tải lại trang rồi bấm lại).'
             : 'Chưa nghe rõ ('+e+'). Thử lại nhé.';
       msg(kind,i,'no',t);
@@ -1250,6 +1251,9 @@ renderTranslate();
   window.resetSpeakFree=function(){ reset('free'); };
   window.mcSpeakCheckMic=function(){
     var el=document.getElementById('speakSupport'); if(!el) return;
+    var ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    var notSafari=/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(navigator.userAgent);
+    if(ios&&notSafari){ el.innerHTML='⚠️ Bạn đang mở bằng Chrome/Edge trên iPad — trình duyệt này <b>chưa cho thu âm chấm điểm ổn định</b>. Hãy mở trang này bằng <b>Safari</b> (bấm biểu tượng chia sẻ → Mở trong Safari, hoặc dán địa chỉ vào Safari).'; return; }
     el.innerHTML = SR ? '' : '⚠️ Trình duyệt này chưa hỗ trợ chấm phát âm. Hãy mở trang bằng <b>Chrome / Edge</b> (máy tính hoặc Android) hoặc <b>Safari</b> mới nhất.';
   };
   resetSpeakWord(); resetSpeakSent(); resetSpeakFree(); mcSpeakCheckMic();
