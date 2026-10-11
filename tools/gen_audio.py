@@ -1,7 +1,7 @@
 # Tạo lại toàn bộ audio bằng giọng Microsoft Edge Neural (miễn phí). Chạy bởi GitHub Actions.
 import asyncio, json, os, subprocess, sys, tempfile
 import edge_tts
-VOICE = os.environ.get('VOICE', 'zh-CN-XiaoxiaoNeural')
+VOICE = os.environ.get('VOICE', 'zh-CN-YunxiNeural')
 RATE = os.environ.get('RATE', '-15%')
 M = json.load(open('audio/manifest.json', encoding='utf8'))
 # Bảng sửa đọc: chữ hiển thị -> chữ đồng âm để đọc đúng
