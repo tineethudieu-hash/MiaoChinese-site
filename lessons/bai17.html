@@ -860,6 +860,7 @@ renderTranslate();
   function listen(kind, i){
     if(!SR){ return msg(kind,i,'no','Trình duyệt này chưa hỗ trợ chấm phát âm. Hãy mở bằng Chrome hoặc Edge (máy tính / Android) hoặc Safari mới nhất.'); }
     if(busy) return;
+    try{ if(window.mcStopAudio) window.mcStopAudio(); }catch(e){}
     var rec = new SR();
     rec.lang='zh-CN'; rec.interimResults=false; rec.maxAlternatives=5; rec.continuous=false;
     busy={kind:kind,i:i,rec:rec};
@@ -969,7 +970,8 @@ renderTranslate();
   if(location.protocol!=='file:'){
     try{ fetch('/audio/manifest.json').then(function(r){ return r.json(); }).then(function(m){ MAN=m; }).catch(function(){ MAN={}; }); }catch(e){ MAN={}; }
   }
-  window.speak = function(text){
+  window.mcStopAudio = function(){ try{ if(cur){ cur.pause(); } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){} };
+       window.speak = function(text){
     var t = clean(text), f = MAN && MAN[t];
     // chưa có file thì đọc ngay bằng giọng của máy (phải làm ngay lúc bấm để Safari cho phát tiếng)
     if(!f){ if(orig) return orig(text); return; }
