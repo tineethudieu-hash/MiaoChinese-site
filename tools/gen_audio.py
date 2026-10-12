@@ -16,7 +16,9 @@ def rate_for(t):
     return os.environ.get('RATE_SENT','-32%') if len(t)>=6 and '/' not in t else RATE
 async def one(sem, text, fn):
     async with sem:
-        for attempt in range(4):
+        if os.path.exists('audio/' + fn) and not os.environ.get('FORCE'):
+            return True
+        for attempt in range(6):
             try:
                 tmp = tempfile.mktemp(suffix='.mp3')
                 await asyncio.wait_for(edge_tts.Communicate(prep(text), VOICE, rate=rate_for(text)).save(tmp), 30)
@@ -26,10 +28,10 @@ async def one(sem, text, fn):
                   '-ar','24000','-ac','1','-codec:a','libmp3lame','-b:a','48k',out], check=True)
                 os.remove(tmp); print('done', fn, flush=True); return True
             except Exception as e:
-                print('retry', fn, repr(e), flush=True); await asyncio.sleep(2 + attempt * 3)
+                print('retry', fn, repr(e)[:80], flush=True); await asyncio.sleep(4 + attempt * 6)
         return False
 async def main():
-    sem = asyncio.Semaphore(4)
+    sem = asyncio.Semaphore(3)
     res = await asyncio.gather(*[one(sem, t, f) for t, f in M.items()])
     bad = [t for (t, f), ok in zip(M.items(), res) if not ok]
     print('ok', len(res) - len(bad), 'fail', len(bad), bad)
