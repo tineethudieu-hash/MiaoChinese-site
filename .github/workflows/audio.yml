@@ -11,8 +11,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
-      - run: sudo apt-get install -y ffmpeg && pip install -U edge-tts && (pip install -U "git+https://github.com/rany2/edge-tts.git" || true) && pip show edge-tts > tools/env_log.txt
-      - run: timeout 420 python tools/gen_audio.py 2>&1 | cut -c1-160 > tools/last_log.txt 2>&1 || true
+      - run: sudo apt-get install -y ffmpeg && pip install -U edge-tts gTTS && (pip install -U "git+https://github.com/rany2/edge-tts.git" || true) && pip show edge-tts > tools/env_log.txt
+      - run: timeout 540 python tools/gen_audio.py 2>&1 | cut -c1-160 > tools/last_log.txt 2>&1 || true
       - run: |
           git config user.name "audio-bot"; git config user.email "bot@users.noreply.github.com"
           git add audio tools/last_log.txt tools/env_log.txt; git commit -m "Audio giọng Yunxi" || echo none; git pull --rebase; git push
