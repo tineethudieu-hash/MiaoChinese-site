@@ -239,30 +239,14 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
     <div class="hero-eyebrow"><span class="plate">第 1 课</span>ÔN TẬP BÀI 1</div>
     <h1><span class="py">Nǐ hǎo</span>你好</h1>
     <div class="vi-title">Xin chào — Ôn tập Bài 1 (Nhập môn phiên âm)</div>
-    <p class="desc">Bài vỡ lòng: luyện <b>nghe – phân biệt thanh mẫu, thanh điệu, vận mẫu</b>, ôn <b>13 từ mới</b> đầu tiên (你 好 我 一 五 八 大 不 口 白 女 马), ghép chữ, gõ chữ Hán và luyện nói. Bấm 🔊 để nghe phát âm mẫu.</p>
+    <p class="desc">Bài vỡ lòng: luyện <b>pinyin</b>, ôn <b>13 từ mới</b> đầu tiên (你 好 我 一 五 八 大 不 口 白 女 马), ghép chữ, gõ chữ Hán và luyện nói. Bấm 🔊 để nghe phát âm mẫu.</p>
   </div>
 </div>
 
 <div class="wrap">
 
-  <!-- ============ PANEL: NGHE VÀ CHỌN ============ -->
-  <div class="panel active" id="panel-listen">
-    <div class="section-head"><div class="kicker">听音 · Nghe và chọn</div><h2>Nghe âm, chọn pinyin đúng</h2><p>Bấm 🔊 để nghe (nghe được nhiều lần), rồi chọn pinyin bạn nghe thấy. Trả lời xong sẽ hiện chữ Hán tương ứng.</p></div>
-    <div class="chart-title">(1) Phân biệt thanh mẫu — b / p, d / t, g / k…</div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="initListenScore">0 / 10</span></div><button onclick="resetInitListen()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="initListenBox"></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="chart-title">(2) Phân biệt thanh điệu — 1, 2, 3, 4</div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="toneListenScore">0 / 12</span></div><button onclick="resetToneListen()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="toneListenBox"></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="chart-title">(3) Phân biệt vận mẫu — ai / ei / ao / ou…</div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="finalListenScore">0 / 6</span></div><button onclick="resetFinalListen()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="finalListenBox"></div>
-  </div>
-
   <!-- ============ PANEL: GHÉP TỪ VỰNG ============ -->
-  <div class="panel" id="panel-match">
+  <div class="panel active" id="panel-match">
     <div class="section-head">
       <div class="kicker">配对 · Ôn từ vựng</div>
       <h2>Lật thẻ ghép cặp</h2>
@@ -912,7 +896,6 @@ function resetFinalListen(){
    TABS / CHUYỂN PANEL
    ============================================================ */
 const TAB_DEFS = [
-  {id:'listen', label:'听音 Nghe &amp; chọn'},
   {id:'match', label:'配对 Ghép từ vựng'},
   {id:'picture', label:'看图 Nhìn hình đoán chữ'},
   {id:'pinyin', label:'拼音 Chọn pinyin'},
@@ -935,8 +918,7 @@ function switchPanel(id){
    KHỞI ĐỘNG
    ============================================================ */
 renderTabs();
-switchPanel('listen');
-resetInitListen(); resetToneListen(); resetFinalListen();
+switchPanel('match');
 initMemory();
 resetPicture();
 resetPinyin();
@@ -976,7 +958,7 @@ renderTranslate();
     document.querySelectorAll('#pinyinBox .quiz-q').forEach(function(card){
       var hz=card.querySelector('.hz'); if(!hz) return;
       var w=hz.textContent.trim(), q=card.querySelector('.qtext');
-      addOnce(q,'a',[mkBtn(w),mkLink(w)]);
+      addOnce(q,'a',[mkLink(w)]);
     });
   }
   // 3. Nhìn hình / điền từ / ghép câu: sau khi trả lời mới nghe (để không lộ đáp án)
@@ -988,9 +970,9 @@ renderTranslate();
       card.setAttribute('data-aud-done','1');
       var box=card.parentElement&&card.parentElement.id, right=card.querySelector('.quiz-opt.correct'), q=card.querySelector('.qtext');
       var ans=right?right.textContent.trim():'';
-      if(box==='pictureBox'){ say(ans); addOnce(q,'b',[mkBtn(ans),mkLink(ans)]); }
+      if(box==='pictureBox'){ addOnce(q,'b',[mkLink(ans)]); }
       else if(box==='fillBox'){ var hz=card.querySelector('.hz'); if(hz){ var s=hz.dataset.say||hz.textContent.replace('＿＿',ans); say(s); addOnce(q,'b',[mkBtn(s,'🔊 Nghe cả câu')]); } }
-      else if(box==='pinyinBox'){ var hz2=card.querySelector('.hz'); if(hz2) say(hz2.textContent.trim()); }
+      
     },0);
   },false);
 
