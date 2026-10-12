@@ -1455,9 +1455,15 @@ renderTranslate();
     // chưa có file thì đọc ngay bằng giọng của máy (phải làm ngay lúc bấm để Safari cho phát tiếng)
     if(!f){ if(orig) return orig(text); return; }
     try{ if(cur){ cur.pause(); } if(window.speechSynthesis) speechSynthesis.cancel(); }catch(e){}
-    var a = cache[t] || (cache[t] = new Audio('/audio/'+f));
+    // ưu tiên giọng ElevenLabs (/api/tts); lỗi thì dùng file mp3 có sẵn; cuối cùng mới dùng giọng của máy
+    var a = cache[t];
+    if(!a){ a = cache[t] = new Audio(); a._mode = 'api'; a.src = '/api/tts?f=' + f; }
     var fell = false;
-    function fallback(){ if(fell) return; fell = true; delete cache[t]; if(orig) orig(text); }
+    function fallback(){
+      if(a._mode === 'api'){ a._mode = 'static'; a._t = Date.now(); try{ a.src = '/audio/' + f; a.load(); var q = a.play(); if(q && q.catch) q.catch(fallback); }catch(e){ fallback(); } return; }
+      if(a._t && Date.now() - a._t < 400) return;
+      if(fell) return; fell = true; delete cache[t]; if(orig) orig(text);
+    }
     a.onerror = fallback;
     try{ a.currentTime = 0; }catch(e){}
     cur = a;
