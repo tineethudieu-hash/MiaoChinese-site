@@ -41,6 +41,51 @@ async function tts(text, voice, key) {
   throw new Error('ElevenLabs lỗi tạm thời');
 }
 
+
+// ---- chữ đơn: đọc trong câu mẫu cho đúng thanh điệu rồi cắt đúng phần chữ đó ----
+function mp3Frames(buf) {
+  let o = 0;
+  if (buf.length > 10 && buf.toString('latin1', 0, 3) === 'ID3') o = 10 + ((buf[6] & 127) << 21 | (buf[7] & 127) << 14 | (buf[8] & 127) << 7 | (buf[9] & 127));
+  const BR = [0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320], SR = [44100, 48000, 32000];
+  const frames = []; let t = 0;
+  while (o + 4 <= buf.length) {
+    if (buf[o] !== 0xFF || (buf[o + 1] & 0xE0) !== 0xE0) { o++; continue; }
+    const br = BR[buf[o + 2] >> 4], sr = SR[(buf[o + 2] >> 2) & 3], pad = (buf[o + 2] >> 1) & 1;
+    if (!br || sr === undefined) { o++; continue; }
+    const len = Math.floor(144 * br * 1000 / sr) + pad, dur = 1152 / sr;
+    if (o + len > buf.length) break;
+    frames.push({ o, len, t }); t += dur; o += len;
+  }
+  return frames;
+}
+function cropMp3(buf, t0, t1) {
+  const fr = mp3Frames(buf); if (!fr.length) return buf;
+  const keep = fr.filter(f => f.t >= t0 && f.t <= t1);
+  if (!keep.length) return buf;
+  return Buffer.concat(keep.map(f => buf.subarray(f.o, f.o + f.len)));
+}
+const isOne = t => t.replace(/[\s\/，。！？、,.!?]/g, '').length === 1;
+async function ttsOne(ch, voice, key) {
+  const carrier = '我读：' + ch + '。';
+  for (let k = 0; k < 3; k++) {
+    const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + encodeURIComponent(voice) + '/with-timestamps?output_format=mp3_44100_64', {
+      method: 'POST', headers: { 'xi-api-key': key, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: carrier, model_id: 'eleven_multilingual_v2', voice_settings: { stability: 0.6, similarity_boost: 0.8, speed: 0.8 } })
+    });
+    if (r.ok) {
+      const j = await r.json(); const buf = Buffer.from(j.audio_base64, 'base64');
+      const a = j.alignment || j.normalized_alignment; const idx = carrier.indexOf(ch);
+      if (!a || !a.character_start_times_seconds || idx < 0) return buf;
+      const s = a.character_start_times_seconds[idx], e = a.character_end_times_seconds[idx];
+      return cropMp3(buf, Math.max(0, s - 0.07), e + 0.12);
+    }
+    const body = (await r.text()).slice(0, 300);
+    if ([401, 402, 403, 404].includes(r.status)) { const e = new Error('ElevenLabs ' + r.status + ' ' + body); e.fatal = true; throw e; }
+    await new Promise(s => setTimeout(s, 1500 * (k + 1)));
+  }
+  throw new Error('ElevenLabs lỗi tạm thời');
+}
+
 module.exports = async (req, res) => {
   const send = (code, obj) => { res.status(code).setHeader('Content-Type', 'application/json; charset=utf-8'); res.send(JSON.stringify(obj)); };
   try {
@@ -57,9 +102,10 @@ module.exports = async (req, res) => {
       const r = await gh('/contents/audio/_eleven.json?ref=' + BRANCH);
       if (r.ok) { const j = await r.json(); try { done = new Set(JSON.parse(Buffer.from(j.content, 'base64').toString('utf8'))); } catch (e) {} }
     }
-    const onlyShort = String(q.short || '') === '1';
-    if (onlyShort && q.reset) { for (const t of Object.keys(MANIFEST)) if (isShort(t)) done.delete(MANIFEST[t]); }
-    const todo = Object.keys(MANIFEST).filter(t => (!onlyShort || isShort(t)) && !done.has(MANIFEST[t]));
+    const onlyOne = String(q.one || '') === '1', onlyShort = String(q.short || '') === '1';
+    const pick = onlyOne ? isOne : (onlyShort ? isShort : null);
+    if (pick && q.reset) { for (const t of Object.keys(MANIFEST)) if (pick(t)) done.delete(MANIFEST[t]); }
+    const todo = Object.keys(MANIFEST).filter(t => (!pick || pick(t)) && !done.has(MANIFEST[t]));
     if (!todo.length) return send(200, { done: done.size, total: Object.keys(MANIFEST).length, remaining: 0, message: 'Đã xong hết' });
     const batch = todo.slice(0, BATCH);
 
@@ -70,7 +116,7 @@ module.exports = async (req, res) => {
       while (i < batch.length) {
         const t = batch[i++];
         const text = (PUNCT[t] || t).replace(/\//g, '，');
-        out.push({ t, f: MANIFEST[t], buf: await tts(text, voice, key) });
+        out.push({ t, f: MANIFEST[t], buf: isOne(text) ? await ttsOne(text.replace(/[\s，。！？、,.!?]/g, ''), voice, key) : await tts(text, voice, key) });
       }
     }));
 
