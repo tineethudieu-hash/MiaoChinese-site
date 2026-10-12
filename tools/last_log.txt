@@ -1,69 +1,458 @@
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 440ee0853a.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8f07f53d63.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 27e4fe4c3f.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 0889c34972.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 8fa7401e90.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 2142fb62fd.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 1e7b07e714.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 26bc84961c.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 4a1ae3cda4.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 7d39044ed6.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 81bb3feccb.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry c14d734dc0.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 81bb3feccb.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 7d39044ed6.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry c14d734dc0.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 7d39044ed6.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry c14d734dc0.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 81bb3feccb.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 7d39044ed6.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry c14d734dc0.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 81bb3feccb.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 81bb3feccb.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry c14d734dc0.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
-retry 7d39044ed6.mp3 WSServerHandshakeError(RequestInfo(url=URL('wss://speech.platform.bing.com/consu
+EDGE BI CHAN -> dung gTTS
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x558fc5a8c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55c1001b20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 27e4fe4c3f.mp3
+gtts 440ee0853a.mp3
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5557a08e3b00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 8f07f53d63.mp3
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55de19804980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x558f075c01c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 2142fb62fd.mp3
+gtts 0889c34972.mp3
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55dca618a980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 8fa7401e90.mp3
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5607de12c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55b16a6ba0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 4a1ae3cda4.mp3
+gtts 1e7b07e714.mp3
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55fb45d710c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 26bc84961c.mp3
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55ea0cdf2980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 7d39044ed6.mp3
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x56357a76d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55d2c56a20c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts c14d734dc0.mp3
+gtts 81bb3feccb.mp3
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5581c86730c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts c5f13b882b.mp3
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x564424c860c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55f0d8bee0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 46e6fb7ad6.mp3
+gtts 69e9f8dbef.mp3
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5627ab5fe0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 79fcbded16.mp3
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5613b2f46980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts 48c1462231.mp3
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5612c85bc0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 4b1d6193e4.mp3
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55bffa4da0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 2fcbe72fbf.mp3
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5637877000c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts f7b2a6ee68.mp3
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x564cca0b70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 9b1ddb99d7.mp3
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x557c08ad81c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts c8f6dd0c32.mp3
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x561efef280c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 5148dd7acd.mp3
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5587a40850c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 9982c5ced1.mp3
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55cb5c3c0780] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts e8cf911a5c.mp3
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x558031bff980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts d2ff8f7020.mp3
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55eadd46e980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts e3918a99aa.mp3
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55e3137581c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 098bb0146d.mp3
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x560f7ff0f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 620e3674e5.mp3
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55af2ad91980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 5cb2f5b86f.mp3
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5647c0cc3980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts dc675fde78.mp3
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5645c6af10c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 35d40b6e6f.mp3
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55c4e33420c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts bc1c58b84b.mp3
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5652c9f3c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 9d197986e0.mp3
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x556c4987e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+gtts b3ba7814f4.mp3
+[mp3 @ 0x564d6f3240c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts 6919d5be90.mp3
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5623f214f980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 737c389c6b.mp3
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5597901c70c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5624154520c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts c075942cc6.mp3
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts bdc07925b8.mp3
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x556ac1cec980] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 59c77cf6a9.mp3
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55796bb5fb40] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 88fc5b4316.mp3
+[mp3 @ 0x563a642610c0] [mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x563a642610c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x558afb00c0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 72077749f7.mp3
+gtts 618be2726b.mp3
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x561265c570c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 598e544138.mp3
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5630662ca0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts 06859cc518.mp3
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55f77b0e60c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts a732e56e22.mp3
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5556589880c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 265dc5ccb6.mp3
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5611fe95f0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts dcedab2c4f.mp3
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55cd887700c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x5594cac4d0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts ed96d74c8a.mp3
+gtts 24ac196d5d.mp3
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55f7ea2e30c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x558eb47d50c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 85658ab4f5.mp3
+gtts cb6d358425.mp3
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55f7808930c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55c1bcb4e0c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 49b39bc0a1.mp3
+gtts deaefde2be.mp3
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55b6498040c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+gtts 433ea2216f.mp3
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55d6206980c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts 6343706870.mp3
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854773457
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772881
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854772305
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771729
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854771153
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770577
+[mp3 @ 0x55e824f950c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 1775 >= -9223372036854770001
+gtts bea55d0635.mp3
+ok 430 fail 0 []
