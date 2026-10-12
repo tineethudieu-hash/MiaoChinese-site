@@ -10,8 +10,9 @@ def grab(name):
 texts = []
 words = grab('WORDS') or []
 texts += [w['cn'] for w in words]
-for it in grab('SENTENCE_BUILDER') or []: texts.append(it['answer'])
-for it in grab('FILL_BLANK') or []: texts.append(it['before'] + it['options'][it['a']] + it['after'])
+for it in grab('SENTENCE_BUILDER') or []: texts.append(it.get('say') or it['answer'])
+for it in grab('FILL_BLANK') or []: texts.append(it.get('say') or (it['before'] + it['options'][it['a']] + it['after']))
+texts += grab('AUDIO_EXTRA') or []
 cfg = grab('CFG')  # có thể bắt nhầm CFG của tracker; lấy cái có 'word'
 for m in re.finditer(r'var CFG = (\{"word".*?\});\n', s, re.S):
     c = json.loads(m.group(1))
