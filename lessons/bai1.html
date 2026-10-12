@@ -218,7 +218,6 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 .listen-q .speak-btn{font-size:1.25rem;padding:10px 20px;}
 .sound-note{font-size:.82rem;color:var(--ink-soft);}
 #panel-chart .quiz-opt .pinyin, #panel-tone .quiz-opt .pinyin, #panel-listen .quiz-opt .pinyin{font-size:clamp(22px,2.2vw,34px);}
-.vi-opt{font-family:'Be Vietnam Pro',sans-serif;font-size:clamp(15px,1.4vw,22px);font-weight:600;}
 </style>
 </head>
 <body>
@@ -240,51 +239,14 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
     <div class="hero-eyebrow"><span class="plate">第 1 课</span>ÔN TẬP BÀI 1</div>
     <h1><span class="py">Nǐ hǎo</span>你好</h1>
     <div class="vi-title">Xin chào — Ôn tập Bài 1 (Nhập môn phiên âm)</div>
-    <p class="desc">Bài vỡ lòng: ôn <b>thanh mẫu</b>, <b>vận mẫu</b>, <b>thanh điệu</b> (kèm <b>biến điệu thanh 3</b>), luyện <b>nghe – phân biệt âm</b>, nhớ <b>quy tắc viết chữ Hán</b> và 13 từ mới đầu tiên (你 好 我 一 五 八 大 不 口 白 女 马). Bấm 🔊 để nghe phát âm mẫu.</p>
+    <p class="desc">Bài vỡ lòng: luyện <b>nghe – phân biệt thanh mẫu, thanh điệu, vận mẫu</b>, ôn <b>13 từ mới</b> đầu tiên (你 好 我 一 五 八 大 不 口 白 女 马), ghép chữ, gõ chữ Hán và luyện nói. Bấm 🔊 để nghe phát âm mẫu.</p>
   </div>
 </div>
 
 <div class="wrap">
 
-
-  <!-- ============ PANEL: THANH MẪU – VẬN MẪU ============ -->
-  <div class="panel active" id="panel-chart">
-    <div class="section-head"><div class="kicker">声母 韵母 · Bảng âm</div><h2>Thanh mẫu và vận mẫu</h2><p>Bấm vào từng âm để nghe ví dụ và xem cách phát âm (theo slide). Sau đó làm bài kiểm tra bên dưới.</p></div>
-    <div class="chart-title">声母 Thanh mẫu (13 âm)</div>
-    <div class="chart-grid" id="initGrid"></div>
-    <div class="chart-title">韵母 Vận mẫu (6 đơn + 4 kép)</div>
-    <div class="chart-grid" id="finalGrid"></div>
-    <div class="info-card" id="chartInfo"><span class="sound-note">👆 Bấm một âm ở trên để xem cách phát âm.</span></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="section-head"><div class="kicker">辨认 · Kiểm tra (1)</div><h2>Phân loại thanh mẫu – vận mẫu</h2><p>Dựa vào đặc điểm trong slide: vị trí phát âm, bật hơi / không bật hơi, âm mũi, âm bên…</p></div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="classScore">0 / 16</span></div><button onclick="resetClass()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="classBox"></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="section-head"><div class="kicker">韵母 · Kiểm tra (2)</div><h2>Nhìn chữ, chọn vận mẫu</h2><p>Mỗi chữ là ví dụ trong slide. Trả lời xong sẽ nghe được phát âm.</p></div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="finalIdScore">0 / 10</span></div><button onclick="resetFinalId()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="finalIdBox"></div>
-  </div>
-
-  <!-- ============ PANEL: THANH ĐIỆU ============ -->
-  <div class="panel" id="panel-tone">
-    <div class="section-head"><div class="kicker">声调 · Thanh điệu</div><h2>4 thanh điệu và biến điệu thanh 3</h2><p>Bấm vào chữ để nghe. Tiếng Hán phổ thông có 4 thanh điệu; ký hiệu đặt trên nguyên âm chính.</p></div>
-    <div class="tone-row" id="toneRow"></div>
-    <div class="info-card"><b>Biến điệu thanh 3:</b> khi hai âm tiết mang thanh 3 đứng liền nhau, âm tiết thứ nhất đọc thành thanh 2.
-      <div style="margin-top:8px;display:flex;gap:10px;flex-wrap:wrap;" id="sandhiRow"></div>
-      <div class="sound-note" style="margin-top:8px;">Lưu ý (slide 52): 不 đứng trước thanh 4 thì đọc thành <b>bú</b> → 不大 <b>bú dà</b>; 不好 vẫn đọc <b>bù hǎo</b>.</div></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="section-head"><div class="kicker">调号 · Kiểm tra</div><h2>Biến điệu và dấu thanh</h2><p>Chọn cách đọc thực tế hoặc ký hiệu đúng.</p></div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="sandhiScore">0 / 12</span></div><button onclick="resetSandhi()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="sandhiBox"></div>
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
-    <div class="section-head"><div class="kicker">笔顺 · Quy tắc viết</div><h2>8 quy tắc viết chữ Hán</h2><p>Slide giới thiệu 8 quy tắc thứ tự nét. Đọc nhanh rồi làm bài chọn quy tắc đúng.</p></div>
-    <div class="rule-grid" id="ruleGrid"></div>
-    <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="strokeScore">0 / 10</span></div><button onclick="resetStroke()">🔄 Làm lại</button></div>
-    <div class="quiz-grid" id="strokeBox"></div>
-  </div>
-
   <!-- ============ PANEL: NGHE VÀ CHỌN ============ -->
-  <div class="panel" id="panel-listen">
+  <div class="panel active" id="panel-listen">
     <div class="section-head"><div class="kicker">听音 · Nghe và chọn</div><h2>Nghe âm, chọn pinyin đúng</h2><p>Bấm 🔊 để nghe (nghe được nhiều lần), rồi chọn pinyin bạn nghe thấy. Trả lời xong sẽ hiện chữ Hán tương ứng.</p></div>
     <div class="chart-title">(1) Phân biệt thanh mẫu — b / p, d / t, g / k…</div>
     <div class="score-bar"><div><span class="label">Điểm của bạn: </span><span class="val" id="initListenScore">0 / 10</span></div><button onclick="resetInitListen()">🔄 Làm lại</button></div>
@@ -347,28 +309,15 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
   <div class="panel" id="panel-sentence">
 
     <div class="section-head">
-      <div class="kicker">组句 · Ghép (1)</div>
-      <h2>Ghép chữ và ghép pinyin</h2>
-      <p>Bấm các chữ / âm theo đúng thứ tự để ghép thành từ hoặc pinyin hoàn chỉnh (7 bài ghép chữ Hán, 8 bài ghép pinyin), rồi bấm <b>“Kiểm tra”</b>. Bấm một mảnh đã đặt để gỡ ra nếu đặt nhầm.</p>
+      <div class="kicker">组句 · Ghép chữ</div>
+      <h2>Ghép chữ Hán thành từ</h2>
+      <p>Bấm các chữ / âm theo đúng thứ tự để ghép thành từ hoặc pinyin hoàn chỉnh (7 bài), rồi bấm <b>“Kiểm tra”</b>. Bấm một mảnh đã đặt để gỡ ra nếu đặt nhầm.</p>
     </div>
     <div class="score-bar">
-      <div><span class="label">Đã ghép đúng: </span><span class="val" id="sbScore">0 / 15</span></div>
+      <div><span class="label">Đã ghép đúng: </span><span class="val" id="sbScore">0 / 7</span></div>
       <button onclick="resetAllSentenceBuilder()">🔄 Làm lại toàn bộ</button>
     </div>
     <div id="sentenceBox"></div>
-
-    <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><path d="M20 6c-8 0-8 8 0 8s8 8 0 8-8-8 0-8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span class="line"></span></div>
-
-    <div class="section-head">
-      <div class="kicker">填空 · Ghép (2)</div>
-      <h2>Điền thanh mẫu / vận mẫu / thanh điệu</h2>
-      <p>Điền thanh mẫu, vận mẫu hoặc dấu thanh còn thiếu để hoàn thành pinyin của từ trong slide.</p>
-    </div>
-    <div class="score-bar">
-      <div><span class="label">Điểm của bạn: </span><span class="val" id="fillScore">0 / 17</span></div>
-      <button onclick="resetFill()">🔄 Làm lại</button>
-    </div>
-    <div class="quiz-grid" id="fillBox"></div>
 
     <div class="knot-divider"><span class="line"></span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="9" stroke="currentColor" stroke-width="2.4"/><circle cx="20" cy="20" r="2.4" fill="currentColor"/></svg><span class="line"></span></div>
 
@@ -437,8 +386,7 @@ const SENTENCE_BUILDER = [
  {
   "words": [
    "你",
-   "好",
-   "！"
+   "好"
   ],
   "answer": "你好！"
  },
@@ -446,8 +394,7 @@ const SENTENCE_BUILDER = [
   "words": [
    "你",
    "好",
-   "吗",
-   "？"
+   "吗"
   ],
   "answer": "你好吗？"
  },
@@ -485,315 +432,13 @@ const SENTENCE_BUILDER = [
    "大"
   ],
   "answer": "不大"
- },
- {
-  "words": [
-   "n",
-   "ǐ"
-  ],
-  "answer": "nǐ",
-  "say": "你",
-  "vi": "nǐ — bạn"
- },
- {
-  "words": [
-   "h",
-   "ǎo"
-  ],
-  "answer": "hǎo",
-  "say": "好",
-  "vi": "hǎo — tốt"
- },
- {
-  "words": [
-   "w",
-   "ǒ"
-  ],
-  "answer": "wǒ",
-  "say": "我",
-  "vi": "wǒ — tôi"
- },
- {
-  "words": [
-   "b",
-   "ù"
-  ],
-  "answer": "bù",
-  "say": "不",
-  "vi": "bù — không"
- },
- {
-  "words": [
-   "m",
-   "ā",
-   "m",
-   "a"
-  ],
-  "answer": "māma",
-  "say": "妈妈",
-  "vi": "māma — mẹ"
- },
- {
-  "words": [
-   "b",
-   "à",
-   "b",
-   "a"
-  ],
-  "answer": "bàba",
-  "say": "爸爸",
-  "vi": "bàba — bố"
- },
- {
-  "words": [
-   "d",
-   "ì",
-   "d",
-   "i"
-  ],
-  "answer": "dìdi",
-  "say": "弟弟",
-  "vi": "dìdi — em trai"
- },
- {
-  "words": [
-   "n",
-   "ǎi",
-   "n",
-   "ai"
-  ],
-  "answer": "nǎinai",
-  "say": "奶奶",
-  "vi": "nǎinai — bà nội"
  }
 ];
 
 /* ============================================================
    ĐẶT CÂU (2) — ĐIỀN TỪ (vocab-in-context + câu 2 tân ngữ)
    ============================================================ */
-const FILL_BLANK = [
- {
-  "hint": "Điền thanh mẫu: 八 – tám",
-  "before": "",
-  "after": "ā",
-  "options": [
-   "b",
-   "p",
-   "m",
-   "d"
-  ],
-  "a": 0,
-  "say": "八"
- },
- {
-  "hint": "Điền thanh mẫu: 跑 – chạy",
-  "before": "",
-  "after": "ǎo",
-  "options": [
-   "p",
-   "b",
-   "t",
-   "k"
-  ],
-  "a": 0,
-  "say": "跑"
- },
- {
-  "hint": "Điền thanh mẫu: 妈妈 – mẹ",
-  "before": "",
-  "after": "āma",
-  "options": [
-   "m",
-   "n",
-   "b",
-   "f"
-  ],
-  "a": 0,
-  "say": "妈妈"
- },
- {
-  "hint": "Điền thanh mẫu: 飞 – bay",
-  "before": "",
-  "after": "ēi",
-  "options": [
-   "f",
-   "h",
-   "b",
-   "m"
-  ],
-  "a": 0,
-  "say": "飞"
- },
- {
-  "hint": "Điền thanh mẫu: 弟弟 – em trai",
-  "before": "",
-  "after": "ìdi",
-  "options": [
-   "d",
-   "t",
-   "n",
-   "l"
-  ],
-  "a": 0,
-  "say": "弟弟"
- },
- {
-  "hint": "Điền thanh mẫu: 天 – trời",
-  "before": "",
-  "after": "iān",
-  "options": [
-   "t",
-   "d",
-   "l",
-   "n"
-  ],
-  "a": 0,
-  "say": "天"
- },
- {
-  "hint": "Điền thanh mẫu: 奶奶 – bà nội",
-  "before": "",
-  "after": "ǎinai",
-  "options": [
-   "n",
-   "l",
-   "m",
-   "d"
-  ],
-  "a": 0,
-  "say": "奶奶"
- },
- {
-  "hint": "Điền thanh mẫu: 梨 – quả lê",
-  "before": "",
-  "after": "í",
-  "options": [
-   "l",
-   "n",
-   "d",
-   "t"
-  ],
-  "a": 0,
-  "say": "梨"
- },
- {
-  "hint": "Điền thanh mẫu: 哥哥 – anh trai",
-  "before": "",
-  "after": "ēge",
-  "options": [
-   "g",
-   "k",
-   "h",
-   "d"
-  ],
-  "a": 0,
-  "say": "哥哥"
- },
- {
-  "hint": "Điền thanh mẫu: 口 – miệng",
-  "before": "",
-  "after": "ǒu",
-  "options": [
-   "k",
-   "g",
-   "h",
-   "t"
-  ],
-  "a": 0,
-  "say": "口"
- },
- {
-  "hint": "Điền thanh mẫu: 花 – hoa",
-  "before": "",
-  "after": "uā",
-  "options": [
-   "h",
-   "f",
-   "k",
-   "g"
-  ],
-  "a": 0,
-  "say": "花"
- },
- {
-  "hint": "Điền vận mẫu: 来 – đến",
-  "before": "l",
-  "after": "",
-  "options": [
-   "ái",
-   "éi",
-   "áo",
-   "óu"
-  ],
-  "a": 0,
-  "say": "来"
- },
- {
-  "hint": "Điền vận mẫu: 北 – phía bắc",
-  "before": "b",
-  "after": "",
-  "options": [
-   "ěi",
-   "ǎi",
-   "ǎo",
-   "ǒu"
-  ],
-  "a": 0,
-  "say": "北"
- },
- {
-  "hint": "Điền vận mẫu: 狗 – con chó",
-  "before": "g",
-  "after": "",
-  "options": [
-   "ǒu",
-   "ǎo",
-   "ěi",
-   "ǎi"
-  ],
-  "a": 0,
-  "say": "狗"
- },
- {
-  "hint": "Điền thanh điệu: 马 – ngựa (thanh 3)",
-  "before": "m",
-  "after": "",
-  "options": [
-   "ǎ",
-   "ā",
-   "á",
-   "à"
-  ],
-  "a": 0,
-  "say": "马"
- },
- {
-  "hint": "Điền thanh điệu: 大 – to (thanh 4)",
-  "before": "d",
-  "after": "",
-  "options": [
-   "à",
-   "ā",
-   "á",
-   "ǎ"
-  ],
-  "a": 0,
-  "say": "大"
- },
- {
-  "hint": "Điền thanh điệu: 白 – trắng (thanh 2)",
-  "before": "b",
-  "after": "",
-  "options": [
-   "ái",
-   "āi",
-   "ǎi",
-   "ài"
-  ],
-  "a": 0,
-  "say": "白"
- }
-];
+const FILL_BLANK = [];
 
 /* ============================================================
    BONUS — TỰ KIỂM TRA DỊCH (không chấm điểm)
@@ -1177,7 +822,7 @@ const POOL_FINALS = ["a", "o", "e", "i", "u", "ü", "ai", "ei", "ao", "ou"];
 const SANDHI = [["Hai âm tiết thanh 3 đứng liền nhau, âm tiết thứ nhất đọc thành thanh mấy?", ["thanh 1", "thanh 2", "thanh 3", "thanh 4"], 1, ""], ["你好 (xin chào) thực tế đọc là:", ["nǐ hǎo", "ní hǎo", "nī hǎo", "nì hǎo"], 1, "你好"], ["美好 (tươi đẹp) thực tế đọc là:", ["měi hǎo", "mēi hǎo", "méi hǎo", "mèi hǎo"], 2, "美好"], ["可以 (có thể) thực tế đọc là:", ["kě yǐ", "ké yǐ", "kē yǐ", "kè yǐ"], 1, "可以"], ["五百 (năm trăm) thực tế đọc là:", ["wǔ bǎi", "wū bǎi", "wù bǎi", "wú bǎi"], 3, "五百"], ["你好吗？ thực tế đọc là:", ["nǐ hǎo ma", "ní hǎo ma", "nǐ háo ma", "ní háo ma"], 1, "你好吗"], ["不 đứng trước thanh 4 thì đọc thế nào? 不大 đọc là:", ["bù dà", "bǔ dà", "bú dà", "bū dà"], 2, "不大"], ["不好 (không tốt) đọc là:", ["bú hǎo", "bù hǎo", "bǔ hǎo", "bū hǎo"], 1, "不好"], ["Dấu của <b>thanh 1</b> là:", ["¯", "ˊ", "ˇ", "ˋ"], 0, ""], ["Dấu của <b>thanh 2</b> là:", ["¯", "ˊ", "ˇ", "ˋ"], 1, ""], ["Dấu của <b>thanh 3</b> là:", ["¯", "ˊ", "ˇ", "ˋ"], 2, ""], ["Dấu của <b>thanh 4</b> là:", ["¯", "ˊ", "ˇ", "ˋ"], 3, ""]];
 const RULES = [["Ngang trước sổ sau", "十", "Nét ngang viết trước, nét sổ (dọc) viết sau."], ["Phẩy trước mác sau", "八", "Nét phẩy (丿) viết trước, nét mác (乀) viết sau."], ["Trên trước dưới sau", "三", "Nét ở trên viết trước, nét ở dưới viết sau."], ["Trái trước phải sau", "州", "Các nét bên trái viết trước, bên phải viết sau."], ["Ngoài trước trong sau", "风", "Khung bên ngoài viết trước, sau đó viết phần bên trong."], ["Vào trước đóng sau", "回", "Viết khung ngoài, viết phần bên trong, cuối cùng “đóng cửa” (nét đáy)."], ["Giữa trước hai bên sau", "水", "Khi hai bên đối xứng: viết nét giữa trước, rồi bên trái, rồi bên phải."], ["Bộ 辶 và 廴 viết sau cùng", "这", "Bộ 辶 (chước) và 廴 luôn được viết sau cùng."]];
 const STROKE_Q = [["十", "Ngang trước sổ sau", 0], ["八", "Phẩy trước mác sau", 1], ["三", "Trên trước dưới sau", 2], ["二", "Trên trước dưới sau", 2], ["州", "Trái trước phải sau", 3], ["风", "Ngoài trước trong sau", 4], ["回", "Vào trước đóng sau", 5], ["水", "Giữa trước hai bên sau", 6], ["这", "Bộ 辶 và 廴 viết sau cùng", 7], ["大", "Phẩy trước mác sau", 1]];
-const AUDIO_EXTRA = ["一", "三", "不", "不大", "不好", "个", "买", "五", "五百", "你", "你好", "你好吗", "偷", "八", "内", "刀", "劳", "北", "十", "口", "可以", "哥哥", "喝", "噢", "回", "塔", "大", "天", "太", "奶奶", "好", "妈", "妈妈", "妮", "姨", "宝", "宝贝", "屋", "州", "带", "弟弟", "怕", "意", "我", "打", "把", "拔", "掏", "搞", "搭", "摆", "无", "来", "梨", "椅", "楼", "水", "泥", "爷爷", "爸", "爸爸", "牌", "物", "狗", "白", "百", "科", "绿", "美好", "考", "胎", "腻", "花", "衣", "课", "跑", "达", "这", "阿姨", "雷", "风", "飞", "饿", "马", "骂", "麻"];
+const AUDIO_EXTRA = ["个", "买", "五", "你", "偷", "八", "刀", "劳", "北", "口", "喝", "塔", "大", "太", "妈", "妮", "姨", "宝", "屋", "带", "怕", "意", "打", "把", "拔", "掏", "搞", "搭", "摆", "无", "来", "椅", "楼", "泥", "爸", "牌", "物", "狗", "白", "百", "科", "考", "胎", "腻", "衣", "课", "达", "雷", "马", "骂", "麻"];
 
 function q1(s){ return String(s).replace(/'/g,"\\'"); }
 function renderChart(){
@@ -1209,7 +854,7 @@ function runQuiz(boxId, scoreId, items){
   const box = document.getElementById(boxId);
   const orders = items.map(it=>shuffle(it.opts.map((o,k)=>k)));
   box.innerHTML = items.map((it,i)=>{
-    const opts = orders[i].map(k=>`<span class="${/thanh \d|bật|rung|âm mũi|Ngang|Phẩy|Trên|Trái|Ngoài|Vào|Giữa|Bộ/.test(it.opts[k])?'vi-opt':'pinyin'}">${it.opts[k]}</span>`);
+    const opts = orders[i].map(k=>`<span class="pinyin">${it.opts[k]}</span>`);
     return buildMCQCard(boxId+'-'+i, it.q, opts, orders[i].indexOf(it.a));
   }).join('');
   box.querySelectorAll('.quiz-q').forEach((el,i)=>{
@@ -1267,8 +912,6 @@ function resetFinalListen(){
    TABS / CHUYỂN PANEL
    ============================================================ */
 const TAB_DEFS = [
-  {id:'chart', label:'声母韵母 Thanh mẫu – Vận mẫu'},
-  {id:'tone', label:'声调 Thanh điệu'},
   {id:'listen', label:'听音 Nghe &amp; chọn'},
   {id:'match', label:'配对 Ghép từ vựng'},
   {id:'picture', label:'看图 Nhìn hình đoán chữ'},
@@ -1292,13 +935,12 @@ function switchPanel(id){
    KHỞI ĐỘNG
    ============================================================ */
 renderTabs();
-switchPanel('chart');
-renderChart(); renderTone(); resetClass(); resetFinalId(); resetSandhi(); resetStroke(); resetInitListen(); resetToneListen(); resetFinalListen();
+switchPanel('listen');
+resetInitListen(); resetToneListen(); resetFinalListen();
 initMemory();
 resetPicture();
 resetPinyin();
 resetAllSentenceBuilder();
-resetFill();
 renderTranslate();
 </script>
 <script id="mc-audio">
