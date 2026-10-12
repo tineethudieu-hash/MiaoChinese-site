@@ -8,7 +8,7 @@ try { PUNCT = require('../tools/punct.json'); } catch (e) {}
 
 const REPO = process.env.GITHUB_REPO || 'tineethudieu-hash/MiaoChinese-site';
 const BRANCH = 'main';
-const BATCH = 36, CONC = 3;
+const BATCH = 48, CONC = 4;
 const GH = 'https://api.github.com/repos/' + REPO;
 
 function gh(path, opt) {
@@ -128,7 +128,7 @@ module.exports = async (req, res) => {
     const listBlob = await ghJson('/git/blobs', { method: 'POST', body: JSON.stringify({ content: JSON.stringify(Array.from(newDone).sort()), encoding: 'utf-8' }) });
     const tree = await ghJson('/git/trees', { method: 'POST', body: JSON.stringify({ base_tree: baseCommit.tree.sha,
       tree: out.map((o, k) => ({ path: 'audio/' + o.f, mode: '100644', type: 'blob', sha: blobs[k].sha })).concat([{ path: 'audio/_eleven.json', mode: '100644', type: 'blob', sha: listBlob.sha }]) }) });
-    const commit = await ghJson('/git/commits', { method: 'POST', body: JSON.stringify({ message: 'Giọng ElevenLabs: ' + out.length + ' file', tree: tree.sha, parents: [ref.object.sha] }) });
+    const commit = await ghJson('/git/commits', { method: 'POST', body: JSON.stringify({ message: (todo.length - out.length > 0 ? '[skip ci] ' : '') + 'Giọng ElevenLabs: ' + out.length + ' file', tree: tree.sha, parents: [ref.object.sha] }) });
     await ghJson('/git/refs/heads/' + BRANCH, { method: 'PATCH', body: JSON.stringify({ sha: commit.sha }) });
 
     send(200, { done: newDone.size, total: Object.keys(MANIFEST).length, remaining: todo.length - out.length, added: out.length });
