@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2',
         voice_settings: { stability: 0.6, similarity_boost: 0.8, speed } })
     });
-    if (!r.ok) { res.status(502).send('tts error ' + r.status); return; }
+    if (!r.ok) { const t = (await r.text()).slice(0, 300); res.status(502).send('tts error ' + r.status + ' ' + t); return; }
     const buf = Buffer.from(await r.arrayBuffer());
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, immutable');
