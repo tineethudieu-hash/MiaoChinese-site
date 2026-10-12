@@ -305,7 +305,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
     <div class="section-head">
       <div class="kicker">翻译自测 · Bonus</div>
       <h2>Tự kiểm tra dịch Việt–Trung</h2>
-      <p><i>Tự dịch trong đầu rồi bấm từng câu để xem câu mẫu so sánh.</i></p>
+      <p><i>Đọc câu tiếng Việt, <b>tự gõ câu tiếng Trung</b> vào ô (luyện gõ chữ Hán), rồi bấm “Kiểm tra” để so với đáp án.</i></p>
     </div>
     <div id="translateBox"></div>
 
@@ -1115,13 +1115,72 @@ function updateSbScore(){
 /* ============================================================
    BONUS — TỰ KIỂM TRA DỊCH
    ============================================================ */
+function trNorm(s){ return String(s||'').replace(/[\s，。！？、,.!?；;：:“”"'（）()]/g,''); }
+function trVariants(cn){
+  const out=new Set(); const base=cn;
+  const idx=[]; for(let i=0;i<base.length;i++) if(base[i]==='/') idx.push(i);
+  let list=[base];
+  idx.forEach(()=>{
+    const next=[];
+    list.forEach(s=>{
+      const p=s.indexOf('/'); if(p<0){ next.push(s); return; }
+      for(let L=1;L<=5;L++) for(let R=1;R<=5;R++){
+        if(p-L<0||p+R>=s.length) continue;
+        next.push(s.slice(0,p-L)+s.slice(p+1));          // bỏ vế trái
+        next.push(s.slice(0,p)+s.slice(p+1+R));          // bỏ vế phải
+      }
+    });
+    list=next;
+  });
+  list.forEach(s=>out.add(trNorm(s)));
+  return Array.from(out);
+}
+function trLcsMask(a,b){ // đánh dấu ký tự của a có nằm trong LCS với b
+  const n=a.length,m=b.length,d=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--) d[i][j]=a[i]===b[j]?d[i+1][j+1]+1:Math.max(d[i+1][j],d[i][j+1]);
+  const mask=new Array(n).fill(false); let i=0,j=0;
+  while(i<n&&j<m){ if(a[i]===b[j]){mask[i]=true;i++;j++;} else if(d[i+1][j]>=d[i][j+1]) i++; else j++; }
+  return {mask,len:d[0][0]};
+}
 function renderTranslate(){
   document.getElementById('translateBox').innerHTML = TRANSLATE_SELFCHECK.map((t,i)=>`
-    <details class="reveal">
-      <summary>${i+1}. ${t.vi}</summary>
-      <div class="answer"><span class="cn hanzi">${t.cn}</span><br><span class="pinyin" style="color:var(--gold-dark); font-family:'JetBrains Mono',monospace; font-size:.85rem;">${t.py}</span>
-      <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button></div>
-    </details>`).join('');
+    <div class="tr-item" id="tr${i}" style="background:#fff;border:1px solid #e6dcc5;border-radius:12px;padding:14px 16px;margin:12px 0;">
+      <div class="tr-vi" style="font-size:clamp(16px,1.6vw,24px);font-weight:600;margin-bottom:10px;">${i+1}. ${t.vi}</div>
+      <div class="sb-actions" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input id="trIn${i}" type="text" lang="zh-CN" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          placeholder="Gõ câu tiếng Trung ở đây…" onkeydown="if(event.key==='Enter')trCheck(${i})"
+          style="flex:1;min-width:240px;font-size:clamp(22px,2.4vw,38px);font-family:'SimSun','Songti SC','Noto Serif SC',serif;padding:8px 12px;border:2px solid #d9c9a3;border-radius:10px;">
+        <button class="btn-check" onclick="trCheck(${i})">✅ Kiểm tra</button>
+        <button class="btn-reveal" onclick="trShow(${i})">👁️ Xem đáp án</button>
+      </div>
+      <div class="tr-fb" id="trFb${i}" style="margin-top:10px;"></div>
+    </div>`).join('');
+}
+function trAnswerHTML(i){
+  const t=TRANSLATE_SELFCHECK[i];
+  return `<div class="answer" style="margin-top:8px;"><span class="cn hanzi" style="font-size:clamp(26px,2.6vw,42px);">${t.cn}</span><br><span class="pinyin" style="color:var(--gold-dark); font-family:'JetBrains Mono',monospace; font-size:.95rem;">${t.py}</span>
+    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button></div>`;
+}
+function trCheck(i){
+  const t=TRANSLATE_SELFCHECK[i], inp=document.getElementById('trIn'+i), fb=document.getElementById('trFb'+i);
+  const s=trNorm(inp.value);
+  if(!s){ fb.innerHTML='<span style="color:#b45309;">Hãy gõ câu tiếng Trung trước nhé ✍️</span>'; inp.focus(); return; }
+  const vars=trVariants(t.cn);
+  if(vars.includes(s)){
+    inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
+    fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+trAnswerHTML(i);
+    return;
+  }
+  let best=null;
+  vars.forEach(v=>{ const r=trLcsMask(s,v); if(!best||r.len>best.len) best={len:r.len,v,mask:r.mask}; });
+  const html=Array.from(s).map((c,k)=>`<span style="color:${best.mask[k]?'#15803d':'#dc2626'};${best.mask[k]?'':'text-decoration:underline wavy;'}">${c}</span>`).join('');
+  inp.style.borderColor='#dc2626'; inp.style.background='#fef2f2';
+  fb.innerHTML=`<div style="font-size:clamp(22px,2.2vw,36px);font-family:'SimSun','Songti SC','Noto Serif SC',serif;">${html}</div>
+    <div style="color:#b91c1c;font-size:.95rem;">Chưa đúng hoàn toàn — chữ <u>đỏ</u> là chỗ cần sửa. Gõ lại rồi bấm Kiểm tra, hoặc bấm “Xem đáp án”.</div>`;
+}
+function trShow(i){
+  const fb=document.getElementById('trFb'+i);
+  fb.innerHTML='<span style="color:#6b7280;">Đáp án mẫu:</span>'+trAnswerHTML(i);
 }
 
 /* ============================================================
