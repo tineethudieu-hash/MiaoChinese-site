@@ -194,6 +194,17 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 </style>
 </head>
 <body>
+<script id="mc-timegate">
+(function(){
+  var T=new Date('2026-10-13T20:00:00+07:00').getTime();
+  if(/[?&]preview=1/.test(location.search) || Date.now()>=T) return;
+  var d=new Date(T);
+  var when=d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Ho_Chi_Minh'})+' ngày '+d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',timeZone:'Asia/Ho_Chi_Minh'});
+  document.documentElement.innerHTML='<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bài 18 chưa mở</title></head><body style="margin:0;font-family:system-ui,sans-serif;background:#faf6ea;display:flex;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px"><div><div style="font-size:64px">🔒</div><h1 style="margin:10px 0">Bài 18 chưa mở</h1><p style="font-size:18px">Bài này sẽ mở lúc <b>'+when+'</b>.</p><p><a href="../index.html#level=2" style="display:inline-block;padding:12px 20px;border-radius:12px;background:#cb9a2e;color:#15130f;font-weight:800;text-decoration:none">← Quay lại menu</a></p></div></body>';
+  throw new Error('time-gate');
+})();
+</script>
+
 
 <div class="topbar">
   <div class="topbar-inner">

@@ -355,8 +355,14 @@ function levelStats(level){
   const doneCount = ready.filter(l=>isDone(level,l)).length;
   return {readyCount: ready.length, doneCount, totalCount: level.lessons.length, built: level.lessons.filter(l=>l.url).length};
 }
+// Hẹn giờ mở bài (khớp với Code.gs): { số bài: thời điểm mở }
+const UNLOCK_AT = { 18: new Date('2026-10-13T20:00:00+07:00').getTime() };
+function unlockWait(l){ const t=UNLOCK_AT[l.num]; return (t && Date.now()<t) ? t : 0; }
+function fmtUnlock(t){ const d=new Date(t); return d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Ho_Chi_Minh'})+' ngày '+d.toLocaleDateString('vi-VN',{day:'2-digit',month:'2-digit',timeZone:'Asia/Ho_Chi_Minh'}); }
+setInterval(()=>{ const now=Date.now(); Object.values(UNLOCK_AT).forEach(t=>{ if(now>=t && now-t<61000) renderLevels(); }); },30000);
 function lessonOpen(l){
   if(teacherMode) return true;
+  if(unlockWait(l)) return false;
   if(SERVER_MODE) return !!student && l.num <= allowed;
   return true;
 }
@@ -567,7 +573,7 @@ function renderLevels(){
           <div class="lesson-title">${ready ? esc(lesson.title) : 'Chưa soạn — sắp ra mắt'}</div>
           ${extra}
           ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}">📖 Mở bài ôn tập</a>`
-                             : `<button class="lesson-open-btn" disabled>${SERVER_MODE && student ? '🔒 Lớp chưa học tới bài này' : '🔒 Chưa mở'}</button>`)
+                             : `<button class="lesson-open-btn" disabled>${unlockWait(lesson) ? '🔒 Mở lúc '+fmtUnlock(unlockWait(lesson)) : (SERVER_MODE && student ? '🔒 Lớp chưa học tới bài này' : '🔒 Chưa mở')}</button>`)
                   : `<button class="lesson-open-btn" disabled>⏳ Sắp có</button>`}`;
         grid.appendChild(div);
       });
