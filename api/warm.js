@@ -22,12 +22,16 @@ async function ghJson(path, opt) {
 }
 function clean(v, strip) { v = String(v || '').trim().replace(/^["']|["']$/g, ''); return v; }
 
+const isShort = t => t.replace(/[\s\/，。！？、,.!?]/g, '').length <= 2;
 async function tts(text, voice, key) {
   const speed = text.length >= 6 ? 0.75 : 0.85;
+  const short = isShort(text);
+  // chữ/từ rất ngắn: ép ngôn ngữ tiếng Trung để không bị đọc sai
+  const model = short ? (process.env.ELEVENLABS_SHORT_MODEL || 'eleven_turbo_v2_5') : 'eleven_multilingual_v2';
   for (let k = 0; k < 3; k++) {
     const r = await fetch('https://api.elevenlabs.io/v1/text-to-speech/' + encodeURIComponent(voice) + '?output_format=mp3_44100_64', {
       method: 'POST', headers: { 'xi-api-key': key, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
-      body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2', voice_settings: { stability: 0.6, similarity_boost: 0.8, speed } })
+      body: JSON.stringify(Object.assign({ text, model_id: model, voice_settings: { stability: 0.6, similarity_boost: 0.8, speed } }, short ? { language_code: 'zh' } : {}))
     });
     if (r.ok) return Buffer.from(await r.arrayBuffer());
     const body = (await r.text()).slice(0, 300);
@@ -53,7 +57,9 @@ module.exports = async (req, res) => {
       const r = await gh('/contents/audio/_eleven.json?ref=' + BRANCH);
       if (r.ok) { const j = await r.json(); try { done = new Set(JSON.parse(Buffer.from(j.content, 'base64').toString('utf8'))); } catch (e) {} }
     }
-    const todo = Object.keys(MANIFEST).filter(t => !done.has(MANIFEST[t]));
+    const onlyShort = String(q.short || '') === '1';
+    if (onlyShort && q.reset) { for (const t of Object.keys(MANIFEST)) if (isShort(t)) done.delete(MANIFEST[t]); }
+    const todo = Object.keys(MANIFEST).filter(t => (!onlyShort || isShort(t)) && !done.has(MANIFEST[t]));
     if (!todo.length) return send(200, { done: done.size, total: Object.keys(MANIFEST).length, remaining: 0, message: 'Đã xong hết' });
     const batch = todo.slice(0, BATCH);
 

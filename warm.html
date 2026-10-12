@@ -17,6 +17,7 @@ label{font-size:.85rem;color:#5B5547;display:block;margin-top:10px}
 <h1>🎙️ Tạo giọng đọc ElevenLabs cho toàn bộ bài</h1>
 <p>Bấm một lần để tạo giọng ElevenLabs cho các âm chưa có (cả bài mới thêm) và lưu vĩnh viễn vào web. Có thể dừng và bấm lại bất kỳ lúc nào, phần đã làm sẽ được bỏ qua.</p>
 <input id="pin" type="password" inputmode="numeric" placeholder="Nhập PIN giáo viên">
+<label><input id="short" type="checkbox" checked> Chỉ tạo lại chữ đơn / từ ngắn (≤2 chữ) bằng chế độ ép tiếng Trung</label><br>
 <label><input id="reset" type="checkbox"> Tạo lại TẤT CẢ (chỉ khi đổi giọng khác)</label>
 <button id="go">▶️ Bắt đầu tạo</button>
 <div class="bar"><i id="fill"></i></div>
@@ -31,7 +32,7 @@ go.onclick=async function(){
   try{
     for(var n=0;n<80;n++){
       say('Đang tạo… (lượt '+(n+1)+')');
-      var r=await fetch('/api/warm?pin='+encodeURIComponent(pin)+(reset&&first?'&reset=1':''),{method:'POST'});
+      var r=await fetch('/api/warm?pin='+encodeURIComponent(pin)+(document.getElementById('short').checked?'&short=1':'')+(reset&&first?'&reset=1':''),{method:'POST'});
       first=false; var j=await r.json();
       if(!r.ok){say('Lỗi: '+(j.error||r.status),'err');go.disabled=false;return;}
       fill.style.width=Math.round(100*j.done/j.total)+'%';
