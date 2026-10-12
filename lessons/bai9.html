@@ -758,13 +758,13 @@ const FILL_BLANK = [
    BONUS — TỰ KIỂM TRA DỊCH (không chấm điểm)
    ============================================================ */
 const TRANSLATE_SELFCHECK = [
-  {vi:`Chiều chủ nhật chúng ta gặp nhau ở thư viện nhé.`, cn:`星期天下午我们在图书馆见面吧。`, py:`Xīngqītiān xiàwǔ wǒmen zài túshūguǎn jiànmiàn ba.`},
-  {vi:`Tôi muốn đi ngân hàng đổi 200 đô la Mỹ.`, cn:`我想去银行换200美元。`, py:`Wǒ xiǎng qù yínháng huàn èrbǎi měiyuán.`},
-  {vi:`Bạn muốn đổi tiền gì?`, cn:`你想换什么钱？`, py:`Nǐ xiǎng huàn shénme qián?`},
-  {vi:`Đợi tôi một chút, tôi muốn mua cà phê.`, cn:`等我一会儿，我想买咖啡。`, py:`Děng wǒ yíhuìr, wǒ xiǎng mǎi kāfēi.`},
-  {vi:`Mẹ của tôi rất xinh đẹp, năm nay bà ấy 50 tuổi rồi.`, cn:`我妈妈很漂亮，她今年五十岁了。`, py:`Wǒ māma hěn piàoliang, tā jīnnián wǔshí suì le.`},
-  {vi:`Người nhân viên giao dịch này rất nhiệt tình.`, cn:`这个营业员很热情。`, py:`Zhège yíngyèyuán hěn rèqíng.`},
-  {vi:`Vị tiên sinh này không muốn đổi tiền, ông ấy muốn rút tiền.`, cn:`这位先生不想换钱，他想取钱。`, py:`Zhè wèi xiānsheng bù xiǎng huàn qián, tā xiǎng qǔ qián.`}
+  {vi:`Chiều chủ nhật chúng ta gặp nhau ở thư viện nhé.`, cn:`星期天下午我们在图书馆见面吧。`, py:`Xīngqītiān xiàwǔ wǒmen zài túshūguǎn jiànmiàn ba.`, note:`在 + địa điểm + động từ; 吧 để rủ rê/đề nghị.`, alt:[{cn:`星期日下午我们在图书馆见面吧。`,note:`星期日 = chủ nhật (văn viết); 星期天 khẩu ngữ.`},{cn:`周日下午我们在图书馆见面吧。`,note:`周日 = 星期日, cách nói tắt rất hay dùng.`},{cn:`我们星期天下午在图书馆见面吧。`,note:`Thời gian có thể đứng sau chủ ngữ 我们.`}]},
+  {vi:`Tôi muốn đi ngân hàng đổi 200 đô la Mỹ.`, cn:`我想去银行换200美元。`, py:`Wǒ xiǎng qù yínháng huàn èrbǎi měiyuán.`, note:`Số 200 có thể gõ 200, 二百 hoặc 两百 (200 thường đọc 二百 hoặc 两百).`, alt:[{cn:`我想去银行换二百美元。`,note:`Viết bằng chữ Hán: 二百.`},{cn:`我想去银行换两百美元。`,note:`两百 cũng được dùng khi nói 200.`}]},
+  {vi:`Bạn muốn đổi tiền gì?`, cn:`你想换什么钱？`, py:`Nǐ xiǎng huàn shénme qián?`, note:`换什么钱 = đổi loại tiền gì.`, alt:[{cn:`你想换哪国的钱？`,note:`哪国的钱 = tiền nước nào, hỏi cụ thể hơn.`},{cn:`你要换什么钱？`,note:`要 cũng là “muốn”, mạnh hơn 想 một chút.`}]},
+  {vi:`Đợi tôi một chút, tôi muốn mua cà phê.`, cn:`等我一会儿，我想买咖啡。`, py:`Děng wǒ yíhuìr, wǒ xiǎng mǎi kāfēi.`, note:`一会儿 = một lát; 等我 = đợi tôi.`, alt:[{cn:`等我一下，我想买咖啡。`,note:`一下 cũng là “một chút”, khẩu ngữ.`},{cn:`请等我一会儿，我想买咖啡。`,note:`Thêm 请 cho lịch sự.`}]},
+  {vi:`Mẹ của tôi rất xinh đẹp, năm nay bà ấy 50 tuổi rồi.`, cn:`我妈妈很漂亮，她今年五十岁了。`, py:`Wǒ māma hěn piàoliang, tā jīnnián wǔshí suì le.`, note:`了 ở cuối chỉ sự thay đổi trạng thái (đã 50 tuổi); số tuổi + 岁.`, alt:[{cn:`我妈妈很漂亮，她今年50岁了。`,note:`Có thể gõ số 50 thay cho 五十.`},{cn:`我的妈妈很漂亮，她今年五十岁了。`,note:`Thêm 的 vẫn đúng, nhưng với người thân thường bỏ 的.`}]},
+  {vi:`Người nhân viên giao dịch này rất nhiệt tình.`, cn:`这个营业员很热情。`, py:`Zhège yíngyèyuán hěn rèqíng.`, note:`营业员 = nhân viên giao dịch; 热情 = nhiệt tình.`, alt:[{cn:`这位营业员很热情。`,note:`位 là lượng từ lịch sự cho người.`}]},
+  {vi:`Vị tiên sinh này không muốn đổi tiền, ông ấy muốn rút tiền.`, cn:`这位先生不想换钱，他想取钱。`, py:`Zhè wèi xiānsheng bù xiǎng huàn qián, tā xiǎng qǔ qián.`, note:`位 là lượng từ lịch sự; 取钱 = rút tiền.`, alt:[{cn:`这位先生不想换钱，他要取钱。`,note:`要 = muốn/cần, ý chắc chắn hơn 想.`},{cn:`这个先生不想换钱，他想取钱。`,note:`Dùng 个 vẫn đúng ngữ pháp nhưng 位 lịch sự hơn.`}]}
 ];
 
 /* ============================================================
@@ -1074,13 +1074,23 @@ function renderTranslate(){
 function trAnswerHTML(i){
   const t=TRANSLATE_SELFCHECK[i];
   return `<div class="answer" style="margin-top:8px;"><span class="cn hanzi" style="font-size:clamp(26px,2.6vw,42px);">${t.cn}</span><br><span class="pinyin" style="color:var(--gold-dark); font-family:'JetBrains Mono',monospace; font-size:.95rem;">${t.py}</span>
-    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button></div>`;
+    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button>
+    ${t.note?`<div style="margin-top:8px;font-size:.95rem;">📘 ${t.note}</div>`:''}
+    ${(t.alt&&t.alt.length)?`<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:8px;"><div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">Các cách nói khác cũng đúng:</div>`+t.alt.map(a=>`<div style="margin:4px 0;"><span class="hanzi" style="font-size:clamp(20px,2vw,30px);">${a.cn}</span><div style="font-size:.88rem;color:#555;">${a.note}</div></div>`).join('')+`</div>`:''}</div>`;
 }
 function trCheck(i){
   const t=TRANSLATE_SELFCHECK[i], inp=document.getElementById('trIn'+i), fb=document.getElementById('trFb'+i);
   const s=trNorm(inp.value);
   if(!s){ fb.innerHTML='<span style="color:#b45309;">Hãy gõ câu tiếng Trung trước nhé ✍️</span>'; inp.focus(); return; }
   const vars=trVariants(t.cn);
+  const altHit=(t.alt||[]).find(a=>trVariants(a.cn).includes(s));
+  if(altHit && !vars.includes(s)){
+    inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
+    fb.innerHTML='<b style="color:#15803d;">✅ Đúng! Đây là một cách nói khác cũng được chấp nhận.</b>'
+      +`<div style="margin:6px 0;padding:8px 12px;background:#fffbeb;border-left:4px solid #d4a017;border-radius:8px;font-size:.95rem;">💡 ${altHit.note}</div>`
+      +'<div style="color:#6b7280;">Đáp án mẫu của sách:</div>'+trAnswerHTML(i);
+    return;
+  }
   if(vars.includes(s)){
     inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
     fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+trAnswerHTML(i);

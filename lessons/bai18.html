@@ -843,13 +843,13 @@ const FILL_BLANK = [
    BONUS — TỰ KIỂM TRA DỊCH (không chấm điểm)
    ============================================================ */
 const TRANSLATE_SELFCHECK = [
-  {vi:`Chiều nay tôi đi bưu điện gửi bưu kiện, bạn có đi không?`, cn:`今天下午我去邮局寄包裹，你去不去？`, py:`Jīntiān xiàwǔ wǒ qù yóujú jì bāoguǒ, nǐ qù bu qù?`},
-  {vi:`Tôi đi bưu điện gửi bưu kiện, tiện thể ghé hiệu sách mua một quyển sách.`, cn:`我去邮局寄包裹，顺便去书店买一本书。`, py:`Wǒ qù yóujú jì bāoguǒ, shùnbiàn qù shūdiàn mǎi yì běn shū.`},
-  {vi:`Tôi muốn đi bưu điện mua hai con tem.`, cn:`我想去邮局买两张邮票。`, py:`Wǒ xiǎng qù yóujú mǎi liǎng zhāng yóupiào.`},
-  {vi:`Không cần, tôi có tiền.`, cn:`不用，我有钱。`, py:`Bú yòng, wǒ yǒu qián.`},
-  {vi:`Tôi dùng điện thoại để học tiếng Trung.`, cn:`我用手机学习中文。`, py:`Wǒ yòng shǒujī xuéxí Zhōngwén.`},
-  {vi:`Hoan nghênh bạn đến tham quan trường chúng tôi.`, cn:`欢迎你来参观我们的学校。`, py:`Huānyíng nǐ lái cānguān wǒmen de xuéxiào.`},
-  {vi:`Bạn mấy giờ về?`, cn:`你什么时候回来？`, py:`Nǐ shénme shíhou huílai?`}
+  {vi:`Chiều nay tôi đi bưu điện gửi bưu kiện, bạn có đi không?`, cn:`今天下午我去邮局寄包裹，你去不去？`, py:`Jīntiān xiàwǔ wǒ qù yóujú jì bāoguǒ, nǐ qù bu qù?`, note:`去不去 là câu hỏi chính phản (động từ + không + động từ).`, alt:[{cn:`今天下午我去邮局寄包裹，你去吗？`,note:`Dùng 吗 thay cho 去不去 đều là câu hỏi “có/không”.`},{cn:`我今天下午去邮局寄包裹，你去不去？`,note:`Chủ ngữ 我 đứng trước 今天下午 cũng được.`}]},
+  {vi:`Tôi đi bưu điện gửi bưu kiện, tiện thể ghé hiệu sách mua một quyển sách.`, cn:`我去邮局寄包裹，顺便去书店买一本书。`, py:`Wǒ qù yóujú jì bāoguǒ, shùnbiàn qù shūdiàn mǎi yì běn shū.`, note:`顺便 = tiện thể, đặt trước động từ thứ hai.`, alt:[{cn:`我去邮局寄包裹，顺便去书店买本书。`,note:`Khẩu ngữ hay bỏ 一 trước 本: 买本书.`},{cn:`我去邮局寄包裹，顺便到书店买一本书。`,note:`到 + nơi chốn cũng là “đến”, tương tự 去.`}]},
+  {vi:`Tôi muốn đi bưu điện mua hai con tem.`, cn:`我想去邮局买两张邮票。`, py:`Wǒ xiǎng qù yóujú mǎi liǎng zhāng yóupiào.`, note:`Số 2 dùng 两 trước lượng từ (两张), không dùng 二.`, alt:[{cn:`我想去邮局买2张邮票。`,note:`Có thể gõ số 2.`},{cn:`我想到邮局买两张邮票。`,note:`到 cũng có nghĩa “đến”.`}]},
+  {vi:`Không cần, tôi có tiền.`, cn:`不用，我有钱。`, py:`Bú yòng, wǒ yǒu qián.`, note:`不用 = không cần.`, alt:[{cn:`不用了，我有钱。`,note:`Thêm 了 làm giọng mềm mại, lịch sự hơn.`}]},
+  {vi:`Tôi dùng điện thoại để học tiếng Trung.`, cn:`我用手机学习中文。`, py:`Wǒ yòng shǒujī xuéxí Zhōngwén.`, note:`用 + công cụ + động từ = dùng … để …`, alt:[{cn:`我用手机学中文。`,note:`学 = học, khẩu ngữ, ngắn hơn 学习.`},{cn:`我用手机学习汉语。`,note:`汉语 và 中文 đều là “tiếng Trung”.`},{cn:`我用手机学汉语。`,note:`Kết hợp 学 và 汉语.`}]},
+  {vi:`Hoan nghênh bạn đến tham quan trường chúng tôi.`, cn:`欢迎你来参观我们的学校。`, py:`Huānyíng nǐ lái cānguān wǒmen de xuéxiào.`, note:`欢迎 + người + 来 + động từ.`, alt:[{cn:`欢迎你来参观我们学校。`,note:`Bỏ 的 trước “学校” vẫn đúng (mối quan hệ gần gũi).`},{cn:`欢迎您来参观我们的学校。`,note:`您 = bạn (kính ngữ).`},{cn:`欢迎你参观我们的学校。`,note:`Bỏ 来 vẫn đúng.`}]},
+  {vi:`Bạn mấy giờ về?`, cn:`你什么时候回来？`, py:`Nǐ shénme shíhou huílai?`, note:`什么时候 = khi nào.`, alt:[{cn:`你几点回来？`,note:`几点 = mấy giờ, hỏi giờ cụ thể.`}]}
 ];
 
 /* ============================================================
@@ -1159,13 +1159,23 @@ function renderTranslate(){
 function trAnswerHTML(i){
   const t=TRANSLATE_SELFCHECK[i];
   return `<div class="answer" style="margin-top:8px;"><span class="cn hanzi" style="font-size:clamp(26px,2.6vw,42px);">${t.cn}</span><br><span class="pinyin" style="color:var(--gold-dark); font-family:'JetBrains Mono',monospace; font-size:.95rem;">${t.py}</span>
-    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button></div>`;
+    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button>
+    ${t.note?`<div style="margin-top:8px;font-size:.95rem;">📘 ${t.note}</div>`:''}
+    ${(t.alt&&t.alt.length)?`<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:8px;"><div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">Các cách nói khác cũng đúng:</div>`+t.alt.map(a=>`<div style="margin:4px 0;"><span class="hanzi" style="font-size:clamp(20px,2vw,30px);">${a.cn}</span><div style="font-size:.88rem;color:#555;">${a.note}</div></div>`).join('')+`</div>`:''}</div>`;
 }
 function trCheck(i){
   const t=TRANSLATE_SELFCHECK[i], inp=document.getElementById('trIn'+i), fb=document.getElementById('trFb'+i);
   const s=trNorm(inp.value);
   if(!s){ fb.innerHTML='<span style="color:#b45309;">Hãy gõ câu tiếng Trung trước nhé ✍️</span>'; inp.focus(); return; }
   const vars=trVariants(t.cn);
+  const altHit=(t.alt||[]).find(a=>trVariants(a.cn).includes(s));
+  if(altHit && !vars.includes(s)){
+    inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
+    fb.innerHTML='<b style="color:#15803d;">✅ Đúng! Đây là một cách nói khác cũng được chấp nhận.</b>'
+      +`<div style="margin:6px 0;padding:8px 12px;background:#fffbeb;border-left:4px solid #d4a017;border-radius:8px;font-size:.95rem;">💡 ${altHit.note}</div>`
+      +'<div style="color:#6b7280;">Đáp án mẫu của sách:</div>'+trAnswerHTML(i);
+    return;
+  }
   if(vars.includes(s)){
     inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
     fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+trAnswerHTML(i);

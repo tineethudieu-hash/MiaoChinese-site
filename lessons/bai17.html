@@ -735,12 +735,12 @@ const FILL_BLANK = [
    BONUS — TỰ KIỂM TRA DỊCH (không chấm điểm)
    ============================================================ */
 const TRANSLATE_SELFCHECK = [
-  {vi:`Tôi mỗi ngày đi bộ đến trường.`, cn:`我每天走路去学校。`, py:`Wǒ měitiān zǒulù qù xuéxiào.`},
-  {vi:`Hôm nay trời mưa, tôi đi taxi đi làm.`, cn:`今天下雨，我打的/坐出租车去上班。`, py:`Jīntiān xiàyǔ, wǒ dǎdī/zuò chūzūchē qù shàngbān.`},
-  {vi:`Chúng tôi thích đi tàu hoả đến Bắc Kinh.`, cn:`我们喜欢坐火车去北京。`, py:`Wǒmen xǐhuan zuò huǒchē qù Běijīng.`},
-  {vi:`Tối nay 10 giờ anh gọi điện thoại cho em nhé.`, cn:`今天晚上十点我给你打电话吧。`, py:`Jīntiān wǎnshang shí diǎn wǒ gěi nǐ dǎ diànhuà ba.`},
-  {vi:`Anh ấy đang gọi điện thoại cho mẹ anh ấy.`, cn:`他在给他妈妈打电话。`, py:`Tā zài gěi tā māma dǎ diànhuà.`},
-  {vi:`Tôi cùng gia đình đi du lịch Bắc Kinh bằng máy bay.`, cn:`我跟我家一起坐飞机去北京旅游。`, py:`Wǒ gēn wǒ jiā yìqǐ zuò fēijī qù Běijīng lǚyóu.`}
+  {vi:`Tôi mỗi ngày đi bộ đến trường.`, cn:`我每天走路去学校。`, py:`Wǒ měitiān zǒulù qù xuéxiào.`, note:`走路 là “đi bộ” (khẩu ngữ); 去 + nơi chốn = đi đến đâu.`, alt:[{cn:`我每天步行去学校。`,note:`步行 cũng là “đi bộ”, trang trọng hơn 走路.`},{cn:`每天我走路去学校。`,note:`Trạng ngữ thời gian 每天 đứng trước hoặc sau chủ ngữ đều đúng.`}]},
+  {vi:`Hôm nay trời mưa, tôi đi taxi đi làm.`, cn:`今天下雨，我打的/坐出租车去上班。`, py:`Jīntiān xiàyǔ, wǒ dǎdī/zuò chūzūchē qù shàngbān.`, note:`Đi làm theo giờ thường nói 上班; 打的 và 坐出租车 đều là “đi taxi”.`, alt:[{cn:`今天下雨，我坐出租车去工作。`,note:`去工作 cũng được, nhưng 上班 tự nhiên hơn khi nói “đi làm” hằng ngày; 工作 thiên về “công việc/làm việc”.`},{cn:`今天下雨，我打车去上班。`,note:`打车 = bắt taxi, cách nói rất phổ biến (gọn hơn 打的).`},{cn:`今天下雨，我坐出租车上班。`,note:`Bỏ 去 vẫn đúng: 上班 đã có nghĩa “đi làm”.`}]},
+  {vi:`Chúng tôi thích đi tàu hoả đến Bắc Kinh.`, cn:`我们喜欢坐火车去北京。`, py:`Wǒmen xǐhuan zuò huǒchē qù Běijīng.`, note:`Đi bằng phương tiện nào: 坐 + phương tiện + 去 + nơi chốn.`, alt:[{cn:`我们喜欢乘火车去北京。`,note:`乘 = đi/đáp (phương tiện), văn viết/trang trọng hơn 坐.`}]},
+  {vi:`Tối nay 10 giờ anh gọi điện thoại cho em nhé.`, cn:`今天晚上十点我给你打电话吧。`, py:`Jīntiān wǎnshang shí diǎn wǒ gěi nǐ dǎ diànhuà ba.`, note:`给 + người + 打电话 = gọi điện cho ai; 吧 làm câu nhẹ nhàng, mang tính đề nghị.`, alt:[{cn:`我今天晚上十点给你打电话吧。`,note:`Chủ ngữ 我 đứng đầu câu rất tự nhiên; thời gian đứng trước động từ là được.`},{cn:`今晚十点我给你打电话吧。`,note:`今晚 = 今天晚上, nói tắt.`},{cn:`今晚我十点给你打电话吧。`,note:`Thời gian đứng sau chủ ngữ cũng đúng.`}]},
+  {vi:`Anh ấy đang gọi điện thoại cho mẹ anh ấy.`, cn:`他在给他妈妈打电话。`, py:`Tā zài gěi tā māma dǎ diànhuà.`, note:`在 + động từ = đang làm gì.`, alt:[{cn:`他在给妈妈打电话。`,note:`Bỏ 他 thứ hai vẫn hiểu là “mẹ anh ấy”, ngắn gọn hơn.`},{cn:`他正在给他妈妈打电话。`,note:`正在 nhấn mạnh “đang đúng lúc này” hơn 在.`},{cn:`他正在给妈妈打电话。`,note:`Kết hợp 正在 và bỏ 他.`}]},
+  {vi:`Tôi cùng gia đình đi du lịch Bắc Kinh bằng máy bay.`, cn:`我跟我家一起坐飞机去北京旅游。`, py:`Wǒ gēn wǒ jiā yìqǐ zuò fēijī qù Běijīng lǚyóu.`, note:`跟…一起 = cùng với…; 旅游 = đi du lịch.`, alt:[{cn:`我跟家人一起坐飞机去北京旅游。`,note:`跟家人 (cùng người nhà) là cách nói tự nhiên hơn 我家.`},{cn:`我和家人一起坐飞机去北京旅游。`,note:`和 và 跟 đều là “cùng/và”.`},{cn:`我跟我家人一起坐飞机去北京旅游。`,note:`Đúng, nói rõ “người nhà của tôi”.`}]}
 ];
 
 /* ============================================================
@@ -1050,13 +1050,23 @@ function renderTranslate(){
 function trAnswerHTML(i){
   const t=TRANSLATE_SELFCHECK[i];
   return `<div class="answer" style="margin-top:8px;"><span class="cn hanzi" style="font-size:clamp(26px,2.6vw,42px);">${t.cn}</span><br><span class="pinyin" style="color:var(--gold-dark); font-family:'JetBrains Mono',monospace; font-size:.95rem;">${t.py}</span>
-    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button></div>`;
+    <button class="speak-btn" style="margin-left:8px;" onclick="speak('${t.cn.replace(/'/g,"\\'")}')">🔊</button>
+    ${t.note?`<div style="margin-top:8px;font-size:.95rem;">📘 ${t.note}</div>`:''}
+    ${(t.alt&&t.alt.length)?`<div style="margin-top:8px;padding:8px 12px;background:#f8fafc;border-radius:8px;"><div style="font-weight:700;font-size:.9rem;margin-bottom:4px;">Các cách nói khác cũng đúng:</div>`+t.alt.map(a=>`<div style="margin:4px 0;"><span class="hanzi" style="font-size:clamp(20px,2vw,30px);">${a.cn}</span><div style="font-size:.88rem;color:#555;">${a.note}</div></div>`).join('')+`</div>`:''}</div>`;
 }
 function trCheck(i){
   const t=TRANSLATE_SELFCHECK[i], inp=document.getElementById('trIn'+i), fb=document.getElementById('trFb'+i);
   const s=trNorm(inp.value);
   if(!s){ fb.innerHTML='<span style="color:#b45309;">Hãy gõ câu tiếng Trung trước nhé ✍️</span>'; inp.focus(); return; }
   const vars=trVariants(t.cn);
+  const altHit=(t.alt||[]).find(a=>trVariants(a.cn).includes(s));
+  if(altHit && !vars.includes(s)){
+    inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
+    fb.innerHTML='<b style="color:#15803d;">✅ Đúng! Đây là một cách nói khác cũng được chấp nhận.</b>'
+      +`<div style="margin:6px 0;padding:8px 12px;background:#fffbeb;border-left:4px solid #d4a017;border-radius:8px;font-size:.95rem;">💡 ${altHit.note}</div>`
+      +'<div style="color:#6b7280;">Đáp án mẫu của sách:</div>'+trAnswerHTML(i);
+    return;
+  }
   if(vars.includes(s)){
     inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
     fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+trAnswerHTML(i);
