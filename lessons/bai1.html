@@ -958,7 +958,7 @@ renderTranslate();
     document.querySelectorAll('#pinyinBox .quiz-q').forEach(function(card){
       var hz=card.querySelector('.hz'); if(!hz) return;
       var w=hz.textContent.trim(), q=card.querySelector('.qtext');
-      addOnce(q,'a',[mkLink(w)]);
+      addOnce(q,'a',[mkBtn(w),mkLink(w)]);
     });
   }
   // 3. Nhìn hình / điền từ / ghép câu: sau khi trả lời mới nghe (để không lộ đáp án)
@@ -970,9 +970,9 @@ renderTranslate();
       card.setAttribute('data-aud-done','1');
       var box=card.parentElement&&card.parentElement.id, right=card.querySelector('.quiz-opt.correct'), q=card.querySelector('.qtext');
       var ans=right?right.textContent.trim():'';
-      if(box==='pictureBox'){ addOnce(q,'b',[mkLink(ans)]); }
+      if(box==='pictureBox'){ say(ans); addOnce(q,'b',[mkBtn(ans),mkLink(ans)]); }
       else if(box==='fillBox'){ var hz=card.querySelector('.hz'); if(hz){ var s=hz.dataset.say||hz.textContent.replace('＿＿',ans); say(s); addOnce(q,'b',[mkBtn(s,'🔊 Nghe cả câu')]); } }
-      
+      else if(box==='pinyinBox'){ var hz2=card.querySelector('.hz'); if(hz2) say(hz2.textContent.trim()); }
     },0);
   },false);
 
