@@ -1334,6 +1334,7 @@ renderTranslate();
 </script>
 <!-- MC-TTS:BEGIN (giọng đọc mẫu: file âm thanh có sẵn; chưa có thì dùng giọng của máy) -->
 <script id="mc-tts">
+window.MC_DEVICE_ONLY = true; /* chỉ dùng giọng đọc của máy (đổi thành false để dùng lại giọng AI) */
 (function(){
   var orig = window.speak, MAN = null, cur = null, cache = {};
   function clean(s){ return String(s||'').replace(/[（(].*?[）)]/g,'').replace(/[.,，。！？!?]/g,'').trim(); }
@@ -1342,6 +1343,7 @@ renderTranslate();
   }
   window.mcStopAudio = function(){ try{ if(cur){ cur.pause(); } }catch(e){} };
        window.speak = function(text){
+    if(window.MC_DEVICE_ONLY){ if(orig) return orig(text); return; }
     var t = clean(text), f = MAN && MAN[t];
     // chưa có file thì đọc ngay bằng giọng của máy (phải làm ngay lúc bấm để Safari cho phát tiếng)
     if(!f){ if(orig) return orig(text); return; }
