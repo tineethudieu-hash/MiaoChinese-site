@@ -1,0 +1,54 @@
+/* ============================================================
+   MiaoChinese — bộ nhận diện giao diện (vàng · đen · kem)
+   Nạp SAU style của từng trang để đồng bộ toàn website.
+   Font tự lưu trữ: assets/fonts.css (tạo bởi tools/build_fonts.py)
+   ============================================================ */
+:root{
+  /* bảng màu thương hiệu */
+  --mc-gold:#F4C542;      /* Primary Gold – nút CTA, điểm nhấn */
+  --mc-black:#111111;     /* Deep Black – chữ chính */
+  --mc-cream:#FFF8E8;     /* Warm Cream – nền trang */
+  --mc-charcoal:#2A2A2A;  /* Charcoal – chữ phụ/nền tối phụ */
+  --mc-beige:#F3E8C8;     /* Soft Beige – thẻ, vùng nhấn nhẹ */
+  --mc-accent:#D9A520;    /* Accent Gold – viền, icon (KHÔNG dùng làm chữ nhỏ trên nền kem) */
+  --mc-gold-text:#7A5A06; /* vàng nâu đậm cho chữ trên nền kem (tương phản ≥ 5:1) */
+
+  /* font */
+  --font-head:'Baloo 2','Nunito','SimSun','宋体','NSimSun','Noto Serif SC',sans-serif;
+  --font-body:'Nunito','SimSun','宋体','NSimSun','Noto Serif SC',sans-serif;
+  --font-han:'SimSun','宋体','NSimSun','Noto Serif SC',serif;
+
+  /* ghi đè biến cũ của các trang */
+  --ink:#111111; --ink-soft:#4A4435;
+  --gold:#F4C542; --gold-dark:#7A5A06; --gold-light:#F3E8C8;
+  --paper-soft:#FFF8E8; --paper-alt:#F3E8C8;
+  --line:#E6D9AE; --radius:20px;
+  --shadow:0 8px 24px rgba(17,17,17,.08);
+  --mascot-img:url('/assets/brand/miao-icon.png');
+}
+html,body{background:var(--mc-cream);}
+body{font-family:var(--font-body); color:var(--mc-black); font-weight:500;}
+h1,h2,h3,h4,.brand-font{font-family:var(--font-head); font-weight:800;}
+button,input,select,textarea{font-family:inherit;}
+.pinyin,.mono,.py{font-family:'Nunito',sans-serif !important; letter-spacing:.01em;}
+
+/* ===== CHỮ HÁN: một class riêng cho toàn bộ chữ Hán =====
+   Ưu tiên SimSun (宋体); máy không có SimSun (iPad/điện thoại) dùng Noto Serif SC đã được tải kèm site. */
+.hanzi-font,.hanzi,.cn,.han{
+  font-family:var(--font-han) !important;
+  font-style:normal; font-synthesis:none;
+  font-feature-settings:normal; letter-spacing:0;
+  text-rendering:geometricPrecision; -webkit-font-smoothing:auto;
+}
+::selection{background:var(--mc-gold); color:var(--mc-black);}
+
+/* ===== Thẻ lật hình: mặt úp dùng icon MiaoChinese ===== */
+.mem-card.face-down{
+  background-color:var(--mc-gold) !important;
+  background-image:url('/assets/brand/miao-icon.png'), radial-gradient(circle at 50% 50%, #FFF8E8 0 60%, rgba(255,248,232,0) 61%) !important;
+  background-repeat:no-repeat !important;
+  background-position:center, center !important;
+  background-size:68%, 92% !important;
+  border:2px solid var(--mc-accent);
+}
+.mem-card{border-radius:18px !important;}
