@@ -98,7 +98,7 @@ a{color:inherit;text-decoration:none;}
 .btn-ghost:hover{border-color:var(--gold); color:var(--gold-dark);}
 
 /* ---------- mini games ---------- */
-.game-wrap{max-width:1180px; margin:18px auto 0; padding:0 20px; scroll-margin-top:84px;}
+.game-wrap{max-width:1180px; margin:26px auto 40px; padding:0 20px; scroll-margin-top:84px;}
 .game-box{background:var(--ink); border-radius:var(--radius); padding:18px 20px 20px; box-shadow:var(--shadow); border:1.5px solid var(--gold);}
 .game-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 2px 12px;}
 .game-head h2{margin:0; font-family:'Playfair Display',serif; font-size:1.35rem; color:var(--gold-light);}
@@ -331,6 +331,16 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
   </div>
 </div>
 
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Tìm bài theo số hoặc tên… (ví dụ: &quot;bài 9&quot;, &quot;bưu điện&quot;)" oninput="renderLevels()">
+  </div>
+  <div id="searchHint"></div>
+</div>
+
+<div class="levels" id="levelsRoot"></div>
+
 <div class="game-wrap" id="game">
  <div class="game-box">
   <div class="game-head"><h2>🎮 Mini Games</h2><span>Dùng trên lớp hoặc luyện thêm ở nhà</span></div>
@@ -364,16 +374,6 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
   });
 })();
 </script>
-
-<div class="search-wrap">
-  <div class="search-box">
-    <span class="icon">🔍</span>
-    <input type="text" id="searchInput" placeholder="Tìm bài theo số hoặc tên… (ví dụ: &quot;bài 9&quot;, &quot;bưu điện&quot;)" oninput="renderLevels()">
-  </div>
-  <div id="searchHint"></div>
-</div>
-
-<div class="levels" id="levelsRoot"></div>
 
 <div class="modal" id="reportModal" onclick="if(event.target===this)closeReport()">
   <div class="modal-card">
