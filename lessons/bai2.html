@@ -238,7 +238,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
     <div class="hero-eyebrow"><span class="plate">第 2 课</span>ÔN TẬP BÀI 2</div>
     <h1><span class="py">Hànyǔ bú tài nán</span>汉语不太难</h1>
     <div class="vi-title">Tiếng Hán không khó lắm — Ôn tập Bài 2</div>
-    <p class="desc">Ôn <b>vận mẫu mũi</b> (an en ang eng ong), <b>thanh nhẹ</b>, <b>biến điệu của 不</b>, <b>nửa thanh 3</b> và <b>15 từ mới</b> (忙 吗 很 汉语 难 太 爸爸 妈妈 他 她 它 男 哥哥 弟弟 妹妹). Bấm 🔊 để nghe phát âm mẫu.</p>
+    <p class="desc">Ôn <b>vận mẫu mũi</b> (an en ang eng ong), <b>thanh nhẹ</b>, <b>biến điệu của 不</b>, <b>nửa thanh 3</b> và <b>15 từ mới</b> (忙 吗 很忙 汉语 难 太难 爸爸 妈妈 哥哥 弟弟 妹妹 他 她 它 男). Bấm 🔊 để nghe phát âm mẫu.</p>
   </div>
 </div>
 
@@ -379,7 +379,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
    KHO TỪ VỰNG BÀI 9
    ============================================================ */
 /* Từ mới có hình trong slide gốc (slide 23–35 + slide 55): chữ Hán – pinyin – nghĩa – hình đi đúng theo slide */
-const WORDS = [{"cn": "忙", "py": "máng", "vi": "bận", "img": "../img/bai2/mang.jpg", "dis": ["māng", "mǎng", "màng"]}, {"cn": "吗", "py": "ma", "vi": "(trợ từ hỏi) không?", "img": "../img/bai2/ma.jpg", "dis": ["má", "mǎ", "mà"]}, {"cn": "很", "py": "hěn", "vi": "rất", "img": "../img/bai2/hen.jpg", "dis": ["hēn", "hén", "hèn"]}, {"cn": "汉语", "py": "Hànyǔ", "vi": "tiếng Hán", "img": "../img/bai2/hanyu.jpg", "dis": ["Hànyú", "Hǎnyǔ", "Hànyū"]}, {"cn": "难", "py": "nán", "vi": "khó", "img": "../img/bai2/nan.jpg", "dis": ["nān", "nǎn", "nàn"]}, {"cn": "太", "py": "tài", "vi": "quá, lắm", "img": "../img/bai2/tai.jpg", "dis": ["tāi", "tái", "tǎi"]}, {"cn": "爸爸", "py": "bàba", "vi": "bố", "img": "../img/bai2/baba.jpg", "dis": ["bāba", "bába", "bàbà"]}, {"cn": "妈妈", "py": "māma", "vi": "mẹ", "img": "../img/bai2/mama.jpg", "dis": ["māmā", "mǎma", "màma"]}, {"cn": "他", "py": "tā", "vi": "anh ấy", "img": "../img/bai2/ta_m.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "她", "py": "tā", "vi": "cô ấy", "img": "../img/bai2/ta_f.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "它", "py": "tā", "vi": "nó (vật, con vật)", "img": "../img/bai2/ta_o.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "男", "py": "nán", "vi": "nam", "img": "../img/bai2/nan_m.jpg", "dis": ["nān", "nǎn", "nàn"]}, {"cn": "哥哥", "py": "gēge", "vi": "anh trai", "img": "../img/bai2/gege.jpg", "dis": ["gēgē", "gěge", "gége"]}, {"cn": "弟弟", "py": "dìdi", "vi": "em trai", "img": "../img/bai2/didi.jpg", "dis": ["dǐdi", "dídi", "dìdì"]}, {"cn": "妹妹", "py": "mèimei", "vi": "em gái", "img": "../img/bai2/meimei.jpg", "dis": ["mēimei", "méimei", "měimei"]}];
+const WORDS = [{"cn": "忙", "py": "máng", "vi": "bận", "img": "../img/bai2/mang.jpg", "dis": ["māng", "mǎng", "màng"]}, {"cn": "吗", "py": "ma", "vi": "(trợ từ hỏi) không?", "img": "../img/bai2/ma.jpg", "dis": ["má", "mǎ", "mà"]}, {"cn": "很忙", "py": "hěn máng", "vi": "rất bận", "img": "../img/bai2/hen.jpg", "dis": ["hén máng", "hèn máng", "hěn māng"]}, {"cn": "汉语", "py": "Hànyǔ", "vi": "tiếng Hán", "img": "../img/bai2/hanyu.jpg", "dis": ["Hànyú", "Hǎnyǔ", "Hànyū"]}, {"cn": "难", "py": "nán", "vi": "khó", "img": "../img/bai2/nan.jpg", "dis": ["nān", "nǎn", "nàn"]}, {"cn": "太难", "py": "tài nán", "vi": "hơi, quá, lắm", "img": "../img/bai2/tai.jpg", "dis": ["tāi nán", "tái nán", "tài nàn"]}, {"cn": "爸爸", "py": "bàba", "vi": "bố", "img": "../img/bai2/baba.jpg", "dis": ["bāba", "bába", "bàbà"]}, {"cn": "妈妈", "py": "māma", "vi": "mẹ", "img": "../img/bai2/mama.jpg", "dis": ["māmā", "mǎma", "màma"]}, {"cn": "哥哥", "py": "gēge", "vi": "anh trai", "img": "../img/bai2/gege.jpg", "dis": ["gēgē", "gěge", "gége"]}, {"cn": "弟弟", "py": "dìdi", "vi": "em trai", "img": "../img/bai2/didi.jpg", "dis": ["dǐdi", "dídi", "dìdì"]}, {"cn": "妹妹", "py": "mèimei", "vi": "em gái", "img": "../img/bai2/meimei.jpg", "dis": ["mēimei", "méimei", "měimei"]}, {"cn": "他", "py": "tā", "vi": "anh ấy", "img": "../img/bai2/ta_m.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "她", "py": "tā", "vi": "cô ấy", "img": "../img/bai2/ta_f.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "它", "py": "tā", "vi": "nó (vật, con vật)", "img": "../img/bai2/ta_o.jpg", "dis": ["tá", "tǎ", "tà"]}, {"cn": "男", "py": "nán", "vi": "nam", "img": "../img/bai2/nan_m.jpg", "dis": ["nān", "nǎn", "nàn"]}];
 const VOCAB_POOL = WORDS.map(w=>({hanzi:w.cn, pinyin:w.py, vi:w.vi}));
 const PICTURE_MCQ = WORDS.map(w=>({word:w}));
 const PINYIN_MCQ = WORDS.map(w=>({word:w, hanzi:w.cn, correct:w.py, distractors:w.dis}));
@@ -612,9 +612,10 @@ const TRANSLATE_SELFCHECK = [
   "note": "Đặt cuối câu để tạo câu hỏi “có… không?”."
  },
  {
-  "vi": "Rất",
-  "cn": "很",
-  "py": "hěn"
+  "vi": "Rất bận",
+  "cn": "很忙",
+  "py": "hěn máng",
+  "note": "很 + tính từ: 很忙, 很难, 很好. Chữ 3 đứng trước thanh 2 (hěn máng) đọc nửa thanh 3."
  },
  {
   "vi": "Tiếng Hán",
@@ -628,10 +629,10 @@ const TRANSLATE_SELFCHECK = [
   "py": "nán"
  },
  {
-  "vi": "Quá, lắm",
-  "cn": "太",
-  "py": "tài",
-  "note": "Đứng trước tính từ: 太好, 太难, 太大, 太忙."
+  "vi": "Hơi, quá, lắm (太难)",
+  "cn": "太难",
+  "py": "tài nán",
+  "note": "太 + tính từ: 太好, 太难, 太大, 太忙."
  },
  {
   "vi": "Bố",
@@ -644,6 +645,21 @@ const TRANSLATE_SELFCHECK = [
   "cn": "妈妈",
   "py": "māma",
   "note": "Âm tiết thứ hai đọc thanh nhẹ."
+ },
+ {
+  "vi": "Anh trai",
+  "cn": "哥哥",
+  "py": "gēge"
+ },
+ {
+  "vi": "Em trai",
+  "cn": "弟弟",
+  "py": "dìdi"
+ },
+ {
+  "vi": "Em gái",
+  "cn": "妹妹",
+  "py": "mèimei"
  },
  {
   "vi": "Anh ấy",
@@ -666,21 +682,6 @@ const TRANSLATE_SELFCHECK = [
   "vi": "Nam, giới tính nam",
   "cn": "男",
   "py": "nán"
- },
- {
-  "vi": "Anh trai",
-  "cn": "哥哥",
-  "py": "gēge"
- },
- {
-  "vi": "Em trai",
-  "cn": "弟弟",
-  "py": "dìdi"
- },
- {
-  "vi": "Em gái",
-  "cn": "妹妹",
-  "py": "mèimei"
  },
  {
   "vi": "Bạn khoẻ không?",
@@ -852,7 +853,7 @@ function resetPicture(){
   const items = shuffle(PICTURE_MCQ);
   const box = document.getElementById('pictureBox');
   box.innerHTML = items.map((it,i)=>{
-    const others = shuffle(WORDS.filter(x=>x.cn!==it.word.cn)).slice(0,3).map(x=>x.cn);
+    const others = []; for(const x of shuffle(WORDS)){ if(others.length>=3) break; if([it.word.cn,...others].every(c=>c!==x.cn && !c.includes(x.cn) && !x.cn.includes(c))) others.push(x.cn); }  /* không để 忙/很忙, 难/太难 cùng xuất hiện trong một câu */
     const opts = shuffle([it.word.cn, ...others]);
     const correctIdx = opts.indexOf(it.word.cn);
     const qHTML = `<img class="pic-img" src="${it.word.img}" alt="">`;
@@ -1285,7 +1286,7 @@ renderTranslate();
 <script id="mc-speak">
 /* ===== MC-SPEAK: luyện nói tự chấm (Web Speech API) ===== */
 (function(){
-  var CFG = {"word": [{"cn": "忙", "py": "máng", "vi": "bận"}, {"cn": "吗", "py": "ma", "vi": "(trợ từ hỏi) không?"}, {"cn": "很", "py": "hěn", "vi": "rất"}, {"cn": "汉语", "py": "Hànyǔ", "vi": "tiếng Hán"}, {"cn": "难", "py": "nán", "vi": "khó"}, {"cn": "太", "py": "tài", "vi": "quá, lắm"}, {"cn": "爸爸", "py": "bàba", "vi": "bố"}, {"cn": "妈妈", "py": "māma", "vi": "mẹ"}, {"cn": "他", "py": "tā", "vi": "anh ấy"}, {"cn": "她", "py": "tā", "vi": "cô ấy"}, {"cn": "男", "py": "nán", "vi": "nam"}, {"cn": "哥哥", "py": "gēge", "vi": "anh trai"}, {"cn": "弟弟", "py": "dìdi", "vi": "em trai"}, {"cn": "妹妹", "py": "mèimei", "vi": "em gái"}], "sent": [{"cn": "你好吗？", "py": "Nǐ hǎo ma?", "vi": "Bạn khoẻ không?"}, {"cn": "你忙吗？", "py": "Nǐ máng ma?", "vi": "Bạn bận không?"}, {"cn": "汉语难吗？", "py": "Hànyǔ nán ma?", "vi": "Tiếng Hán khó không?"}, {"cn": "哥哥很忙。", "py": "Gēge hěn máng.", "vi": "Anh trai rất bận."}, {"cn": "汉语很难。", "py": "Hànyǔ hěn nán.", "vi": "Tiếng Hán rất khó."}, {"cn": "汉语不太难。", "py": "Hànyǔ bú tài nán.", "vi": "Tiếng Hán không khó lắm."}, {"cn": "爸爸好吗？", "py": "Bàba hǎo ma?", "vi": "Bố khoẻ không?"}, {"cn": "他忙吗？", "py": "Tā máng ma?", "vi": "Anh ấy bận không?"}], "free": [{"vi": "Bạn khoẻ không?", "cn": "你好吗？", "py": "Nǐ hǎo ma?", "keys": [["你好吗"]]}, {"vi": "Bạn bận không?", "cn": "你忙吗？", "py": "Nǐ máng ma?", "keys": [["你忙吗"]]}, {"vi": "Tiếng Hán khó không?", "cn": "汉语难吗？", "py": "Hànyǔ nán ma?", "keys": [["汉语"], ["难"]]}, {"vi": "Tiếng Hán không khó lắm.", "cn": "汉语不太难。", "py": "Hànyǔ bú tài nán.", "keys": [["汉语"], ["不"], ["太"], ["难"]]}, {"vi": "Anh trai tôi rất bận.", "cn": "我哥哥很忙。", "py": "Wǒ gēge hěn máng.", "keys": [["哥哥"], ["很"], ["忙"]]}, {"vi": "Bố tôi khoẻ không?", "cn": "我爸爸好吗？", "py": "Wǒ bàba hǎo ma?", "keys": [["爸爸"], ["好吗"]]}, {"vi": "Tôi rất khoẻ, bạn bận không?", "cn": "我很好，你忙吗？", "py": "Wǒ hěn hǎo, nǐ máng ma?", "keys": [["我很好"], ["你忙吗"]]}, {"vi": "Mẹ tôi không bận lắm.", "cn": "我妈妈不太忙。", "py": "Wǒ māma bú tài máng.", "keys": [["妈妈"], ["不"], ["太"], ["忙"]]}]};
+  var CFG = {"word": [{"cn": "忙", "py": "máng", "vi": "bận"}, {"cn": "吗", "py": "ma", "vi": "(trợ từ hỏi) không?"}, {"cn": "很忙", "py": "hěn máng", "vi": "rất bận"}, {"cn": "汉语", "py": "Hànyǔ", "vi": "tiếng Hán"}, {"cn": "难", "py": "nán", "vi": "khó"}, {"cn": "太难", "py": "tài nán", "vi": "hơi, quá, lắm"}, {"cn": "爸爸", "py": "bàba", "vi": "bố"}, {"cn": "妈妈", "py": "māma", "vi": "mẹ"}, {"cn": "哥哥", "py": "gēge", "vi": "anh trai"}, {"cn": "弟弟", "py": "dìdi", "vi": "em trai"}, {"cn": "妹妹", "py": "mèimei", "vi": "em gái"}, {"cn": "他", "py": "tā", "vi": "anh ấy"}, {"cn": "她", "py": "tā", "vi": "cô ấy"}, {"cn": "它", "py": "tā", "vi": "nó (vật, con vật)"}, {"cn": "男", "py": "nán", "vi": "nam"}], "sent": [{"cn": "你好吗？", "py": "Nǐ hǎo ma?", "vi": "Bạn khoẻ không?"}, {"cn": "你忙吗？", "py": "Nǐ máng ma?", "vi": "Bạn bận không?"}, {"cn": "汉语难吗？", "py": "Hànyǔ nán ma?", "vi": "Tiếng Hán khó không?"}, {"cn": "哥哥很忙。", "py": "Gēge hěn máng.", "vi": "Anh trai rất bận."}, {"cn": "汉语很难。", "py": "Hànyǔ hěn nán.", "vi": "Tiếng Hán rất khó."}, {"cn": "汉语不太难。", "py": "Hànyǔ bú tài nán.", "vi": "Tiếng Hán không khó lắm."}, {"cn": "爸爸好吗？", "py": "Bàba hǎo ma?", "vi": "Bố khoẻ không?"}, {"cn": "他忙吗？", "py": "Tā máng ma?", "vi": "Anh ấy bận không?"}], "free": [{"vi": "Bạn khoẻ không?", "cn": "你好吗？", "py": "Nǐ hǎo ma?", "keys": [["你好吗"]]}, {"vi": "Bạn bận không?", "cn": "你忙吗？", "py": "Nǐ máng ma?", "keys": [["你忙吗"]]}, {"vi": "Tiếng Hán khó không?", "cn": "汉语难吗？", "py": "Hànyǔ nán ma?", "keys": [["汉语"], ["难"]]}, {"vi": "Tiếng Hán không khó lắm.", "cn": "汉语不太难。", "py": "Hànyǔ bú tài nán.", "keys": [["汉语"], ["不"], ["太"], ["难"]]}, {"vi": "Anh trai tôi rất bận.", "cn": "我哥哥很忙。", "py": "Wǒ gēge hěn máng.", "keys": [["哥哥"], ["很"], ["忙"]]}, {"vi": "Bố tôi khoẻ không?", "cn": "我爸爸好吗？", "py": "Wǒ bàba hǎo ma?", "keys": [["爸爸"], ["好吗"]]}, {"vi": "Tôi rất khoẻ, bạn bận không?", "cn": "我很好，你忙吗？", "py": "Wǒ hěn hǎo, nǐ máng ma?", "keys": [["我很好"], ["你忙吗"]]}, {"vi": "Mẹ tôi không bận lắm.", "cn": "我妈妈不太忙。", "py": "Wǒ māma bú tài máng.", "keys": [["妈妈"], ["不"], ["太"], ["忙"]]}]};
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   var PASS = 0.8;
   var state = {word:[], sent:[], free:[]};
