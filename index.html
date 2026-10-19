@@ -97,22 +97,34 @@ a{color:inherit;text-decoration:none;}
 }
 .btn-ghost:hover{border-color:var(--gold); color:var(--gold-dark);}
 
-/* ---------- góc trò chơi ---------- */
+/* ---------- mini games ---------- */
 .game-wrap{max-width:1180px; margin:18px auto 0; padding:0 20px; scroll-margin-top:84px;}
-.game-head{display:flex; align-items:baseline; gap:10px; margin:0 2px 10px;}
-.game-head h2{margin:0; font-family:'Playfair Display',serif; font-size:1.25rem;}
-.game-head span{color:var(--ink-soft); font-size:.82rem;}
-.game-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;}
-.game-card{
-  display:flex; gap:14px; align-items:center; text-decoration:none; color:inherit;
-  background:linear-gradient(135deg,#FFE1EE,#FFF0DF 55%,#E3F6E9); border:1px solid #F3CFE0; border-radius:var(--radius);
-  padding:16px 18px; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s;
+.game-box{background:var(--ink); border-radius:var(--radius); padding:18px 20px 20px; box-shadow:var(--shadow); border:1.5px solid var(--gold);}
+.game-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 2px 12px;}
+.game-head h2{margin:0; font-family:'Playfair Display',serif; font-size:1.35rem; color:var(--gold-light);}
+.game-head span{color:#C9C2AD; font-size:.82rem;}
+.game-menu{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;}
+.game-menu button{
+  font-family:inherit; font-weight:700; font-size:.9rem; cursor:pointer; padding:10px 18px; border-radius:999px;
+  background:transparent; color:var(--gold-light); border:1.5px solid rgba(246,230,188,.35);
 }
-.game-card:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(184,55,120,.18);}
-.game-card .gico{font-size:2.4rem; width:62px; height:62px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:50%; border:3px solid #E8589A;}
-.game-card b{display:block; font-size:1.02rem;}
+.game-menu button.on{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+.game-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px;}
+.game-card{
+  display:flex; gap:14px; align-items:center; text-decoration:none; color:var(--ink);
+  background:#fff; border:2px solid var(--gold); border-radius:var(--radius);
+  padding:16px 18px; transition:transform .15s, box-shadow .15s;
+}
+.game-card:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(203,154,46,.35);}
+.game-card .gico{font-size:2.3rem; width:64px; height:64px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; background:var(--gold-light); border-radius:14px; border:2px solid var(--ink);}
+.game-card b{display:block; font-family:'Playfair Display',serif; font-size:1.08rem; letter-spacing:.2px;}
 .game-card small{display:block; color:var(--ink-soft); font-size:.8rem; margin-top:3px; line-height:1.4;}
-.game-card.soon{opacity:.55; pointer-events:none; background:var(--paper); border-style:dashed;}
+.game-card .tags{margin-top:6px; display:flex; gap:6px; flex-wrap:wrap;}
+.game-card .tags i{font-style:normal; font-size:.68rem; font-weight:800; background:var(--ink); color:var(--gold-light); border-radius:999px; padding:2px 9px;}
+.game-card.soon{background:transparent; border:1.5px dashed rgba(246,230,188,.4); color:#C9C2AD; pointer-events:none;}
+.game-card.soon .gico{background:transparent; border-color:rgba(246,230,188,.4); filter:grayscale(1); opacity:.7;}
+.game-card.soon small{color:#9D977F;}
+.game-empty{display:none; color:#C9C2AD; font-size:.9rem; padding:8px 2px;}
 
 /* ---------- search ---------- */
 .search-wrap{max-width:1180px; margin:16px auto 0; padding:0 20px;}
@@ -288,7 +300,7 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
   <div class="mascot"></div>
   <div class="brand">MiaoChinese<small>Thư viện bài ôn tập</small></div>
   <div class="spacer"></div>
-  <a class="teacher-toggle" href="#game" style="text-decoration:none;margin-right:8px;">🎮 Game</a>
+  <a class="teacher-toggle" href="#game" style="text-decoration:none;margin-right:8px;">🎮 Mini Games</a>
   <label class="teacher-toggle">
     <input type="checkbox" id="teacherMode" onchange="onTeacherToggle()">
     👩‍🏫 Giáo viên · Báo cáo
@@ -320,14 +332,38 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
 </div>
 
 <div class="game-wrap" id="game">
-  <div class="game-head"><h2>🎮 Góc trò chơi</h2><span>Dùng trên lớp hoặc luyện thêm ở nhà</span></div>
-  <div class="game-grid">
-    <a class="game-card" href="games/quay-nhanh.html">
-      <div class="gico">🎰</div>
-      <div><b>Quay nhanh · Đoán từ</b><small>Quay thật nhanh các hình ảnh hoặc chữ Hán, dừng lại ở một từ — cả lớp đoán nhanh từ đó là gì. Chọn bài, tốc độ và kiểu chơi.</small></div>
-    </a>
+ <div class="game-box">
+  <div class="game-head"><h2>🎮 Mini Games</h2><span>Dùng trên lớp hoặc luyện thêm ở nhà</span></div>
+  <div class="game-menu" id="gameMenu">
+    <button class="on" data-cat="all">✨ Tất cả</button>
+    <button data-cat="on">📚 Ôn bài</button>
+    <button data-cat="dovui">🎲 Đố vui</button>
   </div>
+  <div class="game-grid" id="gameGrid">
+    <a class="game-card" data-cats="on dovui" href="games/quay-nhanh.html">
+      <div class="gico">🎡</div>
+      <div><b>MIAO FLASH – Vòng quay thần tốc</b><small>Vòng quay hiện nhanh hình ảnh hoặc chữ Hán, dừng lại ở một từ — cả lớp đoán thật nhanh và phát âm chuẩn.</small><div class="tags"><i>📚 Ôn bài</i><i>🎲 Đố vui</i></div></div>
+    </a>
+    <div class="game-card soon" data-cats="on dovui">
+      <div class="gico">🧩</div>
+      <div><b>Game mới</b><small>Sắp có thêm trò chơi khác…</small></div>
+    </div>
+  </div>
+  <div class="game-empty" id="gameEmpty">Mục này chưa có game — sắp có nhé!</div>
+ </div>
 </div>
+<script>
+(function(){
+  var menu=document.getElementById('gameMenu'), cards=[].slice.call(document.querySelectorAll('#gameGrid .game-card'));
+  menu.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    [].forEach.call(menu.children,function(x){ x.classList.toggle('on',x===b); });
+    var cat=b.dataset.cat, shown=0;
+    cards.forEach(function(c){ var ok=cat==='all'||(' '+c.dataset.cats+' ').indexOf(' '+cat+' ')>=0; c.style.display=ok?'':'none'; if(ok&&!c.classList.contains('soon')) shown++; });
+    document.getElementById('gameEmpty').style.display=shown?'none':'block';
+  });
+})();
+</script>
 
 <div class="search-wrap">
   <div class="search-box">

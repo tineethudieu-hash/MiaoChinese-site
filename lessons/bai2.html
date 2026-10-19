@@ -189,8 +189,9 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 #speakWordBox .hz{font-size:clamp(40px,4.2vw,68px) !important;}
 #speakSentBox .hz{font-size:clamp(28px,2.8vw,46px) !important; line-height:1.4;}
 #speakFreeBox .cn{font-size:clamp(26px,2.6vw,42px);}
-.back-hub{flex:0 0 auto; text-decoration:none; border:1px solid var(--line); background:#fff; color:var(--ink); padding:7px 14px; border-radius:10px; font-weight:800; font-size:.85rem; white-space:nowrap; margin-right:10px;}
-.back-hub:hover{background:var(--paper-alt); border-color:var(--gold);}
+.back-hub{flex:0 0 auto; text-decoration:none; display:inline-flex; align-items:center; gap:6px; min-height:44px; background:#15130F; color:#F6E6BC; border:2px solid #CB9A2E; box-shadow:0 3px 0 #8C6418; padding:9px 20px; border-radius:12px; font-weight:800; font-size:1rem; letter-spacing:.2px; white-space:nowrap; margin-right:12px;}
+.back-hub:hover{background:#CB9A2E; color:#15130F; border-color:#8C6418;}
+.back-hub:active{transform:translateY(2px); box-shadow:0 1px 0 #8C6418;}
 
 /* ===== Bài 2 ===== */
 .chart-title{font-weight:800;color:var(--gold-dark);margin:14px 0 8px;font-size:1rem;}
@@ -224,7 +225,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 
 <div class="topbar">
   <div class="topbar-inner">
-    <a class="back-hub" href="../index.html#level=1">← Menu</a>
+    <a class="back-hub" href="../index.html#level=1">← Về Menu</a>
     <div class="topbar-title">MiaoChinese<small>Ôn tập · Bài 2</small></div>
     <div class="tabs" id="tabBar"></div>
     <div class="topbar-toggles">
