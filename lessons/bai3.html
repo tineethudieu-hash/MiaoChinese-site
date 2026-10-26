@@ -281,7 +281,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
       <p>Hình lấy đúng từ slide bài giảng của lớp — chọn chữ Hán đúng với hình. Trả lời xong sẽ hiện chữ Hán, pinyin và nghĩa theo slide.</p>
     </div>
     <div class="score-bar">
-      <div><span class="label">Điểm của bạn: </span><span class="val" id="pictureScore">0 / 16</span></div>
+      <div><span class="label">Điểm của bạn: </span><span class="val" id="pictureScore">0 / 21</span></div>
       <button onclick="resetPicture()">🔄 Làm lại</button>
     </div>
     <div class="quiz-grid" id="pictureBox"></div>
@@ -310,7 +310,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
       <p>Bấm các từ theo đúng thứ tự để ghép thành câu, rồi bấm <b>“Kiểm tra”</b>. Bấm một từ đã đặt để gỡ nó ra nếu đặt nhầm.</p>
     </div>
     <div class="score-bar">
-      <div><span class="label">Đã ghép đúng: </span><span class="val" id="sbScore">0 / 20</span></div>
+      <div><span class="label">Đã ghép đúng: </span><span class="val" id="sbScore">0 / 21</span></div>
       <button onclick="resetAllSentenceBuilder()">🔄 Làm lại toàn bộ</button>
     </div>
     <div id="sentenceBox"></div>
@@ -383,7 +383,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
    KHO TỪ VỰNG BÀI 9
    ============================================================ */
 /* Từ mới có hình trong slide gốc (slide 23–35 + slide 55): chữ Hán – pinyin – nghĩa – hình đi đúng theo slide */
-const WORDS = [{"cn": "学", "py": "xué", "vi": "học", "dis": ["xūe", "xúe", "xuě"], "img": "../img/bai3/xue.jpg"}, {"cn": "英语", "py": "Yīngyǔ", "vi": "tiếng Anh", "dis": ["Yíngyǔ", "Yīngyú", "Yīngyù"], "img": "../img/bai3/yingyu.jpg"}, {"cn": "日语", "py": "Rìyǔ", "vi": "tiếng Nhật", "dis": ["Rǐyǔ", "Rìyú", "Rīyǔ"], "img": "../img/bai3/riyu.jpg"}, {"cn": "德语", "py": "Déyǔ", "vi": "tiếng Đức", "dis": ["Dēyǔ", "Déyú", "Dèyǔ"], "img": "../img/bai3/deyu.jpg"}, {"cn": "法语", "py": "Fǎyǔ", "vi": "tiếng Pháp", "dis": ["Fáyǔ", "Fǎyú", "Fāyǔ"], "img": "../img/bai3/fayu.jpg"}, {"cn": "韩国语", "py": "Hánguóyǔ", "vi": "tiếng Hàn Quốc", "dis": ["Hǎnguóyǔ", "Hánguǒyǔ", "Hánguóyú"], "img": "../img/bai3/hanguoyu.jpg"}, {"cn": "西班牙语", "py": "Xībānyáyǔ", "vi": "tiếng Tây Ban Nha", "dis": ["Xíbānyáyǔ", "Xībǎnyáyǔ", "Xībānyǎyǔ"], "img": "../img/bai3/xibanyayu.jpg"}, {"cn": "阿拉伯语", "py": "Ālābóyǔ", "vi": "tiếng Ả Rập", "dis": ["Álābóyǔ", "Ālàbóyǔ", "Ālābǒyǔ"]}, {"cn": "俄语", "py": "Éyǔ", "vi": "tiếng Nga", "dis": ["Ēyǔ", "Ěyǔ", "Éyú"]}, {"cn": "对", "py": "duì", "vi": "đúng, được", "dis": ["duí", "dǔi", "duī"], "img": "../img/bai3/dui.jpg"}, {"cn": "不对", "py": "bú duì", "vi": "không đúng", "dis": ["bù duì", "bú duǐ", "bù dui"], "img": "../img/bai3/budui.jpg"}, {"cn": "明天", "py": "míngtiān", "vi": "ngày mai", "dis": ["mǐngtiān", "míngtián", "mìngtiān"], "img": "../img/bai3/mingtian.jpg"}, {"cn": "见", "py": "jiàn", "vi": "gặp, thấy", "dis": ["jián", "jiān", "jiǎn"], "img": "../img/bai3/jian.jpg"}, {"cn": "去", "py": "qù", "vi": "đi, đến", "dis": ["qú", "qū", "qǔ"], "img": "../img/bai3/qu.jpg"}, {"cn": "银行", "py": "yínháng", "vi": "ngân hàng", "dis": ["yīnháng", "yínhàng", "yínhǎng"], "img": "../img/bai3/yinhang.jpg"}, {"cn": "邮局", "py": "yóujú", "vi": "bưu điện", "dis": ["yōujú", "yóujǔ", "yóujù"], "img": "../img/bai3/youju.jpg"}, {"cn": "寄信", "py": "jìxìn", "vi": "gửi thư", "dis": ["jíxìn", "jìxín", "jǐxìn"], "img": "../img/bai3/jixin.jpg"}, {"cn": "钱", "py": "qián", "vi": "tiền", "dis": ["qiān", "qiǎn", "qiàn"]}, {"cn": "取钱", "py": "qǔqián", "vi": "rút tiền", "dis": ["qúqián", "qǔqiǎn", "qùqián"], "img": "../img/bai3/quqian.jpg"}, {"cn": "六", "py": "liù", "vi": "số 6", "dis": ["liú", "liū", "liǔ"]}, {"cn": "七", "py": "qī", "vi": "số 7", "dis": ["qí", "qǐ", "qì"]}, {"cn": "九", "py": "jiǔ", "vi": "số 9", "dis": ["jiú", "jiū", "jiù"]}, {"cn": "北京", "py": "Běijīng", "vi": "Bắc Kinh", "dis": ["Béijīng", "Bēijīng", "Běijǐng"]}];
+const WORDS = [{"cn": "学", "py": "xué", "vi": "học", "dis": ["xūe", "xúe", "xuě"], "img": "../img/bai3/xue.jpg"}, {"cn": "英语", "py": "Yīngyǔ", "vi": "tiếng Anh", "dis": ["Yíngyǔ", "Yīngyú", "Yīngyù"], "img": "../img/bai3/yingyu.jpg"}, {"cn": "日语", "py": "Rìyǔ", "vi": "tiếng Nhật", "dis": ["Rǐyǔ", "Rìyú", "Rīyǔ"], "img": "../img/bai3/riyu.jpg"}, {"cn": "德语", "py": "Déyǔ", "vi": "tiếng Đức", "dis": ["Dēyǔ", "Déyú", "Dèyǔ"], "img": "../img/bai3/deyu.jpg"}, {"cn": "法语", "py": "Fǎyǔ", "vi": "tiếng Pháp", "dis": ["Fáyǔ", "Fǎyú", "Fāyǔ"], "img": "../img/bai3/fayu.jpg"}, {"cn": "韩国语", "py": "Hánguóyǔ", "vi": "tiếng Hàn Quốc", "dis": ["Hǎnguóyǔ", "Hánguǒyǔ", "Hánguóyú"], "img": "../img/bai3/hanguoyu.jpg"}, {"cn": "西班牙语", "py": "Xībānyáyǔ", "vi": "tiếng Tây Ban Nha", "dis": ["Xíbānyáyǔ", "Xībǎnyáyǔ", "Xībānyǎyǔ"], "img": "../img/bai3/xibanyayu.jpg"}, {"cn": "阿拉伯语", "py": "Ālābóyǔ", "vi": "tiếng Ả Rập", "dis": ["Álābóyǔ", "Ālàbóyǔ", "Ālābǒyǔ"]}, {"cn": "俄语", "py": "Éyǔ", "vi": "tiếng Nga", "dis": ["Ēyǔ", "Ěyǔ", "Éyú"]}, {"cn": "对", "py": "duì", "vi": "đúng, được", "dis": ["duí", "dǔi", "duī"], "img": "../img/bai3/dui.jpg"}, {"cn": "不对", "py": "bú duì", "vi": "không đúng", "dis": ["bù duì", "bú duǐ", "bù dui"], "img": "../img/bai3/budui.jpg"}, {"cn": "明天", "py": "míngtiān", "vi": "ngày mai", "dis": ["mǐngtiān", "míngtián", "mìngtiān"], "img": "../img/bai3/mingtian.jpg"}, {"cn": "见", "py": "jiàn", "vi": "gặp, thấy", "dis": ["jián", "jiān", "jiǎn"], "img": "../img/bai3/jian.jpg"}, {"cn": "去", "py": "qù", "vi": "đi, đến", "dis": ["qú", "qū", "qǔ"], "img": "../img/bai3/qu.jpg"}, {"cn": "银行", "py": "yínháng", "vi": "ngân hàng", "dis": ["yīnháng", "yínhàng", "yínhǎng"], "img": "../img/bai3/yinhang.jpg"}, {"cn": "邮局", "py": "yóujú", "vi": "bưu điện", "dis": ["yōujú", "yóujǔ", "yóujù"], "img": "../img/bai3/youju.jpg"}, {"cn": "寄信", "py": "jìxìn", "vi": "gửi thư", "dis": ["jíxìn", "jìxín", "jǐxìn"], "img": "../img/bai3/jixin.jpg"}, {"cn": "钱", "py": "qián", "vi": "tiền", "dis": ["qiān", "qiǎn", "qiàn"], "img": "../img/bai3/qian.jpg"}, {"cn": "取钱", "py": "qǔqián", "vi": "rút tiền", "dis": ["qúqián", "qǔqiǎn", "qùqián"], "img": "../img/bai3/quqian.jpg"}, {"cn": "六", "py": "liù", "vi": "số 6", "dis": ["liú", "liū", "liǔ"], "img": "../img/bai3/liu.jpg"}, {"cn": "七", "py": "qī", "vi": "số 7", "dis": ["qí", "qǐ", "qì"], "img": "../img/bai3/qi.jpg"}, {"cn": "九", "py": "jiǔ", "vi": "số 9", "dis": ["jiú", "jiū", "jiù"], "img": "../img/bai3/jiu.jpg"}, {"cn": "北京", "py": "Běijīng", "vi": "Bắc Kinh", "dis": ["Béijīng", "Bēijīng", "Běijǐng"], "img": "../img/bai3/beijing.jpg"}];
 const VOCAB_POOL = WORDS.map(w=>({hanzi:w.cn, pinyin:w.py, vi:w.vi}));
 const PICTURE_MCQ = WORDS.filter(w=>w.img).map(w=>({word:w}));
 const PINYIN_MCQ = WORDS.map(w=>({word:w, hanzi:w.cn, correct:w.py, distractors:w.dis}));
@@ -561,6 +561,15 @@ const SENTENCE_BUILDER = [
    "见"
   ],
   "answer": "明天见！"
+ },
+ {
+  "words": [
+   "我",
+   "明天",
+   "去",
+   "北京"
+  ],
+  "answer": "我明天去北京。"
  }
 ];
 
@@ -907,6 +916,11 @@ const TRANSLATE_SELFCHECK = [
   "vi": "Bạn đến bưu điện gửi thư à? — Không đi. Tôi đến ngân hàng rút tiền.",
   "cn": "你去邮局寄信吗？不去。去银行取钱。",
   "py": "Nǐ qù yóujú jì xìn ma? Bú qù. Qù yínháng qǔ qián."
+ },
+ {
+  "vi": "Ngày mai tôi đi Bắc Kinh.",
+  "cn": "我明天去北京。",
+  "py": "Wǒ míngtiān qù Běijīng."
  },
  {
   "vi": "Ngày mai gặp!",
