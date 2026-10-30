@@ -253,6 +253,18 @@ a{color:inherit;text-decoration:none;}
 footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; color:#6B6558; font-size:.78rem;}
 
 
+/* ---------- nhắc ôn tập / tiếp tục ---------- */
+#resumeBox{margin-top:12px;}
+#resumeBox:empty{display:none;}
+.resume-card{background:var(--mc-cream,#FFF8E8);border:2px solid #F4C542;border-radius:18px;padding:16px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+.resume-card .rc-txt{flex:1 1 260px;font-size:.95rem;line-height:1.55;color:#111;}
+.resume-card .rc-txt b{font-weight:800;}
+.resume-card .rc-pg{height:8px;border-radius:99px;background:#F3E8C8;overflow:hidden;margin-top:8px;max-width:320px;}
+.resume-card .rc-pg i{display:block;height:100%;background:#D9A520;border-radius:99px;}
+.resume-card .rc-btn{display:inline-flex;align-items:center;min-height:44px;padding:10px 20px;border-radius:12px;background:#111;color:#F3E8C8;border:2px solid #F4C542;font-weight:800;text-decoration:none;white-space:nowrap;}
+.resume-card .rc-btn:hover{background:#F4C542;color:#111;}
+.lprog{height:6px;border-radius:99px;background:#F3E8C8;overflow:hidden;margin:6px 0 2px;}
+.lprog i{display:block;height:100%;background:#D9A520;border-radius:99px;}
 /* ---------- login / tracking ---------- */
 .login-wrap{max-width:1180px;margin:18px auto 0;padding:0 20px;}
 .login-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 22px;}
@@ -341,6 +353,7 @@ footer{max-width:1180px; margin:0 auto; padding:0 20px 36px; text-align:center; 
 
 <div id="viewOn">
 <div class="login-wrap" id="loginBox"></div>
+<div class="login-wrap" id="resumeBox"></div>
 
 <div class="overview">
   <div class="overview-card">
@@ -609,10 +622,34 @@ function lessonStatsHTML(l){
   const d = serverData[l.num];
   if(!d) return `<div class="lstat none">Chưa làm bài này</div>`;
   const badge = d.passed ? `<span class="pass">✓ Đạt</span>` : `<span class="nopass">Chưa đạt</span>`;
-  return `<div class="lstat">${badge}<span>🔁 ${d.attempts} lượt ôn</span><span>⭐ TB ${d.avg}%</span><span>${d.actsDone}/${d.actTotal} phần</span></div>`;
+  const pg = d.actTotal ? Math.round(Math.min(d.actsDone,d.actTotal)/d.actTotal*100) : 0;
+  return `<div class="lstat">${badge}<span>🔁 ${d.attempts} lượt ôn</span><span>⭐ TB ${d.avg}%</span><span>${d.actsDone}/${d.actTotal} phần</span></div><div class="lprog"><i style="width:${pg}%"></i></div>`;
+}
+function renderResume(){
+  const box = document.getElementById('resumeBox'); if(!box) return;
+  if(!SERVER_MODE || !student || syncState!=='ok'){ box.innerHTML=''; return; }
+  const all = []; LEVELS.forEach(lv=>lv.lessons.forEach(l=>{ if(l.url && isTracked(l) && (teacherMode || l.num<=allowed) && !unlockWait(l)) all.push(l); }));
+  const name = student.s.trim().split(/\s+/).pop();
+  const days = d=>d ? Math.floor((Date.now()-new Date(d).getTime())/86400000) : null;
+  let lastAny = null; Object.values(serverData).forEach(d=>{ if(d.last && (!lastAny || d.last>lastAny)) lastAny=d.last; });
+  const gap = days(lastAny);
+  const ip = all.filter(l=>serverData[l.num] && !serverData[l.num].passed).sort((a,b)=>String(serverData[b.num].last||'').localeCompare(String(serverData[a.num].last||'')));
+  const fresh = all.find(l=>!serverData[l.num]);
+  let html = '';
+  const href = l=>esc(lessonHref(l,true));
+  if(ip.length){
+    const l = ip[0], d = serverData[l.num], pg = d.actTotal ? Math.round(Math.min(d.actsDone,d.actTotal)/d.actTotal*100) : 0;
+    const nudge = (gap!==null && gap>=3) ? `Đã <b>${gap} ngày</b> bạn chưa ôn bài rồi, vào ôn 10 phút thôi nhé! ` : 'Giỏi lắm, cứ giữ nhịp như vậy nhé! ';
+    html = `<div class="rc-txt"><b>Chào mừng ${esc(name)} quay lại! 💛</b><br>${nudge}Bạn đang ôn dở <b>Bài ${l.num}</b> (${d.actsDone}/${d.actTotal} phần) — vào là tiếp tục đúng chỗ đang làm, không phải làm lại.<div class="rc-pg"><i style="width:${pg}%"></i></div></div><a class="rc-btn" href="${href(l)}">▶ Tiếp tục Bài ${l.num}</a>`;
+  } else if(fresh){
+    html = `<div class="rc-txt"><b>Chào ${esc(name)}! 👋</b><br>${all.some(l=>serverData[l.num]) ? 'Bạn đã đạt các bài trước rồi — tuyệt vời! 🎉 ' : ''}Sẵn sàng cho bài mới chưa? Hoặc bạn có thể chọn bất kỳ bài nào trong danh sách để ôn lại.</div><a class="rc-btn" href="${href(fresh)}">📖 Bắt đầu Bài ${fresh.num}</a>`;
+  } else if(all.length){
+    html = `<div class="rc-txt"><b>🏆 Xuất sắc ${esc(name)}!</b><br>Bạn đã đạt tất cả các bài đã mở. Ôn lại bài cũ để nhớ lâu hơn, hoặc chơi Mini Games nhé!</div><a class="rc-btn" href="#game">🎮 Chơi Mini Games</a>`;
+  }
+  box.innerHTML = html ? `<div class="resume-card">${html}</div>` : '';
 }
 function renderLevels(){
-  renderOverview();
+  renderOverview(); renderResume();
   const q = document.getElementById('searchInput').value;
   const root = document.getElementById('levelsRoot');
   const hint = document.getElementById('searchHint');
@@ -682,7 +719,7 @@ function renderLevels(){
           </div>
           <div class="lesson-title">${ready ? esc(lesson.title) : 'Chưa soạn — sắp ra mắt'}</div>
           ${extra}
-          ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}">📖 Mở bài ôn tập</a>`
+          ${ready ? (canOpen ? `<a class="lesson-open-btn" href="${esc(lessonHref(lesson,tracked))}">${(serverData[lesson.num] && !serverData[lesson.num].passed) ? '▶ Tiếp tục ôn bài' : '📖 Mở bài ôn tập'}</a>`
                              : `<button class="lesson-open-btn" disabled>${unlockWait(lesson) ? '🔒 Mở lúc '+fmtUnlock(unlockWait(lesson)) : (SERVER_MODE && student ? '🔒 Lớp chưa học tới bài này' : '🔒 Chưa mở')}</button>`)
                   : `<button class="lesson-open-btn" disabled>⏳ Sắp có</button>`}`;
         grid.appendChild(div);
