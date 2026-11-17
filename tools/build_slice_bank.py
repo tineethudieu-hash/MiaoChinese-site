@@ -5,7 +5,7 @@ sao cho chỉ MỘT đáp án đúng nếu chỉ đọc chữ Hán (game không 
 Câu không có trong CUR = bị loại (ghi trong tools/slice_report.txt).
 Thêm bài mới: thêm 1 mục vào CUR theo mẫu  số_bài: {chỉ_số_câu: ('sai1','sai2'), ...}  rồi chạy lại script.
 Sửa câu: sửa cặp đáp án sai trong CUR (hoặc sửa FILL_BLANK trong bài) rồi chạy lại. Kiểm tra thiếu dữ liệu: xem slice_report.txt."""
-import re, json, glob, sys
+import re, json, glob, sys, os, random, unicodedata
 S = ('很','太'); 
 CUR = {
 2:{0:('很','太'),1:('吗','男'),2:('吗','爸爸'),3:('吗','男'),4:('很','太')},
@@ -22,6 +22,20 @@ CUR = {
 20:{0:('什么','哪儿'),1:('参加','打算'),2:('打算','快乐'),3:('快乐','号'),4:('快乐','毕业'),5:('毕业','属'),6:('毕业','快乐'),7:('参加','毕业'),8:('毕业','快乐'),9:('属','去'),11:('明年','后年'),12:('过','参加'),13:('正好','毕业'),14:('礼物','蛋糕'),15:('生日','春节')},
 21:{0:('半','差'),1:('半','差'),2:('差','分'),3:('半','每'),4:('刻','半'),5:('刻','差'),6:('起床','睡觉'),7:('准时','以后'),8:('年级','然后'),9:('操场','年级'),10:('上','洗'),11:('带','洗澡'),12:('以前','每'),13:('以前','然后'),14:('刻','年级'),15:('教室','操场')},
 }
+GRAM={'吗','很','太','不','没有','的','给','在','又','点儿','还是','怎么','怎么样','几','什么','哪','哪儿','谁','也','都','先','然后','以前','以后','比较','但是','替','用','坐','当','呢','位','一下儿','有点儿','一点儿','一下','一些','刻','半','差','每','没','有'}
+def han_len(t): return len(re.findall(r'[\u4e00-\u9fff]',t))
+def ftype(ans,before,after):
+    if ans in GRAM: return 'nguphap'
+    if han_len(before+ans+after)<=6: return 'ghepcum'
+    return 'dienkhuyet'
+dec=json.JSONDecoder()
+def getc(s,name):
+    m=re.search(r'const '+name+r'\s*=\s*',s)
+    if not m: return None
+    try: return dec.raw_decode(s[m.end():])[0]
+    except Exception: return None
+def toneless(p):
+    return ''.join(c for c in unicodedata.normalize('NFD',p) if unicodedata.category(c)!='Mn').replace(' ','').lower()
 def level_of(n): return 1 if n<=15 else 2
 bank=[]; rep=[]
 files=sorted(glob.glob('lessons/bai*.html'),key=lambda f:int(re.findall(r'\d+',f)[0]))
@@ -30,7 +44,7 @@ for f in files:
     m=re.search(r'const FILL_BLANK\s*=\s*(\[.*?\n?\]);',s,re.S)
     fb=json.loads(m.group(1)) if m else []
     cur=CUR.get(n,{}); kept=0
-    if not fb: rep.append(f'Bài {n}: CHƯA có dữ liệu điền khuyết → không có trong game'); continue
+    if not fb: rep.append(f'Bài {n}: chưa có dữ liệu điền khuyết')
     for i,x in enumerate(fb):
         o=x['options']; ans=o[x['a']]; tag=f'b{n}-q{i+1:02d}'
         if i not in cur:
@@ -38,10 +52,43 @@ for f in files:
         d=list(cur[i])
         ok = len(d)==2 and d[0]!=d[1] and ans not in d and all(re.search(re.escape(w),s) for w in d)
         if not ok: rep.append(f'{tag} LỖI dữ liệu đáp án sai {d}'); sys.exit('bad '+tag)
-        bank.append({'id':tag,'lesson':n,'level':level_of(n),'type':'dienkhuyet','prompt':x['before']+'____'+x['after'],
-          'correctAnswer':ans,'distractors':d,'completedText':x['before']+ans+x['after'],'source':f'lessons/bai{n}.html FILL_BLANK #{i+1}'})
+        bank.append({'id':tag,'lesson':n,'level':level_of(n),'type':ftype(ans,x['before'],x['after']),'prompt':x['before']+'____'+x['after'],
+          'correctAnswer':ans,'distractors':d,'completedText':x['before']+ans+x['after'],'optLang':'han','source':f'lessons/bai{n}.html FILL_BLANK #{i+1}'})
         kept+=1
-    rep.append(f'Bài {n}: {kept}/{len(fb)} câu dùng được')
+    if fb: rep.append(f'Bài {n}: {kept}/{len(fb)} câu điền khuyết/ngữ pháp/cụm từ dùng được')
+    # ----- các dạng theo từ vựng / câu dịch -----
+    W=getc(s,'WORDS') or []; T=getc(s,'TRANSLATE_SELFCHECK') or []
+    rnd=random.Random(1000+n)
+    vis=[w['vi'].strip().lower() for w in W]
+    cnt={}
+    def add(q): bank.append(q); cnt[q['type']]=cnt.get(q['type'],0)+1
+    for i,w in enumerate(W):
+        vl=w['vi'].strip().lower()
+        if vis.count(vl)>1: rep.append(f'b{n}-w{i+1:02d} LOẠI các dạng từ vựng: nghĩa "{w["vi"]}" trùng với từ khác'); continue
+        others=[o for o in W if o['cn']!=w['cn'] and o['vi'].strip().lower()!=vl]
+        # nghĩa: khác nghĩa, không chứa nhau
+        c1=[o for o in others if vl not in o['vi'].lower() and o['vi'].lower() not in vl and vis.count(o['vi'].strip().lower())==1]
+        if len(c1)>=2:
+            d=rnd.sample(c1,2)
+            add({'id':f'b{n}-w{i+1:02d}-m','lesson':n,'level':level_of(n),'type':'chonnghia','prompt':w['cn'],'correctAnswer':w['vi'],'distractors':[x['vi'] for x in d],'optLang':'vi','completedText':w['cn']+' = '+w['vi'],'source':f'lessons/bai{n}.html WORDS #{i+1}'})
+        # đáp án chữ Hán: khác nghĩa, không chung chữ, phiên âm không dấu khác
+        c2=[o for o in others if not set(o['cn'])&set(w['cn']) and toneless(o['py'])!=toneless(w['py']) and vis.count(o['vi'].strip().lower())==1 and o['cn'] not in w['cn'] and w['cn'] not in o['cn']]
+        if len(c2)>=2:
+            d=rnd.sample(c2,2); full=w['cn']+' ('+w['py']+') = '+w['vi']
+            if w.get('img') and os.path.exists(os.path.normpath(os.path.join('lessons',w['img']))):
+                add({'id':f'b{n}-w{i+1:02d}-h','lesson':n,'level':level_of(n),'type':'hinh','img':w['img'],'prompt':'','correctAnswer':w['cn'],'distractors':[x['cn'] for x in d],'optLang':'han','completedText':full,'source':f'lessons/bai{n}.html WORDS #{i+1}'})
+            add({'id':f'b{n}-w{i+1:02d}-n','lesson':n,'level':level_of(n),'type':'nghe','audio':w['cn'],'prompt':'','correctAnswer':w['cn'],'distractors':[x['cn'] for x in d],'optLang':'han','completedText':full,'source':f'lessons/bai{n}.html WORDS #{i+1}'})
+    sents=[t for t in T if re.search('[。！？]',t['cn'])]
+    if len(sents)>=3:
+        for i,t in enumerate(sents):
+            al=t.get('alt') or []; al=[a['cn'] if isinstance(a,dict) else a for a in (al if isinstance(al,list) else [al])]
+            forb={t['cn']}|set(al)|{re.sub('[。！？]','',t['cn'])}
+            c=[o for o in sents if o['cn'] not in forb and o['vi'].strip().lower()!=t['vi'].strip().lower()]
+            if len(c)<2: continue
+            d=rnd.sample(c,2)
+            add({'id':f'b{n}-s{i+1:02d}','lesson':n,'level':level_of(n),'type':'chondungcau','prompt':t['vi'],'correctAnswer':t['cn'],'distractors':[x['cn'] for x in d],'optLang':'han','completedText':t['cn']+' = '+t['vi'],'source':f'lessons/bai{n}.html TRANSLATE_SELFCHECK #{i+1}'})
+    else: rep.append(f'Bài {n}: dưới 3 câu dịch → không có dạng "Chọn câu đúng"')
+    rep.append(f'Bài {n}: thêm '+', '.join(f'{k}={v}' for k,v in sorted(cnt.items())))
 open('games/slice-bank.js','w',encoding='utf-8').write('/* MIAO SLICE – ngân hàng câu hỏi (tạo bởi tools/build_slice_bank.py, đừng sửa tay) */\nwindow.SLICE_BANK = '+json.dumps(bank,ensure_ascii=False,indent=0)+';\n')
 open('tools/slice_report.txt','w',encoding='utf-8').write('\n'.join(rep)+'\n')
 print('\n'.join(r for r in rep if r.startswith('Bài')), len(bank))
