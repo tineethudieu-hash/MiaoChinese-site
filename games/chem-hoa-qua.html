@@ -58,17 +58,19 @@ button{font-family:inherit;cursor:pointer}
 .bar{height:6px;background:rgba(255,255,255,.15);margin:0 12px;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
 .inputst{font-size:.78rem;opacity:.85;padding:3px 14px 0;min-height:20px}
 .qrow{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:8px 12px}
-.qbox,.ans{background:#FFF8E8;color:#111;border-radius:20px;border:5px solid #FFF8E8;display:flex;align-items:center;justify-content:center;min-height:150px;font-family:var(--font-han);font-weight:700;text-align:center;line-height:1.25}
-.qbox{font-size:clamp(2.6rem,7.4vw,5.2rem);padding:6px 16px;border-color:var(--gold)}
+.qbox,.ans{background:#FFF8E8;color:#111;border-radius:20px;border:5px solid #FFF8E8;display:flex;align-items:center;justify-content:center;min-height:190px;font-family:var(--font-han);font-weight:700;text-align:center;line-height:1.25}
+.qbox{font-size:clamp(3.4rem,9.2vw,6.6rem);padding:6px 16px;border-color:var(--gold)}
 .qbox .blank{display:inline-block;min-width:2.4em;border-bottom:7px solid #111;margin:0 2px;color:transparent}
 .qbox mark{background:#CFF3D3;color:#0B5A1E;border-radius:6px;padding:0 4px}
-.ans{flex-direction:column;gap:2px;font-size:clamp(3rem,7vw,5.2rem);padding:6px 6px;word-break:keep-all}.ans svg{width:clamp(44px,6vw,72px);height:clamp(44px,6vw,72px);flex:none}
-.ans.c3{font-size:clamp(2.4rem,5.4vw,4rem)}.ans.c4{font-size:clamp(1.9rem,4.2vw,3.2rem)}.ans.c5{font-size:clamp(1.5rem,3.3vw,2.5rem)}
+.ans{flex-direction:column;gap:2px;font-size:clamp(3.8rem,8.6vw,6.6rem);padding:6px 6px;word-break:keep-all}.ans svg{width:clamp(44px,5.5vw,66px);height:clamp(44px,5.5vw,66px);flex:none}
+.ans.c3{font-size:clamp(3rem,6.8vw,5.1rem)}.ans.c4{font-size:clamp(2.4rem,5.3vw,4rem)}.ans.c5{font-size:clamp(1.9rem,4.2vw,3.1rem)}
 .ans.vi{font-family:var(--font-body);font-size:clamp(1.5rem,3.6vw,2.7rem);font-weight:800}
-.ans.long{font-size:clamp(1.3rem,3vw,2.3rem);line-height:1.3}
+.ans.long{font-size:clamp(1.7rem,3.8vw,2.9rem);line-height:1.3}
 .qbox.vi{font-family:var(--font-body);font-size:clamp(2rem,5vw,3.8rem)}
-.qbox img{max-height:min(300px,34vh);max-width:100%;border-radius:10px;background:#fff;display:block}
+.qbox img{max-height:min(390px,42vh);max-width:100%;border-radius:10px;background:#fff;display:block}
 .qbox .spk{border:4px solid #111;background:var(--gold);border-radius:999px;padding:14px 40px;font-size:2.4rem;font-weight:800;cursor:pointer}
+.qbox.fb{flex-direction:column;gap:4px;font-family:var(--font-han)}.qbox.fb .hz{font-size:clamp(3rem,8vw,5.6rem);line-height:1.15}.qbox.fb .sub{font-family:var(--font-body);font-size:30px;font-weight:800;line-height:1.25}
+.qbox.vi{font-size:30px!important;font-weight:800}.ans.vi{font-size:30px!important}
 .ans.green{border-color:var(--g)}.ans.red{border-color:var(--r)}.ans.yellow{border-color:var(--y)}
 .ans.right{background:#CFF3D3;box-shadow:0 0 0 4px #2FA84F}.ans.bad{background:#FFD6D0;box-shadow:0 0 0 4px #E0402F}
 .arena{position:relative;flex:1;min-height:180px;touch-action:none;cursor:crosshair}
@@ -87,7 +89,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
 @media (max-width:760px){
   body.playing .brandbox{display:none}
   body.playing .top{position:static}
-  .ans{font-size:clamp(1.8rem,8.5vw,3rem);padding:4px;white-space:normal;min-height:120px}.ans.c3{font-size:clamp(1.5rem,7vw,2.4rem)}.ans.c4{font-size:clamp(1.2rem,5.4vw,1.9rem)}.ans.c5{font-size:1.1rem}.ans svg{width:40px;height:40px}.ans.vi,.ans.long{font-size:1.2rem}
+  .ans{font-size:clamp(2.1rem,10vw,3.5rem);padding:4px;white-space:normal;min-height:130px}.ans.c3{font-size:clamp(1.8rem,8.2vw,2.8rem)}.ans.c4{font-size:clamp(1.4rem,6.2vw,2.2rem)}.ans.c5{font-size:1.25rem}.qbox.fb .hz{font-size:clamp(2.4rem,10vw,3.6rem)}.ans svg{width:40px;height:40px}.ans.long{font-size:1.2rem}
   .qrow{grid-template-columns:repeat(3,1fr)}.qbox{grid-column:1/-1;min-height:100px;font-size:clamp(2.2rem,9vw,3.4rem)}
   .hero{grid-template-columns:1fr}.camprev{width:84px}
 }
@@ -445,6 +447,7 @@ function showQuestionUI(i,preview){
   $('hTime').textContent=(G.limit/1000).toFixed(1)+'s';$('hTime').className='it time';
   $('hStreak').textContent='';
 }
+function fbHtml(t){var m=/^(.*?)( \(.*| = .*)$/.exec(t);return m?'<span class="hz">'+esc(m[1])+'</span><span class="sub">'+esc(m[2].replace(/^ = /,''))+'</span>':'<span class="hz">'+esc(t)+'</span>'}
 function remainMs(now){return state==='playing'?Math.max(0,G.limit-(now-qStart)):G.frozen}
 
 /* ---------- chọn đáp án ---------- */
@@ -473,8 +476,8 @@ function finishQuestion(status,chosenText,chosenColor){
   $('hBar').style.width=((G.idx+1)/G.pool.length*100)+'%';
   stopSpeak();
   if(q.prompt&&q.prompt.indexOf('____')>=0&&q.type!=='chonnghia'){var sp=q.prompt.split('____');$('qBox').innerHTML=esc(sp[0])+'<mark>'+esc(q.correctAnswer)+'</mark>'+esc(sp[1]||'')}
-  else $('qBox').innerHTML='<span>'+esc(q.completedText)+'</span>';
-  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' vi');
+  else $('qBox').innerHTML=fbHtml(q.completedText);
+  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb');
   G.boxes.forEach(function(b,k){var el=$('a'+k);if(b.isCorrect)el.classList.add('right');else if(b.color===chosenColor)el.classList.add('bad')});
   $('hStreak').textContent=G.streak>=3?'🔥 Liên tiếp ×'+G.streak:'';
   $('hTime').className='it time';
