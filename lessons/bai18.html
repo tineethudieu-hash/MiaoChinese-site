@@ -1079,16 +1079,29 @@ function sbResetOne(itemIdx){
   item.done = false;
   renderSentenceBuilder();
 }
+/* Trạng ngữ thời gian đứng trước hoặc sau chủ ngữ đều đúng: 我明天去学校 = 明天我去学校 */
+const TV_SUBJ='(?:我们|你们|他们|她们|咱们|王老师|林老师|我|你|您|他|她|它|老师|妈妈|爸爸|哥哥|姐姐|弟弟|妹妹|朋友|同学|学生|同屋|玛丽|麦克|张东|田芳|爱德华|山本)';
+const TV_N='[一二两三四五六七八九十零〇\\d]';
+const TV_TP='(?:今天|明天|昨天|前天|后天|大前天|每天|现在|今晚|明晚|昨晚|早上|上午|中午|下午|晚上|星期[一二三四五六日天]|周末|今年|明年|去年|前年|后年|每年|每月|每周|差(?:一刻|'+TV_N+'+分)'+TV_N+'+点|'+TV_N+'+点(?:钟)?(?:半|一刻|三刻|'+TV_N+'+分|整)?|(?:'+TV_N+'+年)?(?:'+TV_N+'+月)?'+TV_N+'+(?:号|日))+';
+function tvExpand(s){
+  const out=new Set([s]);
+  let m=s.match(new RegExp('^('+TV_SUBJ+')('+TV_TP+')(?!的)(.+)$'));
+  if(m) out.add(m[2]+m[1]+m[3]);
+  m=s.match(new RegExp('^('+TV_TP+')('+TV_SUBJ+')(?!的)(.+)$'));
+  if(m) out.add(m[2]+m[1]+m[3]);
+  return Array.from(out);
+}
 function sbCheck(itemIdx){
   const item = sbState[itemIdx];
   const built = item.order.map(wi=>item.words.find(w=>w.wi===wi).w).join('');
   const target = item.answer.replace(/[。！？]+$/,'');
-  item.done = (built === target);
+  item._alt = (built !== target) && tvExpand(target).includes(built);
+  item.done = (built === target) || item._alt;
   renderSentenceBuilder();
   const fb = document.getElementById('sb-feedback-'+itemIdx);
   if(fb){
     fb.className = 'sb-feedback ' + (item.done ? 'ok' : 'no');
-    fb.textContent = item.done ? '✅ Chính xác!' : '❌ Chưa đúng, thử sắp xếp lại nhé.';
+    fb.textContent = item.done ? '✅ Chính xác!'+(item._alt?' (Trạng ngữ thời gian đứng trước hoặc sau chủ ngữ đều đúng 👍)':'') : '❌ Chưa đúng, thử sắp xếp lại nhé.';
   }
 }
 function sbReveal(itemIdx){
@@ -1156,7 +1169,9 @@ function trCheck(i){
   const t=TRANSLATE_SELFCHECK[i], inp=document.getElementById('trIn'+i), fb=document.getElementById('trFb'+i);
   const s=trNorm(inp.value);
   if(!s){ fb.innerHTML='<span style="color:#b45309;">Hãy gõ câu tiếng Trung trước nhé ✍️</span>'; inp.focus(); return; }
-  const vars=trVariants(t.cn);
+  const orig=trVariants(t.cn);
+  const vars=Array.from(new Set(orig.flatMap(tvExpand)));
+  const timeAlt=!orig.includes(s)&&vars.includes(s);
   const altHit=(t.alt||[]).find(a=>trVariants(a.cn).includes(s));
   if(altHit && !vars.includes(s)){
     inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
@@ -1167,7 +1182,7 @@ function trCheck(i){
   }
   if(vars.includes(s)){
     inp.style.borderColor='#16a34a'; inp.style.background='#f0fdf4';
-    fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+trAnswerHTML(i);
+    fb.innerHTML='<b style="color:#15803d;">🎉 Chính xác! Gõ đúng rồi.</b>'+(timeAlt?'<div style="margin:6px 0;padding:8px 12px;background:#fffbeb;border-left:4px solid #d4a017;border-radius:8px;font-size:.95rem;">💡 Trạng ngữ chỉ thời gian đứng trước hoặc sau chủ ngữ đều đúng.</div>':'')+trAnswerHTML(i);
     return;
   }
   let best=null;
