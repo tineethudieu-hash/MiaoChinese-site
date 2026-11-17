@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/brand.css">
 <style>
+#ytBox{position:absolute;left:-400px;bottom:8px;width:200px;height:113px;z-index:15;border-radius:10px;overflow:hidden;pointer-events:none;border:2px solid rgba(255,255,255,.5);background:#000}#ytBox.show{left:8px}#ytBox iframe{width:100%;height:100%}
 :root{--ink:#111;--cream:#FFF8E8;--gold:#F4C542;--gold-dark:#7A5A06;--line:#E6D9AE;--L:#2F6FDE;--R:#E8782A;--navy:#0B1530;--navy2:#16295A}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%}
@@ -118,6 +119,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
 <!-- ===== CHƠI ===== -->
 <div id="scrPlay" class="hide">
  <div class="stage" id="stage">
+  <div id="ytBox"><div id="ytP"></div></div>
   <div class="hud">
     <span class="it" id="hQ">Câu 1/10</span><span class="it" id="hScore">⭐ 0</span><span class="it time" id="hTime">15.0s</span>
     <div class="ctl">
@@ -308,7 +310,7 @@ function stopSpeak(){try{speechSynthesis.cancel()}catch(e){}}
 
 
 /* ----- nhạc nền tạo bằng Web Audio (không dùng file ngoài), theo nút 🔊 ----- */
-var Music={timer:0,next:0,step:0,on:false,gain:null};
+var Music={want:false,timer:0,next:0,step:0,on:false,gain:null};
 var MEL=[0,2,4,7,9,7,4,2, 4,7,9,12,9,7,4,7, 9,12,9,7,4,2,0,2, 4,2,0,-3,0,2,4,0];
 var BASS=[-12,-12,-5,-5,-7,-7,-5,-5];
 function mHz(semi,base){return (base||261.63)*Math.pow(2,semi/12)}
@@ -323,12 +325,49 @@ function musicTick(){
     Music.next+=beat;Music.step++;
   }
 }
-function musicStart(){
+function synthStart(){
   if(Music.on||!cfg.sound)return;var a=audio();if(!a)return;
   if(!Music.gain){Music.gain=a.createGain();Music.gain.gain.value=.07;Music.gain.connect(a.destination)}
   Music.on=true;Music.next=a.currentTime+.05;Music.step=0;musicTick();Music.timer=setInterval(musicTick,120);
 }
-function musicStop(){Music.on=false;if(Music.timer){clearInterval(Music.timer);Music.timer=0}}
+function synthStop(){Music.on=false;if(Music.timer){clearInterval(Music.timer);Music.timer=0}}
+/* ----- nhạc từ playlist YouTube của cô (phát ngẫu nhiên); lỗi/mất mạng thì dùng nhạc tạo sẵn ----- */
+var YT_LIST='PLA1zU9iJOX_B-4_l_YibyPR0QUMkEQx4N';
+var YTm={p:null,ready:false,failed:false,loading:false,started:false,errs:0};
+function ytFail(){YTm.failed=true;var b=$('ytBox');if(b)b.classList.remove('show');if(Music.want){synthStart()}}
+function ytInit(){
+  if(YTm.loading||YTm.failed||YTm.p||!cfg.sound)return;YTm.loading=true;
+  var tm=setTimeout(function(){if(!YTm.ready)ytFail()},12000);
+  window.onYouTubeIframeAPIReady=function(){
+    try{YTm.p=new YT.Player('ytP',{width:200,height:113,playerVars:{playsinline:1,controls:0,disablekb:1,rel:0,modestbranding:1},events:{
+      onReady:function(){clearTimeout(tm);YTm.ready=true;if(Music.want){synthStop();ytPlay()}},
+      onError:function(){YTm.errs++;if(YTm.errs>6){ytFail();return}try{YTm.p.nextVideo()}catch(e){ytFail()}}}})}catch(e){ytFail()}
+  };
+  var s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';s.onerror=function(){ytFail()};document.head.appendChild(s);
+}
+function ytPlay(){
+  if(!YTm.ready||YTm.failed||!YTm.p)return false;
+  try{
+    YTm.p.setVolume(40);
+    if(!YTm.started){YTm.started=true;YTm.p.loadPlaylist({listType:'playlist',list:YT_LIST,index:Math.floor(Math.random()*6)});YTm.p.setShuffle(true);YTm.p.setLoop(true)}
+    else YTm.p.playVideo();
+    $('ytBox').classList.add('show');return true;
+  }catch(e){return false}
+}
+function musicStart(){
+  if(!cfg.sound)return;Music.want=true;
+  if(YTm.failed){synthStart();return}
+  ytInit();
+  if(!ytPlay())synthStart();   /* chưa sẵn sàng: phát nhạc tạo sẵn tạm, YouTube sẵn sàng sẽ thay thế */
+  else synthStop();
+}
+function musicStop(){
+  Music.want=false;synthStop();
+  try{if(YTm.p&&YTm.ready)YTm.p.pauseVideo()}catch(e){}
+  var b=$('ytBox');if(b)b.classList.remove('show');
+}
+document.addEventListener('pointerdown',function(){ytInit()},{once:true});
+
 
 /* ----- camera + nhận diện nghiêng đầu ----- */
 var Cam={on:false,loading:false,stream:null,lm:null,gen:0,msg:'',calibrated:false,lastT:0,lastVT:-1};
@@ -638,7 +677,7 @@ function toSetup(){
   document.body.classList.remove('playing');G=null;showScreen('setup');renderSetup();window.scrollTo(0,0);if(Cam.on)ensureLoop();
 }
 renderGate();verify();
-window.__tiltDbg=function(){return {music:Music.on,state:state,auth:auth,G:G,Head:{zone:Head.zone,holdMs:Head.holdMs,armed:Head.armed,haveFace:Head.haveFace,faces:Head.faces,base:Head.base},cam:{on:Cam.on,calibrated:Cam.calibrated},cfg:cfg}};
+window.__tiltDbg=function(){return {music:Music.want,state:state,auth:auth,G:G,Head:{zone:Head.zone,holdMs:Head.holdMs,armed:Head.armed,haveFace:Head.haveFace,faces:Head.faces,base:Head.base},cam:{on:Cam.on,calibrated:Cam.calibrated},cfg:cfg}};
 /* hàm kiểm thử logic (không cần camera) */
 window.__tiltTest={roll:rollFromLandmarks,feed:function(now,n,lm,vw,vh){Cam.on=true;processFace(now,n,lm,vw,vh)},setCam:function(on,cal){Cam.on=on;Cam.calibrated=cal;if(cal)Head.base=0}};
 })();
