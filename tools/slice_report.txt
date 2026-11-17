@@ -1,0 +1,45 @@
+Bài 1: CHƯA có dữ liệu điền khuyết → không có trong game
+b2-q06 LOẠI: [他]忙吗？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b2-q07 LOẠI: [她]很好。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b2-q08 LOẠI: 我[妹妹]很忙。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b2-q09 LOẠI: 你[弟弟]忙吗？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b2-q10 LOẠI: 汉语太[难]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 2: 5/10 câu dùng được
+b3-q10 LOẠI: 日语很难，[对吗]？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b3-q11 LOẠI: 银行[见]！  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b3-q12 LOẠI: 七读作[qī]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 3: 9/12 câu dùng được
+b4-q03 LOẠI: 我去[那儿]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q05 LOẠI: 星期[五]我学英语。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q10 LOẠI: 星期六我去[天安门]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q11 LOẠI: 我[回]学校。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q12 LOẠI: [昨天]我不学日语。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q15 LOẠI: [再见]！  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b4-q16 LOẠI: 周末读作[zhōumò]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 4: 9/16 câu dùng được
+b5-q02 LOẠI: 王老师[很]忙。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b5-q03 LOẠI: 王老师，[您]好！  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b5-q06 LOẠI: 谢谢！—[不客气]！  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b5-q07 LOẠI: 工作[忙]吗？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b5-q08 LOẠI: 你[身体]好吗？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b5-q10 LOẠI: [不太]忙。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 5: 9/15 câu dùng được
+b9-q04 LOẠI: 姐姐，我要[换钱]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 9: 14/15 câu dùng được
+b10-q04 LOẠI: 你找[谁]？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b10-q10 LOẠI: 我的书[呢]？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b10-q12 LOẠI: 我家在三[楼]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b10-q13 LOẠI: 房间号是[六零幺]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b10-q14 LOẠI: 22 读作[二二]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 10: 9/14 câu dùng được
+b11-q08 LOẠI: 这[位]是王教授。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b11-q11 LOẠI: 我们[都]喜欢中国菜。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b11-q12 LOẠI: 我爸爸妈妈都是[大夫]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 11: 13/16 câu dùng được
+Bài 12: 16/16 câu dùng được
+Bài 17: 15/15 câu dùng được
+Bài 18: 15/15 câu dùng được
+Bài 19: 23/23 câu dùng được
+b20-q11 LOẠI: 我[后年]毕业。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 20: 15/16 câu dùng được
+Bài 21: 16/16 câu dùng được
