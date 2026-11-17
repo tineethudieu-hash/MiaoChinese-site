@@ -189,10 +189,11 @@ function lessonLevel(n){var q=BANK.find(function(x){return x.lesson===n});return
 function lessonCount(n){return BANK.filter(function(q){return q.lesson===n}).length}
 
 /* ---------- quyền truy cập (dùng đúng máy chủ + dữ liệu của trang chính) ---------- */
+var authCache=null;
 var auth={status:'loading',student:null,allowed:0,teacher:false,msg:''};
 function readStudent(){try{var s=JSON.parse(lsGet(STUDENT_KEY)||'null');return s&&s.s&&s.c?s:null}catch(e){return null}}
 function api(params){
-  var ctl=('AbortController' in window)?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},12000);
+  var ctl=('AbortController' in window)?new AbortController():null,tm=setTimeout(function(){ctl&&ctl.abort()},35000);
   return fetch(SCRIPT_URL+'?'+new URLSearchParams(params).toString(),ctl?{signal:ctl.signal}:{}).then(function(r){clearTimeout(tm);return r.json()},function(e){clearTimeout(tm);throw e});
 }
 function lessonAllowed(n){
@@ -206,8 +207,12 @@ function verify(){
   auth.status='loading';auth.msg='';auth.student=null;auth.allowed=0;
   renderGate();
   if(!st){auth.status='login';renderGate();renderSetup();return Promise.resolve(false)}
-  return api({action:'me',student:st.s,cls:st.c}).then(function(res){
-    if(res&&res.ok){auth.student=st;auth.allowed=Number(res.allowed)||0;auth.status='ready'}
+  var t0=Date.now();
+  if(authCache&&authCache.k===st.s+'|'+st.c&&t0-authCache.t<90000){auth.student=st;auth.allowed=authCache.allowed;auth.status='ready';renderGate();renderSetup();return Promise.resolve(true)}
+  /* dùng action=login: cùng nguồn 'allowed' với trang chính nhưng nhẹ hơn nhiều so với 'me' */
+  var tryOnce=function(){return api({action:'login',student:st.s,cls:st.c})};
+  return tryOnce().catch(function(){return tryOnce()}).then(function(res){
+    if(res&&res.ok){auth.student=st;auth.allowed=Number(res.allowed)||0;auth.status='ready';authCache={k:st.s+'|'+st.c,t:Date.now(),allowed:auth.allowed}}
     else if(res&&res.code){auth.status='denied';auth.msg=res.error||'Tài khoản không có quyền truy cập.'}
     else{auth.status='error'}
   },function(){auth.status='error'}).then(function(){
@@ -248,7 +253,7 @@ function mixOrder(items){
 function renderGate(){
   var h='',t='';
   if(auth.teacher) h='<div class="gate"><div class="msg">🔓 Chế độ giáo viên đã xác thực (PIN). Được chọn mọi bài có câu hỏi.</div></div>';
-  else if(auth.status==='loading') h='<div class="gate"><div class="msg">⏳ Đang kiểm tra quyền học của lớp…</div></div>';
+  else if(auth.status==='loading') h='<div class="gate"><div class="msg">⏳ Đang kiểm tra quyền học của lớp… (có thể mất vài giây)</div></div>';
   else if(auth.status==='ready') h='<div class="gate"><div class="msg">👤 <b>'+esc(auth.student.s)+'</b> · Lớp <b>'+esc(auth.student.c)+'</b> · đã mở tới <b>Bài '+auth.allowed+'</b></div><button class="btn alt" id="bRecheck">↻ Kiểm tra lại</button></div>';
   else if(auth.status==='login') h='<div class="gate"><div class="msg">Bạn cần đăng nhập (họ tên + lớp) ở trang chính để chọn bài chơi.</div><a class="btn" href="../index.html">Đăng nhập</a></div>';
   else if(auth.status==='denied') h='<div class="gate"><div class="msg warn">'+esc(auth.msg)+'</div><a class="btn" href="../index.html">Về trang đăng nhập</a></div>';
@@ -311,7 +316,7 @@ $('setupBody').addEventListener('click',function(e){
 $('setupBody').addEventListener('change',function(e){var i=e.target;if(i.dataset&&i.dataset.les){if(i.checked)cfg.lessons[i.dataset.les]=true;else delete cfg.lessons[i.dataset.les];renderSetup()}});
 $('gateCard').addEventListener('click',function(e){
   var b=e.target.closest('button');if(!b)return;
-  if(b.id==='bRetry'||b.id==='bRecheck')verify();
+  if(b.id==='bRetry'||b.id==='bRecheck'){authCache=null;verify()}
   else if(b.id==='bTeacher')$('pinBox').classList.toggle('hide');
   else if(b.id==='bPin')verifyTeacher();
 });
