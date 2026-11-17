@@ -60,6 +60,8 @@ button{font-family:inherit;cursor:pointer}
 .qbox{margin:8px 12px;background:#FFF8E8;color:#111;border:4px solid var(--gold);border-radius:16px;min-height:180px;display:flex;align-items:center;justify-content:center;font-family:var(--font-han);font-weight:700;text-align:center;font-size:clamp(3.4rem,9.4vw,6.6rem);padding:8px 16px;line-height:1.25}
 .qbox.vi{font-family:var(--font-body);font-size:clamp(2rem,5vw,3.8rem)}
 .qbox .blank{display:inline-block;min-width:2.4em;border-bottom:7px solid #111;margin:0 2px;color:transparent}
+.py{display:block;font-family:var(--font-body);font-weight:700;font-size:.42em;line-height:1.25;margin-top:3px;color:#6b5a2e}.ans .py{font-size:.46em;color:#555;font-weight:800}.qbox mark+.py,.qbox .py{white-space:normal}
+.qbox.withpy{flex-direction:column;gap:2px}.qbox .hzp{display:block}.qbox .py{font-size:.62em;margin-top:0}.qbox.withpy{height:clamp(150px,26vh,250px)}@media (max-width:760px){.qbox.withpy{height:clamp(130px,21vh,190px)}}
 .qbox mark{background:#CFF3D3;color:#0B5A1E;border-radius:6px;padding:0 4px}
 .qbox img{max-height:min(340px,37vh);max-width:100%;border-radius:10px;background:#fff}
 .qbox .spk{border:4px solid #111;background:var(--gold);border-radius:999px;padding:14px 40px;font-size:2.4rem;font-weight:800}
@@ -153,6 +155,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
 <video id="camv" playsinline muted style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
 
 <script src="slice-bank.js"></script>
+<script src="pinyin-l1.js"></script>
 <script>
 (function(){
 'use strict';
@@ -217,7 +220,7 @@ function verifyTeacher(){
 }
 
 /* ----- cài đặt ----- */
-var cfg={mode:'home',mix:true,types:{},level:0,lessons:{},count:10,time:15,sound:true,onlyWrong:false,sens:'mid',control:'btn'};
+var cfg={mode:'home',mix:true,types:{},level:0,lessons:{},count:10,time:15,sound:true,onlyWrong:false,pinyin:true,sens:'mid',control:'btn'};
 var urlLesson=(function(){var m=/[?&]lesson=(\d+)/.exec(location.search);return m?Number(m[1]):0})();
 var urlNote='';
 function userBucket(){return auth.student?auth.student.s+'|'+auth.student.c:'__teacher__'}
@@ -264,6 +267,7 @@ function renderSetup(){
     h+='<div class="row"><label>Dạng câu hỏi</label><div class="chips"><button class="chip'+(cfg.mix?' on':'')+'" data-mix="1">🎲 Tổng hợp</button>'+TYPE_ORDER.filter(function(t){return tc[t]}).map(function(t){return '<button class="chip'+(!cfg.mix&&cfg.types[t]?' on':'')+'" data-type="'+t+'">'+TYPES[t]+' ('+tc[t]+')</button>'}).join('')+'</div></div>';
     if(cfg.mode==='home'&&wrongN)h+='<div class="row"><label>Ôn câu từng sai</label><div class="chips"><button class="chip'+(cfg.onlyWrong?' on':'')+'" data-wrong="1">Chỉ những câu đã từng sai ('+wrongN+')</button></div></div>';else cfg.onlyWrong=false;
     h+='<div class="row"><label>Số câu</label><div class="chips">'+[10,15,20,0].map(function(c){return '<button class="chip'+(cfg.count===c?' on':'')+'" data-count="'+c+'">'+(c||'Tất cả')+'</button>'}).join('')+'</div></div>';
+    h+='<div class="row"><label>Pinyin (Level 1)</label><div class="chips"><button class="chip'+(cfg.pinyin?' on':'')+'" data-pyt="1">Pinyin: '+(cfg.pinyin?'Bật':'Tắt')+'</button></div></div>';
     h+='<div class="row"><label>Thời gian mỗi câu</label><div class="chips">'+[10,15,20,30].map(function(c){return '<button class="chip'+(cfg.time===c?' on':'')+'" data-time="'+c+'">'+c+' giây</button>'}).join('')+'</div></div>';
     h+='<div class="row"><label>Âm thanh</label><div class="chips"><button class="chip'+(cfg.sound?' on':'')+'" data-snd="1">🔊 Âm thanh: '+(cfg.sound?'Bật':'Tắt')+'</button></div></div>';
     /* camera */
@@ -291,6 +295,7 @@ $('setupBody').addEventListener('click',function(e){
   else if(b.dataset.count!==undefined)cfg.count=Number(b.dataset.count);
   else if(b.dataset.time!==undefined)cfg.time=Number(b.dataset.time);
   else if(b.dataset.snd)cfg.sound=!cfg.sound;
+  else if(b.dataset.pyt)cfg.pinyin=!cfg.pinyin;
   else if(b.dataset.wrong)cfg.onlyWrong=!cfg.onlyWrong;
   else if(b.dataset.mix){cfg.mix=true;cfg.types={}}
   else if(b.dataset.type){cfg.mix=false;cfg.types[b.dataset.type]=!cfg.types[b.dataset.type];if(!Object.keys(cfg.types).some(function(k){return cfg.types[k]}))cfg.mix=true}
@@ -553,13 +558,21 @@ function showQuestionUI(i,preview){
   var q=G.q&&!preview?G.q:null,qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'')+(q&&q.type==='hinh'?' pic':'');
   if(!q)qb.innerHTML='…';else if(q.type==='hinh')qb.innerHTML='<img src="'+esc(q.img)+'" alt="hình">';
   else if(q.type==='nghe')qb.innerHTML='<button class="spk" id="bSpk" type="button">🔊 Nghe lại</button>';
-  else qb.innerHTML=esc(q.prompt).replace('____','<span class="blank">____</span>');
+  else qb.innerHTML='<span class="hzp">'+esc(q.prompt).replace('____','<span class="blank">____</span>')+'</span>'+(pyOn(q)&&q.type!=='chondungcau'&&pyPrompt(q)?'<span class="py">'+esc(pyPrompt(q))+'</span>':'');
+  if(qb.querySelector('.py'))qb.classList.add('withpy');
   var ml=q?Math.max(G.opts.L.text.length,G.opts.R.text.length):1,long=ml>8,vi=q&&q.optLang==='vi';var cl=ml>=6?' c6':ml===5?' c5':ml===4?' c4':ml===3?' c3':'';
-  ['L','R'].forEach(function(s){var e=$('a'+s);e.className='ans '+s+(vi?' vi':'')+(long?' long':'')+(!vi&&!long?cl:'');$('t'+s).textContent=q?G.opts[s].text:'';$('h'+s).style.width='0'});
+  ['L','R'].forEach(function(s){var e=$('a'+s);e.className='ans '+s+(vi?' vi':'')+(long?' long':'')+(!vi&&!long?cl:'');$('t'+s).innerHTML=q?optHtml(q,G.opts[s].text):'';$('h'+s).style.width='0'});
   if(q&&q.type==='nghe'){$('bSpk').onclick=function(e){e.stopPropagation();speak(q.audio)};speak(q.audio)}
   $('hTime').textContent=(G.limit/1000).toFixed(1)+'s';$('hTime').className='it time';$('hStreak').textContent='';fitAll();
 }
-function fbHtml(t){var m=/^(.*?)( \(.*| = .*)$/.exec(t);return m?'<span class="hz">'+esc(m[1])+'</span><span class="sub">'+esc(m[2].replace(/^ = /,''))+'</span>':'<span class="hz">'+esc(t)+'</span>'}
+/* ----- pinyin cho Level 1 (bảng tạo sẵn từ bài học, tools/build_pinyin.py) ----- */
+var PYT=window.PINYIN_L1||{};
+function pyOn(q){return !!(cfg.pinyin&&q&&q.level===1)}
+function pyOf(t){return PYT[t]||''}
+function pyPrompt(q){var p=q.prompt||'';if(p.indexOf('____')<0)return pyOf(p);var sp=p.split('____');return (pyOf(sp[0])+' ____ '+pyOf(sp[1]||'')).replace(/\s+/g,' ').trim()}
+function hanHead(t){var m=/^[\u4e00-\u9fff，。？！、：；—“”…\s]+/.exec(t);return m?m[0].trim():''}
+function optHtml(q,text){var h=esc(text);if(pyOn(q)&&q.optLang!=='vi'){var p=pyOf(text);if(p)h+='<small class="py">'+esc(p)+'</small>'}return h}
+function fbHtml(t,q){var m=/^(.*?)( \(.*| = .*)$/.exec(t);var pyl=(!m||m[2].charAt(1)!=='(')&&pyOn(q)?pyOf(hanHead(m?m[1]:t)):'';var pys=pyl?'<span class="sub">'+esc(pyl)+'</span>':'';return m?'<span class="hz">'+esc(m[1])+'</span>'+pys+'<span class="sub">'+esc(m[2].replace(/^ = /,''))+'</span>':'<span class="hz">'+esc(t)+'</span>'+pys}
 
 /* ----- tự co chữ vừa khung ----- */
 function fitEl(el,start,min){el.style.fontSize=start+'px';var s=start;while(s>min&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)){s-=2;el.style.fontSize=s+'px'}}
@@ -568,7 +581,7 @@ function fitAll(){
   if(qb){
     var hz=qb.querySelector('.hz');
     if(hz){var sub=qb.querySelector('.sub');var s=Math.min(72,w*.07+12);hz.style.fontSize=s+'px';while(s>22&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){s-=2;hz.style.fontSize=s+'px'}
-      var ss=30;if(sub){sub.style.fontSize=ss+'px';while(ss>14&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){ss-=2;sub.style.fontSize=ss+'px'}}}
+      var subs=qb.querySelectorAll('.sub'),ss=30;function setSubs(v){Array.prototype.forEach.call(subs,function(e){e.style.fontSize=v+'px'})}if(subs.length){setSubs(ss);while(ss>14&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){ss-=2;setSubs(ss)}}}
     else if(!qb.querySelector('img')&&!qb.querySelector('button')){fitEl(qb,qb.classList.contains('vi')?30:Math.min(72,w*.07+12),qb.classList.contains('vi')?16:22)}
   }
   Array.prototype.forEach.call(document.querySelectorAll('.ans'),function(a){
@@ -592,9 +605,9 @@ function finishQuestion(status,chosenText,side){
   G.log.push({id:q.id,lesson:q.lesson,type:q.type,prompt:q.type==='hinh'?'🖼️ (hình) → '+q.correctAnswer:q.type==='nghe'?'🔊 (nghe)':q.prompt,chosen:chosenText,correct:q.correctAnswer,full:q.completedText,status:status});
   state='feedback';fbEnd=performance.now()+FEEDBACK_MS;Head.armed=false;$('hL').style.width='0';$('hR').style.width='0';
   $('hScore').textContent='⭐ '+G.score;$('hBar').style.width=((G.idx+1)/G.pool.length*100)+'%';
-  if(q.prompt&&q.prompt.indexOf('____')>=0&&q.type!=='chonnghia'){var sp=q.prompt.split('____');$('qBox').innerHTML=esc(sp[0])+'<mark>'+esc(q.correctAnswer)+'</mark>'+esc(sp[1]||'')}
-  else $('qBox').innerHTML=fbHtml(q.completedText);
-  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb')+(q.type==='hinh'?' pic':'');fitAll();
+  if(q.prompt&&q.prompt.indexOf('____')>=0&&q.type!=='chonnghia'){var sp=q.prompt.split('____');$('qBox').innerHTML='<span class="hzp">'+esc(sp[0])+'<mark>'+esc(q.correctAnswer)+'</mark>'+esc(sp[1]||'')+'</span>'+(pyOn(q)&&pyOf(hanHead(q.completedText))?'<span class="py">'+esc(pyOf(hanHead(q.completedText)))+'</span>':'')}
+  else $('qBox').innerHTML=fbHtml(q.completedText,q);
+  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb')+(q.type==='hinh'?' pic':'');if($('qBox').querySelector('.py'))$('qBox').classList.add('withpy');fitAll();
   ['L','R'].forEach(function(s){var e=$('a'+s);if(G.opts[s].isCorrect)e.classList.add('right');else if(s===side)e.classList.add('bad')});
   $('hStreak').textContent=G.streak>=3?'🔥 Liên tiếp ×'+G.streak:'';$('hTime').className='it time';
 }
