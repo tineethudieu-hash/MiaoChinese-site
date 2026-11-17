@@ -71,7 +71,7 @@ button{font-family:inherit;cursor:pointer}
 .qbox img{max-height:min(390px,42vh);max-width:100%;border-radius:10px;background:#fff;display:block}
 .qbox .spk{border:4px solid #111;background:var(--gold);border-radius:999px;padding:14px 40px;font-size:2.4rem;font-weight:800;cursor:pointer}
 .qbox.fb{flex-direction:column;gap:4px;font-family:var(--font-han)}.qbox.fb .hz{font-size:clamp(3rem,8vw,5.6rem);line-height:1.15}.qbox.fb .sub{font-family:var(--font-body);font-size:30px;font-weight:800;line-height:1.25}
-.qbox.vi{font-size:30px!important;font-weight:800}.ans.vi{font-size:30px!important}
+.qbox.vi{font-weight:800}
 .ans.green{border-color:var(--g)}.ans.red{border-color:var(--r)}.ans.yellow{border-color:var(--y)}
 .ans.right{background:#CFF3D3;box-shadow:0 0 0 4px #2FA84F}.ans.bad{background:#FFD6D0;box-shadow:0 0 0 4px #E0402F}
 .arena{position:relative;flex:1;min-height:180px;touch-action:none;cursor:crosshair}
@@ -94,6 +94,15 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
   .qrow{grid-template-columns:repeat(3,1fr)}.qbox{grid-column:1/-1;min-height:100px;font-size:clamp(2.2rem,9vw,3.4rem)}
   .hero{grid-template-columns:1fr}.camprev{width:84px}
 }
+/* tự co chữ cho vừa khung (JS fitAll) */
+.qbox{height:clamp(110px,20vh,190px);min-height:0!important;overflow:hidden}
+.qbox.pic{height:clamp(190px,34vh,400px)}
+.qbox img{height:100%;max-height:100%!important;width:auto;object-fit:contain}
+.ans{min-height:0!important;overflow:hidden}
+.ans{height:clamp(120px,20vh,190px)}
+@media (max-width:760px){.ans.long{height:clamp(140px,22vh,190px)}.qbox{height:clamp(100px,17vh,160px)}.qbox.pic{height:clamp(170px,28vh,300px)}.ans{height:clamp(110px,16vh,150px)}}
+.qbox.fb{height:clamp(150px,27vh,260px)}.qbox.fb.pic{height:clamp(190px,34vh,400px)}
+.ans.long,.ans.vi{word-break:normal!important;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -475,7 +484,7 @@ function showQuestionUI(i,preview){
   $('hScore').textContent='⭐ '+G.score;
   $('hBar').style.width=(i/G.pool.length*100)+'%';
   var q=G.q&&!preview?G.q:null;
-  var qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'')+(q&&q.type==='chonnghia'?'':'');
+  var qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'')+(q&&q.type==='hinh'?' pic':'');
   if(!q)qb.innerHTML='…';
   else if(q.type==='hinh')qb.innerHTML='<img src="'+esc(q.img)+'" alt="hình">';
   else if(q.type==='nghe')qb.innerHTML='<button class="spk" id="bSpk" type="button">🔊 Nghe lại</button>';
@@ -484,9 +493,27 @@ function showQuestionUI(i,preview){
   for(var k=0;k<3;k++){var b=$('a'+k);b.className='ans '+COLORS[k]+(q&&q.optLang==='vi'?' vi':'')+(long?' long':'')+(q&&q.optLang!=='vi'?cl:'');b.lastElementChild.textContent=q?G.boxes[k].text:''}
   if(q&&q.type==='nghe'){$('bSpk').onclick=function(e){e.stopPropagation();speak(q.audio)};speak(q.audio)}
   $('hTime').textContent=(G.limit/1000).toFixed(1)+'s';$('hTime').className='it time';
-  $('hStreak').textContent='';
+  $('hStreak').textContent='';fitAll();
 }
 function fbHtml(t){var m=/^(.*?)( \(.*| = .*)$/.exec(t);return m?'<span class="hz">'+esc(m[1])+'</span><span class="sub">'+esc(m[2].replace(/^ = /,''))+'</span>':'<span class="hz">'+esc(t)+'</span>'}
+
+/* ----- tự co chữ vừa khung ----- */
+function fitEl(el,start,min){el.style.fontSize=start+'px';var s=start;while(s>min&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)){s-=2;el.style.fontSize=s+'px'}}
+function fitAll(){
+  var w=window.innerWidth,qb=$('qBox');
+  if(qb){
+    var hz=qb.querySelector('.hz');
+    if(hz){var sub=qb.querySelector('.sub');var s=Math.min(72,w*.07+12);hz.style.fontSize=s+'px';while(s>22&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){s-=2;hz.style.fontSize=s+'px'}
+      var ss=30;if(sub){sub.style.fontSize=ss+'px';while(ss>14&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){ss-=2;sub.style.fontSize=ss+'px'}}}
+    else if(!qb.querySelector('img')&&!qb.querySelector('button')){fitEl(qb,qb.classList.contains('vi')?30:Math.min(72,w*.07+12),qb.classList.contains('vi')?16:22)}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.ans'),function(a){
+    var vi=a.classList.contains('vi');var lg=a.classList.contains('long');fitEl(a,vi?30:lg?Math.min(30,w*.03+8):ansMax(w),vi?14:lg?9:11);
+  });
+}
+window.addEventListener('resize',function(){setTimeout(fitAll,60)});
+['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){setTimeout(fitAll,120)})});
+var ansMax=function(w){return Math.min(80,w*.075+10)};
 function remainMs(now){return state==='playing'?Math.max(0,G.limit-(now-qStart)):G.frozen}
 
 /* ---------- chọn đáp án ---------- */
@@ -516,7 +543,7 @@ function finishQuestion(status,chosenText,chosenColor){
   stopSpeak();
   if(q.prompt&&q.prompt.indexOf('____')>=0&&q.type!=='chonnghia'){var sp=q.prompt.split('____');$('qBox').innerHTML=esc(sp[0])+'<mark>'+esc(q.correctAnswer)+'</mark>'+esc(sp[1]||'')}
   else $('qBox').innerHTML=fbHtml(q.completedText);
-  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb');
+  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb')+(q.type==='hinh'?' pic':'');fitAll();
   G.boxes.forEach(function(b,k){var el=$('a'+k);if(b.isCorrect)el.classList.add('right');else if(b.color===chosenColor)el.classList.add('bad')});
   $('hStreak').textContent=G.streak>=3?'🔥 Liên tiếp ×'+G.streak:'';
   $('hTime').className='it time';

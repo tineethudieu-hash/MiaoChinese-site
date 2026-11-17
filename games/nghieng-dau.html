@@ -66,7 +66,7 @@ button{font-family:inherit;cursor:pointer}
 .mid{flex:1;min-height:0;display:grid;grid-template-columns:1fr minmax(180px,34%) 1fr;gap:12px;padding:6px 12px 12px;align-items:stretch}
 .ans{position:relative;background:#FFF8E8;color:#111;border-radius:18px;border:5px solid var(--L);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:var(--font-han);font-weight:700;text-align:center;font-size:clamp(4rem,10.6vw,7.6rem);padding:8px;cursor:pointer;overflow:hidden;line-height:1.25}
 .qbox.fb{flex-direction:column;gap:4px;font-family:var(--font-han)}.qbox.fb .hz{font-size:clamp(3rem,8vw,5.6rem);line-height:1.15}.qbox.fb .sub{font-family:var(--font-body);font-size:30px;font-weight:800;line-height:1.25}
-.qbox.vi{font-size:30px!important;font-weight:800}.ans.vi{font-size:30px!important}
+.qbox.vi{font-weight:800}
 .ans.R{border-color:var(--R)}
 .ans .arrow{font-family:var(--font-body);font-size:1.6rem;font-weight:800;color:#fff;background:var(--L);border-radius:999px;padding:2px 14px}
 .ans.R .arrow{background:var(--R)}
@@ -96,6 +96,14 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
   .ans{font-size:clamp(2.6rem,12vw,4.2rem);min-height:120px}.ans.c3{font-size:clamp(2.2rem,10vw,3.4rem)}.ans.c4{font-size:clamp(1.8rem,8vw,2.8rem)}.ans.c5{font-size:clamp(1.5rem,6.5vw,2.3rem)}.ans.c6{font-size:1.4rem}.ans.long{font-size:1.4rem}
   .qbox{min-height:120px;font-size:clamp(2.6rem,11vw,4.2rem)}.qbox.fb .hz{font-size:clamp(2.4rem,10vw,3.6rem)}
 }
+/* tự co chữ cho vừa khung (JS fitAll) */
+.qbox{height:clamp(110px,20vh,190px);min-height:0!important;overflow:hidden}
+.qbox.pic{height:clamp(190px,34vh,400px)}
+.qbox img{height:100%;max-height:100%!important;width:auto;object-fit:contain}
+.ans{min-height:0!important;overflow:hidden}
+@media (max-width:760px){.ans.long{height:clamp(140px,22vh,190px)}.qbox{height:clamp(100px,17vh,160px)}.qbox.pic{height:clamp(170px,26vh,280px)}}
+.qbox.fb{height:clamp(150px,27vh,260px)}.qbox.fb.pic{height:clamp(190px,34vh,400px)}
+.ans.long,.ans.vi{word-break:normal!important;overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -550,16 +558,34 @@ function nextQ(i){
 }
 function showQuestionUI(i,preview){
   $('hQ').textContent='Câu '+Math.min(i+1,G.pool.length)+'/'+G.pool.length;$('hScore').textContent='⭐ '+G.score;$('hBar').style.width=(i/G.pool.length*100)+'%';
-  var q=G.q&&!preview?G.q:null,qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'');
+  var q=G.q&&!preview?G.q:null,qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'')+(q&&q.type==='hinh'?' pic':'');
   if(!q)qb.innerHTML='…';else if(q.type==='hinh')qb.innerHTML='<img src="'+esc(q.img)+'" alt="hình">';
   else if(q.type==='nghe')qb.innerHTML='<button class="spk" id="bSpk" type="button">🔊 Nghe lại</button>';
   else qb.innerHTML=esc(q.prompt).replace('____','<span class="blank">____</span>');
   var ml=q?Math.max(G.opts.L.text.length,G.opts.R.text.length):1,long=ml>8,vi=q&&q.optLang==='vi';var cl=ml>=6?' c6':ml===5?' c5':ml===4?' c4':ml===3?' c3':'';
   ['L','R'].forEach(function(s){var e=$('a'+s);e.className='ans '+s+(vi?' vi':'')+(long?' long':'')+(!vi&&!long?cl:'');$('t'+s).textContent=q?G.opts[s].text:'';$('h'+s).style.width='0'});
   if(q&&q.type==='nghe'){$('bSpk').onclick=function(e){e.stopPropagation();speak(q.audio)};speak(q.audio)}
-  $('hTime').textContent=(G.limit/1000).toFixed(1)+'s';$('hTime').className='it time';$('hStreak').textContent='';
+  $('hTime').textContent=(G.limit/1000).toFixed(1)+'s';$('hTime').className='it time';$('hStreak').textContent='';fitAll();
 }
 function fbHtml(t){var m=/^(.*?)( \(.*| = .*)$/.exec(t);return m?'<span class="hz">'+esc(m[1])+'</span><span class="sub">'+esc(m[2].replace(/^ = /,''))+'</span>':'<span class="hz">'+esc(t)+'</span>'}
+
+/* ----- tự co chữ vừa khung ----- */
+function fitEl(el,start,min){el.style.fontSize=start+'px';var s=start;while(s>min&&(el.scrollHeight>el.clientHeight+1||el.scrollWidth>el.clientWidth+1)){s-=2;el.style.fontSize=s+'px'}}
+function fitAll(){
+  var w=window.innerWidth,qb=$('qBox');
+  if(qb){
+    var hz=qb.querySelector('.hz');
+    if(hz){var sub=qb.querySelector('.sub');var s=Math.min(72,w*.07+12);hz.style.fontSize=s+'px';while(s>22&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){s-=2;hz.style.fontSize=s+'px'}
+      var ss=30;if(sub){sub.style.fontSize=ss+'px';while(ss>14&&(qb.scrollHeight>qb.clientHeight+1||qb.scrollWidth>qb.clientWidth+1)){ss-=2;sub.style.fontSize=ss+'px'}}}
+    else if(!qb.querySelector('img')&&!qb.querySelector('button')){fitEl(qb,qb.classList.contains('vi')?30:Math.min(72,w*.07+12),qb.classList.contains('vi')?16:22)}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.ans'),function(a){
+    var vi=a.classList.contains('vi');var lg=a.classList.contains('long');fitEl(a,vi?30:lg?Math.min(30,w*.03+8):ansMax(w),vi?14:lg?9:11);
+  });
+}
+window.addEventListener('resize',function(){setTimeout(fitAll,60)});
+['fullscreenchange','webkitfullscreenchange'].forEach(function(n){document.addEventListener(n,function(){setTimeout(fitAll,120)})});
+var ansMax=function(w){return Math.min(110,w*.09+10)};
 function remainMs(now){return state==='playing'?Math.max(0,G.limit-(now-qStart)):G.frozen}
 function choose(side,src){
   if(state!=='playing'||!G||G.locked)return;
@@ -576,7 +602,7 @@ function finishQuestion(status,chosenText,side){
   $('hScore').textContent='⭐ '+G.score;$('hBar').style.width=((G.idx+1)/G.pool.length*100)+'%';
   if(q.prompt&&q.prompt.indexOf('____')>=0&&q.type!=='chonnghia'){var sp=q.prompt.split('____');$('qBox').innerHTML=esc(sp[0])+'<mark>'+esc(q.correctAnswer)+'</mark>'+esc(sp[1]||'')}
   else $('qBox').innerHTML=fbHtml(q.completedText);
-  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb');
+  $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb')+(q.type==='hinh'?' pic':'');fitAll();
   ['L','R'].forEach(function(s){var e=$('a'+s);if(G.opts[s].isCorrect)e.classList.add('right');else if(s===side)e.classList.add('bad')});
   $('hStreak').textContent=G.streak>=3?'🔥 Liên tiếp ×'+G.streak:'';$('hTime').className='it time';
 }
