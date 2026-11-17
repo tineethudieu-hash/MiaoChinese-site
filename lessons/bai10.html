@@ -973,9 +973,13 @@ function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const
 function speak(text){
   if(!('speechSynthesis' in window)){ alert('Trình duyệt của bạn chưa hỗ trợ phát âm tự động. Hãy thử trên Chrome hoặc Edge.'); return; }
   window.speechSynthesis.cancel();
-  const clean = text.replace(/[（(].*?[）)]/g,'').replace(/[.,，。！？!?]/g,'');
+  /* Giữ dấu câu (，。？！) để máy ngắt nghỉ và lên giọng câu hỏi tự nhiên; sửa vài chữ đa âm; từ lẻ đọc chậm hơn câu */
+  const FIXMAP={'打的':'打滴','教我们':'交我们','老师教':'老师交','数钱':'属钱'};
+  let clean = String(text).replace(/[（(].*?[）)]/g,'').replace(/\s*\/\s*/g,'，').replace(/[….]{2,}/g,'').replace(/[,]/g,'，').replace(/[!]/g,'！').replace(/[?]/g,'？').trim();
+  Object.keys(FIXMAP).forEach(k=>{ clean = clean.split(k).join(FIXMAP[k]); });
+  const body = clean.replace(/[，。！？、；：]/g,'');
   const u = new SpeechSynthesisUtterance(clean);
-  u.lang = 'zh-CN'; u.rate = 0.82;
+  u.lang = 'zh-CN'; u.rate = body.length<=4 ? 0.7 : (body.length<=8 ? 0.78 : 0.82);
   window.speechSynthesis.speak(u);
 }
 function toggleClass(cls, btnId){
