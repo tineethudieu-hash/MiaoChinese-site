@@ -218,19 +218,26 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 </style>
 <link rel="stylesheet" href="/assets/fonts.css">
 <link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/review-nav.css?v=2">
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner">
+<div class="tb-top">
+  <div class="tb-top-in">
     <a class="back-hub" href="../index.html#level=1">← Về Menu</a>
-    <div class="topbar-title">MiaoChinese<small>Ôn tập · Bài 10</small></div>
-    <div class="tabs" id="tabBar"></div>
-    <div class="topbar-toggles">
-      <button class="tbtn" id="toggle-pinyin" onclick="toggleClass('pinyin-hidden','toggle-pinyin')">拼音</button>
-      <button class="tbtn" id="toggle-meaning" onclick="toggleClass('meaning-hidden','toggle-meaning')">VI</button>
+    <div class="tb-brand">MiaoChinese<small>Ôn tập · Bài 10</small></div>
+  </div>
+</div>
+<div class="tb-bar" role="navigation" aria-label="Điều hướng ôn tập">
+  <div class="tb-bar-in">
+    <button type="button" class="nv-btn" id="nvAct" aria-haspopup="dialog" aria-expanded="false"></button>
+    <button type="button" class="nv-btn" id="nvOpt" aria-haspopup="dialog" aria-expanded="false"><span aria-hidden="true">⚙️</span> Tùy chọn</button>
+    <div class="nv-inline" role="group" aria-label="Tùy chọn hiển thị">
+      <button type="button" class="nv-tg" id="nvTg0" aria-pressed="true"></button>
+      <button type="button" class="nv-tg" id="nvTg1" aria-pressed="true"></button>
     </div>
   </div>
+  <div class="tabs" id="tabBar" hidden aria-hidden="true" style="display:none"></div>
 </div>
 
 <div class="hero">
@@ -1855,5 +1862,6 @@ window.MC_DEVICE_ONLY = true; /* chỉ dùng giọng đọc của máy (đổi t
 </script>
 <!-- MC-TRACKER:END -->
 <script src="/assets/progress.js?v=1" defer></script>
+<script src="/assets/review-nav.js?v=3"></script>
 </body>
 </html>
