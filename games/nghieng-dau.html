@@ -82,6 +82,14 @@ button{font-family:inherit;cursor:pointer}
 .camstage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scaleX(-1);display:none;opacity:.9}
 .camstage.live video{display:block}.camstage.live .ph{display:none}
 .pill{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(0,0,0,.65);border-radius:12px;padding:5px 8px;font-weight:800;font-size:.9rem;text-align:center}
+.camov{position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden}
+.camov .alfr{position:absolute;border:3px dashed rgba(255,255,255,.85);border-radius:16px;display:none;align-items:flex-start;justify-content:center;box-sizing:border-box}
+.camov .alfr span{background:rgba(0,0,0,.6);color:#fff;font-weight:800;font-size:.72rem;line-height:1.2;padding:2px 7px;border-radius:0 0 8px 8px;margin-top:-1px;max-width:96%}
+.camov .trk{position:absolute;border:3px solid #34d058;border-radius:14px;box-shadow:0 0 0 1px rgba(0,0,0,.35);display:none;box-sizing:border-box}
+.camov .trk.wait{border-color:#f5c542;border-style:dashed}
+.camov .trk.cand{border-color:#fff;border-style:dotted}
+.camov .rsl{position:absolute;top:6px;right:6px;pointer-events:auto;background:rgba(0,0,0,.65);color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:12px;padding:6px 10px;min-height:36px;font:800 .78rem/1.1 inherit;cursor:pointer}
+.camov .rsl.big{background:#E0402F;border-color:#fff;font-size:.9rem;padding:8px 12px}
 .pill.l{background:rgba(47,111,222,.9)}.pill.r{background:rgba(232,120,42,.92)}.pill.x{background:rgba(179,38,30,.9)}
 .streak{position:absolute;left:14px;bottom:4px;font-weight:800;color:var(--gold);pointer-events:none}
 .ov{position:absolute;inset:0;z-index:20;background:rgba(6,12,30,.84);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;text-align:center;padding:20px}
@@ -152,6 +160,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
  </div>
 </div>
 <div id="scrEnd" class="wrap hide"></div>
+<div class="camov" id="camOv" style="display:none"><div class="alfr" id="camAl"><span>Bạn chơi đứng vào giữa khung</span></div><div class="trk" id="camTrk"></div><button class="rsl" id="bReselect" type="button">Chọn lại người chơi</button></div>
 <video id="camv" playsinline muted style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
 
 <script src="slice-bank.js"></script>
@@ -164,6 +173,8 @@ var STUDENT_KEY='miaochinese_hub_student_v1';
 var STORE_KEY='miaochinese_tilt_v1';
 var FEEDBACK_MS=1800, HOLD_MS=800, HIST_MAX=30, WRONG_MAX=300, LOSS_PAUSE_MS=4000;
 var SENS={high:12,mid:15,low:18};
+/* nhiều người: chọn & khoá một người chơi chính */
+var MAX_FACES=5,ANA_MS=66,LOCK_MS=500,GRACE_MS=1000,ALIGN_W=.36,ALIGN_H=.6;
 var FACE_CDN='https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14';
 var FACE_MODEL='https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
 var $=function(id){return document.getElementById(id)};
@@ -388,22 +399,23 @@ function updateThresholdMarks(){var t=thr(),max=40;var l=$('thL'),r=$('thR');if(
 function attachVideo(container){
   var v=$('camv');if(!container)return;
   v.style.cssText='';container.insertBefore(v,container.firstChild);container.classList.add('live');
+  var ov=$('camOv');if(ov){container.insertBefore(ov,v.nextSibling);ov.style.display='block';Ov.sig=''}
   v.style.display=Cam.on||Cam.loading?'block':'none';v.play&&v.play().catch(function(){});
 }
-function parkVideo(){var v=$('camv');v.style.cssText='position:absolute;width:1px;height:1px;opacity:0;pointer-events:none';document.body.appendChild(v)}
+function parkVideo(){var v=$('camv');v.style.cssText='position:absolute;width:1px;height:1px;opacity:0;pointer-events:none';document.body.appendChild(v);var ov=$('camOv');if(ov){ov.style.display='none';document.body.appendChild(ov)}}
 function setCamMsg(m){Cam.msg=m;var e=$('calMsg');if(e)e.textContent=m}
 function withTimeout(p,ms){return new Promise(function(res,rej){var t=setTimeout(function(){rej(new Error('timeout'))},ms);p.then(function(v){clearTimeout(t);res(v)},function(e){clearTimeout(t);rej(e)})})}
 function loadFace(){
   return import(FACE_CDN+'/vision_bundle.mjs').then(function(mod){
     return mod.FilesetResolver.forVisionTasks(FACE_CDN+'/wasm').then(function(fs){
-      var mk=function(d){return mod.FaceLandmarker.createFromOptions(fs,{baseOptions:{modelAssetPath:FACE_MODEL,delegate:d},runningMode:'VIDEO',numFaces:2,outputFaceBlendshapes:false})};
+      var mk=function(d){return mod.FaceLandmarker.createFromOptions(fs,{baseOptions:{modelAssetPath:FACE_MODEL,delegate:d},runningMode:'VIDEO',numFaces:MAX_FACES,outputFaceBlendshapes:false})};
       return mk('GPU').catch(function(){return mk('CPU')});
     });
   });
 }
 function resetHead(){Head.raw=null;Head.sm=null;Head.zone='center';Head.haveFace=false;Head.armed=false;Head.centerSince=0;Head.holdMs=0;Head.holdSide=null;Head.lastFrameTs=0;Head.faces=0}
 function camStop(msg){
-  Cam.gen++;Cam.on=false;Cam.loading=false;Cam.calibrated=false;
+  Cam.gen++;anaStop();Cam.on=false;Cam.loading=false;Cam.calibrated=false;trReset();UI.sig='';Ov.sig='';
   if(Cam.stream){Cam.stream.getTracks().forEach(function(t){t.stop()});Cam.stream=null}
   var v=$('camv');try{v.pause()}catch(_){}v.srcObject=null;
   if(Cam.lm){try{Cam.lm.close()}catch(_){}Cam.lm=null}
@@ -414,7 +426,7 @@ function camStop(msg){
   if(state==='setup')renderSetup();else updateCamUI();
   if(wasCam)pauseGame('Camera đã tắt – tiếp tục bằng cách bấm thẻ đáp án hoặc phím ← →.');
 }
-function camStart(){
+function camStart(){trReset();
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){Cam.msg='Thiết bị/trình duyệt không hỗ trợ camera. Hãy chơi bằng nút bấm.';renderSetup();return}
   var gen=++Cam.gen;Cam.loading=true;Cam.calibrated=false;resetHead();Head.calSamples=[];Cam.msg='Đang xin quyền camera…';renderSetup();
   navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:480}},audio:false}).then(function(stream){
@@ -424,7 +436,7 @@ function camStart(){
     return withTimeout(loadFace(),30000).then(function(lm){
       if(gen!==Cam.gen){try{lm.close()}catch(_){}return}
       Cam.lm=lm;Cam.on=true;Cam.loading=false;Head.calStart=0;Head.calSamples=[];Cam.msg='Camera đã bật. Ngồi thẳng, giữ đầu ở giữa 1–2 giây để căn chỉnh.';
-      if(state==='setup')renderSetup();else updateCamUI();ensureLoop();
+      if(state==='setup')renderSetup();else updateCamUI();ensureLoop();anaStart();
     });
   }).catch(function(e){
     if(gen!==Cam.gen)return;
@@ -433,20 +445,96 @@ function camStart(){
   });
 }
 function recalibrate(){Cam.calibrated=false;Head.calSamples=[];Head.calStart=0;Head.armed=false;Head.holdMs=0;Head.holdSide=null;Head.zone='center';Cam.msg='Đang căn chỉnh: giữ đầu thẳng ở giữa…';if(state==='setup')renderSetup();else updateCamUI();if(G&&state==='playing')pauseGame('Đang căn chỉnh lại – giữ đầu thẳng ở giữa rồi bấm Tiếp tục.')}
+/* ===== theo dõi người chơi chính (FaceLandmarker không có ID theo dõi => ghép theo vị trí/kích thước/độ chồng lấp) ===== */
+var TR={st:'search',cand:null,candSince:0,box:null,lostSince:0,amb:false,prog:0};
+var Ana={timer:0,gen:0};
+function faceBox(lm){
+  var ids=[10,152,234,454,33,263],x0=1,x1=0,y0=1,y1=0;
+  for(var i=0;i<ids.length;i++){var p=lm[ids[i]];if(!p)continue;if(p.x<x0)x0=p.x;if(p.x>x1)x1=p.x;if(p.y<y0)y0=p.y;if(p.y>y1)y1=p.y}
+  return {x:(x0+x1)/2,y:(y0+y1)/2,w:Math.max(.001,x1-x0),h:Math.max(.001,y1-y0),x0:x0,x1:x1,y0:y0,y1:y1,lm:lm};
+}
+function iou(a,b){
+  var iw=Math.min(a.x1,b.x1)-Math.max(a.x0,b.x0),ih=Math.min(a.y1,b.y1)-Math.max(a.y0,b.y0);if(iw<=0||ih<=0)return 0;
+  var I=iw*ih,U=(a.x1-a.x0)*(a.y1-a.y0)+(b.x1-b.x0)*(b.y1-b.y0)-I;return I/U;
+}
+/* điểm ghép (nhỏ = giống hơn); null = không phải cùng một người */
+function mscore(a,b){
+  var d=Math.hypot(a.x-b.x,a.y-b.y)/Math.max(a.w,b.w),sr=a.w/b.w;
+  if(d>.6||sr<.6||sr>1.65)return null;return d+Math.abs(Math.log(sr))*.3;
+}
+function trSet(st){TR.st=st;TR.sigDirty=true}
+function trReset(){TR.st='search';TR.cand=null;TR.candSince=0;TR.box=null;TR.lostSince=0;TR.amb=false;TR.prog=0}
+function reselectPlayer(){
+  if(!Cam.on)return;
+  trReset();Head.haveFace=false;Head.sm=null;Head.holdMs=0;Head.holdSide=null;Head.armed=false;Head.centerSince=0;Head.zone='center';
+  recalibrate();
+  if(G&&state==='paused')$('ovPauseTxt').textContent='Chọn lại người chơi: người chơi mới đứng vào giữa khung, giữ đầu thẳng 1–2 giây rồi bấm Tiếp tục.';
+  Cam.msg='Chọn lại người chơi: bạn chơi đứng vào giữa khung, giữ đầu thẳng.';
+  if(state==='setup')renderSetup();
+  updateCamUI();
+}
+/* nhận danh sách landmarks của mọi khuôn mặt trong khung */
+function processFaces(now,list,vw,vh){
+  var faces=[],i;
+  for(i=0;i<list.length;i++){var lm=list[i];if(!lm||!lm[33]||!lm[263])continue;
+    if(Math.abs((lm[263].x-lm[33].x)*vw)<=vw*.06)continue; /* mặt quá nhỏ/nghiêng ngang: bỏ */
+    faces.push(faceBox(lm))}
+  var best=null,conf=null,amb=false;
+  if(TR.st==='search'){
+    var inz=faces.filter(function(f){return Math.abs(f.x-.5)<=ALIGN_W/2&&Math.abs(f.y-.5)<=ALIGN_H/2});
+    inz.forEach(function(f){f.d=Math.hypot(f.x-.5,f.y-.5)});
+    inz.sort(function(a,b){return a.d-b.d});
+    best=inz[0]||null;
+    if(best&&inz[1]&&inz[1].d-best.d<.03&&inz[1].w>best.w)best=inz[1]; /* gần như bằng nhau: ưu tiên mặt lớn hơn */
+    if(best){ /* mặt khác chồng lên ứng viên => chưa chắc, không tiến */
+      faces.forEach(function(f){if(f!==best&&iou(f,best)>.12)amb=true})}
+    if(best&&!amb){
+      if(TR.cand&&mscore(best,TR.cand)!==null){TR.prog=Math.min(1,(now-TR.candSince)/LOCK_MS)}
+      else{TR.candSince=now;TR.prog=0}
+      TR.cand=best;
+      if(now-TR.candSince>=LOCK_MS){TR.box=best;TR.cand=null;TR.lostSince=0;TR.amb=false;conf=best;trSet('locked')}
+    }else{TR.cand=null;TR.prog=0}
+    TR.amb=amb&&!!best;
+  }else{ /* locked | lost: chỉ nhận mặt ở đúng chỗ đang theo dõi */
+    var cands=[];
+    faces.forEach(function(f){var sc=mscore(f,TR.box);if(sc!==null)cands.push({f:f,sc:sc})});
+    cands.sort(function(a,b){return a.sc-b.sc});
+    if(cands.length){
+      best=cands[0].f;
+      faces.forEach(function(f){if(f!==best&&(iou(f,best)>.12||mscore(f,TR.box)!==null))amb=true});
+    }
+    TR.amb=amb;
+    if(best&&!amb){conf=best;TR.box=best;TR.lostSince=0;if(TR.st!=='locked')trSet('locked')}
+    else{
+      if(!TR.lostSince){TR.lostSince=now;TR.sigDirty=true}
+      if(now-TR.lostSince>=GRACE_MS&&TR.st!=='lost')trSet('lost');
+    }
+  }
+  Head.faces=faces.length;
+  if(conf)processFace(now,1,conf.lm,vw,vh);
+  else processFace(now,0,null,vw,vh); /* dừng nhận thao tác ngay */
+}
+/* vòng phân tích tách khỏi preview: mỗi lúc chỉ một lượt, bận thì bỏ khung cũ */
+function anaStop(){Ana.gen++;if(Ana.timer){clearTimeout(Ana.timer);Ana.timer=0}}
+function anaStart(){
+  anaStop();var g=Ana.gen;
+  (function loop(){
+    if(g!==Ana.gen||!Cam.on)return;
+    var t0=performance.now();camDetect(t0);
+    if(g!==Ana.gen)return;
+    Ana.timer=setTimeout(loop,Math.max(4,ANA_MS-(performance.now()-t0)));
+  })();
+}
 function camDetect(now){
   if(!Cam.on||!Cam.lm)return;
-  if(now-Cam.lastT<40)return;Cam.lastT=now;
-  var v=$('camv');if(v.readyState<2||v.currentTime===Cam.lastVT)return;Cam.lastVT=v.currentTime;
+  var v=$('camv');if(v.readyState<2||v.currentTime===Cam.lastVT)return;Cam.lastVT=v.currentTime; /* khung chưa mới => bỏ */
   var res;try{res=Cam.lm.detectForVideo(v,now)}catch(e){camStop('Lỗi nhận diện khuôn mặt. Hãy chơi bằng nút bấm.');return}
-  var fl=(res&&res.faceLandmarks)||[];
-  processFace(now,fl.length,fl[0],v.videoWidth||640,v.videoHeight||480);
+  processFaces(now,(res&&res.faceLandmarks)||[],v.videoWidth||640,v.videoHeight||480);
 }
-/* xử lý một khung: tách riêng để kiểm thử */
+/* xử lý một khung của người chơi đã khoá */
 function processFace(now,nFaces,lm,vw,vh){
   var dtv=Head.lastFrameTs?Math.min(150,now-Head.lastFrameTs):0;Head.lastFrameTs=now;
-  Head.faces=nFaces;
   var good=nFaces===1&&lm&&Math.abs((lm[263].x-lm[33].x)*vw)>vw*.06;
-  if(nFaces>1){Head.haveFace=false;Head.holdMs=0;Head.holdSide=null;Head.armed=false;Head.centerSince=0;Head.sm=null;updateCamUI();return}
   if(!good){
     if(Head.haveFace){Head.haveFace=false;Head.holdMs=0;Head.holdSide=null;Head.armed=false;Head.centerSince=0;Head.sm=null;Head.zone='center'}
     updateCamUI();return;
@@ -482,21 +570,53 @@ function processFace(now,nFaces,lm,vw,vh){
   }else if(!(state==='playing'&&Head.armed&&(z==='left'||z==='right'))){Head.holdMs=0;Head.holdSide=null}
   updateCamUI();
 }
+var UI={sig:'',dot:-1,tr:'',hold:''},Ov={sig:''};
+/* khung căn mặt + viền theo dõi (toạ độ video -> toạ độ hiển thị, preview lật gương, object-fit:cover) */
+function ovMap(ov,v){
+  var cw=ov.clientWidth,ch=ov.clientHeight,vw=v.videoWidth||640,vh=v.videoHeight||480,sc=Math.max(cw/vw,ch/vh),ox=(cw-vw*sc)/2,oy=(ch-vh*sc)/2;
+  return function(nx,ny){return {x:cw-(ox+nx*vw*sc),y:oy+ny*vh*sc}};
+}
+function updateOverlay(){
+  var ov=$('camOv');if(!ov||ov.style.display==='none')return;
+  var al=$('camAl'),trk=$('camTrk'),rs=$('bReselect'),v=$('camv');
+  var showAl=Cam.on&&TR.st==='search',box=TR.st==='search'?TR.cand:TR.box;
+  var tcls=!Cam.on||!box?'':TR.st==='search'?'cand':(Head.haveFace?'':'wait');
+  var m=ovMap(ov,v),sig=[showAl,tcls,TR.st,ov.clientWidth,ov.clientHeight].join('/');
+  if(box)sig+='/'+Math.round(box.x*200)+'/'+Math.round(box.y*200)+'/'+Math.round(box.w*200);
+  if(sig===Ov.sig)return;Ov.sig=sig;
+  al.style.display=showAl?'flex':'none';
+  if(showAl){var a=m(.5-ALIGN_W/2,.5-ALIGN_H/2),b=m(.5+ALIGN_W/2,.5+ALIGN_H/2);
+    al.style.left=Math.min(a.x,b.x)+'px';al.style.top=a.y+'px';al.style.width=Math.abs(a.x-b.x)+'px';al.style.height=(b.y-a.y)+'px'}
+  if(Cam.on&&box){var p=m(box.x0,box.y0),q=m(box.x1,box.y1);
+    trk.style.display='block';trk.className='trk '+tcls;trk.style.left=Math.min(p.x,q.x)+'px';trk.style.top=p.y+'px';trk.style.width=Math.abs(p.x-q.x)+'px';trk.style.height=(q.y-p.y)+'px'}
+  else trk.style.display='none';
+  rs.style.display=Cam.on?'block':'none';rs.className='rsl'+(TR.st==='lost'?' big':'');
+}
 function updateCamUI(){
   var rel=Head.haveFace&&Cam.calibrated?Head.sm-Head.base:0,txt,cls='';
   if(!Cam.on)txt=Cam.loading?'Đang tải camera…':'Chơi bằng nút bấm';
-  else if(Head.faces>1){txt='⚠️ Chỉ một người trong khung hình';cls='x'}
-  else if(!Head.haveFace){txt='Không thấy khuôn mặt';cls='x'}
+  else if(TR.st==='search'){
+    if(TR.amb){txt='Hai khuôn mặt chồng nhau – chờ chút';cls='x'}
+    else if(TR.cand){txt='Đang khoá người chơi… '+Math.round(TR.prog*100)+'%'}
+    else{txt=Head.faces?'Bạn chơi đứng vào giữa khung':'Không thấy khuôn mặt';cls='x'}}
+  else if(!Head.haveFace){
+    if(TR.st==='lost'){txt='Bạn chơi quay lại giữa khung';cls='x'}
+    else if(TR.amb){txt='Hai khuôn mặt chồng nhau – tạm ngừng nhận';cls='x'}
+    else{txt='Mất dấu – giữ yên, đang tìm lại…';cls='x'}}
   else if(!Cam.calibrated){txt='Đang căn chỉnh… '+Math.round((Head.calProg||0)*100)+'%'}
   else if(Head.zone==='left'){txt='⬅ Đang nghiêng trái';cls='l'}
   else if(Head.zone==='right'){txt='Đang nghiêng phải ➡';cls='r'}
   else txt=Head.armed||state==='setup'?'● Ở giữa':'● Ở giữa – đưa đầu về giữa để sẵn sàng';
-  var pill=$('pill');if(pill){pill.textContent=txt;pill.className='pill '+cls}
-  var cs=$('calState');if(cs){cs.textContent=txt}
-  var dot=$('tiltDot');if(dot){var p=Math.max(-40,Math.min(40,rel))/40*50;dot.style.left=(50+p)+'%'}
-  var tl=$('tryLs'),tr=$('tryRs');if(tl){tl.textContent=Head.tryL?'✔ đã thử':'chưa';tr.textContent=Head.tryR?'✔ đã thử':'chưa'}
-  if(state==='playing'&&G){var hl=$('hL'),hr=$('hR'),pr=Head.holdSide?Math.min(1,Head.holdMs/HOLD_MS):0;hl.style.width=(Head.holdSide==='left'?pr*100:0)+'%';hr.style.width=(Head.holdSide==='right'?pr*100:0)+'%';
-    $('aL').classList.toggle('lean',Head.zone==='left'&&Cam.on);$('aR').classList.toggle('lean',Head.zone==='right'&&Cam.on)}
+  var sig=txt+'|'+cls;
+  if(sig!==UI.sig){UI.sig=sig;var pill=$('pill');if(pill){pill.textContent=txt;pill.className='pill '+cls}var cs=$('calState');if(cs){cs.textContent=txt}}
+  var dl=Math.round((50+Math.max(-40,Math.min(40,rel))/40*50)*2)/2;
+  if(dl!==UI.dot){UI.dot=dl;var dot=$('tiltDot');if(dot)dot.style.left=dl+'%'}
+  var ts=(Head.tryL?1:0)+''+(Head.tryR?1:0);
+  if(ts!==UI.tr){UI.tr=ts;var tl=$('tryLs'),tr=$('tryRs');if(tl){tl.textContent=Head.tryL?'✔ đã thử':'chưa';tr.textContent=Head.tryR?'✔ đã thử':'chưa'}}
+  if(state==='playing'&&G){var pr=Head.holdSide?Math.min(1,Head.holdMs/HOLD_MS):0,hw=Math.round(pr*50)*2+'/'+Head.holdSide+'/'+Head.zone+'/'+Cam.on;
+    if(hw!==UI.hold){UI.hold=hw;var hl=$('hL'),hr=$('hR');hl.style.width=(Head.holdSide==='left'?pr*100:0)+'%';hr.style.width=(Head.holdSide==='right'?pr*100:0)+'%';
+      $('aL').classList.toggle('lean',Head.zone==='left'&&Cam.on);$('aR').classList.toggle('lean',Head.zone==='right'&&Cam.on)}}
+  updateOverlay();
   var bc=$('bCam');if(bc)bc.classList.toggle('on',Cam.on||Cam.loading);
   var cm=$('calMsg');if(cm&&Cam.msg)cm.textContent=Cam.msg;
   var sc=$('bStartCam');if(sc&&state==='setup')sc.disabled=!(Cam.on&&Cam.calibrated&&poolFor(cfg).length);
@@ -642,13 +762,12 @@ function tick(now){
   var need=(state==='playing'||state==='feedback'||state==='prepare'||state==='paused')||(state==='setup'&&(Cam.on));
   if(!need){loopId=0;return}
   loopId=requestAnimationFrame(tick);
-  if(state!=='paused'||state==='paused'){ if(state!=='paused'||!G||true) camDetect(now) }
   if(state==='playing'){
     var rem=remainMs(now),sec=Math.ceil(rem/1000);
     if(Math.floor(rem/100)!==shownRemain){shownRemain=Math.floor(rem/100);var te=$('hTime');te.textContent=(rem/1000).toFixed(1)+'s';te.className='it time'+(rem<=3000?' warn3':rem<=5000?' warn5':'')}
     if(rem<=3000&&rem>0&&sec!==lastBeepSec){lastBeepSec=sec;sfx('tick')}
     /* mất khuôn mặt kéo dài khi chơi bằng camera -> tự tạm dừng */
-    if(G.control==='cam'&&Cam.on&&!Head.haveFace&&now-Math.max(Head.lastFaceTs,qStart,lastFaceLossPause)>LOSS_PAUSE_MS&&!G.locked){pauseGame('Không thấy khuôn mặt trong vài giây nên game tạm dừng. Ngồi lại trước camera rồi bấm Tiếp tục, hoặc chuyển sang nút bấm.')}
+    if(G.control==='cam'&&Cam.on&&!Head.haveFace&&now-Math.max(Head.lastFaceTs,qStart,lastFaceLossPause)>LOSS_PAUSE_MS&&!G.locked){pauseGame(TR.st==='locked'?'Không thấy khuôn mặt trong vài giây nên game tạm dừng. Người chơi quay lại giữa khung rồi bấm Tiếp tục, hoặc bấm “Chọn lại người chơi”.':'Chưa khoá được người chơi nên game tạm dừng. Bạn chơi đứng vào giữa khung rồi bấm Tiếp tục, hoặc chuyển sang nút bấm.')}
     else if(rem<=0)timeoutQ();
   }else if(state==='feedback'&&now>=fbEnd){if(G.idx+1>=G.pool.length)endRound();else nextQ(G.idx+1)}
 }
@@ -662,6 +781,8 @@ $('bReplayP').addEventListener('click',function(){replay()});
 $('bExit').addEventListener('click',function(){toSetup()});
 $('bCam').addEventListener('click',function(){if(Cam.on||Cam.loading){camStop('')}else{camStart();}});
 $('bCal').addEventListener('click',recalibrate);
+$('bReselect').addEventListener('click',reselectPlayer);
+window.addEventListener('pagehide',function(){anaStop();if(Cam.stream){Cam.stream.getTracks().forEach(function(t){t.stop()});Cam.stream=null}});
 var stage=$('stage');
 function isFull(){return document.fullscreenElement===stage||document.webkitFullscreenElement===stage}
 function toggleFull(){
@@ -683,7 +804,7 @@ function endRound(){
   h+='<div class="note">'+(G.mode==='class'?'Chơi trên lớp (kết quả chung, lưu riêng)':'Tự ôn ở nhà')+' · Bài '+G.lessons.join(', ')+(G.best>=3?' · chuỗi đúng dài nhất ×'+G.best:'')+'<br>'+(saved?'Đã lưu kết quả trên thiết bị này.':'<span class="warn">Không lưu được kết quả trên thiết bị này – bạn vẫn xem được bảng bên dưới.</span>')+' Kết quả không gửi lên bảng điểm và không tính hoàn thành bài.'+(Cam.on?'<br>📷 Camera vẫn đang bật. <button class="chip" id="eCamOff">Tắt camera</button>':'')+'</div></div>';
   h+='<div class="card"><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn big" id="eReplay">🔁 Chơi lại (thứ tự mới)</button>'+(bad.length?'<button class="btn" id="eWrong">🎯 Ôn câu sai/hết giờ ('+bad.length+')</button>':'')+'<button class="btn alt" id="eChange">📚 Đổi bài</button><a class="btn alt" href="../index.html#game" style="text-decoration:none;display:inline-flex;align-items:center">← Về Mini Games</a></div></div>';
   h+='<div class="card" style="overflow-x:auto"><table><thead><tr><th>#</th><th>Dạng</th><th>Câu</th><th>Bạn chọn</th><th>Đáp án</th><th>Câu đầy đủ</th><th>Kết quả</th></tr></thead><tbody>'+G.log.map(function(l,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(TYPES[l.type]||'')+'</td><td class="han">'+esc(l.prompt)+'</td><td class="han">'+(l.chosen==null?'—':esc(l.chosen))+'</td><td class="han">'+esc(l.correct)+'</td><td class="han">'+esc(l.full)+'</td><td class="st-'+l.status+'">'+(l.status==='correct'?'✓ Đúng':l.status==='wrong'?'✗ Sai':'⏱ Hết giờ')+'</td></tr>'}).join('')+'</tbody></table></div>';
-  $('scrEnd').innerHTML=h;document.body.classList.remove('playing');showScreen('end');window.scrollTo(0,0);parkVideo();
+  $('scrEnd').innerHTML=h;document.body.classList.remove('playing');showScreen('end');window.scrollTo(0,0);parkVideo();camStop('');
   $('eReplay').onclick=replay;$('eChange').onclick=toSetup;if($('eWrong'))$('eWrong').onclick=function(){reviewWrong(bad)};if($('eCamOff'))$('eCamOff').onclick=function(){camStop('');$('eCamOff').parentNode.removeChild($('eCamOff'))};
 }
 function saveResult(total,max){
@@ -710,7 +831,7 @@ function toSetup(){
 renderGate();verify();
 window.__tiltDbg=function(){return {music:Music.want,state:state,auth:auth,G:G,Head:{zone:Head.zone,holdMs:Head.holdMs,armed:Head.armed,haveFace:Head.haveFace,faces:Head.faces,base:Head.base},cam:{on:Cam.on,calibrated:Cam.calibrated},cfg:cfg}};
 /* hàm kiểm thử logic (không cần camera) */
-window.__tiltTest={roll:rollFromLandmarks,feed:function(now,n,lm,vw,vh){Cam.on=true;processFace(now,n,lm,vw,vh)},setCam:function(on,cal){Cam.on=on;Cam.calibrated=cal;if(cal)Head.base=0}};
+window.__tiltTest={roll:rollFromLandmarks,feed:function(now,n,lm,vw,vh){Cam.on=true;processFaces(now,n?[lm]:[],vw||640,vh||480)},feedMulti:function(now,list,vw,vh){Cam.on=true;processFaces(now,list,vw||640,vh||480)},TR:function(){return {st:TR.st,box:TR.box&&{x:TR.box.x,y:TR.box.y,w:TR.box.w},amb:TR.amb,lostSince:TR.lostSince}},reselect:reselectPlayer,setCam:function(on,cal){Cam.on=on;Cam.calibrated=cal;if(cal)Head.base=0}};
 })();
 </script>
 </body>
