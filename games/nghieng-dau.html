@@ -149,6 +149,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
     </div>
   </div>
   <div class="bar"><i id="hBar"></i></div>
+  <div class="tmboard hide" id="tmBoard" aria-live="polite"></div>
   <div class="qbox" id="qBox"></div>
   <div class="mid">
     <div class="ans L" id="aL" role="button" tabindex="0"><span class="arrow">⬅ TRÁI</span><span class="t" id="tL"></span><i class="hold" id="hL"></i></div>
@@ -157,6 +158,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
   </div>
   <div class="ov" id="ovPause"><h2>⏸ Tạm dừng</h2><p id="ovPauseTxt"></p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="btn big" id="bResume">▶ Tiếp tục</button><button class="btn alt" id="bBtnMode">🖱️ Chuyển sang nút bấm</button><button class="btn alt" id="bReplayP">🔁 Chơi lại</button><button class="btn alt" id="bExit">Đổi bài</button></div></div>
+  <div class="ov" id="ovHand"></div>
   <div class="ov" id="ovReady"><h2>Sẵn sàng?</h2><p id="readyTxt"></p><button class="btn big" id="bGo">▶ Bắt đầu</button></div>
  </div>
 </div>
@@ -166,6 +168,7 @@ th{font-size:.72rem;text-transform:uppercase;color:var(--gold-dark)}
 
 <script src="slice-bank.js"></script>
 <script src="pinyin-l1.js"></script>
+<script src="team-mode.js"></script>
 <script>
 (function(){
 'use strict';
@@ -227,10 +230,21 @@ function verify(){
 function verifyTeacher(){
   var pin=$('pinIn').value;$('pinErr').textContent='Đang kiểm tra…';
   api({action:'report',pin:pin}).then(function(res){
-    if(res&&res.ok){auth.teacher=true;renderGate();renderSetup()}else $('pinErr').textContent=(res&&res.error)||'PIN chưa đúng.';
+    if(res&&res.ok){auth.teacher=true;auth.pin=pin;renderGate();renderSetup()}else $('pinErr').textContent=(res&&res.error)||'PIN chưa đúng.';
   },function(){$('pinErr').textContent='Không kết nối được máy chủ.'});
 }
 
+/* ----- chế độ thi đấu theo đội: danh sách lớp lấy bằng chính PIN giáo viên + action=report của website ----- */
+var teamAllowed=0;
+var TM=TeamMode.create({api:api,getAuth:function(){return auth},getPin:function(){return auth.pin||''},
+  myClass:function(){return auth.student&&auth.student.c},
+  onTeacher:function(pin){if(!auth.teacher||!auth.pin){auth.teacher=true;auth.pin=pin;renderGate();renderSetup()}},
+  onClass:function(c,allowed){teamAllowed=allowed||0;if(allowed&&!cfg._teamLes){cfg._teamLes=true;var ok=LESSON_NUMS.filter(function(n){return n<=allowed});if(ok.length){cfg.lessons={};cfg.lessons[ok[ok.length-1]]=true}}},
+  refresh:function(){teamRefresh()}});
+function teamRefresh(){
+  var sc=$('bStartCam'),sb=$('bStartBtn'),ok=cfg.mode==='team'&&TM.canStart().ok&&poolFor(cfg).length>0;
+  if(cfg.mode==='team'){if(sc)sc.disabled=!(ok&&Cam.on&&Cam.calibrated);if(sb)sb.disabled=!ok}
+}
 /* ----- cài đặt ----- */
 var cfg={mode:'home',mix:true,types:{},level:0,lessons:{},count:10,time:15,sound:true,onlyWrong:false,pinyin:true,sens:'mid',control:'btn'};
 var urlLesson=(function(){var m=/[?&]lesson=(\d+)/.exec(location.search);return m?Number(m[1]):0})();
@@ -270,7 +284,8 @@ function renderSetup(){
   var shown=el_.filter(function(n){return !cfg.level||lessonLevel(n)===cfg.level});
   var pool=poolFor(cfg);var wr=savedWrong();var wrongN=BANK.filter(function(q){return wr.indexOf(q.id)>=0&&lessonAllowed(q.lesson)}).length;
   var h='<div class="card">';
-  h+='<div class="row"><label>Chế độ</label><div class="chips"><button class="chip'+(cfg.mode==='class'?' on':'')+'" data-mode="class">🏫 Chơi trên lớp</button><button class="chip'+(cfg.mode==='home'?' on':'')+'" data-mode="home">🏠 Tự ôn ở nhà</button></div><div class="note" style="margin-top:6px">'+(cfg.mode==='class'?'Mỗi lượt một học sinh trước camera. Kết quả lưu riêng, không ghi đè tiến độ cá nhân.':'Kết quả và câu sai được lưu trên thiết bị này để ôn lại.')+'</div></div>';
+  h+='<div class="row"><label>Chế độ</label><div class="chips"><button class="chip'+(cfg.mode==='class'?' on':'')+'" data-mode="class">🏫 Chơi trên lớp</button><button class="chip'+(cfg.mode==='home'?' on':'')+'" data-mode="home">🏠 Tự ôn ở nhà</button><button class="chip'+(cfg.mode==='team'?' on':'')+'" data-mode="team">👥 Thi đấu theo đội · 1 thiết bị</button></div><div class="note" style="margin-top:6px">'+(cfg.mode==='team'?'Chọn lớp → bỏ chọn bạn vắng → chia đội. Cả lớp dùng một máy, một camera; hệ thống tự gọi tên từng bạn lên chơi.':cfg.mode==='class'?'Mỗi lượt một học sinh trước camera. Kết quả lưu riêng, không ghi đè tiến độ cá nhân.':'Kết quả và câu sai được lưu trên thiết bị này để ôn lại.')+'</div></div>';
+  if(cfg.mode==='team')h+='<div class="card tmcard" style="margin:0 0 12px;padding:12px">'+TM.panelHtml()+(teamAllowed?'<div class="note">Lớp này đang mở tới <b>Bài '+teamAllowed+'</b> (đã chọn sẵn bài đó, cô có thể đổi).</div>':'')+'</div>';
   if(!el_.length)h+='<div class="note warn">Chưa có bài nào vừa được mở cho lớp vừa có câu hỏi trong game.</div>';
   else{
     if(lvls.length>1)h+='<div class="row"><label>Level</label><div class="chips"><button class="chip'+(!cfg.level?' on':'')+'" data-level="0">Tất cả</button>'+lvls.map(function(l){return '<button class="chip'+(cfg.level===l?' on':'')+'" data-level="'+l+'">Level '+l+'</button>'}).join('')+'</div></div>';
@@ -278,7 +293,7 @@ function renderSetup(){
     var tc=typeCounts(cfg);
     h+='<div class="row"><label>Dạng câu hỏi</label><div class="chips"><button class="chip'+(cfg.mix?' on':'')+'" data-mix="1">🎲 Tổng hợp</button>'+TYPE_ORDER.filter(function(t){return tc[t]}).map(function(t){return '<button class="chip'+(!cfg.mix&&cfg.types[t]?' on':'')+'" data-type="'+t+'">'+TYPES[t]+' ('+tc[t]+')</button>'}).join('')+'</div></div>';
     if(cfg.mode==='home'&&wrongN)h+='<div class="row"><label>Ôn câu từng sai</label><div class="chips"><button class="chip'+(cfg.onlyWrong?' on':'')+'" data-wrong="1">Chỉ những câu đã từng sai ('+wrongN+')</button></div></div>';else cfg.onlyWrong=false;
-    h+='<div class="row"><label>Số câu</label><div class="chips">'+[10,15,20,0].map(function(c){return '<button class="chip'+(cfg.count===c?' on':'')+'" data-count="'+c+'">'+(c||'Tất cả')+'</button>'}).join('')+'</div></div>';
+    if(cfg.mode!=='team')h+='<div class="row"><label>Số câu</label><div class="chips">'+[10,15,20,0].map(function(c){return '<button class="chip'+(cfg.count===c?' on':'')+'" data-count="'+c+'">'+(c||'Tất cả')+'</button>'}).join('')+'</div></div>';
     h+='<div class="row"><label>Pinyin (Level 1)</label><div class="chips"><button class="chip'+(cfg.pinyin?' on':'')+'" data-pyt="1">Pinyin: '+(cfg.pinyin?'Bật':'Tắt')+'</button></div></div>';
     h+='<div class="row"><label>Thời gian mỗi câu</label><div class="chips">'+[10,15,20,30].map(function(c){return '<button class="chip'+(cfg.time===c?' on':'')+'" data-time="'+c+'">'+c+' giây</button>'}).join('')+'</div></div>';
     h+='<div class="row"><label>Âm thanh</label><div class="chips"><button class="chip'+(cfg.sound?' on':'')+'" data-snd="1">🔊 Âm thanh: '+(cfg.sound?'Bật':'Tắt')+'</button></div></div>';
@@ -290,13 +305,15 @@ function renderSetup(){
        '<div class="note" id="calMsg" style="margin-top:8px">'+esc(Cam.msg||'Ngồi thẳng, nhìn màn hình, giữ đầu ở giữa. Chỉ xin quyền camera khi bấm “Bật camera”. Xử lý ngay trong trình duyệt, không ghi hình, không gửi hình đi đâu. Lần đầu cần Internet để tải mô hình nhận diện (~vài MB).')+'</div>'+
        '<div class="demo"><div id="tryL">⬅ Thử nghiêng trái: <span id="tryLs">chưa</span></div><div id="tryR">Thử nghiêng phải ➡: <span id="tryRs">chưa</span></div></div></div></div></div>';
     var real=cfg.count?Math.min(cfg.count,pool.length):pool.length;
-    h+='<div class="row"><div class="note">'+(pool.length?('Sẽ chơi <b>'+real+'</b> câu'+(cfg.count&&pool.length<cfg.count?' (bài đã chọn chỉ có '+pool.length+' câu hợp lệ, ít hơn '+cfg.count+')':'')+'.'):'<span class="warn">Chưa có câu hỏi: hãy chọn ít nhất 1 bài.</span>')+'</div></div>';
-    h+='<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn big" id="bStartCam"'+(pool.length&&Cam.on&&Cam.calibrated?'':' disabled')+'>📷 Bắt đầu bằng camera</button><button class="btn big alt" id="bStartBtn"'+(pool.length?'':' disabled')+'>🖱️ Chơi bằng nút bấm</button></div>';
+    if(cfg.mode==='team')h+='<div class="row"><div class="note">'+(pool.length?'Ngân hàng có <b>'+pool.length+'</b> câu hợp lệ; trận sẽ bốc đủ số lượt (mỗi vòng các đội cùng dạng, cùng level, câu khác nhau).':'<span class="warn">Chưa có câu hỏi: hãy chọn ít nhất 1 bài.</span>')+'</div></div>';
+    else h+='<div class="row"><div class="note">'+(pool.length?('Sẽ chơi <b>'+real+'</b> câu'+(cfg.count&&pool.length<cfg.count?' (bài đã chọn chỉ có '+pool.length+' câu hợp lệ, ít hơn '+cfg.count+')':'')+'.'):'<span class="warn">Chưa có câu hỏi: hãy chọn ít nhất 1 bài.</span>')+'</div></div>';
+    h+='<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn big" id="bStartCam"'+(pool.length&&Cam.on&&Cam.calibrated&&(cfg.mode!=='team'||TM.canStart().ok)?'':' disabled')+'>📷 Bắt đầu bằng camera</button><button class="btn big alt" id="bStartBtn"'+(pool.length&&(cfg.mode!=='team'||TM.canStart().ok)?'':' disabled')+'>🖱️ Chơi bằng nút bấm</button></div>';
     if(!(Cam.on&&Cam.calibrated))h+='<div class="note" style="margin-top:6px">Muốn chơi bằng camera: bật camera và đợi căn chỉnh xong (khoảng 1–2 giây).</div>';
   }
   h+='<div class="note" style="margin-top:12px">ℹ️ Kết quả chỉ lưu trên thiết bị này (không gửi lên bảng điểm, không tính hoàn thành bài học).</div></div>';
   el.innerHTML=h;
   if(Cam.on||Cam.loading)attachVideo($('calCam'));
+  if(cfg.mode==='team')TM.mount($('tmPanel'));
   updateThresholdMarks();
 }
 $('setupBody').addEventListener('click',function(e){
@@ -623,7 +640,8 @@ function updateCamUI(){
   updateOverlay();
   var bc=$('bCam');if(bc)bc.classList.toggle('on',Cam.on||Cam.loading);
   var cm=$('calMsg');if(cm&&Cam.msg)cm.textContent=Cam.msg;
-  var sc=$('bStartCam');if(sc&&state==='setup')sc.disabled=!(Cam.on&&Cam.calibrated&&poolFor(cfg).length);
+  var sc=$('bStartCam');if(sc&&state==='setup')sc.disabled=!(Cam.on&&Cam.calibrated&&poolFor(cfg).length&&(cfg.mode!=='team'||TM.canStart().ok));
+  if(state==='handover')updateHandoverReady();
 }
 
 /* ----- ván chơi ----- */
@@ -640,6 +658,7 @@ function startFromSetup(control){
   audio();
   if(control==='cam'&&!(Cam.on&&Cam.calibrated)){return}
   cfg.control=control;
+  if(cfg.mode==='team'){startTeam();return}
   ensurePermission().then(function(){
     if(!canPlay()){renderSetup();return}
     var pool=mixOrder(poolFor(cfg));if(!pool.length){renderSetup();return}
@@ -650,14 +669,78 @@ function startFromSetup(control){
 function prepareAndBegin(pool){
   preloadImgs(pool).then(function(){var p2=pool.filter(function(q){return q.type!=='hinh'||okImg[q.img]});if(!p2.length){toSetup();return}beginRound(p2)});
 }
-function beginRound(pool){
-  G={pool:pool,idx:0,score:0,correct:0,wrong:0,timeout:0,streak:0,best:0,log:[],q:null,opts:[],locked:false,frozen:0,limit:cfg.time*1000,mode:cfg.mode,control:(cfg.control==='cam'&&Cam.on&&Cam.calibrated)?'cam':'btn',lessons:Object.keys(cfg.lessons).map(Number).sort(function(a,b){return a-b})};
+/* ----- thi đấu theo đội ----- */
+function startTeam(prevM){
+  if(!prevM&&!TM.canStart().ok){renderSetup();return}
+  ensurePermission().then(function(){
+    if(!canPlay()){renderSetup();return}
+    var pool=poolFor(cfg);if(!pool.length){renderSetup();return}
+    preloadImgs(pool).then(function(){
+      var p2=pool.filter(function(q){return q.type!=='hinh'||okImg[q.img]});if(!p2.length){toSetup();return}
+      var M=prevM?TM.rebuild(prevM,p2):TM.buildMatch(p2,'tilt');
+      beginRound(M.slots.map(function(s){return s.q}),M);
+    });
+  });
+}
+function teamSlot(){return G.team.slots[Math.min(G.idx,G.team.slots.length-1)]}
+function renderBoard(opt){if(!G||!G.team)return;$('tmBoard').innerHTML=TM.boardHtml(G.team,G.idx,opt)}
+function enterHandover(i){
+  var M=G.team;G.idx=i;G.locked=true;state='handover';
+  stopSpeak();Head.holdMs=0;Head.holdSide=null;Head.armed=false;Head.centerSince=0;
+  $('ovPause').classList.remove('show');
+  showQuestionUI(i,true);renderBoard();
+  if(G.control==='cam'&&Cam.on)reselectPlayer(); /* người mới: khoá lại người chơi + căn chỉnh thẳng đầu */
+  drawHandover();$('ovHand').classList.add('show');
+}
+var hoSig='';
+function drawHandover(){
+  if(!G||!G.team)return;var cam=G.control==='cam';
+  $('ovHand').innerHTML=TM.handoverHtml(G.team,G.idx,{cam:cam,ready:handoverReady(),hint:handoverHint(),goLabel:'▶ Bắt đầu lượt'})+(cam?'<button class="btn alt" id="tmBtnMode" style="margin-top:8px">🖱️ Chuyển sang nút bấm</button>':'');
+  hoSig=handoverReady()+'|'+handoverHint();
+}
+function handoverReady(){return G.control!=='cam'||(Cam.on&&Cam.calibrated&&Head.haveFace)}
+function handoverHint(){
+  if(G.control!=='cam')return '';
+  if(!Cam.on)return 'Camera chưa bật – bấm “Chuyển sang nút bấm” hoặc bật camera.';
+  if(!Head.haveFace&&!Cam.calibrated)return 'Chờ bạn mới đứng vào giữa khung…';
+  if(!Cam.calibrated)return 'Đang căn chỉnh: bạn mới giữ đầu thẳng ~1,5 giây… '+Math.round((Head.calProg||0)*100)+'%';
+  if(!Head.haveFace)return 'Chưa thấy khuôn mặt bạn mới.';
+  return '✔ Camera sẵn sàng – cô bấm Bắt đầu lượt khi bạn đã nhìn thẳng.';
+}
+function updateHandoverReady(){
+  if(!G||!G.team||state!=='handover')return;
+  var sig=handoverReady()+'|'+handoverHint();if(sig===hoSig)return;hoSig=sig;
+  var b=$('tmGo');if(b)b.disabled=!handoverReady();var h=$('tmHint');if(h)h.textContent=handoverHint();
+}
+function startTurn(){
+  if(!G||!G.team||state!=='handover'||!handoverReady())return;
+  $('ovHand').classList.remove('show');audio();
+  nextQ(G.idx);ensureLoop();
+}
+$('ovHand').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b||!G||!G.team||state!=='handover')return;
+  if(b.dataset.tmbet!==undefined){G.team.setBet(G.idx,Number(b.dataset.tmbet));drawHandover();renderBoard();return}
+  if(b.id==='tmGo'){startTurn();return}
+  if(b.id==='tmBtnMode'){switchToButtons('');drawHandover()}
+});
+function endTeam(){
+  var M=G.team;TM.save(M);
+  var h='<div class="card">'+TM.resultHtml(M)+'<div class="note" style="margin-top:8px">Kết quả đội chỉ lưu tóm tắt điểm trên thiết bị này, không gửi lên bảng điểm và không tính hoàn thành bài.'+(Cam.on?'<br>📷 Camera vẫn đang bật. <button class="chip" id="eCamOff">Tắt camera</button>':'')+'</div></div>';
+  h+='<div class="card"><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn big" id="eReplay">🔁 Thi đấu lại (cùng đội, câu mới)</button><button class="btn alt" id="eChange">👥 Đổi đội / bài</button><a class="btn alt" href="../index.html#game" style="text-decoration:none;display:inline-flex;align-items:center">← Về Mini Games</a></div></div>';
+  h+='<div class="card" style="overflow-x:auto"><table><thead><tr><th>#</th><th>Đội</th><th>Bạn chơi</th><th>Câu</th><th>Bạn chọn</th><th>Đáp án</th><th>Điểm</th></tr></thead><tbody>'+M.slots.map(function(sl,i){var l=G.log[i]||{},r=sl.res||{delta:0,status:'timeout'};return '<tr><td>'+(i+1)+'</td><td>'+M.teams[sl.team].emoji+' '+esc(M.teams[sl.team].name)+'</td><td>'+esc(M.nameOf(sl.player))+'</td><td class="han">'+esc(l.prompt||'')+'</td><td class="han">'+(l.chosen==null?'—':esc(l.chosen))+'</td><td class="han">'+esc(l.correct||'')+'</td><td class="st-'+r.status+'">'+(r.status==='correct'?'✓':r.status==='wrong'?'✗':'⏱')+' '+(r.delta>0?'+':'')+r.delta+(sl.special==='double'?' (×2)':sl.special==='bet'?' (cược '+r.bet+')':'')+'</td></tr>'}).join('')+'</tbody></table></div>';
+  $('scrEnd').innerHTML=h;document.body.classList.remove('playing');showScreen('end');window.scrollTo(0,0);parkVideo();camStop('');
+  $('eReplay').onclick=replay;$('eChange').onclick=toSetup;if($('eCamOff'))$('eCamOff').onclick=function(){camStop('');$('eCamOff').parentNode.removeChild($('eCamOff'))};
+}
+function beginRound(pool,team){
+  G={pool:pool,idx:0,score:0,correct:0,wrong:0,timeout:0,streak:0,best:0,log:[],q:null,opts:[],locked:false,frozen:0,limit:cfg.time*1000,mode:cfg.mode,control:(cfg.control==='cam'&&Cam.on&&Cam.calibrated)?'cam':'btn',lessons:Object.keys(cfg.lessons).map(Number).sort(function(a,b){return a-b}),team:team||null};
   showScreen('play');document.body.classList.add('playing');window.scrollTo(0,0);
   $('ovPause').classList.remove('show');$('ovReady').classList.add('show');
   $('readyTxt').innerHTML=G.control==='cam'?'Ngồi thẳng, giữ đầu ở <b>giữa</b>. Nghiêng đầu về phía đáp án rồi <b>giữ khoảng 0,8 giây</b> để chốt. Sau mỗi câu hãy đưa đầu về giữa.<br>Cũng có thể bấm vào thẻ hoặc dùng phím ← →, P = tạm dừng.':'Bấm vào thẻ đáp án trái/phải hoặc dùng phím <b>←</b> <b>→</b>. P = tạm dừng.';
   state='prepare';
   $('bSnd').textContent=cfg.sound?'🔊':'🔇';$('bSnd').classList.toggle('on',cfg.sound);
+  $('tmBoard').classList.toggle('hide',!G.team);$('ovHand').classList.remove('show');$('tmBoard').innerHTML='';
   setControlUI();showQuestionUI(0,true);ensureLoop();
+  if(G.team){$('ovReady').classList.remove('show');audio();musicStart();enterHandover(0)}
 }
 function setControlUI(){
   var cam=G&&G.control==='cam';
@@ -676,9 +759,10 @@ function nextQ(i){
   state='playing';Head.holdMs=0;Head.holdSide=null;Head.armed=false;Head.centerSince=0; /* phải về giữa trước khi chọn */
   qStart=performance.now();lastBeepSec=-1;shownRemain=-1;
   showQuestionUI(i,false);
+  if(G.team)renderBoard();
 }
 function showQuestionUI(i,preview){
-  $('hQ').textContent='Câu '+Math.min(i+1,G.pool.length)+'/'+G.pool.length;$('hScore').textContent='⭐ '+G.score;$('hBar').style.width=(i/G.pool.length*100)+'%';
+  $('hQ').textContent=(G.team?'Lượt ':'Câu ')+Math.min(i+1,G.pool.length)+'/'+G.pool.length;$('hScore').textContent=G.team?'⭐ '+G.team.teams[teamSlot().team].score:'⭐ '+G.score;$('hBar').style.width=(i/G.pool.length*100)+'%';
   var q=G.q&&!preview?G.q:null,qb=$('qBox');qb.className='qbox'+(q&&q.type==='chondungcau'?' vi':'')+(q&&q.type==='hinh'?' pic':'');
   if(!q)qb.innerHTML='…';else if(q.type==='hinh')qb.innerHTML='<img src="'+esc(q.img)+'" alt="hình">';
   else if(q.type==='nghe')qb.innerHTML='<button class="spk" id="bSpk" type="button">🔊 Nghe lại</button>';
@@ -727,7 +811,8 @@ function choose(side,src){
 }
 function timeoutQ(){if(state!=='playing'||G.locked)return;G.locked=true;G.frozen=0;G.timeout++;G.streak=0;sfx('timeout');finishQuestion('timeout',null,null)}
 function finishQuestion(status,chosenText,side){
-  var q=G.q;stopSpeak();
+  var q=G.q;stopSpeak();var tres=null;
+  if(G.team){tres=G.team.finish(G.idx,status)}
   G.log.push({id:q.id,lesson:q.lesson,type:q.type,prompt:q.type==='hinh'?'🖼️ (hình) → '+q.correctAnswer:q.type==='nghe'?'🔊 (nghe)':q.prompt,chosen:chosenText,correct:q.correctAnswer,full:q.completedText,status:status});
   state='feedback';fbEnd=performance.now()+FEEDBACK_MS;Head.armed=false;$('hL').style.width='0';$('hR').style.width='0';
   $('hScore').textContent='⭐ '+G.score;$('hBar').style.width=((G.idx+1)/G.pool.length*100)+'%';
@@ -736,6 +821,7 @@ function finishQuestion(status,chosenText,side){
   $('qBox').className='qbox'+(q.type==='dienkhuyet'||q.type==='nguphap'||q.type==='ghepcum'?'':' fb')+(q.type==='hinh'?' pic':'');if($('qBox').querySelector('.py'))$('qBox').classList.add('withpy');fitAll();
   ['L','R'].forEach(function(s){var e=$('a'+s);if(G.opts[s].isCorrect)e.classList.add('right');else if(s===side)e.classList.add('bad')});
   $('hStreak').textContent=G.streak>=3?'🔥 Liên tiếp ×'+G.streak:'';$('hTime').className='it time';
+  if(G.team){var sl=teamSlot();$('hScore').textContent='⭐ '+G.team.teams[sl.team].score;renderBoard({pop:sl.team});$('hStreak').textContent=G.team.teams[sl.team].emoji+' Đội '+G.team.teams[sl.team].name+': '+(tres.delta>0?'+':'')+tres.delta+' điểm'}
 }
 /* điều khiển thay thế: bấm thẻ, phím */
 ['L','R'].forEach(function(s){var e=$('a'+s);e.addEventListener('click',function(){if(state==='playing')choose(s,'tap')});e.addEventListener('keydown',function(ev){if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();if(state==='playing')choose(s,'key')}})});
@@ -775,7 +861,7 @@ function tick(now){
     /* mất khuôn mặt kéo dài khi chơi bằng camera -> tự tạm dừng */
     if(G.control==='cam'&&Cam.on&&!Head.haveFace&&now-Math.max(Head.lastFaceTs,qStart,lastFaceLossPause)>LOSS_PAUSE_MS&&!G.locked){pauseGame(TR.st==='locked'?'Không thấy khuôn mặt trong vài giây nên game tạm dừng. Người chơi quay lại giữa khung rồi bấm Tiếp tục, hoặc bấm “Chọn lại người chơi”.':'Chưa khoá được người chơi nên game tạm dừng. Bạn chơi đứng vào giữa khung rồi bấm Tiếp tục, hoặc chuyển sang nút bấm.')}
     else if(rem<=0)timeoutQ();
-  }else if(state==='feedback'&&now>=fbEnd){if(G.idx+1>=G.pool.length)endRound();else nextQ(G.idx+1)}
+  }else if(state==='feedback'&&now>=fbEnd){if(G.idx+1>=G.pool.length)endRound();else if(G.team)enterHandover(G.idx+1);else nextQ(G.idx+1)}
 }
 /* nút */
 $('bGo').addEventListener('click',goReady);
@@ -805,6 +891,7 @@ function endRound(){
   state='finished';stopSpeak();musicStop();
   if(isFull()){try{(document.exitFullscreen||document.webkitExitFullscreen).call(document)}catch(_){}}
   stage.classList.remove('expand');
+  if(G.team){endTeam();return}
   var total=G.pool.length,max=total*10,saved=saveResult(total,max),bad=G.log.filter(function(l){return l.status!=='correct'}),pct=total?Math.round(G.correct/total*100):0;
   var h='<div class="card"><h2 style="margin:0 0 10px">🎉 Kết quả</h2><div class="scoreb"><div><b>'+G.score+'/'+max+'</b>điểm</div><div><b>'+G.correct+'/'+total+'</b>câu đúng</div><div><b>'+pct+'%</b>chính xác</div><div><b>'+G.wrong+' · '+G.timeout+'</b>sai · hết giờ</div></div>';
   h+='<div class="note">'+(G.mode==='class'?'Chơi trên lớp (kết quả chung, lưu riêng)':'Tự ôn ở nhà')+' · Bài '+G.lessons.join(', ')+(G.best>=3?' · chuỗi đúng dài nhất ×'+G.best:'')+'<br>'+(saved?'Đã lưu kết quả trên thiết bị này.':'<span class="warn">Không lưu được kết quả trên thiết bị này – bạn vẫn xem được bảng bên dưới.</span>')+' Kết quả không gửi lên bảng điểm và không tính hoàn thành bài.'+(Cam.on?'<br>📷 Camera vẫn đang bật. <button class="chip" id="eCamOff">Tắt camera</button>':'')+'</div></div>';
@@ -826,12 +913,13 @@ function saveResult(total,max){
 function reviewWrong(bad){ensurePermission().then(function(){if(!canPlay()){toSetup();return}var ids={};bad.forEach(function(l){ids[l.id]=1});var pool=shuffle(BANK.filter(function(q){return ids[q.id]&&lessonAllowed(q.lesson)}));if(!pool.length){toSetup();return}prepareAndBegin(pool)})}
 function replay(){
   $('ovPause').classList.remove('show');
+  if(G&&G.team){var pm=G.team;state='setup';startTeam(pm);return}
   ensurePermission().then(function(){if(!canPlay()){toSetup();return}var pool=mixOrder(poolFor(cfg));if(!pool.length){toSetup();return}if(cfg.count&&pool.length>cfg.count)pool=pool.slice(0,cfg.count);prepareAndBegin(pool)});
 }
 function toSetup(){
   state='setup';stopSpeak();musicStop();stage.classList.remove('expand');
   if(isFull()){try{(document.exitFullscreen||document.webkitExitFullscreen).call(document)}catch(_){}}
-  $('ovPause').classList.remove('show');$('ovReady').classList.remove('show');
+  $('ovPause').classList.remove('show');$('ovReady').classList.remove('show');$('ovHand').classList.remove('show');$('tmBoard').classList.add('hide');
   document.body.classList.remove('playing');G=null;showScreen('setup');renderSetup();window.scrollTo(0,0);if(Cam.on)ensureLoop();
 }
 renderGate();verify();
