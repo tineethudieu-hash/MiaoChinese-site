@@ -11372,6 +11372,1783 @@ window.SLICE_BANK = [
 "source": "lessons/bai12.html TRANSLATE_SELFCHECK #20"
 },
 {
+"id": "b13-q01",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "一____雨伞。",
+"correctAnswer": "把",
+"distractors": [
+"瓶",
+"本"
+],
+"completedText": "一把雨伞。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #1"
+},
+{
+"id": "b13-q02",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "两____香水。",
+"correctAnswer": "瓶",
+"distractors": [
+"把",
+"本"
+],
+"completedText": "两瓶香水。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #2"
+},
+{
+"id": "b13-q03",
+"lesson": 13,
+"level": 1,
+"type": "nguphap",
+"prompt": "三____老师。",
+"correctAnswer": "位",
+"distractors": [
+"瓶",
+"把"
+],
+"completedText": "三位老师。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #3"
+},
+{
+"id": "b13-q04",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "四____箱子。",
+"correctAnswer": "个",
+"distractors": [
+"瓶",
+"位"
+],
+"completedText": "四个箱子。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #4"
+},
+{
+"id": "b13-q05",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "五____书。",
+"correctAnswer": "本",
+"distractors": [
+"瓶",
+"位"
+],
+"completedText": "五本书。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #5"
+},
+{
+"id": "b13-q06",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "六____光盘。",
+"correctAnswer": "张",
+"distractors": [
+"瓶",
+"把"
+],
+"completedText": "六张光盘。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #6"
+},
+{
+"id": "b13-q07",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "七____词典。",
+"correctAnswer": "本",
+"distractors": [
+"支",
+"瓶"
+],
+"completedText": "七本词典。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #7"
+},
+{
+"id": "b13-q08",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "八____笔。",
+"correctAnswer": "支",
+"distractors": [
+"把",
+"位"
+],
+"completedText": "八支笔。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #8"
+},
+{
+"id": "b13-q09",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "十____衣服。",
+"correctAnswer": "件",
+"distractors": [
+"瓶",
+"位"
+],
+"completedText": "十件衣服。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #9"
+},
+{
+"id": "b13-q11",
+"lesson": 13,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "你的箱子____不重？",
+"correctAnswer": "重",
+"distractors": [
+"轻",
+"黑"
+],
+"completedText": "你的箱子重不重？",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #11"
+},
+{
+"id": "b13-q14",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "今天下____了。",
+"correctAnswer": "雨",
+"distractors": [
+"雨伞",
+"茶叶"
+],
+"completedText": "今天下雨了。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #14"
+},
+{
+"id": "b13-q15",
+"lesson": 13,
+"level": 1,
+"type": "ghepcum",
+"prompt": "我有一把____。",
+"correctAnswer": "雨伞",
+"distractors": [
+"光盘",
+"词典"
+],
+"completedText": "我有一把雨伞。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #15"
+},
+{
+"id": "b13-q16",
+"lesson": 13,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "箱子里有一瓶____。",
+"correctAnswer": "香水",
+"distractors": [
+"雨伞",
+"椅子"
+],
+"completedText": "箱子里有一瓶香水。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #16"
+},
+{
+"id": "b13-q19",
+"lesson": 13,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "这是一张中国____。",
+"correctAnswer": "地图",
+"distractors": [
+"词典",
+"香水"
+],
+"completedText": "这是一张中国地图。",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #19"
+},
+{
+"id": "b13-q21",
+"lesson": 13,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "你吃不吃____？",
+"correctAnswer": "冰淇淋",
+"distractors": [
+"衣服",
+"词典"
+],
+"completedText": "你吃不吃冰淇淋？",
+"optLang": "han",
+"source": "lessons/bai13.html FILL_BLANK #21"
+},
+{
+"id": "b13-w01-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "箱子",
+"correctAnswer": "vali, thùng",
+"distractors": [
+"đĩa quang, CD/DVD",
+"nhà vệ sinh"
+],
+"optLang": "vi",
+"completedText": "箱子 = vali, thùng",
+"source": "lessons/bai13.html WORDS #1"
+},
+{
+"id": "b13-w01-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/xiangzi.jpg",
+"prompt": "",
+"correctAnswer": "箱子",
+"distractors": [
+"香水",
+"衣服"
+],
+"optLang": "han",
+"completedText": "箱子 (xiāngzi) = vali, thùng",
+"source": "lessons/bai13.html WORDS #1"
+},
+{
+"id": "b13-w01-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "箱子",
+"prompt": "",
+"correctAnswer": "箱子",
+"distractors": [
+"香水",
+"衣服"
+],
+"optLang": "han",
+"completedText": "箱子 (xiāngzi) = vali, thùng",
+"source": "lessons/bai13.html WORDS #1"
+},
+{
+"id": "b13-w02-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "黑",
+"correctAnswer": "đen",
+"distractors": [
+"bút bi",
+"vali, thùng"
+],
+"optLang": "vi",
+"completedText": "黑 = đen",
+"source": "lessons/bai13.html WORDS #2"
+},
+{
+"id": "b13-w02-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/hei.jpg",
+"prompt": "",
+"correctAnswer": "黑",
+"distractors": [
+"笔",
+"中药"
+],
+"optLang": "han",
+"completedText": "黑 (hēi) = đen",
+"source": "lessons/bai13.html WORDS #2"
+},
+{
+"id": "b13-w02-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "黑",
+"prompt": "",
+"correctAnswer": "黑",
+"distractors": [
+"笔",
+"中药"
+],
+"optLang": "han",
+"completedText": "黑 (hēi) = đen",
+"source": "lessons/bai13.html WORDS #2"
+},
+{
+"id": "b13-w03-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "红",
+"correctAnswer": "đỏ",
+"distractors": [
+"nước hoa",
+"lá trà"
+],
+"optLang": "vi",
+"completedText": "红 = đỏ",
+"source": "lessons/bai13.html WORDS #3"
+},
+{
+"id": "b13-w03-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/hong.jpg",
+"prompt": "",
+"correctAnswer": "红",
+"distractors": [
+"香水",
+"吃药"
+],
+"optLang": "han",
+"completedText": "红 (hóng) = đỏ",
+"source": "lessons/bai13.html WORDS #3"
+},
+{
+"id": "b13-w03-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "红",
+"prompt": "",
+"correctAnswer": "红",
+"distractors": [
+"香水",
+"吃药"
+],
+"optLang": "han",
+"completedText": "红 (hóng) = đỏ",
+"source": "lessons/bai13.html WORDS #3"
+},
+{
+"id": "b13-w04-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "重",
+"correctAnswer": "nặng",
+"distractors": [
+"báo giấy",
+"mưa"
+],
+"optLang": "vi",
+"completedText": "重 = nặng",
+"source": "lessons/bai13.html WORDS #4"
+},
+{
+"id": "b13-w04-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/zhong.jpg",
+"prompt": "",
+"correctAnswer": "重",
+"distractors": [
+"西药",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "重 (zhòng) = nặng",
+"source": "lessons/bai13.html WORDS #4"
+},
+{
+"id": "b13-w04-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "重",
+"prompt": "",
+"correctAnswer": "重",
+"distractors": [
+"西药",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "重 (zhòng) = nặng",
+"source": "lessons/bai13.html WORDS #4"
+},
+{
+"id": "b13-w05-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "轻",
+"correctAnswer": "nhẹ",
+"distractors": [
+"từ điển",
+"báo giấy"
+],
+"optLang": "vi",
+"completedText": "轻 = nhẹ",
+"source": "lessons/bai13.html WORDS #5"
+},
+{
+"id": "b13-w05-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/qing.jpg",
+"prompt": "",
+"correctAnswer": "轻",
+"distractors": [
+"词典",
+"西药"
+],
+"optLang": "han",
+"completedText": "轻 (qīng) = nhẹ",
+"source": "lessons/bai13.html WORDS #5"
+},
+{
+"id": "b13-w05-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "轻",
+"prompt": "",
+"correctAnswer": "轻",
+"distractors": [
+"词典",
+"西药"
+],
+"optLang": "han",
+"completedText": "轻 (qīng) = nhẹ",
+"source": "lessons/bai13.html WORDS #5"
+},
+{
+"id": "b13-w06-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "吃药",
+"correctAnswer": "uống thuốc",
+"distractors": [
+"thuốc Tây",
+"đồ dùng hằng ngày"
+],
+"optLang": "vi",
+"completedText": "吃药 = uống thuốc",
+"source": "lessons/bai13.html WORDS #6"
+},
+{
+"id": "b13-w06-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/chiyao.jpg",
+"prompt": "",
+"correctAnswer": "吃药",
+"distractors": [
+"雨伞",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "吃药 (chī yào) = uống thuốc",
+"source": "lessons/bai13.html WORDS #6"
+},
+{
+"id": "b13-w06-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "吃药",
+"prompt": "",
+"correctAnswer": "吃药",
+"distractors": [
+"雨伞",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "吃药 (chī yào) = uống thuốc",
+"source": "lessons/bai13.html WORDS #6"
+},
+{
+"id": "b13-w07-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "中药",
+"correctAnswer": "thuốc Đông y",
+"distractors": [
+"uống thuốc",
+"nước hoa"
+],
+"optLang": "vi",
+"completedText": "中药 = thuốc Đông y",
+"source": "lessons/bai13.html WORDS #7"
+},
+{
+"id": "b13-w07-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/zhongyao.jpg",
+"prompt": "",
+"correctAnswer": "中药",
+"distractors": [
+"瓶子",
+"香水"
+],
+"optLang": "han",
+"completedText": "中药 (zhōngyào) = thuốc Đông y",
+"source": "lessons/bai13.html WORDS #7"
+},
+{
+"id": "b13-w07-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "中药",
+"prompt": "",
+"correctAnswer": "中药",
+"distractors": [
+"瓶子",
+"香水"
+],
+"optLang": "han",
+"completedText": "中药 (zhōngyào) = thuốc Đông y",
+"source": "lessons/bai13.html WORDS #7"
+},
+{
+"id": "b13-w08-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "西药",
+"correctAnswer": "thuốc Tây",
+"distractors": [
+"báo giấy",
+"bản đồ"
+],
+"optLang": "vi",
+"completedText": "西药 = thuốc Tây",
+"source": "lessons/bai13.html WORDS #8"
+},
+{
+"id": "b13-w08-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/xiyao.jpg",
+"prompt": "",
+"correctAnswer": "西药",
+"distractors": [
+"日用品",
+"重"
+],
+"optLang": "han",
+"completedText": "西药 (xīyào) = thuốc Tây",
+"source": "lessons/bai13.html WORDS #8"
+},
+{
+"id": "b13-w08-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "西药",
+"prompt": "",
+"correctAnswer": "西药",
+"distractors": [
+"日用品",
+"重"
+],
+"optLang": "han",
+"completedText": "西药 (xīyào) = thuốc Tây",
+"source": "lessons/bai13.html WORDS #8"
+},
+{
+"id": "b13-w09-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "茶叶",
+"correctAnswer": "lá trà",
+"distractors": [
+"bản đồ",
+"nhẹ"
+],
+"optLang": "vi",
+"completedText": "茶叶 = lá trà",
+"source": "lessons/bai13.html WORDS #9"
+},
+{
+"id": "b13-w09-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/chaye.jpg",
+"prompt": "",
+"correctAnswer": "茶叶",
+"distractors": [
+"香水",
+"重"
+],
+"optLang": "han",
+"completedText": "茶叶 (cháyè) = lá trà",
+"source": "lessons/bai13.html WORDS #9"
+},
+{
+"id": "b13-w09-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "茶叶",
+"prompt": "",
+"correctAnswer": "茶叶",
+"distractors": [
+"香水",
+"重"
+],
+"optLang": "han",
+"completedText": "茶叶 (cháyè) = lá trà",
+"source": "lessons/bai13.html WORDS #9"
+},
+{
+"id": "b13-w10-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "日用品",
+"correctAnswer": "đồ dùng hằng ngày",
+"distractors": [
+"chai, lọ",
+"nặng"
+],
+"optLang": "vi",
+"completedText": "日用品 = đồ dùng hằng ngày",
+"source": "lessons/bai13.html WORDS #10"
+},
+{
+"id": "b13-w10-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/riyongpin.jpg",
+"prompt": "",
+"correctAnswer": "日用品",
+"distractors": [
+"香水",
+"光盘"
+],
+"optLang": "han",
+"completedText": "日用品 (rìyòngpǐn) = đồ dùng hằng ngày",
+"source": "lessons/bai13.html WORDS #10"
+},
+{
+"id": "b13-w10-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "日用品",
+"prompt": "",
+"correctAnswer": "日用品",
+"distractors": [
+"香水",
+"光盘"
+],
+"optLang": "han",
+"completedText": "日用品 (rìyòngpǐn) = đồ dùng hằng ngày",
+"source": "lessons/bai13.html WORDS #10"
+},
+{
+"id": "b13-w11-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "衣服",
+"correctAnswer": "quần áo",
+"distractors": [
+"bút",
+"ghế"
+],
+"optLang": "vi",
+"completedText": "衣服 = quần áo",
+"source": "lessons/bai13.html WORDS #11"
+},
+{
+"id": "b13-w11-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/yifu.jpg",
+"prompt": "",
+"correctAnswer": "衣服",
+"distractors": [
+"吃药",
+"红"
+],
+"optLang": "han",
+"completedText": "衣服 (yīfu) = quần áo",
+"source": "lessons/bai13.html WORDS #11"
+},
+{
+"id": "b13-w11-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "衣服",
+"prompt": "",
+"correctAnswer": "衣服",
+"distractors": [
+"吃药",
+"红"
+],
+"optLang": "han",
+"completedText": "衣服 (yīfu) = quần áo",
+"source": "lessons/bai13.html WORDS #11"
+},
+{
+"id": "b13-w12-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "雨",
+"correctAnswer": "mưa",
+"distractors": [
+"ghế",
+"báo giấy"
+],
+"optLang": "vi",
+"completedText": "雨 = mưa",
+"source": "lessons/bai13.html WORDS #12"
+},
+{
+"id": "b13-w12-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/yu.jpg",
+"prompt": "",
+"correctAnswer": "雨",
+"distractors": [
+"椅子",
+"日用品"
+],
+"optLang": "han",
+"completedText": "雨 (yǔ) = mưa",
+"source": "lessons/bai13.html WORDS #12"
+},
+{
+"id": "b13-w12-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "雨",
+"prompt": "",
+"correctAnswer": "雨",
+"distractors": [
+"椅子",
+"日用品"
+],
+"optLang": "han",
+"completedText": "雨 (yǔ) = mưa",
+"source": "lessons/bai13.html WORDS #12"
+},
+{
+"id": "b13-w13-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "雨伞",
+"correctAnswer": "ô, dù",
+"distractors": [
+"quần áo",
+"đồ dùng hằng ngày"
+],
+"optLang": "vi",
+"completedText": "雨伞 = ô, dù",
+"source": "lessons/bai13.html WORDS #13"
+},
+{
+"id": "b13-w13-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/yusan.jpg",
+"prompt": "",
+"correctAnswer": "雨伞",
+"distractors": [
+"报纸",
+"中药"
+],
+"optLang": "han",
+"completedText": "雨伞 (yǔsǎn) = ô, dù",
+"source": "lessons/bai13.html WORDS #13"
+},
+{
+"id": "b13-w13-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "雨伞",
+"prompt": "",
+"correctAnswer": "雨伞",
+"distractors": [
+"报纸",
+"中药"
+],
+"optLang": "han",
+"completedText": "雨伞 (yǔsǎn) = ô, dù",
+"source": "lessons/bai13.html WORDS #13"
+},
+{
+"id": "b13-w14-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "香水",
+"correctAnswer": "nước hoa",
+"distractors": [
+"vali, thùng",
+"đồ dùng hằng ngày"
+],
+"optLang": "vi",
+"completedText": "香水 = nước hoa",
+"source": "lessons/bai13.html WORDS #14"
+},
+{
+"id": "b13-w14-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/xiangshui.jpg",
+"prompt": "",
+"correctAnswer": "香水",
+"distractors": [
+"笔",
+"地图"
+],
+"optLang": "han",
+"completedText": "香水 (xiāngshuǐ) = nước hoa",
+"source": "lessons/bai13.html WORDS #14"
+},
+{
+"id": "b13-w14-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "香水",
+"prompt": "",
+"correctAnswer": "香水",
+"distractors": [
+"笔",
+"地图"
+],
+"optLang": "han",
+"completedText": "香水 (xiāngshuǐ) = nước hoa",
+"source": "lessons/bai13.html WORDS #14"
+},
+{
+"id": "b13-w15-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "瓶子",
+"correctAnswer": "chai, lọ",
+"distractors": [
+"nhà vệ sinh",
+"bút"
+],
+"optLang": "vi",
+"completedText": "瓶子 = chai, lọ",
+"source": "lessons/bai13.html WORDS #15"
+},
+{
+"id": "b13-w15-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/pingzi.jpg",
+"prompt": "",
+"correctAnswer": "瓶子",
+"distractors": [
+"雨伞",
+"笔"
+],
+"optLang": "han",
+"completedText": "瓶子 (píngzi) = chai, lọ",
+"source": "lessons/bai13.html WORDS #15"
+},
+{
+"id": "b13-w15-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "瓶子",
+"prompt": "",
+"correctAnswer": "瓶子",
+"distractors": [
+"雨伞",
+"笔"
+],
+"optLang": "han",
+"completedText": "瓶子 (píngzi) = chai, lọ",
+"source": "lessons/bai13.html WORDS #15"
+},
+{
+"id": "b13-w16-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "词典",
+"correctAnswer": "từ điển",
+"distractors": [
+"chai, lọ",
+"bút"
+],
+"optLang": "vi",
+"completedText": "词典 = từ điển",
+"source": "lessons/bai13.html WORDS #16"
+},
+{
+"id": "b13-w16-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/cidian.jpg",
+"prompt": "",
+"correctAnswer": "词典",
+"distractors": [
+"红",
+"衣服"
+],
+"optLang": "han",
+"completedText": "词典 (cídiǎn) = từ điển",
+"source": "lessons/bai13.html WORDS #16"
+},
+{
+"id": "b13-w16-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "词典",
+"prompt": "",
+"correctAnswer": "词典",
+"distractors": [
+"红",
+"衣服"
+],
+"optLang": "han",
+"completedText": "词典 (cídiǎn) = từ điển",
+"source": "lessons/bai13.html WORDS #16"
+},
+{
+"id": "b13-w17-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "光盘",
+"correctAnswer": "đĩa quang, CD/DVD",
+"distractors": [
+"lá trà",
+"nước hoa"
+],
+"optLang": "vi",
+"completedText": "光盘 = đĩa quang, CD/DVD",
+"source": "lessons/bai13.html WORDS #17"
+},
+{
+"id": "b13-w17-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/guangpan.jpg",
+"prompt": "",
+"correctAnswer": "光盘",
+"distractors": [
+"词典",
+"香水"
+],
+"optLang": "han",
+"completedText": "光盘 (guāngpán) = đĩa quang, CD/DVD",
+"source": "lessons/bai13.html WORDS #17"
+},
+{
+"id": "b13-w17-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "光盘",
+"prompt": "",
+"correctAnswer": "光盘",
+"distractors": [
+"词典",
+"香水"
+],
+"optLang": "han",
+"completedText": "光盘 (guāngpán) = đĩa quang, CD/DVD",
+"source": "lessons/bai13.html WORDS #17"
+},
+{
+"id": "b13-w18-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "笔",
+"correctAnswer": "bút",
+"distractors": [
+"đỏ",
+"ghế"
+],
+"optLang": "vi",
+"completedText": "笔 = bút",
+"source": "lessons/bai13.html WORDS #18"
+},
+{
+"id": "b13-w18-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/bi.jpg",
+"prompt": "",
+"correctAnswer": "笔",
+"distractors": [
+"日用品",
+"吃药"
+],
+"optLang": "han",
+"completedText": "笔 (bǐ) = bút",
+"source": "lessons/bai13.html WORDS #18"
+},
+{
+"id": "b13-w18-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "笔",
+"prompt": "",
+"correctAnswer": "笔",
+"distractors": [
+"日用品",
+"吃药"
+],
+"optLang": "han",
+"completedText": "笔 (bǐ) = bút",
+"source": "lessons/bai13.html WORDS #18"
+},
+{
+"id": "b13-w19-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "包",
+"correctAnswer": "túi",
+"distractors": [
+"quần áo",
+"lá trà"
+],
+"optLang": "vi",
+"completedText": "包 = túi",
+"source": "lessons/bai13.html WORDS #19"
+},
+{
+"id": "b13-w19-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/bao.jpg",
+"prompt": "",
+"correctAnswer": "包",
+"distractors": [
+"轻",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "包 (bāo) = túi",
+"source": "lessons/bai13.html WORDS #19"
+},
+{
+"id": "b13-w19-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "包",
+"prompt": "",
+"correctAnswer": "包",
+"distractors": [
+"轻",
+"冰淇淋"
+],
+"optLang": "han",
+"completedText": "包 (bāo) = túi",
+"source": "lessons/bai13.html WORDS #19"
+},
+{
+"id": "b13-w20-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "圆珠笔",
+"correctAnswer": "bút bi",
+"distractors": [
+"mưa",
+"vali, thùng"
+],
+"optLang": "vi",
+"completedText": "圆珠笔 = bút bi",
+"source": "lessons/bai13.html WORDS #20"
+},
+{
+"id": "b13-w20-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/yuanzhubi.jpg",
+"prompt": "",
+"correctAnswer": "圆珠笔",
+"distractors": [
+"西药",
+"包"
+],
+"optLang": "han",
+"completedText": "圆珠笔 (yuánzhūbǐ) = bút bi",
+"source": "lessons/bai13.html WORDS #20"
+},
+{
+"id": "b13-w20-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "圆珠笔",
+"prompt": "",
+"correctAnswer": "圆珠笔",
+"distractors": [
+"西药",
+"包"
+],
+"optLang": "han",
+"completedText": "圆珠笔 (yuánzhūbǐ) = bút bi",
+"source": "lessons/bai13.html WORDS #20"
+},
+{
+"id": "b13-w21-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "铅笔",
+"correctAnswer": "bút chì",
+"distractors": [
+"nước hoa",
+"nhẹ"
+],
+"optLang": "vi",
+"completedText": "铅笔 = bút chì",
+"source": "lessons/bai13.html WORDS #21"
+},
+{
+"id": "b13-w21-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/qianbi.jpg",
+"prompt": "",
+"correctAnswer": "铅笔",
+"distractors": [
+"香水",
+"包"
+],
+"optLang": "han",
+"completedText": "铅笔 (qiānbǐ) = bút chì",
+"source": "lessons/bai13.html WORDS #21"
+},
+{
+"id": "b13-w21-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "铅笔",
+"prompt": "",
+"correctAnswer": "铅笔",
+"distractors": [
+"香水",
+"包"
+],
+"optLang": "han",
+"completedText": "铅笔 (qiānbǐ) = bút chì",
+"source": "lessons/bai13.html WORDS #21"
+},
+{
+"id": "b13-w22-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "报纸",
+"correctAnswer": "báo giấy",
+"distractors": [
+"đỏ",
+"ghế"
+],
+"optLang": "vi",
+"completedText": "报纸 = báo giấy",
+"source": "lessons/bai13.html WORDS #22"
+},
+{
+"id": "b13-w22-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/baozhi.jpg",
+"prompt": "",
+"correctAnswer": "报纸",
+"distractors": [
+"吃药",
+"圆珠笔"
+],
+"optLang": "han",
+"completedText": "报纸 (bàozhǐ) = báo giấy",
+"source": "lessons/bai13.html WORDS #22"
+},
+{
+"id": "b13-w22-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "报纸",
+"prompt": "",
+"correctAnswer": "报纸",
+"distractors": [
+"吃药",
+"圆珠笔"
+],
+"optLang": "han",
+"completedText": "报纸 (bàozhǐ) = báo giấy",
+"source": "lessons/bai13.html WORDS #22"
+},
+{
+"id": "b13-w23-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "地图",
+"correctAnswer": "bản đồ",
+"distractors": [
+"bút",
+"quần áo"
+],
+"optLang": "vi",
+"completedText": "地图 = bản đồ",
+"source": "lessons/bai13.html WORDS #23"
+},
+{
+"id": "b13-w23-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/ditu.jpg",
+"prompt": "",
+"correctAnswer": "地图",
+"distractors": [
+"日用品",
+"红"
+],
+"optLang": "han",
+"completedText": "地图 (dìtú) = bản đồ",
+"source": "lessons/bai13.html WORDS #23"
+},
+{
+"id": "b13-w23-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "地图",
+"prompt": "",
+"correctAnswer": "地图",
+"distractors": [
+"日用品",
+"红"
+],
+"optLang": "han",
+"completedText": "地图 (dìtú) = bản đồ",
+"source": "lessons/bai13.html WORDS #23"
+},
+{
+"id": "b13-w24-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "椅子",
+"correctAnswer": "ghế",
+"distractors": [
+"đồ dùng hằng ngày",
+"bản đồ"
+],
+"optLang": "vi",
+"completedText": "椅子 = ghế",
+"source": "lessons/bai13.html WORDS #24"
+},
+{
+"id": "b13-w24-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/yizi.jpg",
+"prompt": "",
+"correctAnswer": "椅子",
+"distractors": [
+"西药",
+"茶叶"
+],
+"optLang": "han",
+"completedText": "椅子 (yǐzi) = ghế",
+"source": "lessons/bai13.html WORDS #24"
+},
+{
+"id": "b13-w24-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "椅子",
+"prompt": "",
+"correctAnswer": "椅子",
+"distractors": [
+"西药",
+"茶叶"
+],
+"optLang": "han",
+"completedText": "椅子 (yǐzi) = ghế",
+"source": "lessons/bai13.html WORDS #24"
+},
+{
+"id": "b13-w25-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "冰淇淋",
+"correctAnswer": "kem",
+"distractors": [
+"nhà vệ sinh",
+"bút chì"
+],
+"optLang": "vi",
+"completedText": "冰淇淋 = kem",
+"source": "lessons/bai13.html WORDS #25"
+},
+{
+"id": "b13-w25-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/bingqilin.jpg",
+"prompt": "",
+"correctAnswer": "冰淇淋",
+"distractors": [
+"雨",
+"报纸"
+],
+"optLang": "han",
+"completedText": "冰淇淋 (bīngqílín) = kem",
+"source": "lessons/bai13.html WORDS #25"
+},
+{
+"id": "b13-w25-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "冰淇淋",
+"prompt": "",
+"correctAnswer": "冰淇淋",
+"distractors": [
+"雨",
+"报纸"
+],
+"optLang": "han",
+"completedText": "冰淇淋 (bīngqílín) = kem",
+"source": "lessons/bai13.html WORDS #25"
+},
+{
+"id": "b13-w26-m",
+"lesson": 13,
+"level": 1,
+"type": "chonnghia",
+"prompt": "厕所 / 洗手间",
+"correctAnswer": "nhà vệ sinh",
+"distractors": [
+"đồ dùng hằng ngày",
+"bản đồ"
+],
+"optLang": "vi",
+"completedText": "厕所 / 洗手间 = nhà vệ sinh",
+"source": "lessons/bai13.html WORDS #26"
+},
+{
+"id": "b13-w26-h",
+"lesson": 13,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai13/cesuo.jpg",
+"prompt": "",
+"correctAnswer": "厕所 / 洗手间",
+"distractors": [
+"重",
+"笔"
+],
+"optLang": "han",
+"completedText": "厕所 / 洗手间 (cèsuǒ / xǐshǒujiān) = nhà vệ sinh",
+"source": "lessons/bai13.html WORDS #26"
+},
+{
+"id": "b13-w26-n",
+"lesson": 13,
+"level": 1,
+"type": "nghe",
+"audio": "厕所 / 洗手间",
+"prompt": "",
+"correctAnswer": "厕所 / 洗手间",
+"distractors": [
+"重",
+"笔"
+],
+"optLang": "han",
+"completedText": "厕所 / 洗手间 (cèsuǒ / xǐshǒujiān) = nhà vệ sinh",
+"source": "lessons/bai13.html WORDS #26"
+},
+{
+"id": "b13-s01",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là vali của tôi.",
+"correctAnswer": "这是我的箱子。",
+"distractors": [
+"这是谁的铅笔？",
+"这是茶叶，不是药。"
+],
+"optLang": "han",
+"completedText": "这是我的箱子。 = Đây là vali của tôi.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #1"
+},
+{
+"id": "b13-s02",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Vali của bạn ở đâu?",
+"correctAnswer": "你的箱子在哪儿？",
+"distractors": [
+"我的箱子是黑的。",
+"这是不是中药？"
+],
+"optLang": "han",
+"completedText": "你的箱子在哪儿？ = Vali của bạn ở đâu?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #2"
+},
+{
+"id": "b13-s03",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Vali của tôi màu đen.",
+"correctAnswer": "我的箱子是黑的。",
+"distractors": [
+"这是中药，不是西药。",
+"箱子里有一瓶香水。"
+],
+"optLang": "han",
+"completedText": "我的箱子是黑的。 = Vali của tôi màu đen.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #3"
+},
+{
+"id": "b13-s04",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Chiếc vali đen này rất nặng.",
+"correctAnswer": "这个黑箱子很重。",
+"distractors": [
+"这是谁的瓶子？",
+"我今天要吃药。"
+],
+"optLang": "han",
+"completedText": "这个黑箱子很重。 = Chiếc vali đen này rất nặng.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #4"
+},
+{
+"id": "b13-s05",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Chiếc vali đỏ kia rất nhẹ.",
+"correctAnswer": "那个红箱子很轻。",
+"distractors": [
+"今天下雨了。",
+"这是一张中国地图。"
+],
+"optLang": "han",
+"completedText": "那个红箱子很轻。 = Chiếc vali đỏ kia rất nhẹ.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #5"
+},
+{
+"id": "b13-s06",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Vali của bạn có nặng không?",
+"correctAnswer": "你的箱子重不重？",
+"distractors": [
+"箱子里有一瓶香水。",
+"厕所在哪儿？"
+],
+"optLang": "han",
+"completedText": "你的箱子重不重？ = Vali của bạn có nặng không?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #6"
+},
+{
+"id": "b13-s07",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Hôm nay tôi phải uống thuốc.",
+"correctAnswer": "我今天要吃药。",
+"distractors": [
+"你的箱子在哪儿？",
+"这个黑箱子很重。"
+],
+"optLang": "han",
+"completedText": "我今天要吃药。 = Hôm nay tôi phải uống thuốc.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #7"
+},
+{
+"id": "b13-s08",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây có phải thuốc Đông y không?",
+"correctAnswer": "这是不是中药？",
+"distractors": [
+"洗手间在这儿。",
+"这是茶叶，不是药。"
+],
+"optLang": "han",
+"completedText": "这是不是中药？ = Đây có phải thuốc Đông y không?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #8"
+},
+{
+"id": "b13-s09",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là thuốc Đông y, không phải thuốc Tây.",
+"correctAnswer": "这是中药，不是西药。",
+"distractors": [
+"这是一张中国地图。",
+"我今天要吃药。"
+],
+"optLang": "han",
+"completedText": "这是中药，不是西药。 = Đây là thuốc Đông y, không phải thuốc Tây.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #9"
+},
+{
+"id": "b13-s10",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là lá trà, không phải thuốc.",
+"correctAnswer": "这是茶叶，不是药。",
+"distractors": [
+"这个黑箱子很重。",
+"这是中药，不是西药。"
+],
+"optLang": "han",
+"completedText": "这是茶叶，不是药。 = Đây là lá trà, không phải thuốc.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #10"
+},
+{
+"id": "b13-s11",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Trong vali có hai bộ quần áo.",
+"correctAnswer": "箱子里有两件衣服。",
+"distractors": [
+"这两把雨伞是我的。",
+"这是茶叶，不是药。"
+],
+"optLang": "han",
+"completedText": "箱子里有两件衣服。 = Trong vali có hai bộ quần áo.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #11"
+},
+{
+"id": "b13-s12",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Hôm nay trời mưa rồi.",
+"correctAnswer": "今天下雨了。",
+"distractors": [
+"这是谁的铅笔？",
+"我今天要吃药。"
+],
+"optLang": "han",
+"completedText": "今天下雨了。 = Hôm nay trời mưa rồi.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #12"
+},
+{
+"id": "b13-s13",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Ngày mai trời có mưa không?",
+"correctAnswer": "明天会下雨吗？",
+"distractors": [
+"我的箱子是黑的。",
+"你的箱子在哪儿？"
+],
+"optLang": "han",
+"completedText": "明天会下雨吗？ = Ngày mai trời có mưa không?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #13"
+},
+{
+"id": "b13-s14",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Hai cái ô này là của tôi.",
+"correctAnswer": "这两把雨伞是我的。",
+"distractors": [
+"这是不是中药？",
+"明天会下雨吗？"
+],
+"optLang": "han",
+"completedText": "这两把雨伞是我的。 = Hai cái ô này là của tôi.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #14"
+},
+{
+"id": "b13-s15",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Trong vali có một lọ nước hoa.",
+"correctAnswer": "箱子里有一瓶香水。",
+"distractors": [
+"这是谁的瓶子？",
+"你的箱子在哪儿？"
+],
+"optLang": "han",
+"completedText": "箱子里有一瓶香水。 = Trong vali có một lọ nước hoa.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #15"
+},
+{
+"id": "b13-s16",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là chai của ai?",
+"correctAnswer": "这是谁的瓶子？",
+"distractors": [
+"这是不是中药？",
+"你的箱子重不重？"
+],
+"optLang": "han",
+"completedText": "这是谁的瓶子？ = Đây là chai của ai?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #16"
+},
+{
+"id": "b13-s17",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là một cuốn từ điển tiếng Hán.",
+"correctAnswer": "这是一本汉语词典。",
+"distractors": [
+"你的箱子在哪儿？",
+"洗手间在这儿。"
+],
+"optLang": "han",
+"completedText": "这是一本汉语词典。 = Đây là một cuốn từ điển tiếng Hán.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #17"
+},
+{
+"id": "b13-s18",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là một cái đĩa CD.",
+"correctAnswer": "这是一张光盘。",
+"distractors": [
+"明天会下雨吗？",
+"今天下雨了。"
+],
+"optLang": "han",
+"completedText": "这是一张光盘。 = Đây là một cái đĩa CD.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #18"
+},
+{
+"id": "b13-s19",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là bút chì của ai?",
+"correctAnswer": "这是谁的铅笔？",
+"distractors": [
+"洗手间在这儿。",
+"这是我的箱子。"
+],
+"optLang": "han",
+"completedText": "这是谁的铅笔？ = Đây là bút chì của ai?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #19"
+},
+{
+"id": "b13-s20",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là một tấm bản đồ Trung Quốc.",
+"correctAnswer": "这是一张中国地图。",
+"distractors": [
+"这是一张光盘。",
+"这是中药，不是西药。"
+],
+"optLang": "han",
+"completedText": "这是一张中国地图。 = Đây là một tấm bản đồ Trung Quốc.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #20"
+},
+{
+"id": "b13-s21",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Nhà vệ sinh ở đâu?",
+"correctAnswer": "厕所在哪儿？",
+"distractors": [
+"你的箱子在哪儿？",
+"这是一张中国地图。"
+],
+"optLang": "han",
+"completedText": "厕所在哪儿？ = Nhà vệ sinh ở đâu?",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #21"
+},
+{
+"id": "b13-s22",
+"lesson": 13,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Nhà vệ sinh ở đây.",
+"correctAnswer": "洗手间在这儿。",
+"distractors": [
+"这是谁的瓶子？",
+"箱子里有一瓶香水。"
+],
+"optLang": "han",
+"completedText": "洗手间在这儿。 = Nhà vệ sinh ở đây.",
+"source": "lessons/bai13.html TRANSLATE_SELFCHECK #22"
+},
+{
 "id": "b17-q01",
 "lesson": 17,
 "level": 2,

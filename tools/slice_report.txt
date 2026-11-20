@@ -50,6 +50,15 @@ b11-w21 LOẠI các dạng từ vựng: nghĩa "bác sĩ" trùng với từ khá
 Bài 11: thêm chondungcau=23, chonnghia=23, hinh=17, nghe=23
 Bài 12: 16/16 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 12: thêm chondungcau=20, chonnghia=22, hinh=19, nghe=22
+b13-q10 LOẠI: 这是不是[中药]？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q12 LOẠI: 那个红箱子很[轻]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q13 LOẠI: 我的箱子是[黑]的。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q17 LOẠI: 这是[茶叶]，不是药。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q18 LOẠI: 我去商店买[日用品]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q20 LOẠI: 我爸爸看[报纸]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b13-q22 LOẠI: [厕所]在哪儿？  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 13: 15/22 câu điền khuyết/ngữ pháp/cụm từ dùng được
+Bài 13: thêm chondungcau=22, chonnghia=26, hinh=26, nghe=26
 Bài 17: 15/15 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 17: dưới 3 câu dịch → không có dạng "Chọn câu đúng"
 Bài 17: thêm chonnghia=18, hinh=18, nghe=18
