@@ -21448,5 +21448,1594 @@ window.SLICE_BANK = [
 "optLang": "han",
 "completedText": "晚上十一点我睡觉。 = Mười một giờ tối tôi đi ngủ.",
 "source": "lessons/bai21.html TRANSLATE_SELFCHECK #22"
+},
+{
+"id": "b22-q01",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我____中国文化非常感兴趣。",
+"correctAnswer": "对",
+"distractors": [
+"让",
+"以前"
+],
+"completedText": "我对中国文化非常感兴趣。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #1"
+},
+{
+"id": "b22-q02",
+"lesson": 22,
+"level": 2,
+"type": "nguphap",
+"prompt": "我来中国____是公司职员。",
+"correctAnswer": "以前",
+"distractors": [
+"对",
+"让"
+],
+"completedText": "我来中国以前是公司职员。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #2"
+},
+{
+"id": "b22-q03",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "老师____我们谈谈自己的爱好。",
+"correctAnswer": "让",
+"distractors": [
+"对",
+"喜欢"
+],
+"completedText": "老师让我们谈谈自己的爱好。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #3"
+},
+{
+"id": "b22-q04",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我____吃中国菜。",
+"correctAnswer": "喜欢",
+"distractors": [
+"让",
+"对"
+],
+"completedText": "我喜欢吃中国菜。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #4"
+},
+{
+"id": "b22-q05",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "你有什么____？",
+"correctAnswer": "爱好",
+"distractors": [
+"业余",
+"自己"
+],
+"completedText": "你有什么爱好？",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #5"
+},
+{
+"id": "b22-q06",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我的____是画画儿。",
+"correctAnswer": "爱好",
+"distractors": [
+"业余",
+"自己"
+],
+"completedText": "我的爱好是画画儿。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #6"
+},
+{
+"id": "b22-q07",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "他非常喜欢____京剧。",
+"correctAnswer": "唱",
+"distractors": [
+"让",
+"对"
+],
+"completedText": "他非常喜欢唱京剧。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #7"
+},
+{
+"id": "b22-q09",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "你今天____怎么样？",
+"correctAnswer": "心情",
+"distractors": [
+"大家",
+"自己"
+],
+"completedText": "你今天心情怎么样？",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #9"
+},
+{
+"id": "b22-q10",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "请____一起读这句话。",
+"correctAnswer": "大家",
+"distractors": [
+"让",
+"完"
+],
+"completedText": "请大家一起读这句话。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #10"
+},
+{
+"id": "b22-q11",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "我做____作业了。",
+"correctAnswer": "完",
+"distractors": [
+"唱",
+"让"
+],
+"completedText": "我做完作业了。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #11"
+},
+{
+"id": "b22-q12",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "我喜欢玩____。",
+"correctAnswer": "电脑",
+"distractors": [
+"书法",
+"京剧"
+],
+"completedText": "我喜欢玩电脑。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #12"
+},
+{
+"id": "b22-q13",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我们今天几点____？",
+"correctAnswer": "下课",
+"distractors": [
+"业余",
+"爱好"
+],
+"completedText": "我们今天几点下课？",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #13"
+},
+{
+"id": "b22-q14",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "这张画儿是我____画的。",
+"correctAnswer": "自己",
+"distractors": [
+"大家",
+"让"
+],
+"completedText": "这张画儿是我自己画的。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #14"
+},
+{
+"id": "b22-q15",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "跟朋友聊天儿，我____很高兴。",
+"correctAnswer": "感到",
+"distractors": [
+"让",
+"对"
+],
+"completedText": "跟朋友聊天儿，我感到很高兴。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #15"
+},
+{
+"id": "b22-q16",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我____喜欢这张画儿。",
+"correctAnswer": "特别",
+"distractors": [
+"让",
+"对"
+],
+"completedText": "我特别喜欢这张画儿。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #16"
+},
+{
+"id": "b22-q17",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "祝你周末____！",
+"correctAnswer": "愉快",
+"distractors": [
+"爱好",
+"业余"
+],
+"completedText": "祝你周末愉快！",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #17"
+},
+{
+"id": "b22-q18",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "你对京剧____吗？",
+"correctAnswer": "感兴趣",
+"distractors": [
+"爱好",
+"业余"
+],
+"completedText": "你对京剧感兴趣吗？",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #18"
+},
+{
+"id": "b22-q20",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "你会____猫吗？",
+"correctAnswer": "画",
+"distractors": [
+"唱",
+"让"
+],
+"completedText": "你会画猫吗？",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #20"
+},
+{
+"id": "b22-w01-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "爱好",
+"correctAnswer": "sở thích",
+"distractors": [
+"vẽ",
+"đặc biệt, rất"
+],
+"optLang": "vi",
+"completedText": "爱好 = sở thích",
+"source": "lessons/bai22.html WORDS #1"
+},
+{
+"id": "b22-w01-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/aihao.jpg",
+"prompt": "",
+"correctAnswer": "爱好",
+"distractors": [
+"下课",
+"喜欢"
+],
+"optLang": "han",
+"completedText": "爱好 (àihào) = sở thích",
+"source": "lessons/bai22.html WORDS #1"
+},
+{
+"id": "b22-w01-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "爱好",
+"prompt": "",
+"correctAnswer": "爱好",
+"distractors": [
+"下课",
+"喜欢"
+],
+"optLang": "han",
+"completedText": "爱好 (àihào) = sở thích",
+"source": "lessons/bai22.html WORDS #1"
+},
+{
+"id": "b22-w02-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "京剧",
+"correctAnswer": "Kinh kịch",
+"distractors": [
+"chơi",
+"hứng thú, quan tâm"
+],
+"optLang": "vi",
+"completedText": "京剧 = Kinh kịch",
+"source": "lessons/bai22.html WORDS #2"
+},
+{
+"id": "b22-w02-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/jingju.jpg",
+"prompt": "",
+"correctAnswer": "京剧",
+"distractors": [
+"完",
+"玩"
+],
+"optLang": "han",
+"completedText": "京剧 (jīngjù) = Kinh kịch",
+"source": "lessons/bai22.html WORDS #2"
+},
+{
+"id": "b22-w02-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "京剧",
+"prompt": "",
+"correctAnswer": "京剧",
+"distractors": [
+"完",
+"玩"
+],
+"optLang": "han",
+"completedText": "京剧 (jīngjù) = Kinh kịch",
+"source": "lessons/bai22.html WORDS #2"
+},
+{
+"id": "b22-w03-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "电脑",
+"correctAnswer": "máy tính",
+"distractors": [
+"thích",
+"để, cho phép, bảo"
+],
+"optLang": "vi",
+"completedText": "电脑 = máy tính",
+"source": "lessons/bai22.html WORDS #3"
+},
+{
+"id": "b22-w03-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/diannao.jpg",
+"prompt": "",
+"correctAnswer": "电脑",
+"distractors": [
+"非常",
+"京剧"
+],
+"optLang": "han",
+"completedText": "电脑 (diànnǎo) = máy tính",
+"source": "lessons/bai22.html WORDS #3"
+},
+{
+"id": "b22-w03-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "电脑",
+"prompt": "",
+"correctAnswer": "电脑",
+"distractors": [
+"非常",
+"京剧"
+],
+"optLang": "han",
+"completedText": "电脑 (diànnǎo) = máy tính",
+"source": "lessons/bai22.html WORDS #3"
+},
+{
+"id": "b22-w04-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "玩",
+"correctAnswer": "chơi",
+"distractors": [
+"tâm trạng",
+"cảm thấy"
+],
+"optLang": "vi",
+"completedText": "玩 = chơi",
+"source": "lessons/bai22.html WORDS #4"
+},
+{
+"id": "b22-w04-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/wan.jpg",
+"prompt": "",
+"correctAnswer": "玩",
+"distractors": [
+"心情",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "玩 (wán) = chơi",
+"source": "lessons/bai22.html WORDS #4"
+},
+{
+"id": "b22-w04-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "玩",
+"prompt": "",
+"correctAnswer": "玩",
+"distractors": [
+"心情",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "玩 (wán) = chơi",
+"source": "lessons/bai22.html WORDS #4"
+},
+{
+"id": "b22-w05-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "画儿",
+"correctAnswer": "bức tranh",
+"distractors": [
+"ngoài giờ, tay ngang",
+"chơi"
+],
+"optLang": "vi",
+"completedText": "画儿 = bức tranh",
+"source": "lessons/bai22.html WORDS #5"
+},
+{
+"id": "b22-w05-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/huar.jpg",
+"prompt": "",
+"correctAnswer": "画儿",
+"distractors": [
+"书法",
+"非常"
+],
+"optLang": "han",
+"completedText": "画儿 (huàr) = bức tranh",
+"source": "lessons/bai22.html WORDS #5"
+},
+{
+"id": "b22-w05-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "画儿",
+"prompt": "",
+"correctAnswer": "画儿",
+"distractors": [
+"书法",
+"非常"
+],
+"optLang": "han",
+"completedText": "画儿 (huàr) = bức tranh",
+"source": "lessons/bai22.html WORDS #5"
+},
+{
+"id": "b22-w06-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "画",
+"correctAnswer": "vẽ",
+"distractors": [
+"đặc biệt, rất",
+"Kinh kịch"
+],
+"optLang": "vi",
+"completedText": "画 = vẽ",
+"source": "lessons/bai22.html WORDS #6"
+},
+{
+"id": "b22-w06-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/hua.jpg",
+"prompt": "",
+"correctAnswer": "画",
+"distractors": [
+"书法",
+"下课"
+],
+"optLang": "han",
+"completedText": "画 (huà) = vẽ",
+"source": "lessons/bai22.html WORDS #6"
+},
+{
+"id": "b22-w06-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "画",
+"prompt": "",
+"correctAnswer": "画",
+"distractors": [
+"书法",
+"下课"
+],
+"optLang": "han",
+"completedText": "画 (huà) = vẽ",
+"source": "lessons/bai22.html WORDS #6"
+},
+{
+"id": "b22-w07-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "书法",
+"correctAnswer": "thư pháp",
+"distractors": [
+"vẽ",
+"Kinh kịch"
+],
+"optLang": "vi",
+"completedText": "书法 = thư pháp",
+"source": "lessons/bai22.html WORDS #7"
+},
+{
+"id": "b22-w07-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/shufa.jpg",
+"prompt": "",
+"correctAnswer": "书法",
+"distractors": [
+"喜欢",
+"完"
+],
+"optLang": "han",
+"completedText": "书法 (shūfǎ) = thư pháp",
+"source": "lessons/bai22.html WORDS #7"
+},
+{
+"id": "b22-w07-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "书法",
+"prompt": "",
+"correctAnswer": "书法",
+"distractors": [
+"喜欢",
+"完"
+],
+"optLang": "han",
+"completedText": "书法 (shūfǎ) = thư pháp",
+"source": "lessons/bai22.html WORDS #7"
+},
+{
+"id": "b22-w08-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "唱",
+"correctAnswer": "hát",
+"distractors": [
+"bản thân, tự mình",
+"bức tranh"
+],
+"optLang": "vi",
+"completedText": "唱 = hát",
+"source": "lessons/bai22.html WORDS #8"
+},
+{
+"id": "b22-w08-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/chang.jpg",
+"prompt": "",
+"correctAnswer": "唱",
+"distractors": [
+"自己",
+"完"
+],
+"optLang": "han",
+"completedText": "唱 (chàng) = hát",
+"source": "lessons/bai22.html WORDS #8"
+},
+{
+"id": "b22-w08-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "唱",
+"prompt": "",
+"correctAnswer": "唱",
+"distractors": [
+"自己",
+"完"
+],
+"optLang": "han",
+"completedText": "唱 (chàng) = hát",
+"source": "lessons/bai22.html WORDS #8"
+},
+{
+"id": "b22-w09-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "让",
+"correctAnswer": "để, cho phép, bảo",
+"distractors": [
+"thích",
+"cảm thấy"
+],
+"optLang": "vi",
+"completedText": "让 = để, cho phép, bảo",
+"source": "lessons/bai22.html WORDS #9"
+},
+{
+"id": "b22-w09-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/rang.jpg",
+"prompt": "",
+"correctAnswer": "让",
+"distractors": [
+"以前",
+"特别"
+],
+"optLang": "han",
+"completedText": "让 (ràng) = để, cho phép, bảo",
+"source": "lessons/bai22.html WORDS #9"
+},
+{
+"id": "b22-w09-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "让",
+"prompt": "",
+"correctAnswer": "让",
+"distractors": [
+"以前",
+"特别"
+],
+"optLang": "han",
+"completedText": "让 (ràng) = để, cho phép, bảo",
+"source": "lessons/bai22.html WORDS #9"
+},
+{
+"id": "b22-w10-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "心情",
+"correctAnswer": "tâm trạng",
+"distractors": [
+"tan học",
+"chơi"
+],
+"optLang": "vi",
+"completedText": "心情 = tâm trạng",
+"source": "lessons/bai22.html WORDS #10"
+},
+{
+"id": "b22-w10-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/xinqing.jpg",
+"prompt": "",
+"correctAnswer": "心情",
+"distractors": [
+"电脑",
+"玩"
+],
+"optLang": "han",
+"completedText": "心情 (xīnqíng) = tâm trạng",
+"source": "lessons/bai22.html WORDS #10"
+},
+{
+"id": "b22-w10-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "心情",
+"prompt": "",
+"correctAnswer": "心情",
+"distractors": [
+"电脑",
+"玩"
+],
+"optLang": "han",
+"completedText": "心情 (xīnqíng) = tâm trạng",
+"source": "lessons/bai22.html WORDS #10"
+},
+{
+"id": "b22-w11-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "大家",
+"correctAnswer": "mọi người",
+"distractors": [
+"hát",
+"vui vẻ"
+],
+"optLang": "vi",
+"completedText": "大家 = mọi người",
+"source": "lessons/bai22.html WORDS #11"
+},
+{
+"id": "b22-w11-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/dajia.jpg",
+"prompt": "",
+"correctAnswer": "大家",
+"distractors": [
+"愉快",
+"画儿"
+],
+"optLang": "han",
+"completedText": "大家 (dàjiā) = mọi người",
+"source": "lessons/bai22.html WORDS #11"
+},
+{
+"id": "b22-w11-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "大家",
+"prompt": "",
+"correctAnswer": "大家",
+"distractors": [
+"愉快",
+"画儿"
+],
+"optLang": "han",
+"completedText": "大家 (dàjiā) = mọi người",
+"source": "lessons/bai22.html WORDS #11"
+},
+{
+"id": "b22-w12-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "业余",
+"correctAnswer": "ngoài giờ, tay ngang",
+"distractors": [
+"thư pháp",
+"rất, vô cùng"
+],
+"optLang": "vi",
+"completedText": "业余 = ngoài giờ, tay ngang",
+"source": "lessons/bai22.html WORDS #12"
+},
+{
+"id": "b22-w12-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/yeyu.jpg",
+"prompt": "",
+"correctAnswer": "业余",
+"distractors": [
+"玩",
+"电脑"
+],
+"optLang": "han",
+"completedText": "业余 (yèyú) = ngoài giờ, tay ngang",
+"source": "lessons/bai22.html WORDS #12"
+},
+{
+"id": "b22-w12-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "业余",
+"prompt": "",
+"correctAnswer": "业余",
+"distractors": [
+"玩",
+"电脑"
+],
+"optLang": "han",
+"completedText": "业余 (yèyú) = ngoài giờ, tay ngang",
+"source": "lessons/bai22.html WORDS #12"
+},
+{
+"id": "b22-w13-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "喜欢",
+"correctAnswer": "thích",
+"distractors": [
+"tan học",
+"hứng thú, quan tâm"
+],
+"optLang": "vi",
+"completedText": "喜欢 = thích",
+"source": "lessons/bai22.html WORDS #13"
+},
+{
+"id": "b22-w13-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/xihuan.jpg",
+"prompt": "",
+"correctAnswer": "喜欢",
+"distractors": [
+"愉快",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "喜欢 (xǐhuan) = thích",
+"source": "lessons/bai22.html WORDS #13"
+},
+{
+"id": "b22-w13-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "喜欢",
+"prompt": "",
+"correctAnswer": "喜欢",
+"distractors": [
+"愉快",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "喜欢 (xǐhuan) = thích",
+"source": "lessons/bai22.html WORDS #13"
+},
+{
+"id": "b22-w14-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "感兴趣",
+"correctAnswer": "hứng thú, quan tâm",
+"distractors": [
+"ngoài giờ, tay ngang",
+"mọi người"
+],
+"optLang": "vi",
+"completedText": "感兴趣 = hứng thú, quan tâm",
+"source": "lessons/bai22.html WORDS #14"
+},
+{
+"id": "b22-w14-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/ganxingqu.jpg",
+"prompt": "",
+"correctAnswer": "感兴趣",
+"distractors": [
+"唱",
+"画"
+],
+"optLang": "han",
+"completedText": "感兴趣 (gǎn xìngqù) = hứng thú, quan tâm",
+"source": "lessons/bai22.html WORDS #14"
+},
+{
+"id": "b22-w14-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "感兴趣",
+"prompt": "",
+"correctAnswer": "感兴趣",
+"distractors": [
+"唱",
+"画"
+],
+"optLang": "han",
+"completedText": "感兴趣 (gǎn xìngqù) = hứng thú, quan tâm",
+"source": "lessons/bai22.html WORDS #14"
+},
+{
+"id": "b22-w15-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "非常",
+"correctAnswer": "rất, vô cùng",
+"distractors": [
+"tâm trạng",
+"bức tranh"
+],
+"optLang": "vi",
+"completedText": "非常 = rất, vô cùng",
+"source": "lessons/bai22.html WORDS #15"
+},
+{
+"id": "b22-w15-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/feichang.jpg",
+"prompt": "",
+"correctAnswer": "非常",
+"distractors": [
+"下课",
+"玩"
+],
+"optLang": "han",
+"completedText": "非常 (fēicháng) = rất, vô cùng",
+"source": "lessons/bai22.html WORDS #15"
+},
+{
+"id": "b22-w15-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "非常",
+"prompt": "",
+"correctAnswer": "非常",
+"distractors": [
+"下课",
+"玩"
+],
+"optLang": "han",
+"completedText": "非常 (fēicháng) = rất, vô cùng",
+"source": "lessons/bai22.html WORDS #15"
+},
+{
+"id": "b22-w16-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "特别",
+"correctAnswer": "đặc biệt, rất",
+"distractors": [
+"mọi người",
+"bản thân, tự mình"
+],
+"optLang": "vi",
+"completedText": "特别 = đặc biệt, rất",
+"source": "lessons/bai22.html WORDS #16"
+},
+{
+"id": "b22-w16-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/tebie.jpg",
+"prompt": "",
+"correctAnswer": "特别",
+"distractors": [
+"唱",
+"玩"
+],
+"optLang": "han",
+"completedText": "特别 (tèbié) = đặc biệt, rất",
+"source": "lessons/bai22.html WORDS #16"
+},
+{
+"id": "b22-w16-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "特别",
+"prompt": "",
+"correctAnswer": "特别",
+"distractors": [
+"唱",
+"玩"
+],
+"optLang": "han",
+"completedText": "特别 (tèbié) = đặc biệt, rất",
+"source": "lessons/bai22.html WORDS #16"
+},
+{
+"id": "b22-w17-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "感到",
+"correctAnswer": "cảm thấy",
+"distractors": [
+"thư pháp",
+"tan học"
+],
+"optLang": "vi",
+"completedText": "感到 = cảm thấy",
+"source": "lessons/bai22.html WORDS #17"
+},
+{
+"id": "b22-w17-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/gandao.jpg",
+"prompt": "",
+"correctAnswer": "感到",
+"distractors": [
+"画儿",
+"愉快"
+],
+"optLang": "han",
+"completedText": "感到 (gǎndào) = cảm thấy",
+"source": "lessons/bai22.html WORDS #17"
+},
+{
+"id": "b22-w17-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "感到",
+"prompt": "",
+"correctAnswer": "感到",
+"distractors": [
+"画儿",
+"愉快"
+],
+"optLang": "han",
+"completedText": "感到 (gǎndào) = cảm thấy",
+"source": "lessons/bai22.html WORDS #17"
+},
+{
+"id": "b22-w18-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "愉快",
+"correctAnswer": "vui vẻ",
+"distractors": [
+"Kinh kịch",
+"máy tính"
+],
+"optLang": "vi",
+"completedText": "愉快 = vui vẻ",
+"source": "lessons/bai22.html WORDS #18"
+},
+{
+"id": "b22-w18-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/yukuai.jpg",
+"prompt": "",
+"correctAnswer": "愉快",
+"distractors": [
+"特别",
+"爱好"
+],
+"optLang": "han",
+"completedText": "愉快 (yúkuài) = vui vẻ",
+"source": "lessons/bai22.html WORDS #18"
+},
+{
+"id": "b22-w18-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "愉快",
+"prompt": "",
+"correctAnswer": "愉快",
+"distractors": [
+"特别",
+"爱好"
+],
+"optLang": "han",
+"completedText": "愉快 (yúkuài) = vui vẻ",
+"source": "lessons/bai22.html WORDS #18"
+},
+{
+"id": "b22-w19-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "以前",
+"correctAnswer": "trước đây, trước khi",
+"distractors": [
+"Kinh kịch",
+"sở thích"
+],
+"optLang": "vi",
+"completedText": "以前 = trước đây, trước khi",
+"source": "lessons/bai22.html WORDS #19"
+},
+{
+"id": "b22-w19-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/yiqian.jpg",
+"prompt": "",
+"correctAnswer": "以前",
+"distractors": [
+"非常",
+"让"
+],
+"optLang": "han",
+"completedText": "以前 (yǐqián) = trước đây, trước khi",
+"source": "lessons/bai22.html WORDS #19"
+},
+{
+"id": "b22-w19-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "以前",
+"prompt": "",
+"correctAnswer": "以前",
+"distractors": [
+"非常",
+"让"
+],
+"optLang": "han",
+"completedText": "以前 (yǐqián) = trước đây, trước khi",
+"source": "lessons/bai22.html WORDS #19"
+},
+{
+"id": "b22-w20-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "自己",
+"correctAnswer": "bản thân, tự mình",
+"distractors": [
+"tâm trạng",
+"thư pháp"
+],
+"optLang": "vi",
+"completedText": "自己 = bản thân, tự mình",
+"source": "lessons/bai22.html WORDS #20"
+},
+{
+"id": "b22-w20-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/ziji.jpg",
+"prompt": "",
+"correctAnswer": "自己",
+"distractors": [
+"爱好",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "自己 (zìjǐ) = bản thân, tự mình",
+"source": "lessons/bai22.html WORDS #20"
+},
+{
+"id": "b22-w20-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "自己",
+"prompt": "",
+"correctAnswer": "自己",
+"distractors": [
+"爱好",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "自己 (zìjǐ) = bản thân, tự mình",
+"source": "lessons/bai22.html WORDS #20"
+},
+{
+"id": "b22-w21-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "下课",
+"correctAnswer": "tan học",
+"distractors": [
+"bức tranh",
+"đặc biệt, rất"
+],
+"optLang": "vi",
+"completedText": "下课 = tan học",
+"source": "lessons/bai22.html WORDS #21"
+},
+{
+"id": "b22-w21-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/xiake.jpg",
+"prompt": "",
+"correctAnswer": "下课",
+"distractors": [
+"爱好",
+"唱"
+],
+"optLang": "han",
+"completedText": "下课 (xià kè) = tan học",
+"source": "lessons/bai22.html WORDS #21"
+},
+{
+"id": "b22-w21-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "下课",
+"prompt": "",
+"correctAnswer": "下课",
+"distractors": [
+"爱好",
+"唱"
+],
+"optLang": "han",
+"completedText": "下课 (xià kè) = tan học",
+"source": "lessons/bai22.html WORDS #21"
+},
+{
+"id": "b22-w22-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "完",
+"correctAnswer": "xong, hết",
+"distractors": [
+"để, cho phép, bảo",
+"tâm trạng"
+],
+"optLang": "vi",
+"completedText": "完 = xong, hết",
+"source": "lessons/bai22.html WORDS #22"
+},
+{
+"id": "b22-w22-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/wanle.jpg",
+"prompt": "",
+"correctAnswer": "完",
+"distractors": [
+"心情",
+"愉快"
+],
+"optLang": "han",
+"completedText": "完 (wán) = xong, hết",
+"source": "lessons/bai22.html WORDS #22"
+},
+{
+"id": "b22-w22-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "完",
+"prompt": "",
+"correctAnswer": "完",
+"distractors": [
+"心情",
+"愉快"
+],
+"optLang": "han",
+"completedText": "完 (wán) = xong, hết",
+"source": "lessons/bai22.html WORDS #22"
+},
+{
+"id": "b22-s01",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Bạn có sở thích gì?",
+"correctAnswer": "你有什么爱好？",
+"distractors": [
+"你对京剧感兴趣吗？",
+"你今天心情怎么样？"
+],
+"optLang": "han",
+"completedText": "你有什么爱好？ = Bạn có sở thích gì?",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #1"
+},
+{
+"id": "b22-s02",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Sở thích của tôi là đọc sách.",
+"correctAnswer": "我的爱好是看书。",
+"distractors": [
+"我们今天几点下课？",
+"老师让我们谈谈爱好。"
+],
+"optLang": "han",
+"completedText": "我的爱好是看书。 = Sở thích của tôi là đọc sách.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #2"
+},
+{
+"id": "b22-s03",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Chúng ta cùng đi xem kinh kịch nhé.",
+"correctAnswer": "我们一起去看京剧吧。",
+"distractors": [
+"跟朋友聊天儿，我感到很高兴。",
+"我的爱好是看书。"
+],
+"optLang": "han",
+"completedText": "我们一起去看京剧吧。 = Chúng ta cùng đi xem kinh kịch nhé.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #3"
+},
+{
+"id": "b22-s04",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi thích chơi máy tính.",
+"correctAnswer": "我喜欢玩电脑。",
+"distractors": [
+"看完京剧以后，我们一起去吃饭吧。",
+"祝你周末愉快！"
+],
+"optLang": "han",
+"completedText": "我喜欢玩电脑。 = Tôi thích chơi máy tính.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #4"
+},
+{
+"id": "b22-s05",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi đang học thư pháp.",
+"correctAnswer": "我正在学书法。",
+"distractors": [
+"你有什么爱好？",
+"祝你周末愉快！"
+],
+"optLang": "han",
+"completedText": "我正在学书法。 = Tôi đang học thư pháp.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #5"
+},
+{
+"id": "b22-s06",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi còn muốn học hát kinh kịch.",
+"correctAnswer": "我还想学唱京剧。",
+"distractors": [
+"我正在学书法。",
+"这张画儿是我自己画的。"
+],
+"optLang": "han",
+"completedText": "我还想学唱京剧。 = Tôi còn muốn học hát kinh kịch.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #6"
+},
+{
+"id": "b22-s07",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Cô giáo bảo chúng tôi nói về sở thích.",
+"correctAnswer": "老师让我们谈谈爱好。",
+"distractors": [
+"我做完作业了。",
+"我们今天几点下课？"
+],
+"optLang": "han",
+"completedText": "老师让我们谈谈爱好。 = Cô giáo bảo chúng tôi nói về sở thích.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #7"
+},
+{
+"id": "b22-s08",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Hôm nay tâm trạng bạn thế nào?",
+"correctAnswer": "你今天心情怎么样？",
+"distractors": [
+"我的爱好是看书。",
+"你业余时间常常做什么？"
+],
+"optLang": "han",
+"completedText": "你今天心情怎么样？ = Hôm nay tâm trạng bạn thế nào?",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #8"
+},
+{
+"id": "b22-s09",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Thời gian rảnh bạn thường làm gì?",
+"correctAnswer": "你业余时间常常做什么？",
+"distractors": [
+"我喜欢玩电脑。",
+"我还想学唱京剧。"
+],
+"optLang": "han",
+"completedText": "你业余时间常常做什么？ = Thời gian rảnh bạn thường làm gì?",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #9"
+},
+{
+"id": "b22-s10",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Bạn có hứng thú với kinh kịch không?",
+"correctAnswer": "你对京剧感兴趣吗？",
+"distractors": [
+"我对书法非常感兴趣。",
+"我喜欢玩电脑。"
+],
+"optLang": "han",
+"completedText": "你对京剧感兴趣吗？ = Bạn có hứng thú với kinh kịch không?",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #10"
+},
+{
+"id": "b22-s11",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi rất hứng thú với thư pháp.",
+"correctAnswer": "我对书法非常感兴趣。",
+"distractors": [
+"祝你周末愉快！",
+"你对京剧感兴趣吗？"
+],
+"optLang": "han",
+"completedText": "我对书法非常感兴趣。 = Tôi rất hứng thú với thư pháp.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #11"
+},
+{
+"id": "b22-s12",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Trò chuyện với bạn, tôi thấy rất vui.",
+"correctAnswer": "跟朋友聊天儿，我感到很高兴。",
+"distractors": [
+"我还想学唱京剧。",
+"我们今天几点下课？"
+],
+"optLang": "han",
+"completedText": "跟朋友聊天儿，我感到很高兴。 = Trò chuyện với bạn, tôi thấy rất vui.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #12"
+},
+{
+"id": "b22-s13",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ.",
+"correctAnswer": "下课以后，跟朋友聊聊天儿，我感到很愉快。",
+"distractors": [
+"我做完作业了。",
+"我喜欢玩电脑。"
+],
+"optLang": "han",
+"completedText": "下课以后，跟朋友聊聊天儿，我感到很愉快。 = Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #13"
+},
+{
+"id": "b22-s14",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Chúc bạn cuối tuần vui vẻ!",
+"correctAnswer": "祝你周末愉快！",
+"distractors": [
+"跟朋友聊天儿，我感到很高兴。",
+"我们今天几点下课？"
+],
+"optLang": "han",
+"completedText": "祝你周末愉快！ = Chúc bạn cuối tuần vui vẻ!",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #14"
+},
+{
+"id": "b22-s15",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Trước khi đến Trung Quốc tôi đã thích thư pháp.",
+"correctAnswer": "我来中国以前就喜欢书法。",
+"distractors": [
+"你业余时间常常做什么？",
+"我做完作业了。"
+],
+"optLang": "han",
+"completedText": "我来中国以前就喜欢书法。 = Trước khi đến Trung Quốc tôi đã thích thư pháp.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #15"
+},
+{
+"id": "b22-s16",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Bức tranh này do tôi tự vẽ.",
+"correctAnswer": "这张画儿是我自己画的。",
+"distractors": [
+"看完京剧以后，我们一起去吃饭吧。",
+"我喜欢玩电脑。"
+],
+"optLang": "han",
+"completedText": "这张画儿是我自己画的。 = Bức tranh này do tôi tự vẽ.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #16"
+},
+{
+"id": "b22-s17",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Hôm nay mấy giờ chúng ta tan học?",
+"correctAnswer": "我们今天几点下课？",
+"distractors": [
+"你今天心情怎么样？",
+"你有什么爱好？"
+],
+"optLang": "han",
+"completedText": "我们今天几点下课？ = Hôm nay mấy giờ chúng ta tan học?",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #17"
+},
+{
+"id": "b22-s18",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi làm xong bài tập rồi.",
+"correctAnswer": "我做完作业了。",
+"distractors": [
+"我的爱好是看书。",
+"你对京剧感兴趣吗？"
+],
+"optLang": "han",
+"completedText": "我做完作业了。 = Tôi làm xong bài tập rồi.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #18"
+},
+{
+"id": "b22-s19",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Xem xong kinh kịch, chúng ta cùng đi ăn nhé.",
+"correctAnswer": "看完京剧以后，我们一起去吃饭吧。",
+"distractors": [
+"我们今天几点下课？",
+"祝你周末愉快！"
+],
+"optLang": "han",
+"completedText": "看完京剧以后，我们一起去吃饭吧。 = Xem xong kinh kịch, chúng ta cùng đi ăn nhé.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #19"
 }
 ];

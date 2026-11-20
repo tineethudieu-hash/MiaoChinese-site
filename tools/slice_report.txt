@@ -72,3 +72,7 @@ Bài 20: 15/16 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 20: thêm chondungcau=20, chonnghia=37, hinh=28, nghe=37
 Bài 21: 16/16 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 21: thêm chondungcau=22, chonnghia=27, hinh=22, nghe=27
+b22-q08 LOẠI: 我正在学[书法]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+b22-q19 LOẠI: 我妈妈常常看[京剧]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
+Bài 22: 18/20 câu điền khuyết/ngữ pháp/cụm từ dùng được
+Bài 22: thêm chondungcau=19, chonnghia=22, hinh=22, nghe=22
