@@ -173,7 +173,7 @@ function create(host){
   function pick(id){return S.byId[id]||null}
   function selMembers(){return S.sel.map(pick).filter(Boolean)}
   function dispMap(){return displayNames(selMembers())}
-  function invalidate(){S.teams=[];S.stale=true;S.manual=false}
+  function invalidate(){S.stale=S.teams.length>0;S.teams=[];S.manual=false}
   function split(){S.manual=false;S.stale=false;var ids=S.sel.slice();S.n=Math.max(2,Math.min(S.n,maxN(ids.length)));if(ids.length<2){S.teams=[];return}var g={};selMembers().forEach(function(m){g[m.id]=m.group});S.teams=autoSplit(ids,g,S.n)}
   function setLessonCls(c){
     S.lessonCls=c;
