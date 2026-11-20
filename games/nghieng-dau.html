@@ -236,11 +236,11 @@ function verifyTeacher(){
 
 /* ----- chế độ thi đấu theo đội: danh sách lớp lấy bằng chính PIN giáo viên + action=report của website ----- */
 var teamAllowed=0;
-function allowNote(){return teamAllowed?'Lớp này đang mở tới <b>Bài '+teamAllowed+'</b> (đã chọn sẵn bài đó, cô có thể đổi).':''}
+function allowNote(){return teamAllowed?'Lớp dùng chọn bài đang mở tới <b>Bài '+teamAllowed+'</b> (đã chọn sẵn bài đó, cô có thể đổi).':''}
 var TM=TeamMode.create({api:api,getAuth:function(){return auth},getPin:function(){return auth.pin||''},
   myClass:function(){return auth.student&&auth.student.c},
   onTeacher:function(pin){if(!auth.teacher||!auth.pin){auth.teacher=true;auth.pin=pin;renderGate();renderSetup()}},
-  onClass:function(c,allowed){teamAllowed=allowed||0;var nn=document.getElementById('tmAllowNote');if(nn)nn.innerHTML=allowNote();if(allowed&&!cfg._teamLes){cfg._teamLes=true;var ok=LESSON_NUMS.filter(function(n){return n<=allowed});if(ok.length){cfg.lessons={};cfg.lessons[ok[ok.length-1]]=true}}},
+  onClass:function(c,allowed){teamAllowed=allowed||0;var nn=document.getElementById('tmAllowNote');if(nn)nn.innerHTML=allowNote();if(allowed){var ok=LESSON_NUMS.filter(function(n){return n<=allowed});if(ok.length){cfg.lessons={};cfg.lessons[ok[ok.length-1]]=true}}},
   refresh:function(){teamRefresh()}});
 function teamRefresh(){
   var sc=$('bStartCam'),sb=$('bStartBtn'),ok=cfg.mode==='team'&&TM.canStart().ok&&poolFor(cfg).length>0;
@@ -285,7 +285,7 @@ function renderSetup(){
   var shown=el_.filter(function(n){return !cfg.level||lessonLevel(n)===cfg.level});
   var pool=poolFor(cfg);var wr=savedWrong();var wrongN=BANK.filter(function(q){return wr.indexOf(q.id)>=0&&lessonAllowed(q.lesson)}).length;
   var h='<div class="card">';
-  h+='<div class="row"><label>Chế độ</label><div class="chips"><button class="chip'+(cfg.mode==='class'?' on':'')+'" data-mode="class">🏫 Chơi trên lớp</button><button class="chip'+(cfg.mode==='home'?' on':'')+'" data-mode="home">🏠 Tự ôn ở nhà</button><button class="chip'+(cfg.mode==='team'?' on':'')+'" data-mode="team">👥 Thi đấu theo đội · 1 thiết bị</button></div><div class="note" style="margin-top:6px">'+(cfg.mode==='team'?'Chọn lớp → bỏ chọn bạn vắng → chia đội. Cả lớp dùng một máy, một camera; hệ thống tự gọi tên từng bạn lên chơi.':cfg.mode==='class'?'Mỗi lượt một học sinh trước camera. Kết quả lưu riêng, không ghi đè tiến độ cá nhân.':'Kết quả và câu sai được lưu trên thiết bị này để ôn lại.')+'</div></div>';
+  h+='<div class="row"><label>Chế độ</label><div class="chips"><button class="chip'+(cfg.mode==='class'?' on':'')+'" data-mode="class">🏫 Chơi trên lớp</button><button class="chip'+(cfg.mode==='home'?' on':'')+'" data-mode="home">🏠 Tự ôn ở nhà</button><button class="chip'+(cfg.mode==='team'?' on':'')+'" data-mode="team">👥 Thi đấu theo đội · 1 thiết bị</button></div><div class="note" style="margin-top:6px">'+(cfg.mode==='team'?'Nhập số bạn có mặt → tìm và chọn từng bạn (kể cả bạn học bù/chuyển lớp) → chia đội. Cả lớp dùng một máy, một camera; hệ thống tự gọi tên từng bạn lên chơi.':cfg.mode==='class'?'Mỗi lượt một học sinh trước camera. Kết quả lưu riêng, không ghi đè tiến độ cá nhân.':'Kết quả và câu sai được lưu trên thiết bị này để ôn lại.')+'</div></div>';
   if(cfg.mode==='team')h+='<div class="card tmcard" style="margin:0 0 12px;padding:12px">'+TM.panelHtml()+'<div class="note" id="tmAllowNote">'+allowNote()+'</div></div>';
   if(!el_.length)h+='<div class="note warn">Chưa có bài nào vừa được mở cho lớp vừa có câu hỏi trong game.</div>';
   else{

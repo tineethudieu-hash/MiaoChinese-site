@@ -46,7 +46,26 @@ function autoSplit(ids,groupOf,n){
   order.forEach(function(id){var k=0;for(var t=1;t<n;t++)if(teams[t].length<teams[k].length)k=t;teams[k].push(id)});
   return teams;
 }
-function maxN(presentCount){return Math.max(0,Math.min(4,Math.floor(presentCount/2)))}
+function maxN(n){return Math.max(0,Math.min(4,n))}
+function fold(x){return norm(x).toLowerCase().replace(/đ/g,'d').normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+function flatten(classes){var a=[];Object.keys(classes).sort().forEach(function(c){a=a.concat(classes[c])});return a}
+/* Tìm không dấu: mọi từ trong ô tìm phải có trong tên. */
+function searchStudents(all,q,limit){
+  var w=fold(q).split(' ').filter(Boolean);if(!w.length)return [];
+  return all.filter(function(m){var f=m._f||(m._f=fold(m.name));return w.every(function(x){return f.indexOf(x)>=0})}).slice(0,limit||30);
+}
+/* Tên hiển thị trên màn chiếu: chỉ tên; nếu trùng tên trong trận thì thêm lớp (và số nếu vẫn trùng). Không email/tài khoản. */
+function displayNames(members){
+  var cnt={};members.forEach(function(m){var k=m.name.toLowerCase();cnt[k]=(cnt[k]||0)+1});
+  var out={},seen={};
+  members.forEach(function(m){
+    var k=m.name.toLowerCase();if(cnt[k]<2){out[m.id]=m.name;return}
+    var k2=k+'|'+m.cls.toLowerCase();seen[k2]=(seen[k2]||0)+1;
+    var same=members.filter(function(x){return x.name.toLowerCase()===k&&x.cls.toLowerCase()===m.cls.toLowerCase()}).length;
+    out[m.id]=m.name+' ('+m.cls+(same>1?' #'+seen[k2]:'')+')';
+  });
+  return out;
+}
 /* Bốc câu: mỗi vòng, mọi đội nhận câu KHÁC nhau nhưng CÙNG dạng + CÙNG level. */
 function drawRounds(pool,nRounds,nTeams){
   var byType={};pool.forEach(function(q){(byType[q.type]=byType[q.type]||[]).push(q)});
@@ -147,19 +166,18 @@ function injectCss(){
 
 function create(host){
   injectCss();
-  var S={pin:'',loading:false,err:'',students:null,classes:null,cls:'',present:{},n:2,teams:[],cycles:1,special:'none',specialRound:-1,el:null,tried:false};
+  /* sel = danh sách người chơi lập tay cho trận này (ID suy ra); lessonCls chỉ dùng để xác định bài đã mở, tách hẳn với sel */
+  var S={pin:'',loading:false,err:'',students:null,classes:null,all:[],byId:{},lessonCls:'',count:0,sel:[],q:'',n:2,teams:[],stale:false,manual:false,cycles:1,special:'none',specialRound:-1,el:null};
   var TM={};
   host=host||{};
-  function members(){return (S.classes&&S.classes[S.cls])||[]}
-  function byId(id){var m=members();for(var i=0;i<m.length;i++)if(m[i].id===id)return m[i];return null}
-  function presentIds(){return members().filter(function(m){return S.present[m.id]}).map(function(m){return m.id})}
-  function groupMap(){var g={};members().forEach(function(m){g[m.id]=m.group});return g}
-  function split(){S.manual=false;var ids=presentIds();S.n=Math.min(S.n,Math.max(2,maxN(ids.length)));S.teams=ids.length>=2?autoSplit(ids,groupMap(),S.n):[]}
-  function setClass(c){
-    S.cls=c;S.present={};members().forEach(function(m){S.present[m.id]=true});
-    S.n=Math.min(Math.max(S.n,2),Math.max(2,maxN(members().length)));split();
-    try{localStorage.setItem(LAST_CLS_KEY,c)}catch(e){}
-    if(host.onClass)host.onClass(c,classAllowed(members()));
+  function pick(id){return S.byId[id]||null}
+  function selMembers(){return S.sel.map(pick).filter(Boolean)}
+  function dispMap(){return displayNames(selMembers())}
+  function invalidate(){S.teams=[];S.stale=true;S.manual=false}
+  function split(){S.manual=false;S.stale=false;var ids=S.sel.slice();S.n=Math.max(2,Math.min(S.n,maxN(ids.length)));if(ids.length<2){S.teams=[];return}var g={};selMembers().forEach(function(m){g[m.id]=m.group});S.teams=autoSplit(ids,g,S.n)}
+  function setLessonCls(c){
+    S.lessonCls=c;
+    if(host.onClass)host.onClass(c,classAllowed((S.classes&&S.classes[c])||[]));   /* chỉ đổi bài ôn, không đụng tới danh sách người chơi */
   }
   function load(force){
     if(S.loading)return;if(S.students&&!force)return;
@@ -168,98 +186,112 @@ function create(host){
     host.api({action:'report',pin:pin}).then(function(res){
       S.loading=false;
       if(res&&res.ok){
-        S.students=res.students||[];S.classes=buildRoster(S.students);
+        S.students=res.students||[];S.classes=buildRoster(S.students);S.all=flatten(S.classes);S.byId={};S.all.forEach(function(m){S.byId[m.id]=m});
+        var before=S.sel.length;S.sel=S.sel.filter(function(id){return S.byId[id]});if(S.sel.length!==before)invalidate();
         if(host.onTeacher)host.onTeacher(pin);
-        var names=Object.keys(S.classes).sort(),last='';try{last=localStorage.getItem(LAST_CLS_KEY)||''}catch(e){}
-        var mine=host.myClass&&host.myClass();
-        var c=S.classes[S.cls]?S.cls:(S.classes[mine]?mine:(S.classes[last]?last:names[0]));
-        if(c)setClass(c);else S.cls='';
+        var names=Object.keys(S.classes).sort(),mine=host.myClass&&host.myClass();
+        if(!S.classes[S.lessonCls]){var c=S.classes[mine]?mine:names[0];if(c)setLessonCls(c)}
       }else{S.pin='';S.err=(res&&res.error)||'PIN chưa đúng.'}
       render();if(host.refresh)host.refresh();
-    },function(){S.loading=false;S.err='Không kết nối được máy chủ để lấy danh sách lớp. Kiểm tra mạng rồi thử lại.';render();if(host.refresh)host.refresh()});
+    },function(){S.loading=false;S.err='Không kết nối được máy chủ để lấy danh sách học viên. Kiểm tra mạng rồi thử lại.';render();if(host.refresh)host.refresh()});
   }
   function teamOf(id){for(var t=0;t<S.teams.length;t++)if(S.teams[t].indexOf(id)>=0)return t;return -1}
-  function nameMap(){var o={};members().forEach(function(m){o[m.id]=m.disp});return o}
-  function stats(){
-    var ids=presentIds(),sz=S.teams.map(function(t){return t.length}),Rmax=sz.length?Math.max.apply(null,sz):0;
-    return {present:ids.length,total:members().length,sizes:sz,Rmax:Rmax,R:Rmax*S.cycles};
-  }
+  function stats(){var sz=S.teams.map(function(t){return t.length}),Rmax=sz.length?Math.max.apply(null,sz):0;return {sizes:sz,Rmax:Rmax,R:Rmax*S.cycles}}
   TM.state=function(){return S};
   TM.canStart=function(){
-    if(!S.classes||!S.cls)return {ok:false,why:'Chọn lớp để tải danh sách học sinh.'};
-    var s=stats();
-    if(s.present<4)return {ok:false,why:'Cần ít nhất 4 bạn có mặt để chia 2 đội.'};
-    if(S.teams.length<2)return {ok:false,why:'Bấm “Chia đội tự động”.'};
-    if(S.teams.some(function(t){return !t.length}))return {ok:false,why:'Có đội chưa có bạn nào.'};
+    if(!S.students)return {ok:false,why:'Nhập PIN để tải danh sách học viên.'};
+    if(S.count<2)return {ok:false,why:'Nhập số học viên có mặt (từ 2 trở lên).'};
+    if(S.sel.length<S.count)return {ok:false,why:'Cần chọn đủ '+S.count+' bạn (đang '+S.sel.length+'/'+S.count+').'};
+    if(S.sel.length>S.count)return {ok:false,why:'Đang chọn nhiều hơn '+S.count+' bạn – bỏ bớt hoặc tăng số có mặt.'};
+    if(S.stale||!S.teams.length)return {ok:false,why:'Danh sách đã thay đổi – bấm “Chia đội” lại trước khi bắt đầu.'};
+    if(S.teams.length<2||S.teams.some(function(t){return !t.length}))return {ok:false,why:'Mỗi đội cần ít nhất 1 bạn.'};
     var all=[];S.teams.forEach(function(t){all=all.concat(t)});
-    if(all.length!==s.present||Object.keys(all.reduce(function(o,i){o[i]=1;return o},{})).length!==all.length)return {ok:false,why:'Danh sách đội chưa khớp với các bạn có mặt.'};
+    if(all.length!==S.sel.length||all.some(function(id){return S.sel.indexOf(id)<0}))return {ok:false,why:'Đội chưa khớp danh sách – bấm “Chia đội”.'};
     return {ok:true,why:''};
   };
-  TM.buildMatch=function(pool,mode){
-    return makeMatch({mode:mode,cls:S.cls,teams:S.teams,pool:pool,cycles:S.cycles,special:S.special,specialRound:S.specialRound,names:nameMap()});
-  };
+  TM.buildMatch=function(pool,mode){return makeMatch({mode:mode,cls:S.lessonCls,teams:S.teams,pool:pool,cycles:S.cycles,special:S.special,specialRound:S.specialRound,names:dispMap()})};
   TM.rebuild=function(M,pool){return makeMatch({mode:M.mode,cls:M.cls,teams:M.cfg.teams,pool:pool,cycles:M.cycles,special:M.special,specialRound:M.specialRound,names:M.names})};
   TM.turnsTotal=function(){var s=stats();return s.R*S.teams.length};
 
   /* ----- bảng cài đặt ----- */
+  function resultsHtml(){
+    if(!S.students)return '';
+    var q=S.q.trim();if(!q)return '<div class="note">Gõ tên (có dấu hoặc không dấu) để tìm trong toàn bộ danh sách học viên.</div>';
+    var r=searchStudents(S.all,q,30);if(!r.length)return '<div class="note warn">Không tìm thấy “'+esc(q)+'”.</div>';
+    var full=S.sel.length>=S.count;
+    return '<div class="tmlist">'+r.map(function(m){var on=S.sel.indexOf(m.id)>=0;
+      return '<button type="button" class="tmst'+(on?' on':'')+'" data-tm-add="'+esc(m.id)+'"'+((!on&&full)?' disabled':'')+'><span>'+(on?'✓ ':'')+esc(m.name)+' <small>· Lớp '+esc(m.cls)+(m.group?' · nhóm '+esc(m.group):'')+'</small></span></button>'}).join('')+'</div>'+(full?'<div class="note">Đã chọn đủ '+S.count+' bạn. Bỏ chọn một bạn nếu muốn đổi.</div>':'');
+  }
   function panelInner(){
-    var auth=host.getAuth?host.getAuth():{};var h='';
+    var h='';
     if(!S.students){
-      if(S.loading)return '<div class="tmbox">⏳ Đang tải danh sách lớp từ máy chủ…</div>';
-      h+='<div class="tmbox">🔐 Chế độ thi đấu theo đội lấy danh sách lớp từ sổ học viên nên cần <b>PIN giáo viên</b>.<div class="pin" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input class="tmpin" id="tmPin" type="password" inputmode="numeric" placeholder="PIN giáo viên" autocomplete="off"><button class="btn" data-tm="pin">Xác nhận &amp; tải danh sách</button></div>';
+      if(S.loading)return '<div class="tmbox">⏳ Đang tải danh sách học viên từ máy chủ…</div>';
+      h+='<div class="tmbox">🔐 Chế độ thi đấu theo đội lấy danh sách học viên từ sổ học viên nên cần <b>PIN giáo viên</b>.<div class="pin" style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><input class="tmpin" id="tmPin" type="password" inputmode="numeric" placeholder="PIN giáo viên" autocomplete="off"><button class="btn" data-tm="pin">Xác nhận &amp; tải danh sách</button></div>';
       if(S.err)h+='<div class="warn" style="margin-top:6px">'+esc(S.err)+'</div>';
       return h+'</div>';
     }
-    var names=Object.keys(S.classes).sort();
-    if(!names.length)return '<div class="tmbox warn">Sổ học viên chưa có học sinh nào đang học. <button class="chip" data-tm="reload">↻ Tải lại</button></div>';
-    var ms=members(),s=stats(),mx=Math.max(2,maxN(s.present));
-    h+='<div class="row"><label>Lớp</label><div class="chips" style="align-items:center"><select class="tmsel" data-tm-cls="1">'+names.map(function(c){return '<option value="'+esc(c)+'"'+(c===S.cls?' selected':'')+'>Lớp '+esc(c)+' ('+S.classes[c].length+' bạn)</option>'}).join('')+'</select><button class="chip" data-tm="reload">↻ Tải lại danh sách</button></div></div>';
-    h+='<div class="row"><label>Bạn có mặt ('+s.present+'/'+s.total+') – bỏ chọn bạn vắng</label><div class="tmlist">'+ms.map(function(m){var on=S.present[m.id];return '<label class="tmst '+(on?'on':'off')+'"><input type="checkbox" data-tm-p="'+esc(m.id)+'"'+(on?' checked':'')+'> <span>'+esc(m.disp)+(m.dup&&m.group?' <small>· nhóm '+esc(m.group)+'</small>':'')+'</span></label>'}).join('')+'</div><div class="chips" style="margin-top:8px"><button class="chip" data-tm="all">Chọn tất cả</button><button class="chip" data-tm="none">Bỏ chọn hết</button></div>'+(ms.some(function(m){return m.dup})?'<div class="note" style="margin-top:4px">Có bạn trùng tên: hệ thống gắn số (1), (2) theo thứ tự trong sổ học viên để phân biệt.</div>':'')+'</div>';
-    h+='<div class="row"><label>Số đội</label><div class="chips">'+[2,3,4].map(function(n){var okN=s.present>=2*n;return '<button class="chip'+(S.n===n?' on':'')+(okN?'':' off')+'" data-tm="n:'+n+'"'+(okN?'':' disabled')+'>'+n+' đội</button>'}).join('')+'<button class="chip" data-tm="split">🎲 Chia đội tự động</button></div><div class="note" style="margin-top:4px">Mỗi đội cần ít nhất 2 bạn. Có thể chuyển bạn giữa các đội bằng ô chọn bên dưới.</div>';
-    if(S.teams.length){h+='<div class="tmteams">'+S.teams.map(function(t,i){var d=TEAM_DEF[i];return '<div class="tmtm" style="--tc:'+d.color+'"><h4>'+d.emoji+' Đội '+esc(d.name)+' · '+t.length+' bạn</h4>'+t.map(function(id){var m=byId(id);return '<div class="mb"><span>'+esc(m?m.disp:id)+'</span><select data-tm-mv="'+esc(id)+'" aria-label="Chuyển đội">'+S.teams.map(function(_,k){return '<option value="'+k+'"'+(k===i?' selected':'')+'>'+TEAM_DEF[k].emoji+' '+esc(TEAM_DEF[k].name)+'</option>'}).join('')+'</select></div>'}).join('')+'</div>'}).join('')+'</div>'}
+    if(!S.all.length)return '<div class="tmbox warn">Sổ học viên chưa có học viên nào đang học. <button class="chip" data-tm="reload">↻ Tải lại</button></div>';
+    var s=stats(),mem=selMembers(),dm=dispMap();
+    h+='<div class="row"><label>1 · Số học viên có mặt hôm nay</label><div class="chips" style="align-items:center"><input class="tmsel" id="tmCount" data-tm-count="1" type="number" inputmode="numeric" min="2" max="40" value="'+(S.count||'')+'" placeholder="vd: 7" style="width:110px"><button class="chip" data-tm="reload">↻ Tải lại danh sách</button></div></div>';
+    h+='<div class="row"><label>2 · Tìm và chọn học viên (toàn hệ thống, kể cả lớp khác)</label><input class="tmsel" id="tmQ" data-tm-q="1" type="search" value="'+esc(S.q)+'" placeholder="Tìm theo tên, có dấu hoặc không dấu" autocomplete="off" style="width:100%"><div id="tmRes" style="margin-top:8px">'+resultsHtml()+'</div></div>';
+    h+='<div class="row"><label>Đã chọn <span id="tmCnt">'+S.sel.length+'/'+(S.count||'?')+'</span></label>'+(mem.length?'<div class="tmlist">'+mem.map(function(m){return '<div class="tmst on"><span>'+esc(dm[m.id])+(dm[m.id]!==m.name?'':' <small>· Lớp '+esc(m.cls)+'</small>')+'</span><button type="button" class="chip" data-tm-rm="'+esc(m.id)+'" aria-label="Bỏ chọn" style="min-height:32px;padding:2px 10px">✕</button></div>'}).join('')+'</div><div class="chips" style="margin-top:8px"><button class="chip" data-tm="clear">Xoá hết danh sách</button></div>':'<div class="note">Chưa chọn bạn nào.</div>')+'<div class="note" style="margin-top:4px">Danh sách chỉ áp dụng cho trận này, không đổi lớp hay hồ sơ của học viên.</div></div>';
+    h+='<div class="row"><label>3 · Chia đội</label><div class="chips">'+[2,3,4].map(function(n){var okN=S.sel.length>=n;return '<button class="chip'+(S.n===n?' on':'')+(okN?'':' off')+'" data-tm="n:'+n+'"'+(okN?'':' disabled')+'>'+n+' đội</button>'}).join('')+'<button class="chip'+(S.stale?' on':'')+'" data-tm="split"'+(S.sel.length>=2&&S.sel.length===S.count?'':' disabled')+'>🎲 Chia đội</button></div>'+(S.stale?'<div class="note warn" style="margin-top:4px">Danh sách đã thay đổi – cần bấm “Chia đội” lại.</div>':'<div class="note" style="margin-top:4px">Chỉ chia được khi đã chọn đủ số người. Mỗi đội cần ít nhất 1 bạn; có thể chuyển bạn giữa các đội bằng ô chọn bên dưới.</div>');
+    if(S.teams.length){h+='<div class="tmteams">'+S.teams.map(function(t,i){var d=TEAM_DEF[i];return '<div class="tmtm" style="--tc:'+d.color+'"><h4>'+d.emoji+' Đội '+esc(d.name)+' · '+t.length+' bạn</h4>'+t.map(function(id){return '<div class="mb"><span>'+esc(dm[id]||id)+'</span><select data-tm-mv="'+esc(id)+'" aria-label="Chuyển đội">'+S.teams.map(function(_,k){return '<option value="'+k+'"'+(k===i?' selected':'')+'>'+TEAM_DEF[k].emoji+' '+esc(TEAM_DEF[k].name)+'</option>'}).join('')+'</select></div>'}).join('')+'</div>'}).join('')+'</div>'}
     h+='</div>';
-    h+='<div class="row"><label>Số lượt mỗi đội</label><div class="chips">'+[1,2].map(function(c){return '<button class="chip'+(S.cycles===c?' on':'')+'" data-tm="cyc:'+c+'">×'+c+(c===1?' (mọi bạn chơi 1 lần)':' (2 vòng)')+'</button>'}).join('')+'</div><div class="note" style="margin-top:4px">'+(s.Rmax?'Mỗi đội nhận <b>'+s.R+'</b> lượt'+(s.sizes.some(function(z){return z<s.Rmax})?' – đội ít người hơn sẽ xoay vòng người nhận lượt thêm':'')+'. Tổng '+(s.R*S.teams.length)+' lượt.':'')+'</div></div>';
+    var names=Object.keys(S.classes).sort();
+    h+='<div class="row"><label>Lớp dùng để chọn bài ôn</label><div class="chips" style="align-items:center"><select class="tmsel" data-tm-cls="1">'+names.map(function(c){return '<option value="'+esc(c)+'"'+(c===S.lessonCls?' selected':'')+'>Lớp '+esc(c)+'</option>'}).join('')+'</select></div><div class="note" style="margin-top:4px">Chỉ quyết định bài nào đã mở để ôn. Đổi lớp ở đây không làm mất danh sách người chơi.</div></div>';
+    h+='<div class="row"><label>Số lượt mỗi đội</label><div class="chips">'+[1,2].map(function(c){return '<button class="chip'+(S.cycles===c?' on':'')+'" data-tm="cyc:'+c+'">×'+c+(c===1?' (mọi bạn chơi 1 lần)':' (2 vòng)')+'</button>'}).join('')+'</div><div class="note" style="margin-top:4px">'+(s.Rmax?'Mỗi đội nhận <b>'+s.R+'</b> lượt'+(s.sizes.some(function(z){return z<s.Rmax})?' – đội ít người hơn xoay vòng người nhận lượt thêm':'')+'. Tổng '+(s.R*S.teams.length)+' lượt.':'')+'</div></div>';
     h+='<div class="row"><label>Câu đặc biệt</label><div class="chips">'+[['none','Tắt'],['double','✖2 Nhân đôi'],['bet','🎲 Cược điểm']].map(function(x){return '<button class="chip'+(S.special===x[0]?' on':'')+'" data-tm="sp:'+x[0]+'">'+x[1]+'</button>'}).join('')+(S.special!=='none'&&s.R?'<select class="tmsel" data-tm-sr="1" aria-label="Vòng đặc biệt">'+Array.apply(null,Array(s.R)).map(function(_,r){var sel=(S.specialRound<0||S.specialRound>=s.R?s.R-1:S.specialRound)===r;return '<option value="'+r+'"'+(sel?' selected':'')+'>Vòng '+(r+1)+(r===s.R-1?' (cuối)':'')+'</option>'}).join('')+'</select>':'')+'</div><div class="note" style="margin-top:4px">'+(S.special==='double'?'Ở vòng đặc biệt, mỗi đội có một lượt: đúng +20, sai 0.':S.special==='bet'?'Ở vòng đặc biệt, mỗi đội có một lượt: chọn cược 0 hoặc 5 trước khi thấy câu (tối đa bằng số điểm đội đang có). Đúng +10 và cộng mức cược, sai mất mức cược.':'Câu thường: đúng +10, sai 0.')+'</div></div>';
     var c=TM.canStart();h+='<div class="note '+(c.ok?'okc':'warn')+'" id="tmStatus">'+(c.ok?'✔ Sẵn sàng thi đấu: '+S.teams.map(function(t,i){return TEAM_DEF[i].emoji+' '+t.length}).join(' · '):esc(c.why))+'</div>';
     return h;
+  };
+  function render(){
+    if(!S.el)return;var ae=document.activeElement,fid=ae&&S.el.contains(ae)&&(ae.id==='tmCount'||ae.id==='tmQ')?ae.id:'';
+    S.el.innerHTML=panelInner();
+    if(fid){var n=S.el.querySelector('#'+fid);if(n){n.focus();try{var l=n.value.length;n.setSelectionRange(l,l)}catch(e){}}}
   }
-  function render(){if(S.el)S.el.innerHTML=panelInner()}
   TM.panelHtml=function(){return '<div class="tm" id="tmPanel">'+panelInner()+'</div>'};
   TM.mount=function(el){
     S.el=el;if(!el)return;
     if(!el.__tmBound){el.__tmBound=true;
+      function after(){render();if(host.refresh)host.refresh()}
       el.addEventListener('click',function(e){
+        var add=e.target.closest('[data-tm-add]');
+        if(add&&!add.disabled){var id=add.getAttribute('data-tm-add'),k=S.sel.indexOf(id);if(k>=0)S.sel.splice(k,1);else if(S.sel.length<S.count)S.sel.push(id);else return;invalidate();after();return}
+        var rm=e.target.closest('[data-tm-rm]');
+        if(rm){var k2=S.sel.indexOf(rm.getAttribute('data-tm-rm'));if(k2>=0)S.sel.splice(k2,1);invalidate();after();return}
         var b=e.target.closest('button[data-tm]');if(!b||b.disabled)return;var a=b.getAttribute('data-tm');
         if(a==='pin'){var i=el.querySelector('#tmPin');S.pin=(i&&i.value||'').trim();if(!S.pin){S.err='Nhập PIN giáo viên.';render();return}S.students=null;load(true);return}
         if(a==='reload'){S.students=null;load(true);return}
-        if(a==='all'){members().forEach(function(m){S.present[m.id]=true});split()}
-        else if(a==='none'){S.present={};S.teams=[]}
+        if(a==='clear'){S.sel=[];invalidate()}
         else if(a==='split')split();
-        else if(a.indexOf('n:')===0){S.n=Number(a.slice(2));split()}
+        else if(a.indexOf('n:')===0){S.n=Number(a.slice(2));if(S.teams.length&&!S.stale)split();}
         else if(a.indexOf('cyc:')===0){S.cycles=Number(a.slice(4));S.specialRound=-1}
         else if(a.indexOf('sp:')===0){S.special=a.slice(3)}
         else return;
-        render();if(host.refresh)host.refresh();
+        after();
+      });
+      el.addEventListener('input',function(e){
+        var t=e.target;if(!t)return;
+        if(t.hasAttribute('data-tm-q')){S.q=t.value;var r=el.querySelector('#tmRes');if(r)r.innerHTML=resultsHtml()}
+        else if(t.hasAttribute('data-tm-count')){
+          var v=Math.max(0,Math.min(40,parseInt(t.value,10)||0));S.count=v;
+          if(S.sel.length>v){S.sel=S.sel.slice(0,v)}  /* giảm số có mặt thì cắt bớt cuối danh sách */
+          invalidate();
+          after();
+        }
       });
       el.addEventListener('change',function(e){
         var t=e.target;if(!t)return;
-        if(t.hasAttribute('data-tm-cls')){setClass(t.value)}
-        else if(t.hasAttribute('data-tm-p')){
-          var id=t.getAttribute('data-tm-p');S.present[id]=!!t.checked;
-          S.teams=S.teams.map(function(tm){return tm.filter(function(x){return x!==id})});
-          var cnt=presentIds().length;
-          if(cnt<2*S.n)S.n=Math.max(2,maxN(cnt));
-          if(!S.manual){split()}
-          else if(S.present[id]&&S.teams.length){var k=0;for(var q=1;q<S.teams.length;q++)if(S.teams[q].length<S.teams[k].length)k=q;S.teams[k].push(id)}
-          else if(!S.teams.length||S.teams.length!==S.n||S.teams.some(function(x){return !x.length}))split();
-        }
+        if(t.hasAttribute('data-tm-count'))return;
+        if(t.hasAttribute('data-tm-cls')){setLessonCls(t.value)}
         else if(t.hasAttribute('data-tm-mv')){
           var mid=t.getAttribute('data-tm-mv'),to=Number(t.value),from=teamOf(mid);
           if(from>=0&&to!==from){S.manual=true;S.teams[from]=S.teams[from].filter(function(x){return x!==mid});S.teams[to].push(mid)}
         }
         else if(t.hasAttribute('data-tm-sr')){S.specialRound=Number(t.value)}
         else return;
-        render();if(host.refresh)host.refresh();
+        after();
       });
       el.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target&&e.target.id==='tmPin'){var b=el.querySelector('[data-tm="pin"]');if(b)b.click()}});
     }
@@ -318,6 +350,6 @@ function create(host){
   return TM;
 }
 
-var API={create:create,logic:{buildRoster:buildRoster,autoSplit:autoSplit,drawRounds:drawRounds,makeMatch:makeMatch,isInactive:isInactive,maxN:maxN,POINTS:POINTS,classAllowed:classAllowed}};
+var API={create:create,logic:{buildRoster:buildRoster,autoSplit:autoSplit,drawRounds:drawRounds,makeMatch:makeMatch,isInactive:isInactive,maxN:maxN,fold:fold,flatten:flatten,searchStudents:searchStudents,displayNames:displayNames,POINTS:POINTS,classAllowed:classAllowed}};
 if(typeof module!=='undefined'&&module.exports)module.exports=API;else root.TeamMode=API;
 })(typeof window!=='undefined'?window:this);
