@@ -6049,6 +6049,1315 @@ window.SLICE_BANK = [
 "source": "lessons/bai5.html TRANSLATE_SELFCHECK #19"
 },
 {
+"id": "b6-q01",
+"lesson": 6,
+"level": 1,
+"type": "nguphap",
+"prompt": "你是____国人？",
+"correctAnswer": "哪",
+"distractors": [
+"谁",
+"那"
+],
+"completedText": "你是哪国人？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #1"
+},
+{
+"id": "b6-q02",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "我是越南____。",
+"correctAnswer": "人",
+"distractors": [
+"国",
+"书"
+],
+"completedText": "我是越南人。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #2"
+},
+{
+"id": "b6-q03",
+"lesson": 6,
+"level": 1,
+"type": "nguphap",
+"prompt": "你叫____名字？",
+"correctAnswer": "什么",
+"distractors": [
+"哪",
+"谁"
+],
+"completedText": "你叫什么名字？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #3"
+},
+{
+"id": "b6-q04",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "我____张东。",
+"correctAnswer": "叫",
+"distractors": [
+"学习",
+"请问"
+],
+"completedText": "我叫张东。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #4"
+},
+{
+"id": "b6-q05",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "我____汉语。",
+"correctAnswer": "学习",
+"distractors": [
+"叫",
+"请问"
+],
+"completedText": "我学习汉语。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #5"
+},
+{
+"id": "b6-q06",
+"lesson": 6,
+"level": 1,
+"type": "nguphap",
+"prompt": "这是____书？",
+"correctAnswer": "什么",
+"distractors": [
+"哪",
+"谁"
+],
+"completedText": "这是什么书？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #6"
+},
+{
+"id": "b6-q07",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "____是我的书。",
+"correctAnswer": "那",
+"distractors": [
+"谁",
+"哪"
+],
+"completedText": "那是我的书。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #7"
+},
+{
+"id": "b6-q08",
+"lesson": 6,
+"level": 1,
+"type": "nguphap",
+"prompt": "那个人是____？",
+"correctAnswer": "谁",
+"distractors": [
+"哪",
+"那"
+],
+"completedText": "那个人是谁？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #8"
+},
+{
+"id": "b6-q09",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "____，你贵姓？",
+"correctAnswer": "请问",
+"distractors": [
+"学习",
+"朋友"
+],
+"completedText": "请问，你贵姓？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #9"
+},
+{
+"id": "b6-q10",
+"lesson": 6,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "汉字很难，____不太难。",
+"correctAnswer": "发音",
+"distractors": [
+"杂志",
+"名字"
+],
+"completedText": "汉字很难，发音不太难。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #10"
+},
+{
+"id": "b6-q11",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "那是英文____。",
+"correctAnswer": "杂志",
+"distractors": [
+"朋友",
+"叫"
+],
+"completedText": "那是英文杂志。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #11"
+},
+{
+"id": "b6-q12",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "他是我的____。",
+"correctAnswer": "朋友",
+"distractors": [
+"学习",
+"叫"
+],
+"completedText": "他是我的朋友。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #12"
+},
+{
+"id": "b6-q13",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "这是我的____。",
+"correctAnswer": "名字",
+"distractors": [
+"学习",
+"叫"
+],
+"completedText": "这是我的名字。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #13"
+},
+{
+"id": "b6-q14",
+"lesson": 6,
+"level": 1,
+"type": "ghepcum",
+"prompt": "这是老师的____。",
+"correctAnswer": "书",
+"distractors": [
+"叫",
+"哪"
+],
+"completedText": "这是老师的书。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #14"
+},
+{
+"id": "b6-q15",
+"lesson": 6,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "我妈妈在____工作。",
+"correctAnswer": "越南",
+"distractors": [
+"汉字",
+"杂志"
+],
+"completedText": "我妈妈在越南工作。",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #15"
+},
+{
+"id": "b6-q16",
+"lesson": 6,
+"level": 1,
+"type": "nguphap",
+"prompt": "那是____的杂志？",
+"correctAnswer": "谁",
+"distractors": [
+"哪",
+"叫"
+],
+"completedText": "那是谁的杂志？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #16"
+},
+{
+"id": "b6-q17",
+"lesson": 6,
+"level": 1,
+"type": "dienkhuyet",
+"prompt": "汉语的____难吗？",
+"correctAnswer": "发音",
+"distractors": [
+"杂志",
+"叫"
+],
+"completedText": "汉语的发音难吗？",
+"optLang": "han",
+"source": "lessons/bai6.html FILL_BLANK #17"
+},
+{
+"id": "b6-w01-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "国",
+"correctAnswer": "nước, quốc gia",
+"distractors": [
+"đó, kia",
+"người"
+],
+"optLang": "vi",
+"completedText": "国 = nước, quốc gia",
+"source": "lessons/bai6.html WORDS #1"
+},
+{
+"id": "b6-w01-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/guo.jpg",
+"prompt": "",
+"correctAnswer": "国",
+"distractors": [
+"学习",
+"请问"
+],
+"optLang": "han",
+"completedText": "国 (guó) = nước, quốc gia",
+"source": "lessons/bai6.html WORDS #1"
+},
+{
+"id": "b6-w01-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "国",
+"prompt": "",
+"correctAnswer": "国",
+"distractors": [
+"学习",
+"请问"
+],
+"optLang": "han",
+"completedText": "国 (guó) = nước, quốc gia",
+"source": "lessons/bai6.html WORDS #1"
+},
+{
+"id": "b6-w02-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "人",
+"correctAnswer": "người",
+"distractors": [
+"nước, quốc gia",
+"tên là, gọi là"
+],
+"optLang": "vi",
+"completedText": "人 = người",
+"source": "lessons/bai6.html WORDS #2"
+},
+{
+"id": "b6-w02-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/ren.jpg",
+"prompt": "",
+"correctAnswer": "人",
+"distractors": [
+"书",
+"请问"
+],
+"optLang": "han",
+"completedText": "人 (rén) = người",
+"source": "lessons/bai6.html WORDS #2"
+},
+{
+"id": "b6-w02-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "人",
+"prompt": "",
+"correctAnswer": "人",
+"distractors": [
+"书",
+"请问"
+],
+"optLang": "han",
+"completedText": "人 (rén) = người",
+"source": "lessons/bai6.html WORDS #2"
+},
+{
+"id": "b6-w03-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "越南",
+"correctAnswer": "Việt Nam",
+"distractors": [
+"nước, quốc gia",
+"ai"
+],
+"optLang": "vi",
+"completedText": "越南 = Việt Nam",
+"source": "lessons/bai6.html WORDS #3"
+},
+{
+"id": "b6-w03-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/yuenan.jpg",
+"prompt": "",
+"correctAnswer": "越南",
+"distractors": [
+"贵姓",
+"杂志"
+],
+"optLang": "han",
+"completedText": "越南 (Yuènán) = Việt Nam",
+"source": "lessons/bai6.html WORDS #3"
+},
+{
+"id": "b6-w03-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "越南",
+"prompt": "",
+"correctAnswer": "越南",
+"distractors": [
+"贵姓",
+"杂志"
+],
+"optLang": "han",
+"completedText": "越南 (Yuènán) = Việt Nam",
+"source": "lessons/bai6.html WORDS #3"
+},
+{
+"id": "b6-w04-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "哪",
+"correctAnswer": "nào",
+"distractors": [
+"phát âm",
+"sách"
+],
+"optLang": "vi",
+"completedText": "哪 = nào",
+"source": "lessons/bai6.html WORDS #4"
+},
+{
+"id": "b6-w04-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/na3.jpg",
+"prompt": "",
+"correctAnswer": "哪",
+"distractors": [
+"越南",
+"朋友"
+],
+"optLang": "han",
+"completedText": "哪 (nǎ) = nào",
+"source": "lessons/bai6.html WORDS #4"
+},
+{
+"id": "b6-w04-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "哪",
+"prompt": "",
+"correctAnswer": "哪",
+"distractors": [
+"越南",
+"朋友"
+],
+"optLang": "han",
+"completedText": "哪 (nǎ) = nào",
+"source": "lessons/bai6.html WORDS #4"
+},
+{
+"id": "b6-w05-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "叫",
+"correctAnswer": "tên là, gọi là",
+"distractors": [
+"người",
+"học"
+],
+"optLang": "vi",
+"completedText": "叫 = tên là, gọi là",
+"source": "lessons/bai6.html WORDS #5"
+},
+{
+"id": "b6-w05-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/jiao.jpg",
+"prompt": "",
+"correctAnswer": "叫",
+"distractors": [
+"国",
+"名字"
+],
+"optLang": "han",
+"completedText": "叫 (jiào) = tên là, gọi là",
+"source": "lessons/bai6.html WORDS #5"
+},
+{
+"id": "b6-w05-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "叫",
+"prompt": "",
+"correctAnswer": "叫",
+"distractors": [
+"国",
+"名字"
+],
+"optLang": "han",
+"completedText": "叫 (jiào) = tên là, gọi là",
+"source": "lessons/bai6.html WORDS #5"
+},
+{
+"id": "b6-w06-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "名字",
+"correctAnswer": "tên",
+"distractors": [
+"nước, quốc gia",
+"gì, cái gì"
+],
+"optLang": "vi",
+"completedText": "名字 = tên",
+"source": "lessons/bai6.html WORDS #6"
+},
+{
+"id": "b6-w06-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/mingzi.jpg",
+"prompt": "",
+"correctAnswer": "名字",
+"distractors": [
+"国",
+"叫"
+],
+"optLang": "han",
+"completedText": "名字 (míngzi) = tên",
+"source": "lessons/bai6.html WORDS #6"
+},
+{
+"id": "b6-w06-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "名字",
+"prompt": "",
+"correctAnswer": "名字",
+"distractors": [
+"国",
+"叫"
+],
+"optLang": "han",
+"completedText": "名字 (míngzi) = tên",
+"source": "lessons/bai6.html WORDS #6"
+},
+{
+"id": "b6-w07-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "什么",
+"correctAnswer": "gì, cái gì",
+"distractors": [
+"nước, quốc gia",
+"xin hỏi, cho hỏi"
+],
+"optLang": "vi",
+"completedText": "什么 = gì, cái gì",
+"source": "lessons/bai6.html WORDS #7"
+},
+{
+"id": "b6-w07-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/shenme.jpg",
+"prompt": "",
+"correctAnswer": "什么",
+"distractors": [
+"名字",
+"杂志"
+],
+"optLang": "han",
+"completedText": "什么 (shénme) = gì, cái gì",
+"source": "lessons/bai6.html WORDS #7"
+},
+{
+"id": "b6-w07-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "什么",
+"prompt": "",
+"correctAnswer": "什么",
+"distractors": [
+"名字",
+"杂志"
+],
+"optLang": "han",
+"completedText": "什么 (shénme) = gì, cái gì",
+"source": "lessons/bai6.html WORDS #7"
+},
+{
+"id": "b6-w08-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "贵姓",
+"correctAnswer": "họ (hỏi lịch sự)",
+"distractors": [
+"Việt Nam",
+"người"
+],
+"optLang": "vi",
+"completedText": "贵姓 = họ (hỏi lịch sự)",
+"source": "lessons/bai6.html WORDS #8"
+},
+{
+"id": "b6-w08-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/guixing.jpg",
+"prompt": "",
+"correctAnswer": "贵姓",
+"distractors": [
+"那",
+"汉字"
+],
+"optLang": "han",
+"completedText": "贵姓 (guìxìng) = họ (hỏi lịch sự)",
+"source": "lessons/bai6.html WORDS #8"
+},
+{
+"id": "b6-w08-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "贵姓",
+"prompt": "",
+"correctAnswer": "贵姓",
+"distractors": [
+"那",
+"汉字"
+],
+"optLang": "han",
+"completedText": "贵姓 (guìxìng) = họ (hỏi lịch sự)",
+"source": "lessons/bai6.html WORDS #8"
+},
+{
+"id": "b6-w09-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "学习",
+"correctAnswer": "học",
+"distractors": [
+"nước, quốc gia",
+"ai"
+],
+"optLang": "vi",
+"completedText": "学习 = học",
+"source": "lessons/bai6.html WORDS #9"
+},
+{
+"id": "b6-w09-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/xuexi.jpg",
+"prompt": "",
+"correctAnswer": "学习",
+"distractors": [
+"杂志",
+"什么"
+],
+"optLang": "han",
+"completedText": "学习 (xuéxí) = học",
+"source": "lessons/bai6.html WORDS #9"
+},
+{
+"id": "b6-w09-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "学习",
+"prompt": "",
+"correctAnswer": "学习",
+"distractors": [
+"杂志",
+"什么"
+],
+"optLang": "han",
+"completedText": "学习 (xuéxí) = học",
+"source": "lessons/bai6.html WORDS #9"
+},
+{
+"id": "b6-w10-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "汉字",
+"correctAnswer": "chữ Hán",
+"distractors": [
+"xin hỏi, cho hỏi",
+"tên"
+],
+"optLang": "vi",
+"completedText": "汉字 = chữ Hán",
+"source": "lessons/bai6.html WORDS #10"
+},
+{
+"id": "b6-w10-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/hanzi.jpg",
+"prompt": "",
+"correctAnswer": "汉字",
+"distractors": [
+"什么",
+"贵姓"
+],
+"optLang": "han",
+"completedText": "汉字 (hànzì) = chữ Hán",
+"source": "lessons/bai6.html WORDS #10"
+},
+{
+"id": "b6-w10-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "汉字",
+"prompt": "",
+"correctAnswer": "汉字",
+"distractors": [
+"什么",
+"贵姓"
+],
+"optLang": "han",
+"completedText": "汉字 (hànzì) = chữ Hán",
+"source": "lessons/bai6.html WORDS #10"
+},
+{
+"id": "b6-w11-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "发音",
+"correctAnswer": "phát âm",
+"distractors": [
+"nào",
+"học"
+],
+"optLang": "vi",
+"completedText": "发音 = phát âm",
+"source": "lessons/bai6.html WORDS #11"
+},
+{
+"id": "b6-w11-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/fayin.jpg",
+"prompt": "",
+"correctAnswer": "发音",
+"distractors": [
+"朋友",
+"杂志"
+],
+"optLang": "han",
+"completedText": "发音 (fāyīn) = phát âm",
+"source": "lessons/bai6.html WORDS #11"
+},
+{
+"id": "b6-w11-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "发音",
+"prompt": "",
+"correctAnswer": "发音",
+"distractors": [
+"朋友",
+"杂志"
+],
+"optLang": "han",
+"completedText": "发音 (fāyīn) = phát âm",
+"source": "lessons/bai6.html WORDS #11"
+},
+{
+"id": "b6-w12-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "书",
+"correctAnswer": "sách",
+"distractors": [
+"tên",
+"đó, kia"
+],
+"optLang": "vi",
+"completedText": "书 = sách",
+"source": "lessons/bai6.html WORDS #12"
+},
+{
+"id": "b6-w12-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/shu.jpg",
+"prompt": "",
+"correctAnswer": "书",
+"distractors": [
+"杂志",
+"叫"
+],
+"optLang": "han",
+"completedText": "书 (shū) = sách",
+"source": "lessons/bai6.html WORDS #12"
+},
+{
+"id": "b6-w12-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "书",
+"prompt": "",
+"correctAnswer": "书",
+"distractors": [
+"杂志",
+"叫"
+],
+"optLang": "han",
+"completedText": "书 (shū) = sách",
+"source": "lessons/bai6.html WORDS #12"
+},
+{
+"id": "b6-w13-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "那",
+"correctAnswer": "đó, kia",
+"distractors": [
+"bạn bè",
+"người"
+],
+"optLang": "vi",
+"completedText": "那 = đó, kia",
+"source": "lessons/bai6.html WORDS #13"
+},
+{
+"id": "b6-w13-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/na4.jpg",
+"prompt": "",
+"correctAnswer": "那",
+"distractors": [
+"杂志",
+"叫"
+],
+"optLang": "han",
+"completedText": "那 (nà) = đó, kia",
+"source": "lessons/bai6.html WORDS #13"
+},
+{
+"id": "b6-w13-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "那",
+"prompt": "",
+"correctAnswer": "那",
+"distractors": [
+"杂志",
+"叫"
+],
+"optLang": "han",
+"completedText": "那 (nà) = đó, kia",
+"source": "lessons/bai6.html WORDS #13"
+},
+{
+"id": "b6-w14-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "谁",
+"correctAnswer": "ai",
+"distractors": [
+"Việt Nam",
+"học"
+],
+"optLang": "vi",
+"completedText": "谁 = ai",
+"source": "lessons/bai6.html WORDS #14"
+},
+{
+"id": "b6-w14-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/shei.jpg",
+"prompt": "",
+"correctAnswer": "谁",
+"distractors": [
+"汉字",
+"叫"
+],
+"optLang": "han",
+"completedText": "谁 (shéi) = ai",
+"source": "lessons/bai6.html WORDS #14"
+},
+{
+"id": "b6-w14-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "谁",
+"prompt": "",
+"correctAnswer": "谁",
+"distractors": [
+"汉字",
+"叫"
+],
+"optLang": "han",
+"completedText": "谁 (shéi) = ai",
+"source": "lessons/bai6.html WORDS #14"
+},
+{
+"id": "b6-w15-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "朋友",
+"correctAnswer": "bạn bè",
+"distractors": [
+"tên",
+"Việt Nam"
+],
+"optLang": "vi",
+"completedText": "朋友 = bạn bè",
+"source": "lessons/bai6.html WORDS #15"
+},
+{
+"id": "b6-w15-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/pengyou.jpg",
+"prompt": "",
+"correctAnswer": "朋友",
+"distractors": [
+"书",
+"人"
+],
+"optLang": "han",
+"completedText": "朋友 (péngyou) = bạn bè",
+"source": "lessons/bai6.html WORDS #15"
+},
+{
+"id": "b6-w15-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "朋友",
+"prompt": "",
+"correctAnswer": "朋友",
+"distractors": [
+"书",
+"人"
+],
+"optLang": "han",
+"completedText": "朋友 (péngyou) = bạn bè",
+"source": "lessons/bai6.html WORDS #15"
+},
+{
+"id": "b6-w16-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "杂志",
+"correctAnswer": "tạp chí",
+"distractors": [
+"nước, quốc gia",
+"người"
+],
+"optLang": "vi",
+"completedText": "杂志 = tạp chí",
+"source": "lessons/bai6.html WORDS #16"
+},
+{
+"id": "b6-w16-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/zazhi.jpg",
+"prompt": "",
+"correctAnswer": "杂志",
+"distractors": [
+"人",
+"学习"
+],
+"optLang": "han",
+"completedText": "杂志 (zázhì) = tạp chí",
+"source": "lessons/bai6.html WORDS #16"
+},
+{
+"id": "b6-w16-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "杂志",
+"prompt": "",
+"correctAnswer": "杂志",
+"distractors": [
+"人",
+"学习"
+],
+"optLang": "han",
+"completedText": "杂志 (zázhì) = tạp chí",
+"source": "lessons/bai6.html WORDS #16"
+},
+{
+"id": "b6-w17-m",
+"lesson": 6,
+"level": 1,
+"type": "chonnghia",
+"prompt": "请问",
+"correctAnswer": "xin hỏi, cho hỏi",
+"distractors": [
+"tạp chí",
+"bạn bè"
+],
+"optLang": "vi",
+"completedText": "请问 = xin hỏi, cho hỏi",
+"source": "lessons/bai6.html WORDS #17"
+},
+{
+"id": "b6-w17-h",
+"lesson": 6,
+"level": 1,
+"type": "hinh",
+"img": "../img/bai6/qingwen.jpg",
+"prompt": "",
+"correctAnswer": "请问",
+"distractors": [
+"学习",
+"那"
+],
+"optLang": "han",
+"completedText": "请问 (qǐngwèn) = xin hỏi, cho hỏi",
+"source": "lessons/bai6.html WORDS #17"
+},
+{
+"id": "b6-w17-n",
+"lesson": 6,
+"level": 1,
+"type": "nghe",
+"audio": "请问",
+"prompt": "",
+"correctAnswer": "请问",
+"distractors": [
+"学习",
+"那"
+],
+"optLang": "han",
+"completedText": "请问 (qǐngwèn) = xin hỏi, cho hỏi",
+"source": "lessons/bai6.html WORDS #17"
+},
+{
+"id": "b6-s01",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Trung Quốc rất lớn.",
+"correctAnswer": "中国很大。",
+"distractors": [
+"那个人是谁？",
+"你是哪国人？"
+],
+"optLang": "han",
+"completedText": "中国很大。 = Trung Quốc rất lớn.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #1"
+},
+{
+"id": "b6-s02",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Bạn đi Pháp không?",
+"correctAnswer": "你去法国吗？",
+"distractors": [
+"我学习汉语。",
+"请问，学校在哪儿？"
+],
+"optLang": "han",
+"completedText": "你去法国吗？ = Bạn đi Pháp không?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #2"
+},
+{
+"id": "b6-s03",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Nhà bạn có mấy người?",
+"correctAnswer": "你家有几口人？",
+"distractors": [
+"你去法国吗？",
+"请问，你贵姓？"
+],
+"optLang": "han",
+"completedText": "你家有几口人？ = Nhà bạn có mấy người?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #3"
+},
+{
+"id": "b6-s04",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Bạn là người nước nào?",
+"correctAnswer": "你是哪国人？",
+"distractors": [
+"你家有几口人？",
+"中国很大。"
+],
+"optLang": "han",
+"completedText": "你是哪国人？ = Bạn là người nước nào?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #4"
+},
+{
+"id": "b6-s05",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Tôi tên là Trương Đông.",
+"correctAnswer": "我叫张东。",
+"distractors": [
+"那是英文杂志。",
+"我学习汉语。"
+],
+"optLang": "han",
+"completedText": "我叫张东。 = Tôi tên là Trương Đông.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #5"
+},
+{
+"id": "b6-s06",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Đây là sách gì?",
+"correctAnswer": "这是什么书？",
+"distractors": [
+"请问，学校在哪儿？",
+"他是我的朋友。"
+],
+"optLang": "han",
+"completedText": "这是什么书？ = Đây là sách gì?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #6"
+},
+{
+"id": "b6-s07",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Bạn tên là gì?",
+"correctAnswer": "你叫什么名字？",
+"distractors": [
+"你家有几口人？",
+"这是什么书？"
+],
+"optLang": "han",
+"completedText": "你叫什么名字？ = Bạn tên là gì?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #7"
+},
+{
+"id": "b6-s08",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Xin hỏi, bạn họ gì?",
+"correctAnswer": "请问，你贵姓？",
+"distractors": [
+"那是谁的杂志？",
+"中国很大。"
+],
+"optLang": "han",
+"completedText": "请问，你贵姓？ = Xin hỏi, bạn họ gì?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #8"
+},
+{
+"id": "b6-s09",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Tôi học tiếng Hán.",
+"correctAnswer": "我学习汉语。",
+"distractors": [
+"请问，你贵姓？",
+"他是我的朋友。"
+],
+"optLang": "han",
+"completedText": "我学习汉语。 = Tôi học tiếng Hán.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #9"
+},
+{
+"id": "b6-s10",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Chữ Hán rất khó.",
+"correctAnswer": "汉字很难。",
+"distractors": [
+"那是我的书。",
+"你叫什么名字？"
+],
+"optLang": "han",
+"completedText": "汉字很难。 = Chữ Hán rất khó.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #10"
+},
+{
+"id": "b6-s11",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Phát âm tiếng Hán có khó không?",
+"correctAnswer": "汉语的发音难吗？",
+"distractors": [
+"请问，学校在哪儿？",
+"你家有几口人？"
+],
+"optLang": "han",
+"completedText": "汉语的发音难吗？ = Phát âm tiếng Hán có khó không?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #11"
+},
+{
+"id": "b6-s12",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Kia là sách của tôi.",
+"correctAnswer": "那是我的书。",
+"distractors": [
+"中国很大。",
+"你叫什么名字？"
+],
+"optLang": "han",
+"completedText": "那是我的书。 = Kia là sách của tôi.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #12"
+},
+{
+"id": "b6-s13",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Người kia là ai?",
+"correctAnswer": "那个人是谁？",
+"distractors": [
+"请问，学校在哪儿？",
+"那是谁的杂志？"
+],
+"optLang": "han",
+"completedText": "那个人是谁？ = Người kia là ai?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #13"
+},
+{
+"id": "b6-s14",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Kia là tạp chí của ai?",
+"correctAnswer": "那是谁的杂志？",
+"distractors": [
+"请问，你贵姓？",
+"请问，学校在哪儿？"
+],
+"optLang": "han",
+"completedText": "那是谁的杂志？ = Kia là tạp chí của ai?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #14"
+},
+{
+"id": "b6-s15",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Anh ấy là bạn của tôi.",
+"correctAnswer": "他是我的朋友。",
+"distractors": [
+"你家有几口人？",
+"汉字很难。"
+],
+"optLang": "han",
+"completedText": "他是我的朋友。 = Anh ấy là bạn của tôi.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #15"
+},
+{
+"id": "b6-s16",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Xin hỏi, trường học ở đâu?",
+"correctAnswer": "请问，学校在哪儿？",
+"distractors": [
+"那是英文杂志。",
+"你去法国吗？"
+],
+"optLang": "han",
+"completedText": "请问，学校在哪儿？ = Xin hỏi, trường học ở đâu?",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #16"
+},
+{
+"id": "b6-s17",
+"lesson": 6,
+"level": 1,
+"type": "chondungcau",
+"prompt": "Kia là tạp chí tiếng Anh.",
+"correctAnswer": "那是英文杂志。",
+"distractors": [
+"那是我的书。",
+"请问，你贵姓？"
+],
+"optLang": "han",
+"completedText": "那是英文杂志。 = Kia là tạp chí tiếng Anh.",
+"source": "lessons/bai6.html TRANSLATE_SELFCHECK #17"
+},
+{
 "id": "b9-q01",
 "lesson": 9,
 "level": 1,

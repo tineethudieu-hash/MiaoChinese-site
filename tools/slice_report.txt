@@ -30,6 +30,8 @@ b5-q08 LOẠI: 你[身体]好吗？  (không chắc chỉ có 1 đáp án đúng
 b5-q10 LOẠI: [不太]忙。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
 Bài 5: 9/15 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 5: thêm chondungcau=19, chonnghia=23, hinh=16, nghe=23
+Bài 6: 17/17 câu điền khuyết/ngữ pháp/cụm từ dùng được
+Bài 6: thêm chondungcau=17, chonnghia=17, hinh=17, nghe=17
 b9-q04 LOẠI: 姐姐，我要[换钱]。  (không chắc chỉ có 1 đáp án đúng khi chỉ đọc chữ Hán / đáp án pinyin / cần gợi ý tiếng Việt)
 Bài 9: 14/15 câu điền khuyết/ngữ pháp/cụm từ dùng được
 Bài 9: dưới 3 câu dịch → không có dạng "Chọn câu đúng"
