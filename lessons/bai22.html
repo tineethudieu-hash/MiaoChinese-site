@@ -276,7 +276,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
       <p>Hình lấy đúng từ slide bài giảng của lớp — chọn chữ Hán đúng với hình. Trả lời xong sẽ hiện chữ Hán, pinyin và nghĩa theo slide.</p>
     </div>
     <div class="score-bar">
-      <div><span class="label">Điểm của bạn: </span><span class="val" id="pictureScore">0 / 22</span></div>
+      <div><span class="label">Điểm của bạn: </span><span class="val" id="pictureScore">0 / 35</span></div>
       <button onclick="resetPicture()">🔄 Làm lại</button>
     </div>
     <div class="quiz-grid" id="pictureBox"></div>
@@ -290,7 +290,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
       <p>Gồm các từ mới của bài, kèm nghĩa. Đáp án nhiễu là pinyin gần giống (khác thanh điệu hoặc âm gần giống).</p>
     </div>
     <div class="score-bar">
-      <div><span class="label">Điểm của bạn: </span><span class="val" id="pinyinScore">0 / 22</span></div>
+      <div><span class="label">Điểm của bạn: </span><span class="val" id="pinyinScore">0 / 35</span></div>
       <button onclick="resetPinyin()">🔄 Làm lại</button>
     </div>
     <div class="quiz-grid" id="pinyinBox"></div>
@@ -345,7 +345,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
 
     <div class="section-head" style="margin-top:8px;"><div class="kicker">发音 · Phần 1</div><h2>Đọc từ vựng</h2><p>Đọc đúng chữ Hán trên màn hình. Chú ý thanh điệu ghi ở pinyin.</p></div>
     <div class="score-bar">
-      <div><span class="label">Đọc đúng: </span><span class="val" id="speakWordScore">0 / 22</span></div>
+      <div><span class="label">Đọc đúng: </span><span class="val" id="speakWordScore">0 / 35</span></div>
       <button onclick="resetSpeakWord()">🔄 Làm lại</button>
     </div>
     <div class="quiz-grid" id="speakWordBox"></div>
@@ -378,7 +378,7 @@ details.reveal summary{font-size:clamp(16px,1.6vw,24px);}
    KHO TỪ VỰNG BÀI 9
    ============================================================ */
 /* Từ mới có hình trong slide gốc (slide 23–35 + slide 55): chữ Hán – pinyin – nghĩa – hình đi đúng theo slide */
-const WORDS = [{"cn": "爱好", "py": "àihào", "vi": "sở thích", "dis": ["àihāo", "ǎihào", "āihào"], "img": "../img/bai22/aihao.jpg"}, {"cn": "京剧", "py": "jīngjù", "vi": "Kinh kịch", "dis": ["jīngjú", "jíngjù", "jīngjǔ"], "img": "../img/bai22/jingju.jpg", "grp": "g2"}, {"cn": "电脑", "py": "diànnǎo", "vi": "máy tính", "dis": ["diànnāo", "diǎnnǎo", "diànnào"], "img": "../img/bai22/diannao.jpg"}, {"cn": "玩", "py": "wán", "vi": "chơi", "dis": ["wān", "wàn", "wǎn"], "img": "../img/bai22/wan.jpg"}, {"cn": "画儿", "py": "huàr", "vi": "bức tranh", "dis": ["huǎr", "huār", "huár"], "img": "../img/bai22/huar.jpg", "grp": "g3"}, {"cn": "画", "py": "huà", "vi": "vẽ", "dis": ["huá", "huā", "huǎ"], "img": "../img/bai22/hua.jpg", "grp": "g3"}, {"cn": "书法", "py": "shūfǎ", "vi": "thư pháp", "dis": ["shǔfǎ", "shūfà", "shùfǎ"], "img": "../img/bai22/shufa.jpg", "grp": "g4"}, {"cn": "唱", "py": "chàng", "vi": "hát", "dis": ["chǎng", "cháng", "chāng"], "img": "../img/bai22/chang.jpg", "grp": "g2"}, {"cn": "让", "py": "ràng", "vi": "để, cho phép, bảo", "dis": ["rǎng", "ráng", "rāng"], "img": "../img/bai22/rang.jpg"}, {"cn": "心情", "py": "xīnqíng", "vi": "tâm trạng", "dis": ["xīnqǐng", "xìnqíng", "xīnqìng"], "img": "../img/bai22/xinqing.jpg"}, {"cn": "大家", "py": "dàjiā", "vi": "mọi người", "dis": ["dájiā", "dàjiá", "dàjiǎ"], "img": "../img/bai22/dajia.jpg"}, {"cn": "业余", "py": "yèyú", "vi": "ngoài giờ, tay ngang", "dis": ["yèyù", "yěyú", "yèyū"], "img": "../img/bai22/yeyu.jpg", "grp": "g4"}, {"cn": "喜欢", "py": "xǐhuan", "vi": "thích", "dis": ["xīhuan", "xíhuan", "xìhuan"], "img": "../img/bai22/xihuan.jpg", "grp": "g2"}, {"cn": "感兴趣", "py": "gǎn xìngqù", "vi": "hứng thú, quan tâm", "dis": ["gǎn xìngqǔ", "gān xìngqù", "gǎn xīngqù"], "img": "../img/bai22/ganxingqu.jpg", "grp": "g4"}, {"cn": "非常", "py": "fēicháng", "vi": "rất, vô cùng", "dis": ["fēichǎng", "fèicháng", "fēichāng"], "img": "../img/bai22/feichang.jpg", "grp": "g2"}, {"cn": "特别", "py": "tèbié", "vi": "đặc biệt, rất", "dis": ["tēbié", "tèbiè", "tèbiě"], "img": "../img/bai22/tebie.jpg", "grp": "g4"}, {"cn": "感到", "py": "gǎndào", "vi": "cảm thấy", "dis": ["gǎndāo", "gāndào", "gǎndǎo"], "img": "../img/bai22/gandao.jpg"}, {"cn": "愉快", "py": "yúkuài", "vi": "vui vẻ", "dis": ["yǔkuài", "yúkuǎi", "yúkuái"], "img": "../img/bai22/yukuai.jpg"}, {"cn": "以前", "py": "yǐqián", "vi": "trước đây, trước khi", "dis": ["yǐqiǎn", "yìqián", "yǐqiàn"], "img": "../img/bai22/yiqian.jpg"}, {"cn": "自己", "py": "zìjǐ", "vi": "bản thân, tự mình", "dis": ["zījǐ", "zìjí", "zìjī"], "img": "../img/bai22/ziji.jpg"}, {"cn": "下课", "py": "xià kè", "vi": "tan học", "dis": ["xià ké", "xiǎ kè", "xiá kè"], "img": "../img/bai22/xiake.jpg"}, {"cn": "完", "py": "wán", "vi": "xong, hết", "dis": ["wān", "wàn", "wǎn"], "img": "../img/bai22/wanle.jpg"}];
+const WORDS = [{"cn": "爱好", "py": "àihào", "vi": "sở thích", "dis": ["àihāo", "ǎihào", "āihào"], "img": "../img/bai22/aihao.jpg"}, {"cn": "京剧", "py": "jīngjù", "vi": "Kinh kịch", "dis": ["jīngjú", "jíngjù", "jīngjǔ"], "img": "../img/bai22/jingju.jpg", "grp": "g2"}, {"cn": "电脑", "py": "diànnǎo", "vi": "máy tính", "dis": ["diànnāo", "diǎnnǎo", "diànnào"], "img": "../img/bai22/diannao.jpg"}, {"cn": "玩", "py": "wán", "vi": "chơi", "dis": ["wān", "wàn", "wǎn"], "img": "../img/bai22/wan.jpg"}, {"cn": "画儿", "py": "huàr", "vi": "bức tranh", "dis": ["huǎr", "huār", "huár"], "img": "../img/bai22/huar.jpg", "grp": "g3"}, {"cn": "画", "py": "huà", "vi": "vẽ", "dis": ["huá", "huā", "huǎ"], "img": "../img/bai22/hua.jpg", "grp": "g3"}, {"cn": "书法", "py": "shūfǎ", "vi": "thư pháp", "dis": ["shǔfǎ", "shūfà", "shùfǎ"], "img": "../img/bai22/shufa.jpg", "grp": "g4"}, {"cn": "唱", "py": "chàng", "vi": "hát", "dis": ["chǎng", "cháng", "chāng"], "img": "../img/bai22/chang.jpg", "grp": "g2"}, {"cn": "让", "py": "ràng", "vi": "để, cho phép, bảo ai làm gì", "dis": ["rǎng", "ráng", "rāng"], "img": "../img/bai22/rang.jpg"}, {"cn": "心情", "py": "xīnqíng", "vi": "tâm trạng", "dis": ["xīnqǐng", "xìnqíng", "xīnqìng"], "img": "../img/bai22/xinqing.jpg"}, {"cn": "大家", "py": "dàjiā", "vi": "mọi người, cả lớp", "dis": ["dájiā", "dàjiá", "dàjiǎ"], "img": "../img/bai22/dajia.jpg"}, {"cn": "业余", "py": "yèyú", "vi": "ngoài giờ làm hoặc giờ học", "dis": ["yèyù", "yěyú", "yèyū"], "img": "../img/bai22/yeyu.jpg", "grp": "g4"}, {"cn": "喜欢", "py": "xǐhuan", "vi": "thích", "dis": ["xīhuan", "xíhuan", "xìhuan"], "img": "../img/bai22/xihuan.jpg", "grp": "g2"}, {"cn": "感兴趣", "py": "gǎn xìngqù", "vi": "có hứng thú, quan tâm", "dis": ["gǎn xìngqǔ", "gān xìngqù", "gǎn xīngqù"], "img": "../img/bai22/ganxingqu.jpg", "grp": "g4"}, {"cn": "非常", "py": "fēicháng", "vi": "rất", "dis": ["fēichǎng", "fèicháng", "fēichāng"], "img": "../img/bai22/feichang.jpg", "grp": "g2"}, {"cn": "特别", "py": "tèbié", "vi": "đặc biệt, rất", "dis": ["tēbié", "tèbiè", "tèbiě"], "img": "../img/bai22/tebie.jpg", "grp": "g4"}, {"cn": "感到", "py": "gǎndào", "vi": "cảm thấy", "dis": ["gǎndāo", "gāndào", "gǎndǎo"], "img": "../img/bai22/gandao.jpg"}, {"cn": "愉快", "py": "yúkuài", "vi": "vui vẻ, vui thích", "dis": ["yǔkuài", "yúkuǎi", "yúkuái"], "img": "../img/bai22/yukuai.jpg"}, {"cn": "以前", "py": "yǐqián", "vi": "trước đây, trước khi", "dis": ["yǐqiǎn", "yìqián", "yǐqiàn"], "img": "../img/bai22/yiqian.jpg"}, {"cn": "自己", "py": "zìjǐ", "vi": "bản thân, tự mình", "dis": ["zījǐ", "zìjí", "zìjī"], "img": "../img/bai22/ziji.jpg"}, {"cn": "下课", "py": "xià kè", "vi": "tan học, kết thúc tiết học", "dis": ["xià ké", "xiǎ kè", "xiá kè"], "img": "../img/bai22/xiake.jpg"}, {"cn": "完", "py": "wán", "vi": "xong, hoàn tất", "dis": ["wān", "wàn", "wǎn"], "img": "../img/bai22/wanle.jpg"}, {"cn": "惊讶", "py": "jīngyà", "vi": "ngạc nhiên", "dis": ["jíngyà", "jīngyá", "jìngyà"], "img": "../img/bai22/jingya.jpg"}, {"cn": "老外", "py": "lǎowài", "vi": "người nước ngoài (khẩu ngữ)", "dis": ["lāowài", "lǎowǎi", "làowài"], "img": "../img/bai22/laowai.jpg"}, {"cn": "笔记本", "py": "bǐjìběn", "vi": "sổ tay, vở ghi chép", "dis": ["bǐjíběn", "bǐjìbēn", "bìjìběn"], "img": "../img/bai22/biji.jpg"}, {"cn": "唱歌", "py": "chànggē", "vi": "ca hát", "dis": ["chànggé", "chǎnggē", "chánggē"], "img": "../img/bai22/changge.jpg", "grp": "g2"}, {"cn": "希望", "py": "xīwàng", "vi": "hy vọng", "dis": ["xīwáng", "xìwàng", "xīwāng"], "img": "../img/bai22/xiwang.jpg"}, {"cn": "演出", "py": "yǎnchū", "vi": "biểu diễn, buổi biểu diễn", "dis": ["yānchū", "yǎnchù", "yànchū"], "img": "../img/bai22/yanchu.jpg", "grp": "g2"}, {"cn": "足球", "py": "zúqiú", "vi": "bóng đá", "dis": ["zǔqiú", "zúqiū", "zúqiǔ"], "img": "../img/bai22/zuqiu.jpg", "grp": "g6"}, {"cn": "比赛", "py": "bǐsài", "vi": "thi đấu, trận đấu", "dis": ["bǐsāi", "bìsài", "bǐsái"], "img": "../img/bai22/bisai.jpg", "grp": "g6"}, {"cn": "网球", "py": "wǎngqiú", "vi": "quần vợt", "dis": ["wàngqiú", "wǎngqiǔ", "wǎngqiū"], "img": "../img/bai22/wangqiu.jpg", "grp": "g6"}, {"cn": "太极拳", "py": "tàijíquán", "vi": "thái cực quyền", "dis": ["tàijīquán", "tàijíquǎn", "táijíquán"], "img": "../img/bai22/taiji.jpg", "grp": "g7"}, {"cn": "武术", "py": "wǔshù", "vi": "võ thuật", "dis": ["wùshù", "wǔshǔ", "wúshù"], "img": "../img/bai22/wushu.jpg", "grp": "g7"}, {"cn": "打羽毛球", "py": "dǎ yǔmáoqiú", "vi": "chơi cầu lông", "dis": ["dǎ yǔmáoqiù", "dǎ yūmáoqiú", "dá yǔmáoqiú"], "img": "../img/bai22/caulong.jpg", "grp": "g6"}, {"cn": "打匹克球", "py": "dǎ pǐkèqiú", "vi": "chơi pickleball", "dis": ["dǎ pǐkěqiú", "dà pǐkèqiú", "dǎ píkèqiú"], "img": "../img/bai22/pickleball.jpg", "grp": "g6"}];
 const VOCAB_POOL = WORDS.map(w=>({hanzi:w.cn, pinyin:w.py, vi:w.vi}));
 const PICTURE_MCQ = WORDS.filter(w=>w.img).map(w=>({word:w}));
 const PINYIN_MCQ = WORDS.map(w=>({word:w, hanzi:w.cn, correct:w.py, distractors:w.dis}));
@@ -564,6 +564,86 @@ const SENTENCE_BUILDER = [
   ],
   "answer": "我做完作业了。",
   "vi": "Tôi làm xong bài tập rồi."
+ },
+ {
+  "words": [
+   "老师",
+   "感到",
+   "很",
+   "惊讶"
+  ],
+  "answer": "老师感到很惊讶。",
+  "vi": "Cô giáo rất ngạc nhiên."
+ },
+ {
+  "words": [
+   "麦克",
+   "有",
+   "一",
+   "台",
+   "笔记本",
+   "电脑"
+  ],
+  "answer": "麦克有一台笔记本电脑。",
+  "vi": "Mike có một chiếc laptop."
+ },
+ {
+  "words": [
+   "我",
+   "希望",
+   "以后",
+   "能",
+   "唱",
+   "京剧"
+  ],
+  "answer": "我希望以后能唱京剧。",
+  "vi": "Tôi hy vọng sau này có thể hát kinh kịch."
+ },
+ {
+  "words": [
+   "我",
+   "常常",
+   "看",
+   "足球",
+   "比赛"
+  ],
+  "answer": "我常常看足球比赛。",
+  "vi": "Tôi thường xem trận đấu bóng đá."
+ },
+ {
+  "words": [
+   "我",
+   "下课",
+   "以后",
+   "常常",
+   "打",
+   "网球"
+  ],
+  "answer": "我下课以后常常打网球。",
+  "vi": "Sau giờ học tôi thường đánh quần vợt."
+ },
+ {
+  "words": [
+   "我",
+   "对",
+   "武术",
+   "特别",
+   "感兴趣"
+  ],
+  "answer": "我对武术特别感兴趣。",
+  "vi": "Tôi đặc biệt hứng thú với võ thuật."
+ },
+ {
+  "words": [
+   "我",
+   "也",
+   "想",
+   "学",
+   "打",
+   "匹克球"
+  ],
+  "answer": "我也想学打匹克球。",
+  "vi": "Tôi cũng muốn học chơi pickleball."
  }
 ];
 
@@ -808,6 +888,102 @@ const FILL_BLANK = [
    "让"
   ],
   "a": 0
+ },
+ {
+  "hint": "Cô giáo rất ngạc nhiên.",
+  "before": "老师感到很",
+  "after": "。",
+  "options": [
+   "惊讶",
+   "演出",
+   "比赛",
+   "足球"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi hy vọng sau này có thể tham gia biểu diễn.",
+  "before": "我希望以后能参加",
+  "after": "。",
+  "options": [
+   "演出",
+   "笔记本",
+   "足球",
+   "太极拳"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi thích xem bóng đá.",
+  "before": "我喜欢看",
+  "after": "。",
+  "options": [
+   "足球",
+   "惊讶",
+   "笔记本",
+   "希望"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi thường xem trận đấu bóng đá.",
+  "before": "我常常看足球",
+  "after": "。",
+  "options": [
+   "比赛",
+   "希望",
+   "惊讶",
+   "笔记本"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi thích đánh thái cực quyền.",
+  "before": "我喜欢打",
+  "after": "。",
+  "options": [
+   "太极拳",
+   "惊讶",
+   "笔记本",
+   "演出"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi đặc biệt hứng thú với võ thuật.",
+  "before": "我对",
+  "after": "特别感兴趣。",
+  "options": [
+   "武术",
+   "惊讶",
+   "笔记本",
+   "希望"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Mike có một chiếc laptop.",
+  "before": "麦克有一台",
+  "after": "电脑。",
+  "options": [
+   "笔记本",
+   "惊讶",
+   "希望",
+   "演出"
+  ],
+  "a": 0
+ },
+ {
+  "hint": "Tôi hy vọng sau này có thể hát kinh kịch.",
+  "before": "我",
+  "after": "以后能唱京剧。",
+  "options": [
+   "希望",
+   "惊讶",
+   "演出",
+   "笔记本"
+  ],
+  "a": 0
  }
 ];
 
@@ -856,7 +1032,7 @@ const TRANSLATE_SELFCHECK = [
   "py": "chàng"
  },
  {
-  "vi": "để, cho phép, bảo",
+  "vi": "để, cho phép, bảo ai làm gì",
   "cn": "让",
   "py": "ràng"
  },
@@ -866,12 +1042,12 @@ const TRANSLATE_SELFCHECK = [
   "py": "xīnqíng"
  },
  {
-  "vi": "mọi người",
+  "vi": "mọi người, cả lớp",
   "cn": "大家",
   "py": "dàjiā"
  },
  {
-  "vi": "ngoài giờ, tay ngang",
+  "vi": "ngoài giờ làm hoặc giờ học",
   "cn": "业余",
   "py": "yèyú"
  },
@@ -881,12 +1057,12 @@ const TRANSLATE_SELFCHECK = [
   "py": "xǐhuan"
  },
  {
-  "vi": "hứng thú, quan tâm",
+  "vi": "có hứng thú, quan tâm",
   "cn": "感兴趣",
   "py": "gǎn xìngqù"
  },
  {
-  "vi": "rất, vô cùng",
+  "vi": "rất",
   "cn": "非常",
   "py": "fēicháng"
  },
@@ -901,7 +1077,7 @@ const TRANSLATE_SELFCHECK = [
   "py": "gǎndào"
  },
  {
-  "vi": "vui vẻ",
+  "vi": "vui vẻ, vui thích",
   "cn": "愉快",
   "py": "yúkuài"
  },
@@ -916,14 +1092,79 @@ const TRANSLATE_SELFCHECK = [
   "py": "zìjǐ"
  },
  {
-  "vi": "tan học",
+  "vi": "tan học, kết thúc tiết học",
   "cn": "下课",
   "py": "xià kè"
  },
  {
-  "vi": "xong, hết",
+  "vi": "xong, hoàn tất",
   "cn": "完",
   "py": "wán"
+ },
+ {
+  "vi": "ngạc nhiên",
+  "cn": "惊讶",
+  "py": "jīngyà"
+ },
+ {
+  "vi": "người nước ngoài (khẩu ngữ)",
+  "cn": "老外",
+  "py": "lǎowài"
+ },
+ {
+  "vi": "sổ tay, vở ghi chép",
+  "cn": "笔记本",
+  "py": "bǐjìběn"
+ },
+ {
+  "vi": "ca hát",
+  "cn": "唱歌",
+  "py": "chànggē"
+ },
+ {
+  "vi": "hy vọng",
+  "cn": "希望",
+  "py": "xīwàng"
+ },
+ {
+  "vi": "biểu diễn, buổi biểu diễn",
+  "cn": "演出",
+  "py": "yǎnchū"
+ },
+ {
+  "vi": "bóng đá",
+  "cn": "足球",
+  "py": "zúqiú"
+ },
+ {
+  "vi": "thi đấu, trận đấu",
+  "cn": "比赛",
+  "py": "bǐsài"
+ },
+ {
+  "vi": "quần vợt",
+  "cn": "网球",
+  "py": "wǎngqiú"
+ },
+ {
+  "vi": "thái cực quyền",
+  "cn": "太极拳",
+  "py": "tàijíquán"
+ },
+ {
+  "vi": "võ thuật",
+  "cn": "武术",
+  "py": "wǔshù"
+ },
+ {
+  "vi": "chơi cầu lông",
+  "cn": "打羽毛球",
+  "py": "dǎ yǔmáoqiú"
+ },
+ {
+  "vi": "chơi pickleball",
+  "cn": "打匹克球",
+  "py": "dǎ pǐkèqiú"
  },
  {
   "vi": "Bạn có sở thích gì?",
@@ -983,12 +1224,12 @@ const TRANSLATE_SELFCHECK = [
  {
   "vi": "Trò chuyện với bạn, tôi thấy rất vui.",
   "cn": "跟朋友聊天儿，我感到很高兴。",
-  "py": "Gēn péngyou liáo tiānr, wǒ gǎndào hěn gāoxìng."
+  "py": "Gēn péngyou liáotiānr, wǒ gǎndào hěn gāoxìng."
  },
  {
   "vi": "Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ.",
   "cn": "下课以后，跟朋友聊聊天儿，我感到很愉快。",
-  "py": "Xiàkè yǐhòu, gēn péngyou liáoliao tiānr, wǒ gǎndào hěn yúkuài."
+  "py": "Xià kè yǐhòu, gēn péngyou liáoliao tiānr, wǒ gǎndào hěn yúkuài."
  },
  {
   "vi": "Chúc bạn cuối tuần vui vẻ!",
@@ -1008,7 +1249,7 @@ const TRANSLATE_SELFCHECK = [
  {
   "vi": "Hôm nay mấy giờ chúng ta tan học?",
   "cn": "我们今天几点下课？",
-  "py": "Wǒmen jīntiān jǐ diǎn xiàkè?"
+  "py": "Wǒmen jīntiān jǐ diǎn xià kè?"
  },
  {
   "vi": "Tôi làm xong bài tập rồi.",
@@ -1019,6 +1260,41 @@ const TRANSLATE_SELFCHECK = [
   "vi": "Xem xong kinh kịch, chúng ta cùng đi ăn nhé.",
   "cn": "看完京剧以后，我们一起去吃饭吧。",
   "py": "Kànwán jīngjù yǐhòu, wǒmen yìqǐ qù chīfàn ba."
+ },
+ {
+  "vi": "Cô giáo rất ngạc nhiên.",
+  "cn": "老师感到很惊讶。",
+  "py": "Lǎoshī gǎndào hěn jīngyà."
+ },
+ {
+  "vi": "Mike có một chiếc laptop.",
+  "cn": "麦克有一台笔记本电脑。",
+  "py": "Màikè yǒu yì tái bǐjìběn diànnǎo."
+ },
+ {
+  "vi": "Tôi hy vọng sau này có thể hát kinh kịch.",
+  "cn": "我希望以后能唱京剧。",
+  "py": "Wǒ xīwàng yǐhòu néng chàng jīngjù."
+ },
+ {
+  "vi": "Tôi thường xem trận đấu bóng đá.",
+  "cn": "我常常看足球比赛。",
+  "py": "Wǒ chángcháng kàn zúqiú bǐsài."
+ },
+ {
+  "vi": "Sau giờ học tôi thường đánh quần vợt.",
+  "cn": "我下课以后常常打网球。",
+  "py": "Wǒ xià kè yǐhòu chángcháng dǎ wǎngqiú."
+ },
+ {
+  "vi": "Chủ nhật tôi thường cùng bạn chơi cầu lông.",
+  "cn": "星期天我常常跟朋友一起打羽毛球。",
+  "py": "Xīngqītiān wǒ chángcháng gēn péngyou yìqǐ dǎ yǔmáoqiú."
+ },
+ {
+  "vi": "Tôi cũng muốn học chơi pickleball.",
+  "cn": "我也想学打匹克球。",
+  "py": "Wǒ yě xiǎng xué dǎ pǐkèqiú."
  }
 ];
 
@@ -1586,7 +1862,7 @@ renderTranslate();
 <script id="mc-speak">
 /* ===== MC-SPEAK: luyện nói tự chấm (Web Speech API) ===== */
 (function(){
-  var CFG = {"word": [{"cn": "爱好", "py": "àihào", "vi": "sở thích"}, {"cn": "京剧", "py": "jīngjù", "vi": "Kinh kịch"}, {"cn": "电脑", "py": "diànnǎo", "vi": "máy tính"}, {"cn": "玩", "py": "wán", "vi": "chơi"}, {"cn": "画儿", "py": "huàr", "vi": "bức tranh"}, {"cn": "画", "py": "huà", "vi": "vẽ"}, {"cn": "书法", "py": "shūfǎ", "vi": "thư pháp"}, {"cn": "唱", "py": "chàng", "vi": "hát"}, {"cn": "让", "py": "ràng", "vi": "để, cho phép, bảo"}, {"cn": "心情", "py": "xīnqíng", "vi": "tâm trạng"}, {"cn": "大家", "py": "dàjiā", "vi": "mọi người"}, {"cn": "业余", "py": "yèyú", "vi": "ngoài giờ, tay ngang"}, {"cn": "喜欢", "py": "xǐhuan", "vi": "thích"}, {"cn": "感兴趣", "py": "gǎn xìngqù", "vi": "hứng thú, quan tâm"}, {"cn": "非常", "py": "fēicháng", "vi": "rất, vô cùng"}, {"cn": "特别", "py": "tèbié", "vi": "đặc biệt, rất"}, {"cn": "感到", "py": "gǎndào", "vi": "cảm thấy"}, {"cn": "愉快", "py": "yúkuài", "vi": "vui vẻ"}, {"cn": "以前", "py": "yǐqián", "vi": "trước đây, trước khi"}, {"cn": "自己", "py": "zìjǐ", "vi": "bản thân, tự mình"}, {"cn": "下课", "py": "xià kè", "vi": "tan học"}, {"cn": "完", "py": "wán", "vi": "xong, hết"}], "sent": [{"cn": "我的爱好是看书。", "py": "Wǒ de àihào shì kàn shū.", "vi": "Sở thích của tôi là đọc sách."}, {"cn": "我们一起去看京剧吧。", "py": "Wǒmen yìqǐ qù kàn jīngjù ba.", "vi": "Chúng ta cùng đi xem kinh kịch nhé."}, {"cn": "老师让我们谈谈爱好。", "py": "Lǎoshī ràng wǒmen tántan àihào.", "vi": "Cô giáo bảo chúng tôi nói về sở thích."}, {"cn": "你业余时间常常做什么？", "py": "Nǐ yèyú shíjiān chángcháng zuò shénme?", "vi": "Thời gian rảnh bạn thường làm gì?"}, {"cn": "你对京剧感兴趣吗？", "py": "Nǐ duì jīngjù gǎn xìngqù ma?", "vi": "Bạn có hứng thú với kinh kịch không?"}, {"cn": "下课以后，跟朋友聊聊天儿，我感到很愉快。", "py": "Xiàkè yǐhòu, gēn péngyou liáoliao tiānr, wǒ gǎndào hěn yúkuài.", "vi": "Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ."}, {"cn": "这张画儿是我自己画的。", "py": "Zhè zhāng huàr shì wǒ zìjǐ huà de.", "vi": "Bức tranh này do tôi tự vẽ."}, {"cn": "看完京剧以后，我们一起去吃饭吧。", "py": "Kànwán jīngjù yǐhòu, wǒmen yìqǐ qù chīfàn ba.", "vi": "Xem xong kinh kịch, chúng ta cùng đi ăn nhé."}], "free": [{"vi": "Sở thích của tôi là đọc sách.", "cn": "我的爱好是看书。", "py": "Wǒ de àihào shì kàn shū.", "keys": [["爱好"], ["看书"]]}, {"vi": "Tôi thích chơi máy tính.", "cn": "我喜欢玩电脑。", "py": "Wǒ xǐhuan wán diànnǎo.", "keys": [["玩"], ["电脑"]]}, {"vi": "Tôi đang học thư pháp.", "cn": "我正在学书法。", "py": "Wǒ zhèngzài xué shūfǎ.", "keys": [["书法"], ["正在"]]}, {"vi": "Cô giáo bảo chúng tôi nói về sở thích.", "cn": "老师让我们谈谈爱好。", "py": "Lǎoshī ràng wǒmen tántan àihào.", "keys": [["让"], ["爱好"]]}, {"vi": "Bạn có hứng thú với kinh kịch không?", "cn": "你对京剧感兴趣吗？", "py": "Nǐ duì jīngjù gǎn xìngqù ma?", "keys": [["感兴趣"], ["京剧"]]}, {"vi": "Trước khi đến Trung Quốc tôi đã thích thư pháp.", "cn": "我来中国以前就喜欢书法。", "py": "Wǒ lái Zhōngguó yǐqián jiù xǐhuan shūfǎ.", "keys": [["以前"], ["书法"]]}, {"vi": "Bức tranh này do tôi tự vẽ.", "cn": "这张画儿是我自己画的。", "py": "Zhè zhāng huàr shì wǒ zìjǐ huà de.", "keys": [["自己"], ["画儿"]]}, {"vi": "Hôm nay mấy giờ chúng ta tan học?", "cn": "我们今天几点下课？", "py": "Wǒmen jīntiān jǐ diǎn xiàkè?", "keys": [["下课"], ["几点"]]}]};
+  var CFG = {"word": [{"cn": "爱好", "py": "àihào", "vi": "sở thích"}, {"cn": "京剧", "py": "jīngjù", "vi": "Kinh kịch"}, {"cn": "电脑", "py": "diànnǎo", "vi": "máy tính"}, {"cn": "玩", "py": "wán", "vi": "chơi"}, {"cn": "画儿", "py": "huàr", "vi": "bức tranh"}, {"cn": "画", "py": "huà", "vi": "vẽ"}, {"cn": "书法", "py": "shūfǎ", "vi": "thư pháp"}, {"cn": "唱", "py": "chàng", "vi": "hát"}, {"cn": "让", "py": "ràng", "vi": "để, cho phép, bảo ai làm gì"}, {"cn": "心情", "py": "xīnqíng", "vi": "tâm trạng"}, {"cn": "大家", "py": "dàjiā", "vi": "mọi người, cả lớp"}, {"cn": "业余", "py": "yèyú", "vi": "ngoài giờ làm hoặc giờ học"}, {"cn": "喜欢", "py": "xǐhuan", "vi": "thích"}, {"cn": "感兴趣", "py": "gǎn xìngqù", "vi": "có hứng thú, quan tâm"}, {"cn": "非常", "py": "fēicháng", "vi": "rất"}, {"cn": "特别", "py": "tèbié", "vi": "đặc biệt, rất"}, {"cn": "感到", "py": "gǎndào", "vi": "cảm thấy"}, {"cn": "愉快", "py": "yúkuài", "vi": "vui vẻ, vui thích"}, {"cn": "以前", "py": "yǐqián", "vi": "trước đây, trước khi"}, {"cn": "自己", "py": "zìjǐ", "vi": "bản thân, tự mình"}, {"cn": "下课", "py": "xià kè", "vi": "tan học, kết thúc tiết học"}, {"cn": "完", "py": "wán", "vi": "xong, hoàn tất"}, {"cn": "惊讶", "py": "jīngyà", "vi": "ngạc nhiên"}, {"cn": "老外", "py": "lǎowài", "vi": "người nước ngoài (khẩu ngữ)"}, {"cn": "笔记本", "py": "bǐjìběn", "vi": "sổ tay, vở ghi chép"}, {"cn": "唱歌", "py": "chànggē", "vi": "ca hát"}, {"cn": "希望", "py": "xīwàng", "vi": "hy vọng"}, {"cn": "演出", "py": "yǎnchū", "vi": "biểu diễn, buổi biểu diễn"}, {"cn": "足球", "py": "zúqiú", "vi": "bóng đá"}, {"cn": "比赛", "py": "bǐsài", "vi": "thi đấu, trận đấu"}, {"cn": "网球", "py": "wǎngqiú", "vi": "quần vợt"}, {"cn": "太极拳", "py": "tàijíquán", "vi": "thái cực quyền"}, {"cn": "武术", "py": "wǔshù", "vi": "võ thuật"}, {"cn": "打羽毛球", "py": "dǎ yǔmáoqiú", "vi": "chơi cầu lông"}, {"cn": "打匹克球", "py": "dǎ pǐkèqiú", "vi": "chơi pickleball"}], "sent": [{"cn": "我的爱好是看书。", "py": "Wǒ de àihào shì kàn shū.", "vi": "Sở thích của tôi là đọc sách."}, {"cn": "我们一起去看京剧吧。", "py": "Wǒmen yìqǐ qù kàn jīngjù ba.", "vi": "Chúng ta cùng đi xem kinh kịch nhé."}, {"cn": "老师让我们谈谈爱好。", "py": "Lǎoshī ràng wǒmen tántan àihào.", "vi": "Cô giáo bảo chúng tôi nói về sở thích."}, {"cn": "你业余时间常常做什么？", "py": "Nǐ yèyú shíjiān chángcháng zuò shénme?", "vi": "Thời gian rảnh bạn thường làm gì?"}, {"cn": "你对京剧感兴趣吗？", "py": "Nǐ duì jīngjù gǎn xìngqù ma?", "vi": "Bạn có hứng thú với kinh kịch không?"}, {"cn": "下课以后，跟朋友聊聊天儿，我感到很愉快。", "py": "Xià kè yǐhòu, gēn péngyou liáoliao tiānr, wǒ gǎndào hěn yúkuài.", "vi": "Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ."}, {"cn": "这张画儿是我自己画的。", "py": "Zhè zhāng huàr shì wǒ zìjǐ huà de.", "vi": "Bức tranh này do tôi tự vẽ."}, {"cn": "看完京剧以后，我们一起去吃饭吧。", "py": "Kànwán jīngjù yǐhòu, wǒmen yìqǐ qù chīfàn ba.", "vi": "Xem xong kinh kịch, chúng ta cùng đi ăn nhé."}], "free": [{"vi": "Sở thích của tôi là đọc sách.", "cn": "我的爱好是看书。", "py": "Wǒ de àihào shì kàn shū.", "keys": [["爱好"], ["看书"]]}, {"vi": "Tôi thích chơi máy tính.", "cn": "我喜欢玩电脑。", "py": "Wǒ xǐhuan wán diànnǎo.", "keys": [["玩"], ["电脑"]]}, {"vi": "Tôi đang học thư pháp.", "cn": "我正在学书法。", "py": "Wǒ zhèngzài xué shūfǎ.", "keys": [["书法"], ["正在"]]}, {"vi": "Cô giáo bảo chúng tôi nói về sở thích.", "cn": "老师让我们谈谈爱好。", "py": "Lǎoshī ràng wǒmen tántan àihào.", "keys": [["让"], ["爱好"]]}, {"vi": "Bạn có hứng thú với kinh kịch không?", "cn": "你对京剧感兴趣吗？", "py": "Nǐ duì jīngjù gǎn xìngqù ma?", "keys": [["感兴趣"], ["京剧"]]}, {"vi": "Trước khi đến Trung Quốc tôi đã thích thư pháp.", "cn": "我来中国以前就喜欢书法。", "py": "Wǒ lái Zhōngguó yǐqián jiù xǐhuan shūfǎ.", "keys": [["以前"], ["书法"]]}, {"vi": "Bức tranh này do tôi tự vẽ.", "cn": "这张画儿是我自己画的。", "py": "Zhè zhāng huàr shì wǒ zìjǐ huà de.", "keys": [["自己"], ["画儿"]]}, {"vi": "Hôm nay mấy giờ chúng ta tan học?", "cn": "我们今天几点下课？", "py": "Wǒmen jīntiān jǐ diǎn xià kè?", "keys": [["下课"], ["几点"]]}]};
   var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   var PASS = 0.8;
   var state = {word:[], sent:[], free:[]};

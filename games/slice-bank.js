@@ -23029,6 +23029,126 @@ window.SLICE_BANK = [
 "source": "lessons/bai22.html FILL_BLANK #20"
 },
 {
+"id": "b22-q21",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "老师感到很____。",
+"correctAnswer": "惊讶",
+"distractors": [
+"演出",
+"比赛"
+],
+"completedText": "老师感到很惊讶。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #21"
+},
+{
+"id": "b22-q22",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我希望以后能参加____。",
+"correctAnswer": "演出",
+"distractors": [
+"笔记本",
+"足球"
+],
+"completedText": "我希望以后能参加演出。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #22"
+},
+{
+"id": "b22-q23",
+"lesson": 22,
+"level": 2,
+"type": "ghepcum",
+"prompt": "我喜欢看____。",
+"correctAnswer": "足球",
+"distractors": [
+"惊讶",
+"笔记本"
+],
+"completedText": "我喜欢看足球。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #23"
+},
+{
+"id": "b22-q24",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我常常看足球____。",
+"correctAnswer": "比赛",
+"distractors": [
+"希望",
+"惊讶"
+],
+"completedText": "我常常看足球比赛。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #24"
+},
+{
+"id": "b22-q25",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我喜欢打____。",
+"correctAnswer": "太极拳",
+"distractors": [
+"惊讶",
+"笔记本"
+],
+"completedText": "我喜欢打太极拳。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #25"
+},
+{
+"id": "b22-q26",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我对____特别感兴趣。",
+"correctAnswer": "武术",
+"distractors": [
+"惊讶",
+"笔记本"
+],
+"completedText": "我对武术特别感兴趣。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #26"
+},
+{
+"id": "b22-q27",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "麦克有一台____电脑。",
+"correctAnswer": "笔记本",
+"distractors": [
+"惊讶",
+"希望"
+],
+"completedText": "麦克有一台笔记本电脑。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #27"
+},
+{
+"id": "b22-q28",
+"lesson": 22,
+"level": 2,
+"type": "dienkhuyet",
+"prompt": "我____以后能唱京剧。",
+"correctAnswer": "希望",
+"distractors": [
+"惊讶",
+"演出"
+],
+"completedText": "我希望以后能唱京剧。",
+"optLang": "han",
+"source": "lessons/bai22.html FILL_BLANK #28"
+},
+{
 "id": "b22-w01-m",
 "lesson": 22,
 "level": 2,
@@ -23036,8 +23156,8 @@ window.SLICE_BANK = [
 "prompt": "爱好",
 "correctAnswer": "sở thích",
 "distractors": [
-"vẽ",
-"đặc biệt, rất"
+"tâm trạng",
+"bóng đá"
 ],
 "optLang": "vi",
 "completedText": "爱好 = sở thích",
@@ -23052,8 +23172,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "爱好",
 "distractors": [
-"下课",
-"喜欢"
+"笔记本",
+"书法"
 ],
 "optLang": "han",
 "completedText": "爱好 (àihào) = sở thích",
@@ -23068,8 +23188,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "爱好",
 "distractors": [
-"下课",
-"喜欢"
+"笔记本",
+"书法"
 ],
 "optLang": "han",
 "completedText": "爱好 (àihào) = sở thích",
@@ -23083,8 +23203,8 @@ window.SLICE_BANK = [
 "prompt": "京剧",
 "correctAnswer": "Kinh kịch",
 "distractors": [
-"chơi",
-"hứng thú, quan tâm"
+"hy vọng",
+"vẽ"
 ],
 "optLang": "vi",
 "completedText": "京剧 = Kinh kịch",
@@ -23099,8 +23219,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "京剧",
 "distractors": [
-"完",
-"玩"
+"比赛",
+"打羽毛球"
 ],
 "optLang": "han",
 "completedText": "京剧 (jīngjù) = Kinh kịch",
@@ -23115,8 +23235,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "京剧",
 "distractors": [
-"完",
-"玩"
+"比赛",
+"打羽毛球"
 ],
 "optLang": "han",
 "completedText": "京剧 (jīngjù) = Kinh kịch",
@@ -23130,8 +23250,8 @@ window.SLICE_BANK = [
 "prompt": "电脑",
 "correctAnswer": "máy tính",
 "distractors": [
-"thích",
-"để, cho phép, bảo"
+"người nước ngoài (khẩu ngữ)",
+"cảm thấy"
 ],
 "optLang": "vi",
 "completedText": "电脑 = máy tính",
@@ -23146,8 +23266,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "电脑",
 "distractors": [
-"非常",
-"京剧"
+"足球",
+"画儿"
 ],
 "optLang": "han",
 "completedText": "电脑 (diànnǎo) = máy tính",
@@ -23162,8 +23282,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "电脑",
 "distractors": [
-"非常",
-"京剧"
+"足球",
+"画儿"
 ],
 "optLang": "han",
 "completedText": "电脑 (diànnǎo) = máy tính",
@@ -23177,8 +23297,8 @@ window.SLICE_BANK = [
 "prompt": "玩",
 "correctAnswer": "chơi",
 "distractors": [
-"tâm trạng",
-"cảm thấy"
+"trước đây, trước khi",
+"thái cực quyền"
 ],
 "optLang": "vi",
 "completedText": "玩 = chơi",
@@ -23193,8 +23313,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "玩",
 "distractors": [
-"心情",
-"感兴趣"
+"以前",
+"希望"
 ],
 "optLang": "han",
 "completedText": "玩 (wán) = chơi",
@@ -23209,8 +23329,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "玩",
 "distractors": [
-"心情",
-"感兴趣"
+"以前",
+"希望"
 ],
 "optLang": "han",
 "completedText": "玩 (wán) = chơi",
@@ -23224,8 +23344,8 @@ window.SLICE_BANK = [
 "prompt": "画儿",
 "correctAnswer": "bức tranh",
 "distractors": [
-"ngoài giờ, tay ngang",
-"chơi"
+"xong, hoàn tất",
+"để, cho phép, bảo ai làm gì"
 ],
 "optLang": "vi",
 "completedText": "画儿 = bức tranh",
@@ -23240,8 +23360,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "画儿",
 "distractors": [
-"书法",
-"非常"
+"业余",
+"演出"
 ],
 "optLang": "han",
 "completedText": "画儿 (huàr) = bức tranh",
@@ -23256,8 +23376,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "画儿",
 "distractors": [
-"书法",
-"非常"
+"业余",
+"演出"
 ],
 "optLang": "han",
 "completedText": "画儿 (huàr) = bức tranh",
@@ -23271,8 +23391,8 @@ window.SLICE_BANK = [
 "prompt": "画",
 "correctAnswer": "vẽ",
 "distractors": [
-"đặc biệt, rất",
-"Kinh kịch"
+"quần vợt",
+"chơi"
 ],
 "optLang": "vi",
 "completedText": "画 = vẽ",
@@ -23287,8 +23407,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "画",
 "distractors": [
-"书法",
-"下课"
+"业余",
+"喜欢"
 ],
 "optLang": "han",
 "completedText": "画 (huà) = vẽ",
@@ -23303,8 +23423,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "画",
 "distractors": [
-"书法",
-"下课"
+"业余",
+"喜欢"
 ],
 "optLang": "han",
 "completedText": "画 (huà) = vẽ",
@@ -23318,8 +23438,8 @@ window.SLICE_BANK = [
 "prompt": "书法",
 "correctAnswer": "thư pháp",
 "distractors": [
-"vẽ",
-"Kinh kịch"
+"máy tính",
+"xong, hoàn tất"
 ],
 "optLang": "vi",
 "completedText": "书法 = thư pháp",
@@ -23335,7 +23455,7 @@ window.SLICE_BANK = [
 "correctAnswer": "书法",
 "distractors": [
 "喜欢",
-"完"
+"打匹克球"
 ],
 "optLang": "han",
 "completedText": "书法 (shūfǎ) = thư pháp",
@@ -23351,7 +23471,7 @@ window.SLICE_BANK = [
 "correctAnswer": "书法",
 "distractors": [
 "喜欢",
-"完"
+"打匹克球"
 ],
 "optLang": "han",
 "completedText": "书法 (shūfǎ) = thư pháp",
@@ -23365,8 +23485,8 @@ window.SLICE_BANK = [
 "prompt": "唱",
 "correctAnswer": "hát",
 "distractors": [
-"bản thân, tự mình",
-"bức tranh"
+"tâm trạng",
+"võ thuật"
 ],
 "optLang": "vi",
 "completedText": "唱 = hát",
@@ -23382,7 +23502,7 @@ window.SLICE_BANK = [
 "correctAnswer": "唱",
 "distractors": [
 "自己",
-"完"
+"特别"
 ],
 "optLang": "han",
 "completedText": "唱 (chàng) = hát",
@@ -23398,7 +23518,7 @@ window.SLICE_BANK = [
 "correctAnswer": "唱",
 "distractors": [
 "自己",
-"完"
+"特别"
 ],
 "optLang": "han",
 "completedText": "唱 (chàng) = hát",
@@ -23410,13 +23530,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "让",
-"correctAnswer": "để, cho phép, bảo",
+"correctAnswer": "để, cho phép, bảo ai làm gì",
 "distractors": [
-"thích",
-"cảm thấy"
+"thái cực quyền",
+"thi đấu, trận đấu"
 ],
 "optLang": "vi",
-"completedText": "让 = để, cho phép, bảo",
+"completedText": "让 = để, cho phép, bảo ai làm gì",
 "source": "lessons/bai22.html WORDS #9"
 },
 {
@@ -23428,11 +23548,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "让",
 "distractors": [
-"以前",
-"特别"
+"唱",
+"画"
 ],
 "optLang": "han",
-"completedText": "让 (ràng) = để, cho phép, bảo",
+"completedText": "让 (ràng) = để, cho phép, bảo ai làm gì",
 "source": "lessons/bai22.html WORDS #9"
 },
 {
@@ -23444,11 +23564,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "让",
 "distractors": [
-"以前",
-"特别"
+"唱",
+"画"
 ],
 "optLang": "han",
-"completedText": "让 (ràng) = để, cho phép, bảo",
+"completedText": "让 (ràng) = để, cho phép, bảo ai làm gì",
 "source": "lessons/bai22.html WORDS #9"
 },
 {
@@ -23459,8 +23579,8 @@ window.SLICE_BANK = [
 "prompt": "心情",
 "correctAnswer": "tâm trạng",
 "distractors": [
-"tan học",
-"chơi"
+"thư pháp",
+"cảm thấy"
 ],
 "optLang": "vi",
 "completedText": "心情 = tâm trạng",
@@ -23475,8 +23595,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "心情",
 "distractors": [
-"电脑",
-"玩"
+"打匹克球",
+"打羽毛球"
 ],
 "optLang": "han",
 "completedText": "心情 (xīnqíng) = tâm trạng",
@@ -23491,8 +23611,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "心情",
 "distractors": [
-"电脑",
-"玩"
+"打匹克球",
+"打羽毛球"
 ],
 "optLang": "han",
 "completedText": "心情 (xīnqíng) = tâm trạng",
@@ -23504,13 +23624,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "大家",
-"correctAnswer": "mọi người",
+"correctAnswer": "mọi người, cả lớp",
 "distractors": [
-"hát",
-"vui vẻ"
+"để, cho phép, bảo ai làm gì",
+"rất"
 ],
 "optLang": "vi",
-"completedText": "大家 = mọi người",
+"completedText": "大家 = mọi người, cả lớp",
 "source": "lessons/bai22.html WORDS #11"
 },
 {
@@ -23522,11 +23642,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "大家",
 "distractors": [
-"愉快",
-"画儿"
+"足球",
+"唱"
 ],
 "optLang": "han",
-"completedText": "大家 (dàjiā) = mọi người",
+"completedText": "大家 (dàjiā) = mọi người, cả lớp",
 "source": "lessons/bai22.html WORDS #11"
 },
 {
@@ -23538,11 +23658,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "大家",
 "distractors": [
-"愉快",
-"画儿"
+"足球",
+"唱"
 ],
 "optLang": "han",
-"completedText": "大家 (dàjiā) = mọi người",
+"completedText": "大家 (dàjiā) = mọi người, cả lớp",
 "source": "lessons/bai22.html WORDS #11"
 },
 {
@@ -23551,13 +23671,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "业余",
-"correctAnswer": "ngoài giờ, tay ngang",
+"correctAnswer": "ngoài giờ làm hoặc giờ học",
 "distractors": [
-"thư pháp",
-"rất, vô cùng"
+"vẽ",
+"người nước ngoài (khẩu ngữ)"
 ],
 "optLang": "vi",
-"completedText": "业余 = ngoài giờ, tay ngang",
+"completedText": "业余 = ngoài giờ làm hoặc giờ học",
 "source": "lessons/bai22.html WORDS #12"
 },
 {
@@ -23569,11 +23689,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "业余",
 "distractors": [
-"玩",
-"电脑"
+"惊讶",
+"笔记本"
 ],
 "optLang": "han",
-"completedText": "业余 (yèyú) = ngoài giờ, tay ngang",
+"completedText": "业余 (yèyú) = ngoài giờ làm hoặc giờ học",
 "source": "lessons/bai22.html WORDS #12"
 },
 {
@@ -23585,11 +23705,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "业余",
 "distractors": [
-"玩",
-"电脑"
+"惊讶",
+"笔记本"
 ],
 "optLang": "han",
-"completedText": "业余 (yèyú) = ngoài giờ, tay ngang",
+"completedText": "业余 (yèyú) = ngoài giờ làm hoặc giờ học",
 "source": "lessons/bai22.html WORDS #12"
 },
 {
@@ -23600,8 +23720,8 @@ window.SLICE_BANK = [
 "prompt": "喜欢",
 "correctAnswer": "thích",
 "distractors": [
-"tan học",
-"hứng thú, quan tâm"
+"quần vợt",
+"sổ tay, vở ghi chép"
 ],
 "optLang": "vi",
 "completedText": "喜欢 = thích",
@@ -23616,8 +23736,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "喜欢",
 "distractors": [
-"愉快",
-"感兴趣"
+"特别",
+"网球"
 ],
 "optLang": "han",
 "completedText": "喜欢 (xǐhuan) = thích",
@@ -23632,8 +23752,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "喜欢",
 "distractors": [
-"愉快",
-"感兴趣"
+"特别",
+"网球"
 ],
 "optLang": "han",
 "completedText": "喜欢 (xǐhuan) = thích",
@@ -23645,13 +23765,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "感兴趣",
-"correctAnswer": "hứng thú, quan tâm",
+"correctAnswer": "có hứng thú, quan tâm",
 "distractors": [
-"ngoài giờ, tay ngang",
-"mọi người"
+"ngạc nhiên",
+"rất"
 ],
 "optLang": "vi",
-"completedText": "感兴趣 = hứng thú, quan tâm",
+"completedText": "感兴趣 = có hứng thú, quan tâm",
 "source": "lessons/bai22.html WORDS #14"
 },
 {
@@ -23663,11 +23783,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "感兴趣",
 "distractors": [
-"唱",
+"希望",
 "画"
 ],
 "optLang": "han",
-"completedText": "感兴趣 (gǎn xìngqù) = hứng thú, quan tâm",
+"completedText": "感兴趣 (gǎn xìngqù) = có hứng thú, quan tâm",
 "source": "lessons/bai22.html WORDS #14"
 },
 {
@@ -23679,11 +23799,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "感兴趣",
 "distractors": [
-"唱",
+"希望",
 "画"
 ],
 "optLang": "han",
-"completedText": "感兴趣 (gǎn xìngqù) = hứng thú, quan tâm",
+"completedText": "感兴趣 (gǎn xìngqù) = có hứng thú, quan tâm",
 "source": "lessons/bai22.html WORDS #14"
 },
 {
@@ -23692,13 +23812,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "非常",
-"correctAnswer": "rất, vô cùng",
+"correctAnswer": "rất",
 "distractors": [
-"tâm trạng",
-"bức tranh"
+"tan học, kết thúc tiết học",
+"tâm trạng"
 ],
 "optLang": "vi",
-"completedText": "非常 = rất, vô cùng",
+"completedText": "非常 = rất",
 "source": "lessons/bai22.html WORDS #15"
 },
 {
@@ -23714,7 +23834,7 @@ window.SLICE_BANK = [
 "玩"
 ],
 "optLang": "han",
-"completedText": "非常 (fēicháng) = rất, vô cùng",
+"completedText": "非常 (fēicháng) = rất",
 "source": "lessons/bai22.html WORDS #15"
 },
 {
@@ -23730,7 +23850,7 @@ window.SLICE_BANK = [
 "玩"
 ],
 "optLang": "han",
-"completedText": "非常 (fēicháng) = rất, vô cùng",
+"completedText": "非常 (fēicháng) = rất",
 "source": "lessons/bai22.html WORDS #15"
 },
 {
@@ -23741,8 +23861,8 @@ window.SLICE_BANK = [
 "prompt": "特别",
 "correctAnswer": "đặc biệt, rất",
 "distractors": [
-"mọi người",
-"bản thân, tự mình"
+"người nước ngoài (khẩu ngữ)",
+"có hứng thú, quan tâm"
 ],
 "optLang": "vi",
 "completedText": "特别 = đặc biệt, rất",
@@ -23757,8 +23877,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "特别",
 "distractors": [
-"唱",
-"玩"
+"玩",
+"唱"
 ],
 "optLang": "han",
 "completedText": "特别 (tèbié) = đặc biệt, rất",
@@ -23773,8 +23893,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "特别",
 "distractors": [
-"唱",
-"玩"
+"玩",
+"唱"
 ],
 "optLang": "han",
 "completedText": "特别 (tèbié) = đặc biệt, rất",
@@ -23788,8 +23908,8 @@ window.SLICE_BANK = [
 "prompt": "感到",
 "correctAnswer": "cảm thấy",
 "distractors": [
-"thư pháp",
-"tan học"
+"tâm trạng",
+"võ thuật"
 ],
 "optLang": "vi",
 "completedText": "感到 = cảm thấy",
@@ -23804,8 +23924,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "感到",
 "distractors": [
-"画儿",
-"愉快"
+"玩",
+"画"
 ],
 "optLang": "han",
 "completedText": "感到 (gǎndào) = cảm thấy",
@@ -23820,8 +23940,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "感到",
 "distractors": [
-"画儿",
-"愉快"
+"玩",
+"画"
 ],
 "optLang": "han",
 "completedText": "感到 (gǎndào) = cảm thấy",
@@ -23833,13 +23953,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "愉快",
-"correctAnswer": "vui vẻ",
+"correctAnswer": "vui vẻ, vui thích",
 "distractors": [
-"Kinh kịch",
-"máy tính"
+"võ thuật",
+"Kinh kịch"
 ],
 "optLang": "vi",
-"completedText": "愉快 = vui vẻ",
+"completedText": "愉快 = vui vẻ, vui thích",
 "source": "lessons/bai22.html WORDS #18"
 },
 {
@@ -23851,11 +23971,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "愉快",
 "distractors": [
-"特别",
+"电脑",
 "爱好"
 ],
 "optLang": "han",
-"completedText": "愉快 (yúkuài) = vui vẻ",
+"completedText": "愉快 (yúkuài) = vui vẻ, vui thích",
 "source": "lessons/bai22.html WORDS #18"
 },
 {
@@ -23867,11 +23987,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "愉快",
 "distractors": [
-"特别",
+"电脑",
 "爱好"
 ],
 "optLang": "han",
-"completedText": "愉快 (yúkuài) = vui vẻ",
+"completedText": "愉快 (yúkuài) = vui vẻ, vui thích",
 "source": "lessons/bai22.html WORDS #18"
 },
 {
@@ -23882,8 +24002,8 @@ window.SLICE_BANK = [
 "prompt": "以前",
 "correctAnswer": "trước đây, trước khi",
 "distractors": [
-"Kinh kịch",
-"sở thích"
+"quần vợt",
+"cảm thấy"
 ],
 "optLang": "vi",
 "completedText": "以前 = trước đây, trước khi",
@@ -23898,8 +24018,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "以前",
 "distractors": [
-"非常",
-"让"
+"自己",
+"感兴趣"
 ],
 "optLang": "han",
 "completedText": "以前 (yǐqián) = trước đây, trước khi",
@@ -23914,8 +24034,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "以前",
 "distractors": [
-"非常",
-"让"
+"自己",
+"感兴趣"
 ],
 "optLang": "han",
 "completedText": "以前 (yǐqián) = trước đây, trước khi",
@@ -23929,8 +24049,8 @@ window.SLICE_BANK = [
 "prompt": "自己",
 "correctAnswer": "bản thân, tự mình",
 "distractors": [
-"tâm trạng",
-"thư pháp"
+"sở thích",
+"biểu diễn, buổi biểu diễn"
 ],
 "optLang": "vi",
 "completedText": "自己 = bản thân, tự mình",
@@ -23945,8 +24065,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "自己",
 "distractors": [
-"爱好",
-"感兴趣"
+"让",
+"太极拳"
 ],
 "optLang": "han",
 "completedText": "自己 (zìjǐ) = bản thân, tự mình",
@@ -23961,8 +24081,8 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "自己",
 "distractors": [
-"爱好",
-"感兴趣"
+"让",
+"太极拳"
 ],
 "optLang": "han",
 "completedText": "自己 (zìjǐ) = bản thân, tự mình",
@@ -23974,13 +24094,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "下课",
-"correctAnswer": "tan học",
+"correctAnswer": "tan học, kết thúc tiết học",
 "distractors": [
-"bức tranh",
-"đặc biệt, rất"
+"sở thích",
+"rất"
 ],
 "optLang": "vi",
-"completedText": "下课 = tan học",
+"completedText": "下课 = tan học, kết thúc tiết học",
 "source": "lessons/bai22.html WORDS #21"
 },
 {
@@ -23992,11 +24112,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "下课",
 "distractors": [
-"爱好",
-"唱"
+"愉快",
+"以前"
 ],
 "optLang": "han",
-"completedText": "下课 (xià kè) = tan học",
+"completedText": "下课 (xià kè) = tan học, kết thúc tiết học",
 "source": "lessons/bai22.html WORDS #21"
 },
 {
@@ -24008,11 +24128,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "下课",
 "distractors": [
-"爱好",
-"唱"
+"愉快",
+"以前"
 ],
 "optLang": "han",
-"completedText": "下课 (xià kè) = tan học",
+"completedText": "下课 (xià kè) = tan học, kết thúc tiết học",
 "source": "lessons/bai22.html WORDS #21"
 },
 {
@@ -24021,13 +24141,13 @@ window.SLICE_BANK = [
 "level": 2,
 "type": "chonnghia",
 "prompt": "完",
-"correctAnswer": "xong, hết",
+"correctAnswer": "xong, hoàn tất",
 "distractors": [
-"để, cho phép, bảo",
-"tâm trạng"
+"vui vẻ, vui thích",
+"chơi pickleball"
 ],
 "optLang": "vi",
-"completedText": "完 = xong, hết",
+"completedText": "完 = xong, hoàn tất",
 "source": "lessons/bai22.html WORDS #22"
 },
 {
@@ -24039,11 +24159,11 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "完",
 "distractors": [
-"心情",
-"愉快"
+"以前",
+"感兴趣"
 ],
 "optLang": "han",
-"completedText": "完 (wán) = xong, hết",
+"completedText": "完 (wán) = xong, hoàn tất",
 "source": "lessons/bai22.html WORDS #22"
 },
 {
@@ -24055,12 +24175,623 @@ window.SLICE_BANK = [
 "prompt": "",
 "correctAnswer": "完",
 "distractors": [
-"心情",
-"愉快"
+"以前",
+"感兴趣"
 ],
 "optLang": "han",
-"completedText": "完 (wán) = xong, hết",
+"completedText": "完 (wán) = xong, hoàn tất",
 "source": "lessons/bai22.html WORDS #22"
+},
+{
+"id": "b22-w23-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "惊讶",
+"correctAnswer": "ngạc nhiên",
+"distractors": [
+"võ thuật",
+"ngoài giờ làm hoặc giờ học"
+],
+"optLang": "vi",
+"completedText": "惊讶 = ngạc nhiên",
+"source": "lessons/bai22.html WORDS #23"
+},
+{
+"id": "b22-w23-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/jingya.jpg",
+"prompt": "",
+"correctAnswer": "惊讶",
+"distractors": [
+"下课",
+"电脑"
+],
+"optLang": "han",
+"completedText": "惊讶 (jīngyà) = ngạc nhiên",
+"source": "lessons/bai22.html WORDS #23"
+},
+{
+"id": "b22-w23-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "惊讶",
+"prompt": "",
+"correctAnswer": "惊讶",
+"distractors": [
+"下课",
+"电脑"
+],
+"optLang": "han",
+"completedText": "惊讶 (jīngyà) = ngạc nhiên",
+"source": "lessons/bai22.html WORDS #23"
+},
+{
+"id": "b22-w24-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "老外",
+"correctAnswer": "người nước ngoài (khẩu ngữ)",
+"distractors": [
+"hy vọng",
+"Kinh kịch"
+],
+"optLang": "vi",
+"completedText": "老外 = người nước ngoài (khẩu ngữ)",
+"source": "lessons/bai22.html WORDS #24"
+},
+{
+"id": "b22-w24-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/laowai.jpg",
+"prompt": "",
+"correctAnswer": "老外",
+"distractors": [
+"唱歌",
+"让"
+],
+"optLang": "han",
+"completedText": "老外 (lǎowài) = người nước ngoài (khẩu ngữ)",
+"source": "lessons/bai22.html WORDS #24"
+},
+{
+"id": "b22-w24-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "老外",
+"prompt": "",
+"correctAnswer": "老外",
+"distractors": [
+"唱歌",
+"让"
+],
+"optLang": "han",
+"completedText": "老外 (lǎowài) = người nước ngoài (khẩu ngữ)",
+"source": "lessons/bai22.html WORDS #24"
+},
+{
+"id": "b22-w25-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "笔记本",
+"correctAnswer": "sổ tay, vở ghi chép",
+"distractors": [
+"quần vợt",
+"chơi pickleball"
+],
+"optLang": "vi",
+"completedText": "笔记本 = sổ tay, vở ghi chép",
+"source": "lessons/bai22.html WORDS #25"
+},
+{
+"id": "b22-w25-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/biji.jpg",
+"prompt": "",
+"correctAnswer": "笔记本",
+"distractors": [
+"太极拳",
+"电脑"
+],
+"optLang": "han",
+"completedText": "笔记本 (bǐjìběn) = sổ tay, vở ghi chép",
+"source": "lessons/bai22.html WORDS #25"
+},
+{
+"id": "b22-w25-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "笔记本",
+"prompt": "",
+"correctAnswer": "笔记本",
+"distractors": [
+"太极拳",
+"电脑"
+],
+"optLang": "han",
+"completedText": "笔记本 (bǐjìběn) = sổ tay, vở ghi chép",
+"source": "lessons/bai22.html WORDS #25"
+},
+{
+"id": "b22-w26-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "唱歌",
+"correctAnswer": "ca hát",
+"distractors": [
+"đặc biệt, rất",
+"thư pháp"
+],
+"optLang": "vi",
+"completedText": "唱歌 = ca hát",
+"source": "lessons/bai22.html WORDS #26"
+},
+{
+"id": "b22-w26-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/changge.jpg",
+"prompt": "",
+"correctAnswer": "唱歌",
+"distractors": [
+"书法",
+"业余"
+],
+"optLang": "han",
+"completedText": "唱歌 (chànggē) = ca hát",
+"source": "lessons/bai22.html WORDS #26"
+},
+{
+"id": "b22-w26-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "唱歌",
+"prompt": "",
+"correctAnswer": "唱歌",
+"distractors": [
+"书法",
+"业余"
+],
+"optLang": "han",
+"completedText": "唱歌 (chànggē) = ca hát",
+"source": "lessons/bai22.html WORDS #26"
+},
+{
+"id": "b22-w27-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "希望",
+"correctAnswer": "hy vọng",
+"distractors": [
+"thư pháp",
+"sổ tay, vở ghi chép"
+],
+"optLang": "vi",
+"completedText": "希望 = hy vọng",
+"source": "lessons/bai22.html WORDS #27"
+},
+{
+"id": "b22-w27-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/xiwang.jpg",
+"prompt": "",
+"correctAnswer": "希望",
+"distractors": [
+"以前",
+"业余"
+],
+"optLang": "han",
+"completedText": "希望 (xīwàng) = hy vọng",
+"source": "lessons/bai22.html WORDS #27"
+},
+{
+"id": "b22-w27-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "希望",
+"prompt": "",
+"correctAnswer": "希望",
+"distractors": [
+"以前",
+"业余"
+],
+"optLang": "han",
+"completedText": "希望 (xīwàng) = hy vọng",
+"source": "lessons/bai22.html WORDS #27"
+},
+{
+"id": "b22-w28-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "演出",
+"correctAnswer": "biểu diễn, buổi biểu diễn",
+"distractors": [
+"thái cực quyền",
+"chơi pickleball"
+],
+"optLang": "vi",
+"completedText": "演出 = biểu diễn, buổi biểu diễn",
+"source": "lessons/bai22.html WORDS #28"
+},
+{
+"id": "b22-w28-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/yanchu.jpg",
+"prompt": "",
+"correctAnswer": "演出",
+"distractors": [
+"画儿",
+"特别"
+],
+"optLang": "han",
+"completedText": "演出 (yǎnchū) = biểu diễn, buổi biểu diễn",
+"source": "lessons/bai22.html WORDS #28"
+},
+{
+"id": "b22-w28-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "演出",
+"prompt": "",
+"correctAnswer": "演出",
+"distractors": [
+"画儿",
+"特别"
+],
+"optLang": "han",
+"completedText": "演出 (yǎnchū) = biểu diễn, buổi biểu diễn",
+"source": "lessons/bai22.html WORDS #28"
+},
+{
+"id": "b22-w29-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "足球",
+"correctAnswer": "bóng đá",
+"distractors": [
+"võ thuật",
+"vui vẻ, vui thích"
+],
+"optLang": "vi",
+"completedText": "足球 = bóng đá",
+"source": "lessons/bai22.html WORDS #29"
+},
+{
+"id": "b22-w29-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/zuqiu.jpg",
+"prompt": "",
+"correctAnswer": "足球",
+"distractors": [
+"感到",
+"完"
+],
+"optLang": "han",
+"completedText": "足球 (zúqiú) = bóng đá",
+"source": "lessons/bai22.html WORDS #29"
+},
+{
+"id": "b22-w29-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "足球",
+"prompt": "",
+"correctAnswer": "足球",
+"distractors": [
+"感到",
+"完"
+],
+"optLang": "han",
+"completedText": "足球 (zúqiú) = bóng đá",
+"source": "lessons/bai22.html WORDS #29"
+},
+{
+"id": "b22-w30-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "比赛",
+"correctAnswer": "thi đấu, trận đấu",
+"distractors": [
+"thư pháp",
+"đặc biệt, rất"
+],
+"optLang": "vi",
+"completedText": "比赛 = thi đấu, trận đấu",
+"source": "lessons/bai22.html WORDS #30"
+},
+{
+"id": "b22-w30-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/bisai.jpg",
+"prompt": "",
+"correctAnswer": "比赛",
+"distractors": [
+"爱好",
+"以前"
+],
+"optLang": "han",
+"completedText": "比赛 (bǐsài) = thi đấu, trận đấu",
+"source": "lessons/bai22.html WORDS #30"
+},
+{
+"id": "b22-w30-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "比赛",
+"prompt": "",
+"correctAnswer": "比赛",
+"distractors": [
+"爱好",
+"以前"
+],
+"optLang": "han",
+"completedText": "比赛 (bǐsài) = thi đấu, trận đấu",
+"source": "lessons/bai22.html WORDS #30"
+},
+{
+"id": "b22-w31-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "网球",
+"correctAnswer": "quần vợt",
+"distractors": [
+"máy tính",
+"bản thân, tự mình"
+],
+"optLang": "vi",
+"completedText": "网球 = quần vợt",
+"source": "lessons/bai22.html WORDS #31"
+},
+{
+"id": "b22-w31-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/wangqiu.jpg",
+"prompt": "",
+"correctAnswer": "网球",
+"distractors": [
+"感到",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "网球 (wǎngqiú) = quần vợt",
+"source": "lessons/bai22.html WORDS #31"
+},
+{
+"id": "b22-w31-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "网球",
+"prompt": "",
+"correctAnswer": "网球",
+"distractors": [
+"感到",
+"感兴趣"
+],
+"optLang": "han",
+"completedText": "网球 (wǎngqiú) = quần vợt",
+"source": "lessons/bai22.html WORDS #31"
+},
+{
+"id": "b22-w32-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "太极拳",
+"correctAnswer": "thái cực quyền",
+"distractors": [
+"mọi người, cả lớp",
+"rất"
+],
+"optLang": "vi",
+"completedText": "太极拳 = thái cực quyền",
+"source": "lessons/bai22.html WORDS #32"
+},
+{
+"id": "b22-w32-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/taiji.jpg",
+"prompt": "",
+"correctAnswer": "太极拳",
+"distractors": [
+"让",
+"足球"
+],
+"optLang": "han",
+"completedText": "太极拳 (tàijíquán) = thái cực quyền",
+"source": "lessons/bai22.html WORDS #32"
+},
+{
+"id": "b22-w32-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "太极拳",
+"prompt": "",
+"correctAnswer": "太极拳",
+"distractors": [
+"让",
+"足球"
+],
+"optLang": "han",
+"completedText": "太极拳 (tàijíquán) = thái cực quyền",
+"source": "lessons/bai22.html WORDS #32"
+},
+{
+"id": "b22-w33-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "武术",
+"correctAnswer": "võ thuật",
+"distractors": [
+"sở thích",
+"chơi cầu lông"
+],
+"optLang": "vi",
+"completedText": "武术 = võ thuật",
+"source": "lessons/bai22.html WORDS #33"
+},
+{
+"id": "b22-w33-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/wushu.jpg",
+"prompt": "",
+"correctAnswer": "武术",
+"distractors": [
+"电脑",
+"业余"
+],
+"optLang": "han",
+"completedText": "武术 (wǔshù) = võ thuật",
+"source": "lessons/bai22.html WORDS #33"
+},
+{
+"id": "b22-w33-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "武术",
+"prompt": "",
+"correctAnswer": "武术",
+"distractors": [
+"电脑",
+"业余"
+],
+"optLang": "han",
+"completedText": "武术 (wǔshù) = võ thuật",
+"source": "lessons/bai22.html WORDS #33"
+},
+{
+"id": "b22-w34-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "打羽毛球",
+"correctAnswer": "chơi cầu lông",
+"distractors": [
+"vui vẻ, vui thích",
+"bức tranh"
+],
+"optLang": "vi",
+"completedText": "打羽毛球 = chơi cầu lông",
+"source": "lessons/bai22.html WORDS #34"
+},
+{
+"id": "b22-w34-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/caulong.jpg",
+"prompt": "",
+"correctAnswer": "打羽毛球",
+"distractors": [
+"大家",
+"画"
+],
+"optLang": "han",
+"completedText": "打羽毛球 (dǎ yǔmáoqiú) = chơi cầu lông",
+"source": "lessons/bai22.html WORDS #34"
+},
+{
+"id": "b22-w34-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "打羽毛球",
+"prompt": "",
+"correctAnswer": "打羽毛球",
+"distractors": [
+"大家",
+"画"
+],
+"optLang": "han",
+"completedText": "打羽毛球 (dǎ yǔmáoqiú) = chơi cầu lông",
+"source": "lessons/bai22.html WORDS #34"
+},
+{
+"id": "b22-w35-m",
+"lesson": 22,
+"level": 2,
+"type": "chonnghia",
+"prompt": "打匹克球",
+"correctAnswer": "chơi pickleball",
+"distractors": [
+"xong, hoàn tất",
+"để, cho phép, bảo ai làm gì"
+],
+"optLang": "vi",
+"completedText": "打匹克球 = chơi pickleball",
+"source": "lessons/bai22.html WORDS #35"
+},
+{
+"id": "b22-w35-h",
+"lesson": 22,
+"level": 2,
+"type": "hinh",
+"img": "../img/bai22/pickleball.jpg",
+"prompt": "",
+"correctAnswer": "打匹克球",
+"distractors": [
+"惊讶",
+"武术"
+],
+"optLang": "han",
+"completedText": "打匹克球 (dǎ pǐkèqiú) = chơi pickleball",
+"source": "lessons/bai22.html WORDS #35"
+},
+{
+"id": "b22-w35-n",
+"lesson": 22,
+"level": 2,
+"type": "nghe",
+"audio": "打匹克球",
+"prompt": "",
+"correctAnswer": "打匹克球",
+"distractors": [
+"惊讶",
+"武术"
+],
+"optLang": "han",
+"completedText": "打匹克球 (dǎ pǐkèqiú) = chơi pickleball",
+"source": "lessons/bai22.html WORDS #35"
 },
 {
 "id": "b22-s01",
@@ -24070,8 +24801,8 @@ window.SLICE_BANK = [
 "prompt": "Bạn có sở thích gì?",
 "correctAnswer": "你有什么爱好？",
 "distractors": [
-"你对京剧感兴趣吗？",
-"你今天心情怎么样？"
+"你今天心情怎么样？",
+"麦克有一台笔记本电脑。"
 ],
 "optLang": "han",
 "completedText": "你有什么爱好？ = Bạn có sở thích gì?",
@@ -24085,8 +24816,8 @@ window.SLICE_BANK = [
 "prompt": "Sở thích của tôi là đọc sách.",
 "correctAnswer": "我的爱好是看书。",
 "distractors": [
-"我们今天几点下课？",
-"老师让我们谈谈爱好。"
+"我对书法非常感兴趣。",
+"我下课以后常常打网球。"
 ],
 "optLang": "han",
 "completedText": "我的爱好是看书。 = Sở thích của tôi là đọc sách.",
@@ -24100,8 +24831,8 @@ window.SLICE_BANK = [
 "prompt": "Chúng ta cùng đi xem kinh kịch nhé.",
 "correctAnswer": "我们一起去看京剧吧。",
 "distractors": [
-"跟朋友聊天儿，我感到很高兴。",
-"我的爱好是看书。"
+"我喜欢玩电脑。",
+"我还想学唱京剧。"
 ],
 "optLang": "han",
 "completedText": "我们一起去看京剧吧。 = Chúng ta cùng đi xem kinh kịch nhé.",
@@ -24115,8 +24846,8 @@ window.SLICE_BANK = [
 "prompt": "Tôi thích chơi máy tính.",
 "correctAnswer": "我喜欢玩电脑。",
 "distractors": [
-"看完京剧以后，我们一起去吃饭吧。",
-"祝你周末愉快！"
+"老师让我们谈谈爱好。",
+"麦克有一台笔记本电脑。"
 ],
 "optLang": "han",
 "completedText": "我喜欢玩电脑。 = Tôi thích chơi máy tính.",
@@ -24131,7 +24862,7 @@ window.SLICE_BANK = [
 "correctAnswer": "我正在学书法。",
 "distractors": [
 "你有什么爱好？",
-"祝你周末愉快！"
+"我也想学打匹克球。"
 ],
 "optLang": "han",
 "completedText": "我正在学书法。 = Tôi đang học thư pháp.",
@@ -24145,8 +24876,8 @@ window.SLICE_BANK = [
 "prompt": "Tôi còn muốn học hát kinh kịch.",
 "correctAnswer": "我还想学唱京剧。",
 "distractors": [
-"我正在学书法。",
-"这张画儿是我自己画的。"
+"你今天心情怎么样？",
+"我常常看足球比赛。"
 ],
 "optLang": "han",
 "completedText": "我还想学唱京剧。 = Tôi còn muốn học hát kinh kịch.",
@@ -24160,8 +24891,8 @@ window.SLICE_BANK = [
 "prompt": "Cô giáo bảo chúng tôi nói về sở thích.",
 "correctAnswer": "老师让我们谈谈爱好。",
 "distractors": [
-"我做完作业了。",
-"我们今天几点下课？"
+"我还想学唱京剧。",
+"我常常看足球比赛。"
 ],
 "optLang": "han",
 "completedText": "老师让我们谈谈爱好。 = Cô giáo bảo chúng tôi nói về sở thích.",
@@ -24175,8 +24906,8 @@ window.SLICE_BANK = [
 "prompt": "Hôm nay tâm trạng bạn thế nào?",
 "correctAnswer": "你今天心情怎么样？",
 "distractors": [
-"我的爱好是看书。",
-"你业余时间常常做什么？"
+"你有什么爱好？",
+"我喜欢玩电脑。"
 ],
 "optLang": "han",
 "completedText": "你今天心情怎么样？ = Hôm nay tâm trạng bạn thế nào?",
@@ -24190,8 +24921,8 @@ window.SLICE_BANK = [
 "prompt": "Thời gian rảnh bạn thường làm gì?",
 "correctAnswer": "你业余时间常常做什么？",
 "distractors": [
-"我喜欢玩电脑。",
-"我还想学唱京剧。"
+"我的爱好是看书。",
+"老师感到很惊讶。"
 ],
 "optLang": "han",
 "completedText": "你业余时间常常做什么？ = Thời gian rảnh bạn thường làm gì?",
@@ -24205,8 +24936,8 @@ window.SLICE_BANK = [
 "prompt": "Bạn có hứng thú với kinh kịch không?",
 "correctAnswer": "你对京剧感兴趣吗？",
 "distractors": [
-"我对书法非常感兴趣。",
-"我喜欢玩电脑。"
+"看完京剧以后，我们一起去吃饭吧。",
+"你今天心情怎么样？"
 ],
 "optLang": "han",
 "completedText": "你对京剧感兴趣吗？ = Bạn có hứng thú với kinh kịch không?",
@@ -24220,8 +24951,8 @@ window.SLICE_BANK = [
 "prompt": "Tôi rất hứng thú với thư pháp.",
 "correctAnswer": "我对书法非常感兴趣。",
 "distractors": [
-"祝你周末愉快！",
-"你对京剧感兴趣吗？"
+"老师让我们谈谈爱好。",
+"我来中国以前就喜欢书法。"
 ],
 "optLang": "han",
 "completedText": "我对书法非常感兴趣。 = Tôi rất hứng thú với thư pháp.",
@@ -24235,8 +24966,8 @@ window.SLICE_BANK = [
 "prompt": "Trò chuyện với bạn, tôi thấy rất vui.",
 "correctAnswer": "跟朋友聊天儿，我感到很高兴。",
 "distractors": [
-"我还想学唱京剧。",
-"我们今天几点下课？"
+"我做完作业了。",
+"你有什么爱好？"
 ],
 "optLang": "han",
 "completedText": "跟朋友聊天儿，我感到很高兴。 = Trò chuyện với bạn, tôi thấy rất vui.",
@@ -24250,8 +24981,8 @@ window.SLICE_BANK = [
 "prompt": "Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ.",
 "correctAnswer": "下课以后，跟朋友聊聊天儿，我感到很愉快。",
 "distractors": [
-"我做完作业了。",
-"我喜欢玩电脑。"
+"我们今天几点下课？",
+"我对书法非常感兴趣。"
 ],
 "optLang": "han",
 "completedText": "下课以后，跟朋友聊聊天儿，我感到很愉快。 = Sau giờ học, trò chuyện với bạn, tôi cảm thấy rất vui vẻ.",
@@ -24265,8 +24996,8 @@ window.SLICE_BANK = [
 "prompt": "Chúc bạn cuối tuần vui vẻ!",
 "correctAnswer": "祝你周末愉快！",
 "distractors": [
-"跟朋友聊天儿，我感到很高兴。",
-"我们今天几点下课？"
+"你业余时间常常做什么？",
+"我下课以后常常打网球。"
 ],
 "optLang": "han",
 "completedText": "祝你周末愉快！ = Chúc bạn cuối tuần vui vẻ!",
@@ -24280,8 +25011,8 @@ window.SLICE_BANK = [
 "prompt": "Trước khi đến Trung Quốc tôi đã thích thư pháp.",
 "correctAnswer": "我来中国以前就喜欢书法。",
 "distractors": [
-"你业余时间常常做什么？",
-"我做完作业了。"
+"看完京剧以后，我们一起去吃饭吧。",
+"我的爱好是看书。"
 ],
 "optLang": "han",
 "completedText": "我来中国以前就喜欢书法。 = Trước khi đến Trung Quốc tôi đã thích thư pháp.",
@@ -24295,8 +25026,8 @@ window.SLICE_BANK = [
 "prompt": "Bức tranh này do tôi tự vẽ.",
 "correctAnswer": "这张画儿是我自己画的。",
 "distractors": [
-"看完京剧以后，我们一起去吃饭吧。",
-"我喜欢玩电脑。"
+"你有什么爱好？",
+"我做完作业了。"
 ],
 "optLang": "han",
 "completedText": "这张画儿是我自己画的。 = Bức tranh này do tôi tự vẽ.",
@@ -24310,8 +25041,8 @@ window.SLICE_BANK = [
 "prompt": "Hôm nay mấy giờ chúng ta tan học?",
 "correctAnswer": "我们今天几点下课？",
 "distractors": [
-"你今天心情怎么样？",
-"你有什么爱好？"
+"这张画儿是我自己画的。",
+"我来中国以前就喜欢书法。"
 ],
 "optLang": "han",
 "completedText": "我们今天几点下课？ = Hôm nay mấy giờ chúng ta tan học?",
@@ -24325,8 +25056,8 @@ window.SLICE_BANK = [
 "prompt": "Tôi làm xong bài tập rồi.",
 "correctAnswer": "我做完作业了。",
 "distractors": [
-"我的爱好是看书。",
-"你对京剧感兴趣吗？"
+"我还想学唱京剧。",
+"祝你周末愉快！"
 ],
 "optLang": "han",
 "completedText": "我做完作业了。 = Tôi làm xong bài tập rồi.",
@@ -24340,11 +25071,116 @@ window.SLICE_BANK = [
 "prompt": "Xem xong kinh kịch, chúng ta cùng đi ăn nhé.",
 "correctAnswer": "看完京剧以后，我们一起去吃饭吧。",
 "distractors": [
-"我们今天几点下课？",
-"祝你周末愉快！"
+"我对书法非常感兴趣。",
+"我喜欢玩电脑。"
 ],
 "optLang": "han",
 "completedText": "看完京剧以后，我们一起去吃饭吧。 = Xem xong kinh kịch, chúng ta cùng đi ăn nhé.",
 "source": "lessons/bai22.html TRANSLATE_SELFCHECK #19"
+},
+{
+"id": "b22-s20",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Cô giáo rất ngạc nhiên.",
+"correctAnswer": "老师感到很惊讶。",
+"distractors": [
+"我下课以后常常打网球。",
+"我来中国以前就喜欢书法。"
+],
+"optLang": "han",
+"completedText": "老师感到很惊讶。 = Cô giáo rất ngạc nhiên.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #20"
+},
+{
+"id": "b22-s21",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Mike có một chiếc laptop.",
+"correctAnswer": "麦克有一台笔记本电脑。",
+"distractors": [
+"我喜欢玩电脑。",
+"星期天我常常跟朋友一起打羽毛球。"
+],
+"optLang": "han",
+"completedText": "麦克有一台笔记本电脑。 = Mike có một chiếc laptop.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #21"
+},
+{
+"id": "b22-s22",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi hy vọng sau này có thể hát kinh kịch.",
+"correctAnswer": "我希望以后能唱京剧。",
+"distractors": [
+"你有什么爱好？",
+"我也想学打匹克球。"
+],
+"optLang": "han",
+"completedText": "我希望以后能唱京剧。 = Tôi hy vọng sau này có thể hát kinh kịch.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #22"
+},
+{
+"id": "b22-s23",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi thường xem trận đấu bóng đá.",
+"correctAnswer": "我常常看足球比赛。",
+"distractors": [
+"星期天我常常跟朋友一起打羽毛球。",
+"麦克有一台笔记本电脑。"
+],
+"optLang": "han",
+"completedText": "我常常看足球比赛。 = Tôi thường xem trận đấu bóng đá.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #23"
+},
+{
+"id": "b22-s24",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Sau giờ học tôi thường đánh quần vợt.",
+"correctAnswer": "我下课以后常常打网球。",
+"distractors": [
+"下课以后，跟朋友聊聊天儿，我感到很愉快。",
+"我正在学书法。"
+],
+"optLang": "han",
+"completedText": "我下课以后常常打网球。 = Sau giờ học tôi thường đánh quần vợt.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #24"
+},
+{
+"id": "b22-s25",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Chủ nhật tôi thường cùng bạn chơi cầu lông.",
+"correctAnswer": "星期天我常常跟朋友一起打羽毛球。",
+"distractors": [
+"看完京剧以后，我们一起去吃饭吧。",
+"老师让我们谈谈爱好。"
+],
+"optLang": "han",
+"completedText": "星期天我常常跟朋友一起打羽毛球。 = Chủ nhật tôi thường cùng bạn chơi cầu lông.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #25"
+},
+{
+"id": "b22-s26",
+"lesson": 22,
+"level": 2,
+"type": "chondungcau",
+"prompt": "Tôi cũng muốn học chơi pickleball.",
+"correctAnswer": "我也想学打匹克球。",
+"distractors": [
+"祝你周末愉快！",
+"我常常看足球比赛。"
+],
+"optLang": "han",
+"completedText": "我也想学打匹克球。 = Tôi cũng muốn học chơi pickleball.",
+"source": "lessons/bai22.html TRANSLATE_SELFCHECK #26"
 }
 ];
