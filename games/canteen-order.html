@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>食堂点餐 – Đặt món ở căng tin · MiaoChinese</title>
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/brand.css">
+<style>
+:root{--ink:#222;--cream:#FFF8E8;--card:#FFFBF2;--edge:#D8C3A0;--red:#BA202A;--org:#C8541B;--grn:#2E8B57;--grey:#6b6b6b}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:var(--font-body);color:var(--ink);background:var(--cream);overflow:hidden;-webkit-user-select:none;user-select:none}
+.han{font-family:var(--font-han)!important;font-style:normal}
+button{font-family:inherit;cursor:pointer;border:0}
+#app{display:flex;flex-direction:column;height:100%;height:100dvh}
+header{display:flex;align-items:center;gap:12px;padding:8px 16px;background:#fff;border-bottom:2px solid var(--edge)}
+header h1{margin:0;font-size:1.25rem;color:var(--red)}
+header small{color:var(--grey)}
+main{flex:1;display:flex;min-height:0}
+#menu{flex:1.7;overflow-y:auto;padding:10px 14px 24px}
+#cartp{flex:1;min-width:300px;max-width:460px;display:flex;flex-direction:column;background:#FFF1D6;border-left:3px solid var(--edge)}
+.grp{font-size:1.5rem;margin:8px 4px 6px;color:var(--grey)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tile{position:relative;background:var(--card);border:2px solid var(--edge);border-radius:14px;padding:8px 6px 6px;text-align:center;cursor:pointer;touch-action:manipulation}
+.tile:active{transform:scale(.97)}
+.tile img{width:100%;aspect-ratio:3/2;object-fit:contain;display:block;pointer-events:none}
+.tile .n{font-size:1.5rem;line-height:1.2}
+.tile .p{font-size:.85rem;color:var(--grey)}
+.tile.on{border-color:var(--red);background:#FDE7E7}
+.badge{position:absolute;top:6px;right:6px;min-width:30px;height:30px;padding:0 7px;border-radius:15px;background:var(--red);color:#fff;font-weight:800;font-size:1.05rem;display:none;align-items:center;justify-content:center}
+.tile.on .badge{display:flex}
+#cartp h2{margin:0;padding:10px 14px 6px;font-size:1.15rem}
+#lines{flex:1;overflow-y:auto;padding:0 10px}
+.empty{padding:26px 10px;color:var(--grey);font-size:1.05rem;text-align:center}
+.line{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid var(--edge);border-radius:12px;padding:6px 8px;margin-bottom:8px}
+.line img{width:62px;height:42px;object-fit:contain}
+.line .nm{flex:1;min-width:0}
+.line .nm b{font-size:1.35rem;font-weight:400;display:block}
+.line .nm i{font-style:normal;font-size:.8rem;color:var(--grey)}
+.qb{width:44px;height:44px;border-radius:10px;background:var(--org);color:#fff;font-size:1.6rem;font-weight:800;touch-action:manipulation}
+.qb.m{background:#7a7a7a}
+.qi{width:56px;height:44px;border:2px solid var(--edge);border-radius:10px;text-align:center;font-size:1.3rem;font-family:inherit}
+#say{padding:6px 14px;max-height:30%;overflow-y:auto;border-top:2px dashed var(--edge);font-size:.95rem}
+#say .h{font-size:1.25rem;line-height:1.35}
+#say .p{font-size:.85rem;color:var(--grey);margin-bottom:4px}
+#foot{padding:10px 14px calc(12px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:6px}
+#order{height:64px;border-radius:14px;background:var(--org);color:#fff;font-size:1.9rem;font-weight:800;touch-action:manipulation}
+#order small{display:block;font-size:.8rem;font-weight:600;opacity:.95}
+#msg{min-height:1.4em;text-align:center;color:var(--red);font-weight:800;font-size:1.05rem}
+#clear{background:none;color:var(--grey);text-decoration:underline;font-size:.9rem;padding:2px}
+/* success */
+#done{position:fixed;inset:0;background:var(--cream);display:none;flex-direction:column;align-items:center;padding:16px;overflow-y:auto;z-index:20}
+#done.show{display:flex}
+#done h2{margin:6px 0 0;font-size:2.3rem;color:var(--grn)}
+.scene{position:relative;margin-top:8px;text-align:center}
+.scene img.bg{max-height:28vh;max-width:92vw;width:auto;border-radius:16px;display:inline-block}
+.tray{margin:12px auto 0;width:min(92vw,820px);background:#B98A5A;border:4px solid #8A6238;border-radius:18px;padding:12px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;animation:slide .9s ease-out both}
+@keyframes slide{from{transform:translateX(70vw);opacity:0}to{transform:none;opacity:1}}
+.it{background:#fff8;border-radius:12px;padding:6px 8px;text-align:center;min-width:110px}
+.it img{width:100px;height:67px;object-fit:contain}
+.it b{display:block;font-size:1.3rem;font-weight:400}
+.it span{font-weight:800;font-size:1.2rem}
+.bubble{margin-top:12px;background:#fff;border:3px solid var(--org);border-radius:16px;padding:10px 16px;width:min(92vw,820px);text-align:center}
+.bubble .h{font-size:1.7rem}.bubble .p{font-size:1rem;color:var(--grey)}
+.thx{display:flex;gap:30px;margin-top:10px;font-size:1.8rem}
+.thx small{display:block;font-size:.95rem;color:var(--grey)}
+#again{margin:14px 0 20px;height:62px;padding:0 28px;border-radius:14px;background:var(--grn);color:#fff;font-size:1.5rem;font-weight:800}
+@media (max-width:760px){main{flex-direction:column}#cartp{max-width:none;min-height:46%;border-left:0;border-top:3px solid var(--edge)}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header><h1 class="han">食堂点餐</h1><small>Đặt món tự do · chạm món để thêm vào giỏ</small></header>
+  <main>
+    <section id="menu"></section>
+    <aside id="cartp">
+      <h2>购物篮 · Giỏ món</h2>
+      <div id="lines"></div>
+      <div id="say"></div>
+      <div id="foot">
+        <div id="msg"></div>
+        <button id="order"><span class="han">下单</span><small>xiàdān · Đặt món</small></button>
+        <button id="clear">Xóa hết giỏ</button>
+      </div>
+    </aside>
+  </main>
+</div>
+<div id="done">
+  <h2><span class="han">下单成功！</span></h2>
+  <div style="color:#666">Xiàdān chénggōng! · Đặt món thành công</div>
+  <div class="scene"><img class="bg" src="/img/bai7/shitang.jpg" alt="Căng tin"></div>
+  <div class="tray" id="tray"></div>
+  <div class="bubble"><div class="h han" id="dh"></div><div class="p" id="dp"></div></div>
+  <div class="thx"><div><span class="han">谢谢！</span><small>Xièxie!</small></div><div><span class="han">不客气！</span><small>Bú kèqi!</small></div></div>
+  <button id="again"><span class="han">再点一次</span> · Đặt đơn mới</button>
+</div>
+<script>
+// key, han, pinyin, image, measure(han,py) , group
+var M={ge:['个','ge','y4'],wan:['碗','wǎn','y3'],bei:['杯','bēi','y1'],ping:['瓶','píng','y2'],fen:['份','fèn','y4']};
+var FOODS=[
+ {k:'mantou',h:'馒头',p:'mántou',m:'ge',g:'eat'},{k:'baozi',h:'包子',p:'bāozi',m:'ge',g:'eat'},
+ {k:'jiaozi',h:'饺子',p:'jiǎozi',m:'ge',g:'eat'},{k:'mifan',h:'米饭',p:'mǐfàn',m:'wan',g:'eat'},
+ {k:'miantiao',h:'面条',p:'miàntiáo',m:'wan',g:'eat'},{k:'jidan',h:'鸡蛋',p:'jīdàn',m:'ge',g:'eat'},
+ {k:'niurou',h:'牛肉',p:'niúròu',m:'fen',g:'eat',one:true},{k:'jirou',h:'鸡肉',p:'jīròu',m:'fen',g:'eat',one:true},
+ {k:'zhurou',h:'猪肉',p:'zhūròu',m:'fen',g:'eat',one:true},{k:'shucai',h:'蔬菜',p:'shūcài',m:'fen',g:'eat',one:'一些',onep:'yìxiē'},
+ {k:'yu',h:'鱼',p:'yú',m:'fen',g:'eat',one:true},
+ {k:'jidantang',h:'鸡蛋汤',p:'jīdàn tāng',m:'wan',g:'drink'},{k:'pijiu',h:'啤酒',p:'píjiǔ',m:'ping',g:'drink'},{k:'cha',h:'茶',p:'chá',m:'bei',g:'drink'}
+];
+var D='零一二三四五六七八九', DP=['','yī','èr','sān','sì','wǔ','liù','qī','bā','jiǔ'];
+function num(n,meas){ // returns [han,py] for quantity n before a measure word
+  if(n===2) return ['两','liǎng'];
+  if(n===1){ var t=M[meas][2]; return ['一', t==='y4'?'yí':'yì']; }
+  if(n<10) return [D[n],DP[n]];
+  if(n===10) return ['十','shí'];
+  if(n<20) return ['十'+D[n-10],'shí '+DP[n-10]];
+  var a=Math.floor(n/10),b=n%10; return [D[a]+'十'+(b?D[b]:''),DP[a]+' shí'+(b?' '+DP[b]:'')];
+}
+function sentence(f,n){
+  var mm=M[f.m], hn,pn;
+  if(n===1 && f.one){ // 我要牛肉。 / 我要一些蔬菜。
+    if(f.one===true) return ['我要'+f.h+'。','Wǒ yào '+f.p+'.'];
+    return ['我要'+f.one+f.h+'。','Wǒ yào '+f.onep+' '+f.p+'.'];
+  }
+  var q=num(n,f.m); return ['我要'+q[0]+mm[0]+f.h+'。','Wǒ yào '+q[1]+' '+mm[1]+' '+f.p+'.'];
+}
+function qtyText(f,n){ if(n===1&&f.one) return ''; var q=num(n,f.m); return q[0]+M[f.m][0]; }
+var cart={}; // key -> n
+var byk={}; FOODS.forEach(function(f){byk[f.k]=f});
+var $=function(i){return document.getElementById(i)};
+function build(){
+  var h='';
+  [['eat','吃 chī'],['drink','喝 hē']].forEach(function(g){
+    h+='<div class="grp han">'+g[1]+'</div><div class="grid">';
+    FOODS.filter(function(f){return f.g===g[0]}).forEach(function(f){
+      h+='<div class="tile" data-k="'+f.k+'" id="t_'+f.k+'"><span class="badge" id="b_'+f.k+'">0</span><img src="/img/bai7/'+f.k+'.jpg" alt="'+f.h+'"><div class="n han">'+f.h+'</div><div class="p">'+f.p+'</div></div>';
+    });
+    h+='</div>';
+  });
+  $('menu').innerHTML=h;
+  $('menu').addEventListener('click',function(e){var t=e.target.closest('.tile'); if(t) add(t.dataset.k,1)});
+}
+function add(k,d){
+  var n=(cart[k]||0)+d; n=Math.max(0,Math.min(99,n));
+  if(n===0) delete cart[k]; else cart[k]=n;
+  $('msg').textContent=''; render();
+}
+function setn(k,v){
+  v=parseInt(v,10);
+  if(isNaN(v)) return; v=Math.max(0,Math.min(99,v));
+  if(v===0) delete cart[k]; else cart[k]=v;
+  render(true);
+}
+function render(keepFocus){
+  var act=document.activeElement, keepK=act&&act.dataset&&act.dataset.qi, sel=act&&act.selectionStart;
+  FOODS.forEach(function(f){var n=cart[f.k]||0,t=$('t_'+f.k);t.classList.toggle('on',n>0);$('b_'+f.k).textContent=n});
+  var keys=FOODS.filter(function(f){return cart[f.k]}), h='', s='';
+  if(!keys.length) h='<div class="empty">Giỏ đang trống.<br>Chạm vào món ở menu để thêm.</div>';
+  keys.forEach(function(f){
+    var n=cart[f.k],ql=qtyText(f,n);
+    h+='<div class="line"><img src="/img/bai7/'+f.k+'.jpg" alt=""><div class="nm"><b class="han">'+f.h+' × '+n+'</b><i>'+f.p+'</i></div>'+
+       '<button class="qb m" data-a="-" data-k="'+f.k+'" aria-label="Giảm">−</button>'+
+       '<input class="qi" type="number" inputmode="numeric" min="1" max="99" value="'+n+'" data-qi="'+f.k+'">'+
+       '<button class="qb" data-a="+" data-k="'+f.k+'" aria-label="Tăng">+</button></div>';
+    var sp=sentence(f,n); s+='<div class="h han">'+sp[0]+'</div><div class="p">'+sp[1]+'</div>';
+  });
+  $('lines').innerHTML=h;
+  $('say').innerHTML=keys.length?'<div style="color:#888;font-size:.8rem">Đọc to trước khi đặt · 请读：</div>'+s:'';
+  if(keepK){var el=document.querySelector('[data-qi="'+keepK+'"]'); if(el){el.focus(); try{el.setSelectionRange(sel,sel)}catch(e){}}}
+}
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.qb'); if(!b) return;
+  add(b.dataset.k,b.dataset.a==='+'?1:-1);
+});
+document.addEventListener('input',function(e){
+  if(e.target.dataset&&e.target.dataset.qi){
+    var v=e.target.value; if(v==='') return; setn(e.target.dataset.qi,v);
+  }
+});
+document.addEventListener('change',function(e){
+  if(e.target.dataset&&e.target.dataset.qi&&e.target.value==='') render();
+});
+$('clear').onclick=function(){cart={};$('msg').textContent='';render()};
+$('order').onclick=function(){
+  var keys=FOODS.filter(function(f){return cart[f.k]});
+  if(!keys.length){$('msg').innerHTML='<span class="han">先点菜吧！</span> Chọn món trước nhé';return}
+  var snap=keys.map(function(f){return {f:f,n:cart[f.k]}});
+  $('tray').innerHTML=snap.map(function(o){var q=qtyText(o.f,o.n);return '<div class="it"><img src="/img/bai7/'+o.f.k+'.jpg" alt=""><b class="han">'+o.f.h+'</b><span class="han">× '+o.n+'</span>'+(q?'<div class="han" style="font-size:.95rem">'+q+'</div>':'')+'</div>'}).join('');
+  $('dh').textContent='这是你的'+snap.map(function(o){return o.f.h}).join('，这是你的')+'。';
+  $('dp').textContent='Zhè shì nǐ de '+snap.map(function(o){return o.f.p}).join(', zhè shì nǐ de ')+'.';
+  var d=$('done'); d.classList.remove('show'); void d.offsetWidth; d.classList.add('show'); d.scrollTop=0;
+  var tr=$('tray'); tr.style.animation='none'; void tr.offsetWidth; tr.style.animation='';
+};
+$('again').onclick=function(){cart={};$('msg').textContent='';$('done').classList.remove('show');render()};
+build(); render();
+</script>
+</body>
+</html>
